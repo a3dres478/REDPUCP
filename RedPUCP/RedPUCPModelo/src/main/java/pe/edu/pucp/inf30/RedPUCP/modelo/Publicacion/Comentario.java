@@ -24,7 +24,7 @@ public class Comentario {
     private int idComentario;
     private Usuario autor;
     private Publicacion publicacion;
-    private Comentario comentarioPadre;
+    //private Comentario comentarioPadre;
     private String contenido;
     private Date fechaCreacion;
     private Date ultimaEdicion;
@@ -61,13 +61,13 @@ public class Comentario {
         this.publicacion = publicacion;
     }
 
-    public Comentario getComentarioPadre() {
-        return comentarioPadre;
-    }
-
-    public void setComentarioPadre(Comentario comentarioPadre) {
-        this.comentarioPadre = comentarioPadre;
-    }
+//    public Comentario getComentarioPadre() {
+//        return comentarioPadre;
+//    }
+//
+//    public void setComentarioPadre(Comentario comentarioPadre) {
+//        this.comentarioPadre = comentarioPadre;
+//    }
 
     public String getContenido() {
         return contenido;

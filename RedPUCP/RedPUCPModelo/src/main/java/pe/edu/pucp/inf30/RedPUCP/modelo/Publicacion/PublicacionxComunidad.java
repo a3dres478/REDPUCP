@@ -11,6 +11,22 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
  * @author andre
  */
 public class PublicacionxComunidad {
+
+    public Publicacion getPubli() {
+        return publi;
+    }
+
+    public void setPubli(Publicacion publi) {
+        this.publi = publi;
+    }
+
+    public Comunidad getComu() {
+        return comu;
+    }
+
+    public void setComu(Comunidad comu) {
+        this.comu = comu;
+    }
     private Publicacion publi;
     private Comunidad comu;
     

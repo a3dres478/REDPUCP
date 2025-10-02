@@ -10,6 +10,6 @@ import pe.edu.pucp.inf30.RedPUCP.dao.ICrud;
  *
  * @author andre
  */
-public interface PublicacionxComunidadDAO extends ICrud<PublicacionxComunidad> {
+    public interface PublicacionxComunidadDAO extends ICrud<PublicacionxComunidad> {
     
 }
