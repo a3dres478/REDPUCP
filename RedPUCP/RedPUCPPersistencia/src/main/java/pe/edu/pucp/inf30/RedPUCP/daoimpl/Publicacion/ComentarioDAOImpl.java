@@ -37,9 +37,9 @@ public class ComentarioDAOImpl extends BaseDAOImplement<Comentario> implements C
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idautor",sed.getAutor().getIdUsuario());
         cmd.setInt("p_idPublicacion",sed.getPublicacion().getId());
-        Integer idPadre =(sed.getComentarioPadre() !=null )? sed.getComentarioPadre().getId():null;
-        if(idPadre == null) cmd.setNull("p_idComentarioPadre", Types.INTEGER);
-        else cmd.setInt("p_idComentarioPadre", idPadre);
+//        Integer idPadre =(sed.getComentarioPadre() !=null )? sed.getComentarioPadre().getId():null;
+//        if(idPadre == null) cmd.setNull("p_idComentarioPadre", Types.INTEGER);
+//        else cmd.setInt("p_idComentarioPadre", idPadre);
         cmd.setInt("p_i", 0);//revisar
         
         cmd.setString("p_contenido", sed.getContenido());
@@ -89,13 +89,13 @@ public class ComentarioDAOImpl extends BaseDAOImplement<Comentario> implements C
         sed.setId(rs.getInt("idComentario"));
         sed.setPublicacion(new PublicacionDAOimpl().buscar(rs.getInt("idPublicacion")));
         
-        int idPadre=rs.getInt("idComentarioPadre");
-        if(!rs.wasNull()){
-            Comentario padre= new Comentario();
-            padre.setId(idPadre);
-            sed.setComentarioPadre(padre);
-            
-        }
+//        int idPadre=rs.getInt("idComentarioPadre");
+//        if(!rs.wasNull()){
+//            Comentario padre= new Comentario();
+//            padre.setId(idPadre);
+//            sed.setComentarioPadre(padre);
+//            
+//        }
         
         //sed.setComentarioPadre(new ComentarioDAOImpl());
         sed.setContenido(rs.getString("contenido"));
