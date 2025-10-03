@@ -12,7 +12,7 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Comentario;
  */
 public class VotoComentario extends Voto{
     private Comentario comentarioVotado;
-
+    
     public Comentario getComentarioVotado() {
         return comentarioVotado;
     }
