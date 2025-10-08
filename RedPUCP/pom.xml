@@ -10,6 +10,7 @@
         <module>RedPUCPModelo</module>
         <module>RedPUCPPersistencia</module>
         <module>RedPUCPPruebas</module>
+        <module>RedPUCPNegocio</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

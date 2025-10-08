@@ -11,6 +11,22 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
  * @author andre
  */
 public class UsuarioxComunidad {
+
+    public Usuario getUsu() {
+        return usu;
+    }
+
+    public void setUsu(Usuario usu) {
+        this.usu = usu;
+    }
+
+    public Comunidad getComu() {
+        return comu;
+    }
+
+    public void setComu(Comunidad comu) {
+        this.comu = comu;
+    }
     private Usuario usu;
     private Comunidad comu;
 }
