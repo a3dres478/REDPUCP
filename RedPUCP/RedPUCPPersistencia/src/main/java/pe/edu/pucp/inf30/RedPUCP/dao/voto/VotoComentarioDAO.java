@@ -4,12 +4,13 @@
  */
 package pe.edu.pucp.inf30.RedPUCP.dao.voto;
 
-import pe.edu.pucp.inf30.RedPUCP.dao.ICrud;
+//import pe.edu.pucp.inf30.RedPUCP.dao.ICrud;
+import pe.edu.pucp.inf30.RedPUCP.dao.PersistibleTransaccional;
 import pe.edu.pucp.inf30.RedPUCP.modelo.voto.VotoComentario;
 /**
  *
  * @author andre
  */
-public interface VotoComentarioDAO extends ICrud<VotoComentario>{
+public interface VotoComentarioDAO extends PersistibleTransaccional<VotoComentario,Integer>{
     
 }

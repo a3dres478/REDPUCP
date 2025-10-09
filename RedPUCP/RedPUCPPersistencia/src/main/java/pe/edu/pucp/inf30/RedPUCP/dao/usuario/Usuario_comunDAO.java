@@ -4,13 +4,14 @@
  */
 package pe.edu.pucp.inf30.RedPUCP.dao.usuario;
 
-import pe.edu.pucp.inf30.RedPUCP.dao.ICrud;
+//import pe.edu.pucp.inf30.RedPUCP.dao.ICrud;
+import pe.edu.pucp.inf30.RedPUCP.dao.PersistibleTransaccional;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Comentario;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 /**
  *
  * @author andre
  */
-public interface Usuario_comunDAO extends ICrud<Usuario_comun>{
+public interface Usuario_comunDAO extends PersistibleTransaccional<Usuario_comun,Integer>{
     
 }

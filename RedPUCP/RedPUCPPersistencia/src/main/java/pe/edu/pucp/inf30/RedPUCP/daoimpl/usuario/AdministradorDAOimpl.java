@@ -12,16 +12,19 @@ import java.sql.SQLException;
 import java.sql.Types;
 import pe.edu.pucp.inf30.RedPUCP.dao.usuario.AdministradorDAO;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Administrador;
-import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
+import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario;
+///import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAO;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
 
 /**
  *
  * @author andre
  */
-public class AdministradorDAOimpl extends BaseDAOImplement<Administrador> implements AdministradorDAO {
+public class AdministradorDAOimpl extends TransaccionalBaseDAO<Administrador> implements AdministradorDAO {
     
     @Override
-    protected CallableStatement comandoInsertar(Connection conn, Administrador usu) throws SQLException {
+    protected CallableStatement comandoCrear(Connection conn, Administrador usu) throws SQLException {
         String sql = "{CALL insertarUsuario(?,?,?,?,?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         
@@ -30,7 +33,7 @@ public class AdministradorDAOimpl extends BaseDAOImplement<Administrador> implem
     }
 
     @Override
-    protected CallableStatement comandoModificar(Connection conn, Administrador usu) throws SQLException {
+    protected CallableStatement comandoActualizar(Connection conn, Administrador usu) throws SQLException {
         String sql = "{CALL modificarUsuario(?,?,?,?,?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         
@@ -40,7 +43,7 @@ public class AdministradorDAOimpl extends BaseDAOImplement<Administrador> implem
 
 
     @Override
-    protected CallableStatement comandoEliminar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoEliminar(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL eliminarUsuario(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_id", id);
@@ -49,7 +52,7 @@ public class AdministradorDAOimpl extends BaseDAOImplement<Administrador> implem
 
 
     @Override
-    protected CallableStatement comandoBuscar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL buscarUsuarioPorId(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_id", id);
@@ -58,7 +61,7 @@ public class AdministradorDAOimpl extends BaseDAOImplement<Administrador> implem
 
 
     @Override
-    protected CallableStatement comandoListar(Connection conn) throws SQLException {
+    protected CallableStatement comandoLeerTodos(Connection conn) throws SQLException {
         String sql = "{CALL listarUsuario()}";
         CallableStatement cmd = conn.prepareCall(sql);
         return cmd;

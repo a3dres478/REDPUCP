@@ -27,6 +27,15 @@ public class UsuarioxComunidad {
     public void setComu(Comunidad comu) {
         this.comu = comu;
     }
+
+    public int getId_usuarioXcomunidad() {
+        return id_usuarioXcomunidad;
+    }
+
+    public void setId_usuarioXcomunidad(int id_usuarioXcomunidad) {
+        this.id_usuarioXcomunidad = id_usuarioXcomunidad;
+    }
     private Usuario usu;
     private Comunidad comu;
+    private int id_usuarioXcomunidad;
 }

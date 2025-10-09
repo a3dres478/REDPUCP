@@ -10,17 +10,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import pe.edu.pucp.inf30.RedPUCP.dao.usuario.UsuarioDAO;
-import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAO;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario;
 /**
  *
  * @author andre
  */
-public class UsuarioDAOimpl extends BaseDAOImplement<Usuario> implements UsuarioDAO {
+public class UsuarioDAOimpl extends TransaccionalBaseDAO<Usuario> implements UsuarioDAO {
     
     
     @Override
-    protected CallableStatement comandoInsertar(Connection conn, Usuario usu) throws SQLException {
+    protected CallableStatement comandoCrear(Connection conn, Usuario usu) throws SQLException {
         String sql = "{CALL sp_crearUsuario(?,?,?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         
@@ -40,7 +41,7 @@ public class UsuarioDAOimpl extends BaseDAOImplement<Usuario> implements Usuario
     
     
     @Override
-    protected CallableStatement comandoModificar(Connection conn, Usuario usu) throws SQLException {
+    protected CallableStatement comandoActualizar(Connection conn, Usuario usu) throws SQLException {
         String sql = "{CALL sp_actualizarUsuario(?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         
@@ -53,7 +54,7 @@ public class UsuarioDAOimpl extends BaseDAOImplement<Usuario> implements Usuario
     }
     
     @Override
-    protected CallableStatement comandoEliminar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoEliminar(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL sp_eliminarUsuario(?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idUsuario", id);
@@ -62,7 +63,7 @@ public class UsuarioDAOimpl extends BaseDAOImplement<Usuario> implements Usuario
     }
     
     @Override
-    protected CallableStatement comandoBuscar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL sp_obtenerUsuarioPorId(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idUsuario", id);
@@ -70,7 +71,7 @@ public class UsuarioDAOimpl extends BaseDAOImplement<Usuario> implements Usuario
     }
     
     @Override
-    protected CallableStatement comandoListar(Connection conn) throws SQLException {
+    protected CallableStatement comandoLeerTodos(Connection conn) throws SQLException {
         String sql = "{CALL sp_listarTodosUsuarios()}";
         CallableStatement cmd = conn.prepareCall(sql);
         return cmd;

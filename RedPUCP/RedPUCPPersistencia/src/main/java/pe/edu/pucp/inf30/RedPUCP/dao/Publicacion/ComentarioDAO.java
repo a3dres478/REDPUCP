@@ -4,12 +4,13 @@
  */
 package pe.edu.pucp.inf30.RedPUCP.dao.Publicacion;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Comentario;
-import pe.edu.pucp.inf30.RedPUCP.dao.ICrud;
+//import pe.edu.pucp.inf30.RedPUCP.dao.ICrud;
+import pe.edu.pucp.inf30.RedPUCP.dao.PersistibleTransaccional;
 
 /**
  *
  * @author andre
  */
-public interface ComentarioDAO extends ICrud<Comentario> {
+public interface ComentarioDAO extends PersistibleTransaccional<Comentario,Integer> {
     
 }

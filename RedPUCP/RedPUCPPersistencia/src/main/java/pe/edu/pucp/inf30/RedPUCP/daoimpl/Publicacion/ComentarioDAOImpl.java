@@ -11,7 +11,9 @@ import java.sql.SQLException;
 import java.sql.Types;
 import pe.edu.pucp.inf30.RedPUCP.dao.Publicacion.ComentarioDAO;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Comentario;
-import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
+//import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.UsuarioDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Publicacion;
 
 
@@ -19,7 +21,7 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Publicacion;
  *
  * @author andre
  */
-public class ComentarioDAOImpl extends BaseDAOImplement<Comentario> implements ComentarioDAO{
+public class ComentarioDAOImpl extends TransaccionalBaseDAO<Comentario> implements ComentarioDAO{
     
     /*private int id;
     private Usuario autor;
@@ -32,7 +34,7 @@ public class ComentarioDAOImpl extends BaseDAOImplement<Comentario> implements C
     private int votosNegativos;
     private char estado;*/
     @Override
-    protected CallableStatement comandoInsertar(Connection conn, Comentario sed) throws SQLException {
+    protected CallableStatement comandoCrear(Connection conn, Comentario sed) throws SQLException {
         String sql = "{CALL insertarComentario(?,?,?,?,?,?,?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idautor",sed.getAutor().getIdUsuario());
@@ -40,7 +42,7 @@ public class ComentarioDAOImpl extends BaseDAOImplement<Comentario> implements C
 //        Integer idPadre =(sed.getComentarioPadre() !=null )? sed.getComentarioPadre().getId():null;
 //        if(idPadre == null) cmd.setNull("p_idComentarioPadre", Types.INTEGER);
 //        else cmd.setInt("p_idComentarioPadre", idPadre);
-        cmd.setInt("p_i", 0);//revisar
+        cmd.setInt("p_id", 0);//revisar
         
         cmd.setString("p_contenido", sed.getContenido());
         cmd.setDate("p_fechacreacion", new java.sql.Date(sed.getFechaCreacion().getTime()));
@@ -53,14 +55,14 @@ public class ComentarioDAOImpl extends BaseDAOImplement<Comentario> implements C
         return cmd;
     }
     @Override
-    protected CallableStatement comandoModificar(Connection conn, Comentario sed) throws SQLException {
+    protected CallableStatement comandoActualizar(Connection conn, Comentario sed) throws SQLException {
         String sql = "{CALL modificarComentario(?,?,?,?)}";
        CallableStatement cmd = conn.prepareCall(sql);
         return cmd;
     }
     
     @Override
-    protected CallableStatement comandoEliminar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoEliminar(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL eliminarComentario(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         
@@ -68,14 +70,14 @@ public class ComentarioDAOImpl extends BaseDAOImplement<Comentario> implements C
     }
     
     @Override
-    protected CallableStatement comandoBuscar(Connection conn, int id) throws SQLException{
+    protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException{
         String sql= "{CALL buscarComentarioPorId(?)}";
         CallableStatement cmd=conn.prepareCall(sql);
         cmd.setInt("p_id",id);
         return cmd;
     }
     @Override
-    protected CallableStatement comandoListar (Connection conn) throws SQLException{
+    protected CallableStatement comandoLeerTodos (Connection conn) throws SQLException{
         String sql= "{CALL listarComentario()}";
         CallableStatement cmd=conn.prepareCall(sql);
         return cmd;
@@ -87,7 +89,10 @@ public class ComentarioDAOImpl extends BaseDAOImplement<Comentario> implements C
     protected Comentario mapearModelo(ResultSet rs) throws SQLException{
         Comentario sed= new Comentario();
         sed.setId(rs.getInt("idComentario"));
-        sed.setPublicacion(new PublicacionDAOimpl().buscar(rs.getInt("idPublicacion")));
+        sed.setPublicacion(new PublicacionDAOimpl().leer(rs.getInt("idPublicacion")));
+        
+        // FALTA ESTO NO?
+        sed.setAutor(new UsuarioDAOimpl().leer(rs.getInt("id_autor")));
         
 //        int idPadre=rs.getInt("idComentarioPadre");
 //        if(!rs.wasNull()){
@@ -107,7 +112,5 @@ public class ComentarioDAOImpl extends BaseDAOImplement<Comentario> implements C
         
         return sed;
     }
-    
-    
     
 }

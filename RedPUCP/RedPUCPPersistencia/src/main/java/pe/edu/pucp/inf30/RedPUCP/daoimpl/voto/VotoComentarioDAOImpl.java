@@ -9,22 +9,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import pe.edu.pucp.inf30.RedPUCP.dao.voto.VotoComentarioDAO;
-import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
+//import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.Comunidad.ComunidadDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.Publicacion.PublicacionDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.UsuarioDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.PublicacionxComunidad;
 import pe.edu.pucp.inf30.RedPUCP.modelo.voto.VotoComentario;
+import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Comentario;
 import pe.edu.pucp.inf30.RedPUCP.dao.Publicacion.ComentarioDAO;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.Publicacion.ComentarioDAOImpl;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
 /**
  *
  * @author andre
  */
-public class VotoComentarioDAOImpl extends BaseDAOImplement<VotoComentario> implements VotoComentarioDAO{
+public class VotoComentarioDAOImpl extends TransaccionalBaseDAO<VotoComentario> implements VotoComentarioDAO{
     
     @Override
-    protected CallableStatement comandoInsertar(Connection conn, VotoComentario modelo) throws SQLException {
+    protected CallableStatement comandoCrear(Connection conn, VotoComentario modelo) throws SQLException {
        String sql = "{CALL sp_crearVotoComentario(?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idUsuario", modelo.getUsuario().getIdUsuario());
@@ -36,7 +38,7 @@ public class VotoComentarioDAOImpl extends BaseDAOImplement<VotoComentario> impl
         return cmd;
     }
     @Override
-    protected CallableStatement comandoModificar(Connection conn, VotoComentario sed) throws SQLException {
+    protected CallableStatement comandoActualizar(Connection conn, VotoComentario sed) throws SQLException {
         String sql = "{CALL sp_crearVotoComentario(?,?,?,?)}";
        CallableStatement cmd = conn.prepareCall(sql);
        //cmd.setInt("p_idUsuario", usu.getUsuario().getIdUsuario());
@@ -49,7 +51,7 @@ public class VotoComentarioDAOImpl extends BaseDAOImplement<VotoComentario> impl
     }
     
     @Override
-    protected CallableStatement comandoEliminar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoEliminar(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL sp_eliminarVotoComentario(?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idVoto", id);
@@ -58,14 +60,14 @@ public class VotoComentarioDAOImpl extends BaseDAOImplement<VotoComentario> impl
     }
     
     @Override
-    protected CallableStatement comandoBuscar(Connection conn, int id) throws SQLException{
+    protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException{
         String sql = "{CALL sp_obtenerVotoComentarioPorId(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idVoto", id);
         return cmd;
     }
     @Override
-    protected CallableStatement comandoListar (Connection conn) throws SQLException{
+    protected CallableStatement comandoLeerTodos (Connection conn) throws SQLException{
         String sql = "{CALL sp_listarVotosComentario()}";
         CallableStatement cmd = conn.prepareCall(sql);
         return cmd;
@@ -78,10 +80,10 @@ public class VotoComentarioDAOImpl extends BaseDAOImplement<VotoComentario> impl
         VotoComentario usu = new VotoComentario();
         usu.setId(rs.getInt("idVoto"));
         
-        usu.setUsuario(new UsuarioDAOimpl().buscar(rs.getInt("idUsuario")));
+        usu.setUsuario(new UsuarioDAOimpl().leer(rs.getInt("idUsuario")));
         usu.setFechaRegistro(rs.getTimestamp("fechaRegistro"));
         usu.setTipo(rs.getString("tipo").charAt(0));
-        usu.setComentarioVotado(new ComentarioDAOImpl().buscar(rs.getInt("idComentario")));
+        usu.setComentarioVotado(new ComentarioDAOImpl().leer(rs.getInt("idComentario")));
         
         return usu;
     }

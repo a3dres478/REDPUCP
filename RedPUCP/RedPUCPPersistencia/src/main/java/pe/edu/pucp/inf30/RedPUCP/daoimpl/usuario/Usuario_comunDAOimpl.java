@@ -11,7 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import pe.edu.pucp.inf30.RedPUCP.dao.usuario.UsuarioDAO;
 import pe.edu.pucp.inf30.RedPUCP.dao.usuario.Usuario_comunDAO;
-import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
+//import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAO;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 
@@ -19,10 +21,10 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
  *
  * @author andre
  */
-public class Usuario_comunDAOimpl extends BaseDAOImplement<Usuario_comun> implements Usuario_comunDAO {
+public class Usuario_comunDAOimpl extends TransaccionalBaseDAO<Usuario_comun> implements Usuario_comunDAO {
     
     @Override
-    protected CallableStatement comandoInsertar(Connection conn, Usuario_comun usu) throws SQLException {
+    protected CallableStatement comandoCrear(Connection conn, Usuario_comun usu) throws SQLException {
         String sql = "{CALL sp_crearUsuarioComun(?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         
@@ -34,7 +36,7 @@ public class Usuario_comunDAOimpl extends BaseDAOImplement<Usuario_comun> implem
     
     
     @Override
-    protected CallableStatement comandoModificar(Connection conn, Usuario_comun usu) throws SQLException {
+    protected CallableStatement comandoActualizar(Connection conn, Usuario_comun usu) throws SQLException {
         String sql = "{CALL sp_actualizarUsuarioComun(?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         
@@ -45,7 +47,7 @@ public class Usuario_comunDAOimpl extends BaseDAOImplement<Usuario_comun> implem
     }
     
     @Override
-    protected CallableStatement comandoEliminar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoEliminar(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL sp_eliminarUsuarioComun(?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idUsuario", id);
@@ -55,7 +57,7 @@ public class Usuario_comunDAOimpl extends BaseDAOImplement<Usuario_comun> implem
     }
     
     @Override
-    protected CallableStatement comandoBuscar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL sp_obtenerUsuarioComunPorId(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idUsuario", id);
@@ -63,7 +65,7 @@ public class Usuario_comunDAOimpl extends BaseDAOImplement<Usuario_comun> implem
     }
     
     @Override
-    protected CallableStatement comandoListar(Connection conn) throws SQLException {
+    protected CallableStatement comandoLeerTodos(Connection conn) throws SQLException {
         String sql = "{CALL sp_listarTodosUsuariosComunes()}"; // FALTA PROCEDURE
         CallableStatement cmd = conn.prepareCall(sql);
         return cmd;

@@ -13,7 +13,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
+//import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.UsuarioDAOimpl;
 //import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Administrador;
 
@@ -23,11 +23,12 @@ import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.UsuarioDAOimpl;
  */
 import pe.edu.pucp.inf30.RedPUCP.modelo.voto.Voto;
 import pe.edu.pucp.inf30.RedPUCP.dao.voto.VotoDAO;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
 /**
  *
  * @author andre
  */
-public class VotoDAOimpl extends BaseDAOImplement<Voto> implements VotoDAO{
+public class VotoDAOimpl extends TransaccionalBaseDAO<Voto> implements VotoDAO{
     /*
     private int idVoto;
     private char tipo;
@@ -35,7 +36,7 @@ public class VotoDAOimpl extends BaseDAOImplement<Voto> implements VotoDAO{
     private Usuario usuario;
     */
     @Override
-    protected CallableStatement comandoInsertar(Connection conn, Voto usu) throws SQLException {
+    protected CallableStatement comandoCrear(Connection conn, Voto usu) throws SQLException {
         String sql = "{CALL sp_crearVoto(?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idUsuario", usu.getUsuario().getIdUsuario());
@@ -49,7 +50,7 @@ public class VotoDAOimpl extends BaseDAOImplement<Voto> implements VotoDAO{
     }
 
     @Override
-    protected CallableStatement comandoModificar(Connection conn, Voto usu) throws SQLException {
+    protected CallableStatement comandoActualizar(Connection conn, Voto usu) throws SQLException {
         String sql = "{CALL sp_actualizarVoto(?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         //cmd.setInt("p_idUsuario", usu.getUsuario().getIdUsuario());
@@ -63,7 +64,7 @@ public class VotoDAOimpl extends BaseDAOImplement<Voto> implements VotoDAO{
 
 
     @Override
-    protected CallableStatement comandoEliminar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoEliminar(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL sp_eliminarVoto(?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idVoto", id);
@@ -73,7 +74,7 @@ public class VotoDAOimpl extends BaseDAOImplement<Voto> implements VotoDAO{
 
 
     @Override
-    protected CallableStatement comandoBuscar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL sp_obtenerVotoPorId(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idVoto", id);
@@ -82,7 +83,7 @@ public class VotoDAOimpl extends BaseDAOImplement<Voto> implements VotoDAO{
 
 
     @Override
-    protected CallableStatement comandoListar(Connection conn) throws SQLException {
+    protected CallableStatement comandoLeerTodos(Connection conn) throws SQLException {
         String sql = "{CALL sp_listarVotos()}";
         CallableStatement cmd = conn.prepareCall(sql);
         return cmd;
@@ -92,7 +93,7 @@ public class VotoDAOimpl extends BaseDAOImplement<Voto> implements VotoDAO{
     protected Voto mapearModelo(ResultSet rs) throws SQLException {
         Voto usu = new Voto();
         usu.setId(rs.getInt("idVoto"));
-        usu.setUsuario(new UsuarioDAOimpl().buscar(rs.getInt("idUsuario")));
+        usu.setUsuario(new UsuarioDAOimpl().leer(rs.getInt("idUsuario")));
         usu.setFechaRegistro(rs.getTimestamp("fechaRegistro"));
         usu.setTipo(rs.getString("tipo").charAt(0));
         

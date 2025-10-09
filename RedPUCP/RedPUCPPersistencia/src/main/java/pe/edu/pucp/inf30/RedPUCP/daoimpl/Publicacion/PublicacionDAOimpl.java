@@ -10,18 +10,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.sql.Types;
-import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
+//import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.UsuarioDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Publicacion;
 import pe.edu.pucp.inf30.RedPUCP.dao.Publicacion.PublicacionDAO;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
+import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.EstadoComunidad;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.Comunidad.ComunidadDAOimpl;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
 
 /**
  *
  * @author andre
  */
-public class PublicacionDAOimpl extends BaseDAOImplement<Publicacion> implements PublicacionDAO{
+public class PublicacionDAOimpl extends TransaccionalBaseDAO<Publicacion> implements PublicacionDAO{
     /*
     private int id;
     private Usuario autor;
@@ -34,7 +36,7 @@ public class PublicacionDAOimpl extends BaseDAOImplement<Publicacion> implements
     private char estado;
     */
     @Override
-    protected CallableStatement comandoInsertar(Connection conn, Publicacion publicacion) throws SQLException {
+    protected CallableStatement comandoCrear(Connection conn, Publicacion publicacion) throws SQLException {
         String sql = "{CALL sp_crearPublicacion(?,?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idAutor",publicacion.getAutor().getIdUsuario());
@@ -46,7 +48,7 @@ public class PublicacionDAOimpl extends BaseDAOImplement<Publicacion> implements
         return cmd;
     }
     @Override
-    protected CallableStatement comandoModificar(Connection conn, Publicacion sed) throws SQLException {
+    protected CallableStatement comandoActualizar(Connection conn, Publicacion sed) throws SQLException {
         String sql = "{CALL sp_actualizarPublicacion(?,?,?,?)}";
        CallableStatement cmd = conn.prepareCall(sql);
        cmd.setInt("p_idPublicacion",sed.getId());
@@ -58,7 +60,7 @@ public class PublicacionDAOimpl extends BaseDAOImplement<Publicacion> implements
     }
     
     @Override
-    protected CallableStatement comandoEliminar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoEliminar(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL sp_eliminarPublicacion(?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idPublicacion", id);
@@ -67,14 +69,14 @@ public class PublicacionDAOimpl extends BaseDAOImplement<Publicacion> implements
     }
     
     @Override
-    protected CallableStatement comandoBuscar(Connection conn, int id) throws SQLException{
+    protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException{
         String sql= "{CALL sp_obtenerPublicacionPorId(?)}";
         CallableStatement cmd=conn.prepareCall(sql);
         cmd.setInt("p_idPublicacion",id);
         return cmd;
     }
     @Override
-    protected CallableStatement comandoListar (Connection conn) throws SQLException{
+    protected CallableStatement comandoLeerTodos (Connection conn) throws SQLException{
         String sql= "{CALL sp_listarPublicaciones()}"; //FALTA IMPLEMENTAR PROCEDURE
         CallableStatement cmd=conn.prepareCall(sql);
         //cmd.setInt("p_idComunidad",-1);
@@ -87,8 +89,8 @@ public class PublicacionDAOimpl extends BaseDAOImplement<Publicacion> implements
     protected Publicacion mapearModelo(ResultSet rs) throws SQLException{
         Publicacion sed= new Publicacion();
         sed.setId(rs.getInt("idPublicacion"));
-        sed.setAutor(new UsuarioDAOimpl().buscar(rs.getInt("idAutor")));
-        sed.setComunidad(new ComunidadDAOimpl().buscar(rs.getInt("idComunidad")));
+        sed.setAutor(new UsuarioDAOimpl().leer(rs.getInt("idAutor")));
+        sed.setComunidad(new ComunidadDAOimpl().leer(rs.getInt("idComunidad")));
         sed.setTitulo(rs.getString("titulo"));
         sed.setDescripcion(rs.getString("descripcion"));
         sed.setFechaCreacion(rs.getTimestamp("fechaCreacion"));

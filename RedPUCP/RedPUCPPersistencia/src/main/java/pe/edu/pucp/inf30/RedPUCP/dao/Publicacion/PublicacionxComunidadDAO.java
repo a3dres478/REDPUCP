@@ -4,12 +4,13 @@
  */
 package pe.edu.pucp.inf30.RedPUCP.dao.Publicacion;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.PublicacionxComunidad;
-import pe.edu.pucp.inf30.RedPUCP.dao.ICrud;
+//import pe.edu.pucp.inf30.RedPUCP.dao.ICrud;
+import pe.edu.pucp.inf30.RedPUCP.dao.PersistibleTransaccional;
 
 /**
  *
  * @author andre
  */
-    public interface PublicacionxComunidadDAO extends ICrud<PublicacionxComunidad> {
+public interface PublicacionxComunidadDAO extends PersistibleTransaccional<PublicacionxComunidad,Integer> {
     
 }

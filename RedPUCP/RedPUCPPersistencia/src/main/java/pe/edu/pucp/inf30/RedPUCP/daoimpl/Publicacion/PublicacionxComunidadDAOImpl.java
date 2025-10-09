@@ -11,9 +11,10 @@ import java.sql.Types;
 import java.util.HashSet;
 import java.util.Set;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.PublicacionxComunidad;
-import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
+//import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
 import pe.edu.pucp.inf30.RedPUCP.dao.Publicacion.PublicacionxComunidadDAO;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.Comunidad.ComunidadDAOimpl;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.UsuarioDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Publicacion;
 
@@ -22,10 +23,10 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Publicacion;
  * @author andre
  */
 
-public class PublicacionxComunidadDAOImpl extends BaseDAOImplement<PublicacionxComunidad> implements PublicacionxComunidadDAO{
+public class PublicacionxComunidadDAOImpl extends TransaccionalBaseDAO<PublicacionxComunidad> implements PublicacionxComunidadDAO{
     
     @Override
-    protected CallableStatement comandoInsertar(Connection conn, PublicacionxComunidad modelo) throws SQLException {
+    protected CallableStatement comandoCrear(Connection conn, PublicacionxComunidad modelo) throws SQLException {
         String sql = "{CALL sp_crearPublicacionxComunidad(?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idPublicacion", modelo.getPubli().getId());
@@ -34,9 +35,9 @@ public class PublicacionxComunidadDAOImpl extends BaseDAOImplement<PublicacionxC
         return cmd;
     }
     @Override
-    protected CallableStatement comandoModificar(Connection conn, PublicacionxComunidad sed) throws SQLException {
+    protected CallableStatement comandoActualizar(Connection conn, PublicacionxComunidad sed) throws SQLException {
         String sql = "{CALL sp_actualizarPublicacionxComunidad(?,?,?,?)}";
-       CallableStatement cmd = conn.prepareCall(sql);
+        CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idPublicacion",sed.getPubli().getId());
         cmd.setInt("p_idComunidad",sed.getComu().getId_comunidad());
      
@@ -45,7 +46,7 @@ public class PublicacionxComunidadDAOImpl extends BaseDAOImplement<PublicacionxC
     }
     
     @Override
-    protected CallableStatement comandoEliminar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoEliminar(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL sp_eliminarPublicacionxComunidad(?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idPublicacion", id);
@@ -54,14 +55,14 @@ public class PublicacionxComunidadDAOImpl extends BaseDAOImplement<PublicacionxC
     }
     
     @Override
-    protected CallableStatement comandoBuscar(Connection conn, int id) throws SQLException{
+    protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException{
         String sql= "{CALL sp_obtenerPublicacionxComunidadPorId(?)}";
         CallableStatement cmd=conn.prepareCall(sql);
         cmd.setInt("p_idPublicacion",id);
         return cmd;
     }
     @Override
-    protected CallableStatement comandoListar (Connection conn) throws SQLException{
+    protected CallableStatement comandoLeerTodos (Connection conn) throws SQLException{
         String sql= "{CALL sp_listarPublicacionesxComunidad()}"; //FALTA IMPLEMENTAR PROCEDURE
         CallableStatement cmd=conn.prepareCall(sql);
         //cmd.setInt("p_idComunidad",-1);
@@ -73,9 +74,9 @@ public class PublicacionxComunidadDAOImpl extends BaseDAOImplement<PublicacionxC
     @Override
     protected PublicacionxComunidad mapearModelo(ResultSet rs) throws SQLException{
         PublicacionxComunidad sed= new PublicacionxComunidad();
-        sed.setComu(new ComunidadDAOimpl().buscar(rs.getInt("idComunidad")));
-        sed.setPubli(new PublicacionDAOimpl().buscar(rs.getInt("id_publicacion")));
+        sed.setComu(new ComunidadDAOimpl().leer(rs.getInt("idComunidad")));
+        sed.setPubli(new PublicacionDAOimpl().leer(rs.getInt("id_publicacion")));
+        //sed.setId_publicacionXcomunidad(rs.getInt("id_publicacionXcomunidad"));
         return sed;
     }
-    
 }

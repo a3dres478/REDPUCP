@@ -11,7 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import pe.edu.pucp.inf30.RedPUCP.dao.Comunidad.ComunidadDAO;
-import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
+//import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.Usuario_comunDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
@@ -20,10 +21,10 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
  *
  * @author HECTOR
  */
-public class ComunidadDAOimpl extends BaseDAOImplement<Comunidad> implements ComunidadDAO {
+public class ComunidadDAOimpl extends TransaccionalBaseDAO<Comunidad> implements ComunidadDAO {
     
     @Override
-    protected CallableStatement comandoInsertar(Connection conn, Comunidad com) throws SQLException {
+    protected CallableStatement comandoCrear(Connection conn, Comunidad com) throws SQLException {
         String sql = "{CALL sp_crearComunidad(?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         
@@ -37,7 +38,7 @@ public class ComunidadDAOimpl extends BaseDAOImplement<Comunidad> implements Com
     
     
     @Override
-    protected CallableStatement comandoModificar(Connection conn, Comunidad com) throws SQLException {
+    protected CallableStatement comandoActualizar(Connection conn, Comunidad com) throws SQLException {
         String sql = "{CALL sp_actualizarComunidad(?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         
@@ -50,7 +51,7 @@ public class ComunidadDAOimpl extends BaseDAOImplement<Comunidad> implements Com
     }
     
     @Override
-    protected CallableStatement comandoEliminar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoEliminar(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL sp_eliminarComunidad(?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idComunidad", id);
@@ -59,7 +60,7 @@ public class ComunidadDAOimpl extends BaseDAOImplement<Comunidad> implements Com
     }
     
     @Override
-    protected CallableStatement comandoBuscar(Connection conn, int id) throws SQLException {
+    protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException {
         String sql = "{CALL sp_obtenerComunidadPorId(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idComunidad", id);
@@ -67,7 +68,7 @@ public class ComunidadDAOimpl extends BaseDAOImplement<Comunidad> implements Com
     }
     
     @Override
-    protected CallableStatement comandoListar(Connection conn) throws SQLException {
+    protected CallableStatement comandoLeerTodos(Connection conn) throws SQLException {
         String sql = "{CALL sp_listarTodasComunidades()}";
         CallableStatement cmd = conn.prepareCall(sql);
         return cmd;
@@ -81,7 +82,7 @@ public class ComunidadDAOimpl extends BaseDAOImplement<Comunidad> implements Com
         com.setDescripcion(rs.getString("descripcion"));
         com.setFecha_creacion(rs.getDate("fechaCreacion"));
         com.setCantidadmiembros(rs.getInt("cantidadMiembros"));
-        com.setAdministrador(new Usuario_comunDAOimpl().buscar(rs.getInt("idAdministrador"))); 
+        com.setAdministrador(new Usuario_comunDAOimpl().leer(rs.getInt("idAdministrador"))); 
         com.setEstado(rs.getString("estado").charAt(0));
 
         return com;

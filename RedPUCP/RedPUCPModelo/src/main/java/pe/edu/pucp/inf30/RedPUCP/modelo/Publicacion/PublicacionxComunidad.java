@@ -27,8 +27,17 @@ public class PublicacionxComunidad {
     public void setComu(Comunidad comu) {
         this.comu = comu;
     }
+
+    public int getId_publicacionXcomunidad() {
+        return id_publicacionXcomunidad;
+    }
+
+    public void setId_publicacionXcomunidad(int id_publicacionXcomunidad) {
+        this.id_publicacionXcomunidad = id_publicacionXcomunidad;
+    }
     private Publicacion publi;
     private Comunidad comu;
+    private int id_publicacionXcomunidad;
     
     
     
