@@ -25,13 +25,13 @@ public class ComunidadDAOimpl extends TransaccionalBaseDAO<Comunidad> implements
     
     @Override
     protected CallableStatement comandoCrear(Connection conn, Comunidad com) throws SQLException {
-        String sql = "{CALL sp_crearComunidad(?,?,?,?)}";
+        String sql = "{CALL sp_insertarComunidad(?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         
         cmd.setString("p_nombre", com.getNombre());
         cmd.setString("p_descripcion", com.getDescripcion());
-        cmd.setInt("p_idAdmin", com.getAdministrador().getIdUsuario());
-        cmd.registerOutParameter("p_id", Types.INTEGER);
+        cmd.setInt("p_idCreador", com.getAdministrador().getIdUsuario());
+        cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
         
         return cmd;
     }
@@ -69,7 +69,7 @@ public class ComunidadDAOimpl extends TransaccionalBaseDAO<Comunidad> implements
     
     @Override
     protected CallableStatement comandoLeerTodos(Connection conn) throws SQLException {
-        String sql = "{CALL sp_listarTodasComunidades()}";
+        String sql = "{CALL sp_listarComunidades()}";
         CallableStatement cmd = conn.prepareCall(sql);
         return cmd;
     }
