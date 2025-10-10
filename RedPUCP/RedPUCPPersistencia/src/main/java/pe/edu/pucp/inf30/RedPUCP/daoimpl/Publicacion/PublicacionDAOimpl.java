@@ -37,14 +37,14 @@ public class PublicacionDAOimpl extends TransaccionalBaseDAO<Publicacion> implem
     */
     @Override
     protected CallableStatement comandoCrear(Connection conn, Publicacion publicacion) throws SQLException {
-        String sql = "{CALL sp_crearPublicacion(?,?,?,?,?)}";
+        String sql = "{CALL sp_insertarPublicacion(?,?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idAutor",publicacion.getAutor().getIdUsuario());
         cmd.setInt("p_idComunidad",publicacion.getComunidad().getId_comunidad());
-        cmd.setString("p_titulo",publicacion.getTitulo());
         cmd.setString("p_descripcion",publicacion.getDescripcion());
+        cmd.setString("p_titulo",publicacion.getTitulo());
 
-        cmd.registerOutParameter("p_id", Types.INTEGER);
+        cmd.registerOutParameter("p_idPublicacion", Types.INTEGER);
         return cmd;
     }
     @Override
@@ -77,9 +77,8 @@ public class PublicacionDAOimpl extends TransaccionalBaseDAO<Publicacion> implem
     }
     @Override
     protected CallableStatement comandoLeerTodos (Connection conn) throws SQLException{
-        String sql= "{CALL sp_listarPublicaciones()}"; //FALTA IMPLEMENTAR PROCEDURE
+        String sql= "{CALL sp_listarPublicaciones()}"; 
         CallableStatement cmd=conn.prepareCall(sql);
-        //cmd.setInt("p_idComunidad",-1);
         return cmd;
     }
     

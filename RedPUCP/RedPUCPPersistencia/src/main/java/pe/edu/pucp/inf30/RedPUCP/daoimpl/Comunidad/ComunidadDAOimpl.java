@@ -30,8 +30,8 @@ public class ComunidadDAOimpl extends TransaccionalBaseDAO<Comunidad> implements
         
         cmd.setString("p_nombre", com.getNombre());
         cmd.setString("p_descripcion", com.getDescripcion());
-        cmd.setInt("p_idAdmin", com.getAdministrador().getIdUsuario());
-        cmd.registerOutParameter("p_id", Types.INTEGER);
+        cmd.setInt("p_idCreador", com.getAdministrador().getIdUsuario());
+        cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
         
         return cmd;
     }
