@@ -29,7 +29,7 @@ public class VotoPublicacionDAOImpl extends TransaccionalBaseDAO<VotoPublicacion
         //cmd.setString("p_tipo", String.valueOf(usu.getTipo()));
         cmd.setString("p_tipo", "UP");
         //cmd.setDate("p_fechaRegistro", new java.sql.Date(usu.getFechaRegistro().getTime()));
-        cmd.registerOutParameter("p_id", Types.INTEGER);
+        cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
         
         
         return cmd;

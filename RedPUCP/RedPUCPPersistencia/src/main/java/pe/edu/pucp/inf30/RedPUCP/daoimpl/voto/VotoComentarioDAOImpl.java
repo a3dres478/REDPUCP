@@ -34,7 +34,7 @@ public class VotoComentarioDAOImpl extends TransaccionalBaseDAO<VotoComentario> 
         cmd.setInt("p_idcomentario", modelo.getComentarioVotado().getId());
         cmd.setString("p_tipo", "UP");
         cmd.setDate("p_fechaRegistro", new java.sql.Date(modelo.getFechaRegistro().getTime()));
-        cmd.registerOutParameter("p_id", Types.INTEGER);
+        cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
         return cmd;
     }
     @Override
