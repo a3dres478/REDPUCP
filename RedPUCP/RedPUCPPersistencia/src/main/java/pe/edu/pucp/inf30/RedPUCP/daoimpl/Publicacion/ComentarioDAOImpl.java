@@ -35,50 +35,59 @@ public class ComentarioDAOImpl extends TransaccionalBaseDAO<Comentario> implemen
     private char estado;*/
     @Override
     protected CallableStatement comandoCrear(Connection conn, Comentario sed) throws SQLException {
-        String sql = "{CALL insertarComentario(?,?,?,?,?,?,?,?,?,?)}";
+        String sql = "{CALL sp_insertarComentario(?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
+       
         cmd.setInt("p_idautor",sed.getAutor().getIdUsuario());
         cmd.setInt("p_idPublicacion",sed.getPublicacion().getId());
 //        Integer idPadre =(sed.getComentarioPadre() !=null )? sed.getComentarioPadre().getId():null;
 //        if(idPadre == null) cmd.setNull("p_idComentarioPadre", Types.INTEGER);
 //        else cmd.setInt("p_idComentarioPadre", idPadre);
-        cmd.setInt("p_id", 0);//revisar
+       // cmd.setInt("p_id", 0);//revisar
         
         cmd.setString("p_contenido", sed.getContenido());
-        cmd.setDate("p_fechacreacion", new java.sql.Date(sed.getFechaCreacion().getTime()));
-        cmd.setDate("p_ultimaedicion", new java.sql.Date(sed.getUltimaEdicion().getTime()));
-        cmd.setInt("p_votospositivos", sed.getVotosPositivos());
-        cmd.setInt("p_votosnegativos", sed.getVotosNegativos());
-        cmd.setString("p_estado", String.valueOf(sed.getEstado()));
+//        cmd.setDate("p_fechacreacion", new java.sql.Date(sed.getFechaCreacion().getTime()));
+//        cmd.setDate("p_ultimaedicion", new java.sql.Date(sed.getUltimaEdicion().getTime()));
+//        cmd.setInt("p_votospositivos", sed.getVotosPositivos());
+//        cmd.setInt("p_votosnegativos", sed.getVotosNegativos());
+//        cmd.setString("p_estado", String.valueOf(sed.getEstado()));
         cmd.registerOutParameter("p_idComentario", Types.INTEGER);
         
         return cmd;
     }
     @Override
     protected CallableStatement comandoActualizar(Connection conn, Comentario sed) throws SQLException {
-        String sql = "{CALL modificarComentario(?,?,?,?)}";
-       CallableStatement cmd = conn.prepareCall(sql);
+        String sql = "{CALL sp_actualizarComentario(?,?,?)}";
+        CallableStatement cmd = conn.prepareCall(sql);
+        
+        cmd.setInt("p_idComentario",sed.getId());
+        cmd.setString("p_contenido", sed.getContenido());
+        cmd.registerOutParameter("p_exito", Types.BOOLEAN);
+        
         return cmd;
     }
     
     @Override
     protected CallableStatement comandoEliminar(Connection conn, Integer id) throws SQLException {
-        String sql = "{CALL eliminarComentario(?)}";
+        String sql = "{CALL sp_eliminarComentario(?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
+        
+        cmd.setInt("p_idComentario",id);
+        cmd.registerOutParameter("p_exito", Types.BOOLEAN);
         
         return cmd;             
     }
     
     @Override
     protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException{
-        String sql= "{CALL buscarComentarioPorId(?)}";
+        String sql= "{CALL sp_obtenerComentarioPorId(?)}";
         CallableStatement cmd=conn.prepareCall(sql);
-        cmd.setInt("p_id",id);
+        cmd.setInt("p_idComentario",id);
         return cmd;
     }
     @Override
     protected CallableStatement comandoLeerTodos (Connection conn) throws SQLException{
-        String sql= "{CALL listarComentario()}";
+        String sql= "{CALL sp_listarComentarios()}"; 
         CallableStatement cmd=conn.prepareCall(sql);
         return cmd;
     }
@@ -88,21 +97,10 @@ public class ComentarioDAOImpl extends TransaccionalBaseDAO<Comentario> implemen
     @Override
     protected Comentario mapearModelo(ResultSet rs) throws SQLException{
         Comentario sed= new Comentario();
+        
         sed.setId(rs.getInt("idComentario"));
         sed.setPublicacion(new PublicacionDAOimpl().leer(rs.getInt("idPublicacion")));
-        
-        // FALTA ESTO NO?
-        sed.setAutor(new UsuarioDAOimpl().leer(rs.getInt("id_autor")));
-        
-//        int idPadre=rs.getInt("idComentarioPadre");
-//        if(!rs.wasNull()){
-//            Comentario padre= new Comentario();
-//            padre.setId(idPadre);
-//            sed.setComentarioPadre(padre);
-//            
-//        }
-        
-        //sed.setComentarioPadre(new ComentarioDAOImpl());
+        sed.setAutor(new UsuarioDAOimpl().leer(rs.getInt("idAutor")));
         sed.setContenido(rs.getString("contenido"));
         sed.setFechaCreacion(rs.getTimestamp("fechaCreacion"));
         sed.setUltimaEdicion(rs.getTimestamp("ultimaEdicion"));
