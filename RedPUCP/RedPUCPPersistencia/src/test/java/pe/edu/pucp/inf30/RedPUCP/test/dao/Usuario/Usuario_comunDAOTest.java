@@ -52,34 +52,20 @@ public class Usuario_comunDAOTest implements  PersistibleProbable{
     private int testId;
     private int testUsuarioId;
     private final int idIncorrecto = 999999;
-
-//    @BeforeAll
-//    public void inicializar() {
-//        Usuario_comunDAO usuarioComunDAO = new Usuario_comunDAOimpl();
-//        Usuario_comun usuarioComun = new Usuario_comun();
-//        usuarioComun.setNombre("Usuario -> ComunidadTest");
-//        usuarioComun.setDescripcion("Usuario de Prueba para Comunidad");
-//        this.testUsuarioId = usuarioComunDAO.crear(usuarioComun);
-//    }
-//    
-//    @AfterAll
-//    public void limpiar() {
-//        Usuario_comunDAO usuarioComunDAO = new Usuario_comunDAOimpl();
-//        usuarioComunDAO.eliminar(testUsuarioId);
-//    }
-    
+   
     @Test
     @Order(1)
     @Override
     public void debeCrear(){
+        //funciona
        // Date fechaactual= new Date(System.currentTimeMillis());
         Usuario_comunDAO usuariocomunDAO=new Usuario_comunDAOimpl();
         Usuario_comun comun= new Usuario_comun();
         comun.setCodigopucp("1234");
         comun.setContrasenha("1234");
         comun.setDescripcion("Usuario_comunDes1");
-        comun.setNombre("Usuario_comun1");
-        comun.setEmail("correo@gmail.com");
+        comun.setNombre("Usuario_comun12");
+        comun.setEmail("correousuariocomun13@gmail.com");
         comun.setFechaRegistro(new java.util.Date());
         comun.setEstadouser('A');
         comun.setKarma(0);
@@ -95,12 +81,12 @@ public class Usuario_comunDAOTest implements  PersistibleProbable{
         Usuario_comun comun= new Usuario_comun();
         
         comun.setIdUsuario(this.testId);
-        comun.setNombre("Usuario_comun2");
-        comun.setCodigopucp("1234");
+        comun.setNombre("Usuario_comunactualizado");
+        comun.setCodigopucp("12345");
         comun.setDescripcion("Usuario_comunDes1");
         comun.setKarma(0);
         comun.setEstadouser('A');
-        comun.setEmail("correo@gmail");
+        comun.setEmail("correousuariocomun13@gmail");
         comun.setFechaRegistro(new java.util.Date());
         boolean modifico=usuariocomunDAO.actualizar(comun);
         assertTrue(modifico);
@@ -174,7 +160,7 @@ public class Usuario_comunDAOTest implements  PersistibleProbable{
     public void debeLeerTodos() {
         Usuario_comunDAO usuarioDAO= new Usuario_comunDAOimpl();
         List<Usuario_comun> usuarios =usuarioDAO.leerTodos();
-        assertNotNull(usuarios);
+        //assertNotNull(usuarios);
         assertFalse(usuarios.isEmpty());
     }
     

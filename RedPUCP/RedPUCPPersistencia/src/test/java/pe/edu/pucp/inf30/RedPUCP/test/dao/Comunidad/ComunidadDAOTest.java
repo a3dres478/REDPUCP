@@ -55,6 +55,10 @@ public class ComunidadDAOTest implements PersistibleProbable{
         Usuario_comunDAO usuarioComunDAO = new Usuario_comunDAOimpl();
         Usuario_comun usuarioComun = new Usuario_comun();
         usuarioComun.setNombre("Usuario -> ComunidadTest");
+        usuarioComun.setEmail("emailpreba@gmail.com");
+        usuarioComun.setCodigopucp("1234");
+        usuarioComun.setContrasenha("1234");
+        usuarioComun.setTipousuario('C');
         usuarioComun.setDescripcion("Usuario de Prueba para Comunidad");
         this.testUsuarioId = usuarioComunDAO.crear(usuarioComun);
     }

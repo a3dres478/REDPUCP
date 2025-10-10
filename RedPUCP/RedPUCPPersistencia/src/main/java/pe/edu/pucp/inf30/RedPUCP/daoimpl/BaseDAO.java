@@ -57,7 +57,7 @@ public abstract class BaseDAO<T> implements Persistible<T, Integer> {
             }
 
             if (cmd instanceof CallableStatement callableCmd) {
-                return callableCmd.getInt("p_id");
+                return callableCmd.getInt("p_idGenerado");
             }
 
             try (ResultSet rs = cmd.getGeneratedKeys()) {

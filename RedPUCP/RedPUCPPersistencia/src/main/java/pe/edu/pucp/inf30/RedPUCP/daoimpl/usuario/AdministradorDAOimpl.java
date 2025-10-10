@@ -31,7 +31,7 @@ public class AdministradorDAOimpl extends TransaccionalBaseDAO<Administrador> im
         cmd.setString("p_descripcion", usu.getDescripcion());
         cmd.setString("p_email", usu.getEmail());
         cmd.setString("p_contrasena", usu.getContrasenha());
-        cmd.setString("p_rol", String.valueOf(usu.getEstadouser()));
+        cmd.setString("p_rol", String.valueOf(usu.getTipousuario()));
         cmd.setString("p_codigo", null);
         cmd.setString("p_claveDeAcceso", usu.getClave_acceso());
         
@@ -42,14 +42,14 @@ public class AdministradorDAOimpl extends TransaccionalBaseDAO<Administrador> im
 
     @Override
     protected CallableStatement comandoActualizar(Connection conn, Administrador usu) throws SQLException {
-        String sql = "{CALL sp_actualizarUsuario(?,?,?,?,?,?,?,?)}";
+        String sql = "{CALL sp_actualizarUsuario(?,?,?,?,?,?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idUsuario", usu.getIdUsuario());
         cmd.setString("p_nombre", usu.getNombre());
         cmd.setString("p_descripcion", usu.getDescripcion());
         cmd.setString("p_email", usu.getEmail());
         cmd.setString("p_contrasena", usu.getContrasenha());
-        cmd.setString("p_rol", String.valueOf(usu.getEstadouser()));
+        cmd.setString("p_rol", String.valueOf(usu.getTipousuario()));
         cmd.setString("p_codigo", null);
         cmd.setString("p_claveDeAcceso", usu.getClave_acceso());
         
@@ -90,14 +90,15 @@ public class AdministradorDAOimpl extends TransaccionalBaseDAO<Administrador> im
     protected Administrador mapearModelo(ResultSet rs) throws SQLException {
         Administrador usu = new Administrador();
         usu.setIdUsuario(rs.getInt("idUsuario"));
-        usu.setNombre(rs.getString("Nombre"));
-        usu.setDescripcion(rs.getString("Descripcion"));
+        usu.setNombre(rs.getString("nombre"));
+        usu.setDescripcion(rs.getString("descripcion"));
         usu.setEmail(rs.getString("email"));
-        usu.setContrasenha(rs.getString("email"));
+        usu.setContrasenha(rs.getString("contrasena"));
         usu.setKarma(rs.getInt("karma"));
-        usu.setEstadouser(rs.getString("estadouser").charAt(0));
-        usu.setTipousuario(rs.getString("tipoUsuarioi").charAt(0));
-        usu.setClave_acceso(rs.getString("clave_acceso"));
+        usu.setEstadouser(rs.getString("estado").charAt(0));
+        usu.setTipousuario(rs.getString("rol").charAt(0));
+        usu.setFechaRegistro(rs.getTimestamp("fechaRegistro"));
+        usu.setClave_acceso(rs.getString("claveDeAcceso"));
         return usu;
     }
     

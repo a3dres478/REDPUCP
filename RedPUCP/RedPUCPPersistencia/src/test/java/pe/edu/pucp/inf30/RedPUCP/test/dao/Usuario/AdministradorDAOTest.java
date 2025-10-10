@@ -74,9 +74,9 @@ public class AdministradorDAOTest implements  PersistibleProbable{
         //Usuario_comun comun= new Usuario_comun();
         comun.setClave_acceso("abc");
         comun.setContrasenha("1234");
-        comun.setDescripcion("ADMIN1");
-        comun.setNombre("ADMIN1");
-        comun.setEmail("correo@gmail.com");
+        comun.setDescripcion("ADMIN3");
+        comun.setNombre("ADMIN3");
+        comun.setEmail("correoadmin3@gmail.com");
         comun.setFechaRegistro(new java.util.Date());
         comun.setEstadouser('A');
         comun.setKarma(0);

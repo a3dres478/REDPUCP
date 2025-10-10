@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! -- in pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest
+pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest -- Time elapsed: 0.001 s <<< ERROR!
+org.junit.platform.commons.JUnitException: @BeforeAll method 'public void pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest.inicializar()' must be static unless the test class is annotated with @TestInstance(Lifecycle.PER_CLASS).
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.Collections$UnmodifiableCollection.forEach(Collections.java:1116)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
