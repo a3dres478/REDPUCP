@@ -6,6 +6,7 @@ package pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion;
 
 import java.util.Date;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario;
+import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Comentario {
     }
 
     private int idComentario;
-    private Usuario autor;
+    private Usuario_comun autor;
     private Publicacion publicacion;
     //private Comentario comentarioPadre;
     private String contenido;
@@ -49,7 +50,7 @@ public class Comentario {
         return autor;
     }
 
-    public void setAutor(Usuario autor) {
+    public void setAutor(Usuario_comun autor) {
         this.autor = autor;
     }
 

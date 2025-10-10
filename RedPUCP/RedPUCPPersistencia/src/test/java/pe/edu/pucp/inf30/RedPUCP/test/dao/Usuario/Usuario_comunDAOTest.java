@@ -65,7 +65,7 @@ public class Usuario_comunDAOTest implements  PersistibleProbable{
         comun.setContrasenha("1234");
         comun.setDescripcion("Usuario_comunDes1");
         comun.setNombre("Usuario_comun12");
-        comun.setEmail("correousuariocomun13@gmail.com");
+        comun.setEmail("correousuariocomun13113@gmail.com");
         comun.setFechaRegistro(new java.util.Date());
         comun.setEstadouser('A');
         comun.setKarma(0);
@@ -78,15 +78,15 @@ public class Usuario_comunDAOTest implements  PersistibleProbable{
     @Override
     public void debeActualizarSiIdExiste() {
         Usuario_comunDAO usuariocomunDAO=new Usuario_comunDAOimpl();
-        Usuario_comun comun= new Usuario_comun();
+        Usuario_comun comun= usuariocomunDAO.leer(testId);
         
         comun.setIdUsuario(this.testId);
-        comun.setNombre("Usuario_comunactualizado");
+        comun.setNombre("Usuario_comunactualizadoGAA");
         comun.setCodigopucp("12345");
-        comun.setDescripcion("Usuario_comunDes1");
+        comun.setDescripcion("Usuario_comuACDes1");
         comun.setKarma(0);
         comun.setEstadouser('A');
-        comun.setEmail("correousuariocomun13@gmail");
+        //comun.setEmail("correousuariocomun13@gmail");
         comun.setFechaRegistro(new java.util.Date());
         boolean modifico=usuariocomunDAO.actualizar(comun);
         assertTrue(modifico);

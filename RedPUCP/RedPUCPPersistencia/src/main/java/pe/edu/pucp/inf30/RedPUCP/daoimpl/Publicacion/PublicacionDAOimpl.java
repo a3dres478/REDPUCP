@@ -18,6 +18,8 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.EstadoComunidad;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.Comunidad.ComunidadDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.Usuario_comunDAOimpl;
+import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 
 /**
  *
@@ -44,7 +46,7 @@ public class PublicacionDAOimpl extends TransaccionalBaseDAO<Publicacion> implem
         cmd.setString("p_descripcion",publicacion.getDescripcion());
         cmd.setString("p_titulo",publicacion.getTitulo());
 
-        cmd.registerOutParameter("p_idPublicacion", Types.INTEGER);
+        cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
         return cmd;
     }
     @Override
@@ -88,7 +90,7 @@ public class PublicacionDAOimpl extends TransaccionalBaseDAO<Publicacion> implem
     protected Publicacion mapearModelo(ResultSet rs) throws SQLException{
         Publicacion sed= new Publicacion();
         sed.setId(rs.getInt("idPublicacion"));
-        sed.setAutor(new UsuarioDAOimpl().leer(rs.getInt("idAutor")));
+        sed.setAutor(new Usuario_comunDAOimpl().leer(rs.getInt("idAutor")));
         sed.setComunidad(new ComunidadDAOimpl().leer(rs.getInt("idComunidad")));
         sed.setTitulo(rs.getString("titulo"));
         sed.setDescripcion(rs.getString("descripcion"));

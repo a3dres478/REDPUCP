@@ -31,7 +31,7 @@ public class PublicacionxComunidadDAOImpl extends TransaccionalBaseDAO<Publicaci
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idPublicacion", modelo.getPubli().getId());
         cmd.setInt("p_idComunidad", modelo.getComu().getId_comunidad());
-        //cmd.registerOutParameter("p_id", Types.INTEGER);
+        cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
         return cmd;
     }
     @Override

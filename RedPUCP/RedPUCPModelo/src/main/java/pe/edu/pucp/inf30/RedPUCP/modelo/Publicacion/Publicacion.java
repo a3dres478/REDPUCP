@@ -7,6 +7,7 @@ package pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion;
 import java.util.Date;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario;
+import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Publicacion {
         this.estado = estado;
     }
     private int idPublicacion;
-    private Usuario autor;
+    private Usuario_comun autor;
     private Comunidad comunidad;
     private String titulo;
     private String descripcion;
@@ -49,7 +50,7 @@ public class Publicacion {
         return autor;
     }
 
-    public void setAutor(Usuario autor) {
+    public void setAutor(Usuario_comun autor) {
         this.autor = autor;
     }
 

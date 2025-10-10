@@ -14,7 +14,9 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Comentario;
 //import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.UsuarioDAOimpl;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.Usuario_comunDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Publicacion;
+import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 
 
 /**
@@ -38,12 +40,8 @@ public class ComentarioDAOImpl extends TransaccionalBaseDAO<Comentario> implemen
         String sql = "{CALL sp_insertarComentario(?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
        
-        cmd.setInt("p_idautor",sed.getAutor().getIdUsuario());
+        cmd.setInt("p_idAutor",sed.getAutor().getIdUsuario());
         cmd.setInt("p_idPublicacion",sed.getPublicacion().getId());
-//        Integer idPadre =(sed.getComentarioPadre() !=null )? sed.getComentarioPadre().getId():null;
-//        if(idPadre == null) cmd.setNull("p_idComentarioPadre", Types.INTEGER);
-//        else cmd.setInt("p_idComentarioPadre", idPadre);
-       // cmd.setInt("p_id", 0);//revisar
         
         cmd.setString("p_contenido", sed.getContenido());
 //        cmd.setDate("p_fechacreacion", new java.sql.Date(sed.getFechaCreacion().getTime()));
@@ -51,7 +49,7 @@ public class ComentarioDAOImpl extends TransaccionalBaseDAO<Comentario> implemen
 //        cmd.setInt("p_votospositivos", sed.getVotosPositivos());
 //        cmd.setInt("p_votosnegativos", sed.getVotosNegativos());
 //        cmd.setString("p_estado", String.valueOf(sed.getEstado()));
-        cmd.registerOutParameter("p_idComentario", Types.INTEGER);
+        cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
         
         return cmd;
     }
@@ -100,7 +98,7 @@ public class ComentarioDAOImpl extends TransaccionalBaseDAO<Comentario> implemen
         
         sed.setId(rs.getInt("idComentario"));
         sed.setPublicacion(new PublicacionDAOimpl().leer(rs.getInt("idPublicacion")));
-        sed.setAutor(new UsuarioDAOimpl().leer(rs.getInt("idAutor")));
+        sed.setAutor(new Usuario_comunDAOimpl().leer(rs.getInt("idAutor")));
         sed.setContenido(rs.getString("contenido"));
         sed.setFechaCreacion(rs.getTimestamp("fechaCreacion"));
         sed.setUltimaEdicion(rs.getTimestamp("ultimaEdicion"));
@@ -112,3 +110,4 @@ public class ComentarioDAOImpl extends TransaccionalBaseDAO<Comentario> implemen
     }
     
 }
+
