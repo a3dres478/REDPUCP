@@ -36,9 +36,11 @@ import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.UsuarioDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.Usuario_comunDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Comentario;
+import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.EstadoComentario;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Publicacion;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
+import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.tipouser;
 
 
 
@@ -60,6 +62,10 @@ public class ComentarioDAOTest implements PersistibleProbable {
         usuario.setNombre("Usuario -> ComentarioTest");
         usuario.setDescripcion("Usuario de Prueba para Comentario");
         usuario.setCodigopucp("30225787");
+        usuario.setContrasenha("123");
+        usuario.setEmail("usuario_prueba@yahoo.com");
+        usuario.setKarma(50);
+        usuario.setTipousuario(String.valueOf(tipouser.COMUN).charAt(0));
         this.testUsuarioId = usuarioDAO.crear(usuario);
         
         ComunidadDAO comunidadDAO = new ComunidadDAOimpl();
@@ -67,6 +73,7 @@ public class ComentarioDAOTest implements PersistibleProbable {
         comunidad.setAdministrador(usuario);
         comunidad.setNombre("Comunidad -> ComentarioTest");
         comunidad.setDescripcion("Comunidad para ComentarioTest");
+        comunidad.setCantidadmiembros(0);
         this.testComunidadId = comunidadDAO.crear(comunidad);
         
         PublicacionDAO publicacionDAO = new PublicacionDAOimpl();
@@ -94,11 +101,13 @@ public class ComentarioDAOTest implements PersistibleProbable {
     public void debeCrear(){
         ComentarioDAO comentarioDAO = new ComentarioDAOImpl();
         Comentario comentario = new Comentario();
-        comentario.setNombre("Comunidad_test");
-        comentario.setDescripcion("test");
-        comentario.setAdministrador(new Usuario_comunDAOimpl().leer(testUsuarioId));
+        comentario.setContenido("Comentario test");
+        comentario.setVotosNegativos(1);
+        comentario.setVotosPositivos(1);
+        comentario.setAutor(new Usuario_comunDAOimpl().leer(testUsuarioId));
+        comentario.setPublicacion(new PublicacionDAOimpl().leer(testPublicacionId));
         
-        this.testId = comunidadDAO.crear(comunidad);
+        this.testId = comentarioDAO.crear(comentario);
         assertTrue(this.testId > 0);
     }
     
@@ -106,35 +115,39 @@ public class ComentarioDAOTest implements PersistibleProbable {
     @Order(2)
     @Override
     public void debeActualizarSiIdExiste() {
-        ComunidadDAO comunidadDAO = new ComunidadDAOimpl();
-        Comunidad comunidad = new Comunidad();
-        comunidad.setNombre("Test Comunidad modificada");
-        comunidad.setDescripcion("Test Comunidad modificacion");
-        comunidad.setEstado(String.valueOf(EstadoComunidad.SUSPENDIDA).charAt(0));
-        comunidad.setAdministrador(new Usuario_comunDAOimpl().leer(testUsuarioId));
-
-        boolean modifico = comunidadDAO.actualizar(comunidad);
+        ComentarioDAO comentarioDAO = new ComentarioDAOImpl();
+        Comentario comentario = new Comentario();
+        comentario.setContenido("Comentario Modificacion test");
+        comentario.setVotosNegativos(1);
+        comentario.setVotosPositivos(1);
+        comentario.setAutor(new Usuario_comunDAOimpl().leer(testUsuarioId));
+        comentario.setPublicacion(new PublicacionDAOimpl().leer(testPublicacionId));
+        comentario.setEstado(String.valueOf(EstadoComentario.BLOQUEADO).charAt(0));
+        
+        
+        boolean modifico = comentarioDAO.actualizar(comentario);
         assertTrue(modifico);
 
-        Comunidad comunidadModificado = comunidadDAO.leer(this.testId);
-        assertEquals(comunidadModificado.getNombre(),"Test Comunidad modificada");
-        assertEquals(comunidadModificado.getDescripcion(),"Test Comunidad modificacion");
-        assertEquals(comunidadModificado.getEstado(),String.valueOf(EstadoComunidad.SUSPENDIDA).charAt(0));    
+        Comentario comentarioModificado = comentarioDAO.leer(this.testId);
+        assertEquals(comentarioModificado.getContenido(),"Comentario Modificacion test");
+        assertEquals(comentarioModificado.getEstado(),String.valueOf(EstadoComentario.BLOQUEADO).charAt(0));    
     }
     
     @Test
     @Order(3)
     @Override
     public void noDebeActualizarSiIdNoExiste() {
-        ComunidadDAO comunidadDAO = new ComunidadDAOimpl();
-        Comunidad comunidad = new Comunidad();
-        comunidad.setId_comunidad(this.idIncorrecto);
-        comunidad.setNombre("Test Comunidad modificada");
-        comunidad.setDescripcion("Test Comunidad modificacion");
-        comunidad.setEstado(String.valueOf(EstadoComunidad.SUSPENDIDA).charAt(0));
-        comunidad.setAdministrador(new Usuario_comunDAOimpl().leer(testUsuarioId));
+        ComentarioDAO comentarioDAO = new ComentarioDAOImpl();
+        Comentario comentario = new Comentario();
+        comentario.setId(this.idIncorrecto);
+        comentario.setContenido("Test Comentario modificada");
+        comentario.setVotosNegativos(1);
+        comentario.setVotosPositivos(1);
+        comentario.setAutor(new Usuario_comunDAOimpl().leer(testUsuarioId));
+        comentario.setPublicacion(new PublicacionDAOimpl().leer(testPublicacionId));
+        comentario.setEstado(String.valueOf(EstadoComentario.BLOQUEADO).charAt(0));
 
-        boolean modifico = comunidadDAO.actualizar(comunidad);
+        boolean modifico = comentarioDAO.actualizar(comentario);
         assertFalse(modifico);
     }
     
@@ -142,8 +155,8 @@ public class ComentarioDAOTest implements PersistibleProbable {
     @Order(4)
     @Override
     public void noDebeEliminarSiIdNoExiste() {
-        ComunidadDAO comunidadDAO = new ComunidadDAOimpl();
-        boolean elimino = comunidadDAO.eliminar(this.idIncorrecto);
+        ComentarioDAO comentarioDAO = new ComentarioDAOImpl();
+        boolean elimino = comentarioDAO.eliminar(this.idIncorrecto);
         assertFalse(elimino);
     }
     
@@ -151,37 +164,37 @@ public class ComentarioDAOTest implements PersistibleProbable {
     @Order(5)
     @Override
     public void debeLeerSiIdExiste() {
-        ComunidadDAO comunidadDAO = new ComunidadDAOimpl();
-        Comunidad comunidad = comunidadDAO.leer(this.testId);
-        assertNotNull(comunidad);
+        ComentarioDAO comentarioDAO = new ComentarioDAOImpl();
+        Comentario comentario = comentarioDAO.leer(this.testId);
+        assertNotNull(comentario);
     }
     
     @Test
     @Order(6)
     @Override
     public void noDebeLeerSiIdNoExiste() {
-        ComunidadDAO comunidadDAO = new ComunidadDAOimpl();
-        Comunidad comunidad = comunidadDAO.leer(this.idIncorrecto);
-        assertNull(comunidad);
+        ComentarioDAO comentarioDAO = new ComentarioDAOImpl();
+        Comentario comentario = comentarioDAO.leer(this.idIncorrecto);
+        assertNull(comentario);
     }
     
     @Test
     @Order(7)
     @Override
     public void debeLeerTodos() {
-        ComunidadDAO comunidadDAO = new ComunidadDAOimpl();
-        List<Comunidad> comunidades = comunidadDAO.leerTodos();
+        ComentarioDAO comentarioDAO = new ComentarioDAOImpl();
+        List<Comentario> comentarios = comentarioDAO.leerTodos();
         
-        assertNotNull(comunidades);
-        assertFalse(comunidades.isEmpty());
+        assertNotNull(comentarios);
+        assertFalse(comentarios.isEmpty());
     }
     
     @Test
     @Order(8)
     @Override
     public void debeEliminarSiIdExiste() {
-        ComunidadDAO comunidadDAO = new ComunidadDAOimpl();
-        boolean elimino = comunidadDAO.eliminar(this.testId);
+        ComentarioDAO comentarioDAO = new ComentarioDAOImpl();
+        boolean elimino = comentarioDAO.eliminar(this.testId);
         assertTrue(elimino);
     }
     
