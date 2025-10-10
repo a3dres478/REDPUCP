@@ -25,18 +25,35 @@ public class AdministradorDAOimpl extends TransaccionalBaseDAO<Administrador> im
     
     @Override
     protected CallableStatement comandoCrear(Connection conn, Administrador usu) throws SQLException {
-        String sql = "{CALL insertarUsuario(?,?,?,?,?,?,?,?)}";
+        String sql = "{CALL sp_insertarUsuario(?,?,?,?,?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
+        cmd.setString("p_nombre", usu.getNombre());
+        cmd.setString("p_descripcion", usu.getDescripcion());
+        cmd.setString("p_email", usu.getEmail());
+        cmd.setString("p_contrasena", usu.getContrasenha());
+        cmd.setString("p_rol", String.valueOf(usu.getEstadouser()));
+        cmd.setString("p_codigo", null);
+        cmd.setString("p_claveDeAcceso", usu.getClave_acceso());
         
+        cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
         
         return cmd;
     }
 
     @Override
     protected CallableStatement comandoActualizar(Connection conn, Administrador usu) throws SQLException {
-        String sql = "{CALL modificarUsuario(?,?,?,?,?,?,?,?)}";
+        String sql = "{CALL sp_actualizarUsuario(?,?,?,?,?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
+        cmd.setInt("p_idUsuario", usu.getIdUsuario());
+        cmd.setString("p_nombre", usu.getNombre());
+        cmd.setString("p_descripcion", usu.getDescripcion());
+        cmd.setString("p_email", usu.getEmail());
+        cmd.setString("p_contrasena", usu.getContrasenha());
+        cmd.setString("p_rol", String.valueOf(usu.getEstadouser()));
+        cmd.setString("p_codigo", null);
+        cmd.setString("p_claveDeAcceso", usu.getClave_acceso());
         
+        cmd.registerOutParameter("p_exito", Types.BOOLEAN);
         
         return cmd;
     }
@@ -44,25 +61,27 @@ public class AdministradorDAOimpl extends TransaccionalBaseDAO<Administrador> im
 
     @Override
     protected CallableStatement comandoEliminar(Connection conn, Integer id) throws SQLException {
-        String sql = "{CALL eliminarUsuario(?)}";
+        String sql = "{CALL sp_eliminarUsuario(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
-        cmd.setInt("p_id", id);
+        cmd.setInt("p_idUsuario", id);
+        
+        cmd.registerOutParameter("p_exito", Types.BOOLEAN);
         return cmd;
     }
 
 
     @Override
     protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException {
-        String sql = "{CALL buscarUsuarioPorId(?)}";
+        String sql = "{CALL sp_obtenerUsuarioPorId(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
-        cmd.setInt("p_id", id);
+        cmd.setInt("p_idUsuario", id);
         return cmd;
     }
 
 
     @Override
     protected CallableStatement comandoLeerTodos(Connection conn) throws SQLException {
-        String sql = "{CALL listarUsuario()}";
+        String sql = "{CALL sp_listarUsuariosAdministradores()}"; // FALTA PROCEDURE
         CallableStatement cmd = conn.prepareCall(sql);
         return cmd;
     }
@@ -79,15 +98,6 @@ public class AdministradorDAOimpl extends TransaccionalBaseDAO<Administrador> im
         usu.setEstadouser(rs.getString("estadouser").charAt(0));
         usu.setTipousuario(rs.getString("tipoUsuarioi").charAt(0));
         usu.setClave_acceso(rs.getString("clave_acceso"));
-        /*  private int idUsuario;
-    private String Nombre;
-    private String Descripcion;
-    private String email;
-    private String contrasenha;
-    private int karma;
-    private char estadouser;
-    private char tipousuario;
-    */
         return usu;
     }
     

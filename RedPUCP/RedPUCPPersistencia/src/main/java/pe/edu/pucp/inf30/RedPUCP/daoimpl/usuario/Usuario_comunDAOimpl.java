@@ -25,11 +25,17 @@ public class Usuario_comunDAOimpl extends TransaccionalBaseDAO<Usuario_comun> im
     
     @Override
     protected CallableStatement comandoCrear(Connection conn, Usuario_comun usu) throws SQLException {
-        String sql = "{CALL sp_crearUsuarioComun(?,?)}";
+        String sql = "{CALL sp_insertarUsuario(?,?,?,?,?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
+        cmd.setString("p_nombre", usu.getNombre());
+        cmd.setString("p_descripcion", usu.getDescripcion());
+        cmd.setString("p_email", usu.getEmail());
+        cmd.setString("p_contrasena", usu.getContrasenha());
+        cmd.setString("p_rol", String.valueOf(usu.getEstadouser()));
+        cmd.setString("p_codigo", usu.getCodigopucp());
+        cmd.setString("p_claveDeAcceso", null);
         
-        cmd.setInt("p_idUsuario", usu.getIdUsuario());
-        cmd.setInt("p_codigoPUCP", Integer.parseInt(usu.getCodigopucp()) );
+        cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
         
         return cmd;
     }
@@ -37,18 +43,26 @@ public class Usuario_comunDAOimpl extends TransaccionalBaseDAO<Usuario_comun> im
     
     @Override
     protected CallableStatement comandoActualizar(Connection conn, Usuario_comun usu) throws SQLException {
-        String sql = "{CALL sp_actualizarUsuarioComun(?,?)}";
+        String sql = "{CALL sp_actualizarUsuario(?,?,?,?,?,?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         
         cmd.setInt("p_idUsuario", usu.getIdUsuario());
-        cmd.setInt("p_codigoPUCP", Integer.parseInt(usu.getCodigopucp()) );
+        cmd.setString("p_nombre", usu.getNombre());
+        cmd.setString("p_descripcion", usu.getDescripcion());
+        cmd.setString("p_email", usu.getEmail());
+        cmd.setString("p_contrasena", usu.getContrasenha());
+        cmd.setString("p_rol", String.valueOf(usu.getEstadouser()));
+        cmd.setString("p_codigo", usu.getCodigopucp());
+        cmd.setString("p_claveDeAcceso", null);
+        
+        cmd.registerOutParameter("p_exito", Types.BOOLEAN);
         
         return cmd;
     }
     
     @Override
     protected CallableStatement comandoEliminar(Connection conn, Integer id) throws SQLException {
-        String sql = "{CALL sp_eliminarUsuarioComun(?,?)}";
+        String sql = "{CALL sp_eliminarUsuario(?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idUsuario", id);
         
@@ -58,7 +72,7 @@ public class Usuario_comunDAOimpl extends TransaccionalBaseDAO<Usuario_comun> im
     
     @Override
     protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException {
-        String sql = "{CALL sp_obtenerUsuarioComunPorId(?)}";
+        String sql = "{CALL sp_obtenerUsuarioPorId(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idUsuario", id);
         return cmd;
@@ -66,7 +80,7 @@ public class Usuario_comunDAOimpl extends TransaccionalBaseDAO<Usuario_comun> im
     
     @Override
     protected CallableStatement comandoLeerTodos(Connection conn) throws SQLException {
-        String sql = "{CALL sp_listarTodosUsuariosComunes()}"; // FALTA PROCEDURE
+        String sql = "{CALL sp_listarUsuariosComunes()}"; // FALTA PROCEDURE
         CallableStatement cmd = conn.prepareCall(sql);
         return cmd;
     }
@@ -75,7 +89,18 @@ public class Usuario_comunDAOimpl extends TransaccionalBaseDAO<Usuario_comun> im
     protected Usuario_comun mapearModelo(ResultSet rs) throws SQLException {
         Usuario_comun usu = new Usuario_comun();
         usu.setIdUsuario(rs.getInt("idUsuario"));
-        usu.setCodigopucp( String.valueOf(rs.getInt("codigoPUCP")) );     
+        usu.setNombre(rs.getString("Nombre"));
+        usu.setDescripcion(rs.getString("Descripcion"));
+        usu.setEmail(rs.getString("email"));
+        usu.setContrasenha(rs.getString("email"));
+        usu.setKarma(rs.getInt("karma"));
+        usu.setEstadouser(rs.getString("estadouser").charAt(0));
+        usu.setTipousuario(rs.getString("tipoUsuarioi").charAt(0));
+        //usu.setClave_acceso(rs.getString("clave_acceso"));
+        
+        usu.setCodigopucp(rs.getString("codigopucp"));
+        
+       
         return usu;
     }
     
