@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\feed.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:feed.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\detallepublicacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:detallepublicacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\redpucpmast.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:redpucpmast.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|c:\\users\\estudio\\onedrive - pucp.edu.pe\\documents\\mega\\prog 3\\proyectos\\redpucpweb\\content\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:content\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\crearpublicacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:crearpublicacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\Content\\site.css",
+              "RelativeDocumentMoniker": "Content\\site.css",
+              "ToolTip": "C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\Content\\site.css",
+              "RelativeToolTip": "Content\\site.css",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAAAHIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-27T15:00:26.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DetallePublicacion.aspx",
+              "DocumentMoniker": "C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\DetallePublicacion.aspx",
+              "RelativeDocumentMoniker": "DetallePublicacion.aspx",
+              "ToolTip": "C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\DetallePublicacion.aspx",
+              "RelativeToolTip": "DetallePublicacion.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-27T13:37:17.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CrearPublicacion.aspx",
+              "DocumentMoniker": "C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\CrearPublicacion.aspx",
+              "RelativeDocumentMoniker": "CrearPublicacion.aspx",
+              "ToolTip": "C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\CrearPublicacion.aspx",
+              "RelativeToolTip": "CrearPublicacion.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-27T13:36:34.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Feed.aspx",
+              "DocumentMoniker": "C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\Feed.aspx",
+              "RelativeDocumentMoniker": "Feed.aspx",
+              "ToolTip": "C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\Feed.aspx",
+              "RelativeToolTip": "Feed.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-27T13:33:06.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RedPucpMast.Master",
+              "DocumentMoniker": "C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\RedPucpMast.Master",
+              "RelativeDocumentMoniker": "RedPucpMast.Master",
+              "ToolTip": "C:\\Users\\Estudio\\OneDrive - pucp.edu.pe\\Documents\\MEGA\\Prog 3\\proyectos\\RedPucpWeb\\RedPucpMast.Master",
+              "RelativeToolTip": "RedPucpMast.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-27T13:28:51.198Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
