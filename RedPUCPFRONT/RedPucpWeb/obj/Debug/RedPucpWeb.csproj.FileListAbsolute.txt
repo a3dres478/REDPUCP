@@ -1,0 +1,7 @@
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\bin\RedPucpWeb.dll.config
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\bin\RedPucpWeb.dll
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\bin\RedPucpWeb.pdb
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.AssemblyReference.cache
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.CoreCompileInputs.cache
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\obj\Debug\RedPucpWeb.dll
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\obj\Debug\RedPucpWeb.pdb
