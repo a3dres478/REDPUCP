@@ -27,24 +27,22 @@ public class VotoComentarioDAOImpl extends TransaccionalBaseDAO<VotoComentario> 
     
     @Override
     protected CallableStatement comandoCrear(Connection conn, VotoComentario modelo) throws SQLException {
-       String sql = "{CALL sp_crearVotoComentario(?,?,?)}";
+       String sql = "{CALL sp_crearVotoComentario(?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idUsuario", modelo.getUsuario().getIdUsuario());
-        //cmd.setString("p_tipo", String.valueOf(usu.getTipo()));
-        cmd.setInt("p_idcomentario", modelo.getComentarioVotado().getId());
-        cmd.setString("p_tipo", "UP");
-        cmd.setDate("p_fechaRegistro", new java.sql.Date(modelo.getFechaRegistro().getTime()));
+        cmd.setString("p_tipo", String.valueOf(modelo.getTipo()));
+        cmd.setInt("p_idComentario", modelo.getComentarioVotado().getId());
         cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
         return cmd;
     }
     @Override
     protected CallableStatement comandoActualizar(Connection conn, VotoComentario sed) throws SQLException {
-        String sql = "{CALL sp_crearVotoComentario(?,?,?,?)}";
+        String sql = "{CALL sp_actualizarVoto(?,?,?)}";
        CallableStatement cmd = conn.prepareCall(sql);
        //cmd.setInt("p_idUsuario", usu.getUsuario().getIdUsuario());
         cmd.setInt("p_idVoto", sed.getId());
         //cmd.setString("p_tipo", String.valueOf(usu.getTipo()));
-        cmd.setString("p_tipo", "DOWN");
+        cmd.setString("p_tipo",String.valueOf(sed.getTipo()));
         //cmd.setDate("p_fechaRegistro", new java.sql.Date(usu.getFechaRegistro().getTime()));
         cmd.registerOutParameter("p_exito", Types.BOOLEAN);
         return cmd;
@@ -52,7 +50,7 @@ public class VotoComentarioDAOImpl extends TransaccionalBaseDAO<VotoComentario> 
     
     @Override
     protected CallableStatement comandoEliminar(Connection conn, Integer id) throws SQLException {
-        String sql = "{CALL sp_eliminarVotoComentario(?,?)}";
+        String sql = "{CALL sp_eliminarVoto(?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idVoto", id);
         cmd.registerOutParameter("p_exito", Types.BOOLEAN);
@@ -61,20 +59,20 @@ public class VotoComentarioDAOImpl extends TransaccionalBaseDAO<VotoComentario> 
     
     @Override
     protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException{
-        String sql = "{CALL sp_obtenerVotoComentarioPorId(?)}";
+        String sql = "{CALL sp_obtenerPorIdVotoComentario(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idVoto", id);
         return cmd;
     }
     @Override
     protected CallableStatement comandoLeerTodos (Connection conn) throws SQLException{
-        String sql = "{CALL sp_listarVotosComentario()}";
+        String sql = "{CALL sp_leerTodosVotosComentario()}";
         CallableStatement cmd = conn.prepareCall(sql);
         return cmd;
     }
     
     
-    //REVISAR URGENTE
+    
     @Override
     protected VotoComentario mapearModelo(ResultSet rs) throws SQLException{
         VotoComentario usu = new VotoComentario();
@@ -84,7 +82,6 @@ public class VotoComentarioDAOImpl extends TransaccionalBaseDAO<VotoComentario> 
         usu.setFechaRegistro(rs.getTimestamp("fechaRegistro"));
         usu.setTipo(rs.getString("tipo").charAt(0));
         usu.setComentarioVotado(new ComentarioDAOImpl().leer(rs.getInt("idComentario")));
-        
         return usu;
     }
     

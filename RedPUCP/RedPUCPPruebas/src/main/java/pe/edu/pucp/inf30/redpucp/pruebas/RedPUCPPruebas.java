@@ -89,15 +89,15 @@ public class RedPUCPPruebas {
 //        System.out.println(uBuscado.getNombre());
 //        System.out.println(uBuscado.getEmail());
         
-        UsuarioDAO u_dao = new UsuarioDAOimpl();
-        Usuario uBuscado = u_dao.buscar(6);
-        VotoDAO voto_dao = new VotoDAOimpl();
-        Voto votoBuscado = voto_dao.buscar(3);
-        voto_dao.modificar(votoBuscado);
-        
-        votoBuscado = voto_dao.buscar(3);
-        System.out.println(votoBuscado.getId());
-        System.out.println(String.valueOf(votoBuscado.getTipo()));
+//        UsuarioDAO u_dao = new UsuarioDAOimpl();
+//        Usuario uBuscado = u_dao.buscar(6);
+//        VotoDAO voto_dao = new VotoDAOimpl();
+//        Voto votoBuscado = voto_dao.buscar(3);
+//        voto_dao.modificar(votoBuscado);
+//        
+//        votoBuscado = voto_dao.buscar(3);
+//        System.out.println(votoBuscado.getId());
+//        System.out.println(String.valueOf(votoBuscado.getTipo()));
 //        Voto nuevo_voto = new Voto();
 //        nuevo_voto.setUsuario(uBuscado);
 //        nuevo_voto.setTipo('D');
@@ -240,11 +240,11 @@ public class RedPUCPPruebas {
 //        modelo.setKarma(25);
 //        modelo.setEstadouser('A');
 //        modelo.setTipousuario('B');
-//        
+//       
 //        UsuarioDAO usuarioDao = new UsuarioDAOimpl();
-//        int id = usuarioDao.insertar(modelo);
+//        int id = usuarioDao.crear(modelo);
 //        modelo.setIdUsuario(id);
-//        
+////        
 //        System.out.println(modelo);
         
         

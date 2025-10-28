@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import pe.edu.pucp.inf30.RedPUCP.dao.voto.VotoPublicacionDAO;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.Publicacion.PublicacionDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
 //import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.UsuarioDAOimpl;
@@ -23,11 +24,12 @@ public class VotoPublicacionDAOImpl extends TransaccionalBaseDAO<VotoPublicacion
     
     @Override
     protected CallableStatement comandoCrear(Connection conn, VotoPublicacion usu) throws SQLException {
-        String sql = "{CALL sp_crearVotoPublicacion(?,?,?)}";
+        String sql = "{CALL sp_insertarVotoPublicacion(?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idUsuario", usu.getUsuario().getIdUsuario());
         //cmd.setString("p_tipo", String.valueOf(usu.getTipo()));
         cmd.setString("p_tipo", "UP");
+        cmd.setInt("p_idPublicacion", usu.getPublicacionVotada().getId());
         //cmd.setDate("p_fechaRegistro", new java.sql.Date(usu.getFechaRegistro().getTime()));
         cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
         
@@ -39,13 +41,13 @@ public class VotoPublicacionDAOImpl extends TransaccionalBaseDAO<VotoPublicacion
     protected CallableStatement comandoActualizar(Connection conn, VotoPublicacion usu) throws SQLException {
         String sql = "{CALL sp_actualizarVotoPublicacion(?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
-        //cmd.setInt("p_idUsuario", usu.getUsuario().getIdUsuario());
         cmd.setInt("p_idVoto", usu.getId());
         //cmd.setString("p_tipo", String.valueOf(usu.getTipo()));
-        cmd.setString("p_tipo", "DOWN");
+        cmd.setString("p_tipo",String.valueOf(usu.getTipo()));
         //cmd.setDate("p_fechaRegistro", new java.sql.Date(usu.getFechaRegistro().getTime()));
         cmd.registerOutParameter("p_exito", Types.BOOLEAN);
         return cmd;
+        
     }
 
 
@@ -61,7 +63,7 @@ public class VotoPublicacionDAOImpl extends TransaccionalBaseDAO<VotoPublicacion
 
     @Override
     protected CallableStatement comandoLeer(Connection conn, Integer id) throws SQLException {
-        String sql = "{CALL sp_obtenerVotoPorId(?)}";
+        String sql = "{CALL sp_obtenerPorIdVotoPublicacion(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idVoto", id);
         return cmd;
@@ -70,7 +72,7 @@ public class VotoPublicacionDAOImpl extends TransaccionalBaseDAO<VotoPublicacion
 
     @Override
     protected CallableStatement comandoLeerTodos(Connection conn) throws SQLException {
-        String sql = "{CALL sp_listarVotos()}";
+        String sql = "{CALL sp_leerTodosVotosPublicacion()}";
         CallableStatement cmd = conn.prepareCall(sql);
         return cmd;
     }
@@ -82,7 +84,7 @@ public class VotoPublicacionDAOImpl extends TransaccionalBaseDAO<VotoPublicacion
         usu.setUsuario(new UsuarioDAOimpl().leer(rs.getInt("idUsuario")));
         usu.setFechaRegistro(rs.getTimestamp("fechaRegistro"));
         usu.setTipo(rs.getString("tipo").charAt(0));
-        
+        usu.setPublicacionVotada(new PublicacionDAOimpl().leer(rs.getInt("idPublicacion")));
         
         return usu;
     }

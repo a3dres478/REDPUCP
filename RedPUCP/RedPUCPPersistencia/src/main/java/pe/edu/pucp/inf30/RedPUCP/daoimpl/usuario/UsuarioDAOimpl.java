@@ -88,7 +88,7 @@ public class UsuarioDAOimpl extends TransaccionalBaseDAO<Usuario> implements Usu
         usu.setKarma(rs.getInt("karma"));
         usu.setFechaRegistro(rs.getDate("fechaRegistro"));
         usu.setEstadouser(rs.getString("estado").charAt(0));
-        usu.setTipousuario(rs.getString("tipo").charAt(0));
+        //usu.setTipousuario(rs.getString("tipo").charAt(0));
         
         /*  private int idUsuario;
     private String Nombre;

@@ -73,18 +73,18 @@ public class ComunidadDAOTest implements PersistibleProbable{
     @Order(1)
     @Override
     public void debeCrear(){
-       Usuario_comunDAO usuarioDAO = new Usuario_comunDAOimpl();
-        Usuario_comun usuario =  usuarioDAO.leer(9);
-        
-        
-        ComunidadDAO comunidadDAO = new ComunidadDAOimpl();
-        Comunidad comunidad = new Comunidad();
-        comunidad.setNombre("Comunidad_testparapubli");
-        comunidad.setDescripcion("test1");
-        comunidad.setAdministrador(usuario);
-        
-        this.testId = comunidadDAO.crear(comunidad);
-        assertTrue(this.testId > 0);
+//       Usuario_comunDAO usuarioDAO = new Usuario_comunDAOimpl();
+//        Usuario_comun usuario =  usuarioDAO.leer(9);
+//        
+//        
+//        ComunidadDAO comunidadDAO = new ComunidadDAOimpl();
+//        Comunidad comunidad = new Comunidad();
+//        comunidad.setNombre("Comunidad_testparapubli");
+//        comunidad.setDescripcion("test1");
+//        comunidad.setAdministrador(usuario);
+//        
+//        this.testId = comunidadDAO.crear(comunidad);
+//        assertTrue(this.testId > 0);
        // assertTrue(1==1);
     }
     

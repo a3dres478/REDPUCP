@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package pe.edu.pucp.inf30.RedPUCP.test.dao.Usuario;
+package pe.edu.pucp.inf30.RedPUCP.test.dao.Voto;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 
 
 import java.time.Instant;
@@ -39,7 +42,22 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.EstadoComunidad;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
-
+import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Administrador;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.AdministradorDAOimpl;
+import pe.edu.pucp.inf30.RedPUCP.dao.usuario.AdministradorDAO;
+import pe.edu.pucp.inf30.RedPUCP.dao.voto.VotoDAO;
+import pe.edu.pucp.inf30.RedPUCP.dao.voto.VotoComentarioDAO;
+import pe.edu.pucp.inf30.RedPUCP.dao.voto.VotoPublicacionDAO;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.Publicacion.ComentarioDAOImpl;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.voto.VotoDAOimpl;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.voto.VotoComentarioDAOImpl;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.voto.VotoPublicacionDAOImpl;
+import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Comentario;
+import pe.edu.pucp.inf30.RedPUCP.modelo.voto.Voto;
+import pe.edu.pucp.inf30.RedPUCP.modelo.voto.VotoPublicacion;
+import pe.edu.pucp.inf30.RedPUCP.modelo.voto.VotoComentario;
+import pe.edu.pucp.inf30.RedPUCP.dao.Publicacion.ComentarioDAO;
+import pe.edu.pucp.inf30.RedPUCP.dao.Publicacion.PublicacionDAO;
 
 /**
  *
@@ -48,28 +66,28 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
-public class Usuario_comunDAOTest implements  PersistibleProbable{
+public class VotoComentarioDAOTest implements  PersistibleProbable {
     private int testId;
     private int testUsuarioId;
     private final int idIncorrecto = 999999;
-   
+
     @Test
     @Order(1)
     @Override
     public void debeCrear(){
-        //funciona
-       // Date fechaactual= new Date(System.currentTimeMillis());
-//        Usuario_comunDAO usuariocomunDAO=new Usuario_comunDAOimpl();
-//        Usuario_comun comun= new Usuario_comun();
-//        comun.setCodigopucp("123456");
-//        comun.setContrasenha("123456");
-//        comun.setDescripcion("Usuario_comunDes112");
-//        comun.setNombre("Usuario_comun1234");
-//        comun.setEmail("pruebauser11@gmail.com");
-//        comun.setFechaRegistro(new java.util.Date());
-//        comun.setEstadouser('A');
-//        comun.setKarma(0);
-//        this.testId=usuariocomunDAO.crear(comun);
+//        Date fechaactual= new Date(System.currentTimeMillis());
+//        Usuario_comunDAO usuariocomunDAO= new Usuario_comunDAOimpl();
+//        VotoComentarioDAO votocomentarioDAO=new VotoComentarioDAOImpl();
+//        Usuario_comun usuariocomun=usuariocomunDAO.leer(1);
+//        ComentarioDAO comentarioDAO= new ComentarioDAOImpl();
+//        Comentario comentarioVotado= comentarioDAO.leer(1);
+//        VotoComentario votocomen=new VotoComentario();
+//        votocomen.setComentarioVotado(comentarioVotado);
+//        votocomen.setUsuario(usuariocomun);
+//        votocomen.setFechaRegistro(fechaactual);
+//        votocomen.setTipo('U');
+//        //this.testId=1;
+//        this.testId=votocomentarioDAO.crear(votocomen);
 //        assertTrue(this.testId>0);
     }
     
@@ -77,48 +95,41 @@ public class Usuario_comunDAOTest implements  PersistibleProbable{
     @Order(2)
     @Override
     public void debeActualizarSiIdExiste() {
-//        Usuario_comunDAO usuariocomunDAO=new Usuario_comunDAOimpl();
-//        Usuario_comun comun= usuariocomunDAO.leer(testId);
-//        
-//        comun.setIdUsuario(this.testId);
-//        comun.setNombre("Usuario_comunactualizadoGAA");
-//        comun.setCodigopucp("12345");
-//        comun.setDescripcion("Usuario_comuACDes1");
-//        comun.setKarma(0);
-//        comun.setEstadouser('A');
-//        //comun.setEmail("correousuariocomun13@gmail");
-//        comun.setFechaRegistro(new java.util.Date());
-//        boolean modifico=usuariocomunDAO.actualizar(comun);
-//        assertTrue(modifico);
-//        Usuario_comun usuariocomun=usuariocomunDAO.leer(this.testId);
-//        assertEquals(usuariocomun.getNombre(),"Usuario_comun2");
-//        assertEquals(usuariocomun.getDescripcion(),"Usuario_comunDes1");
-//        assertEquals(usuariocomun.getEstadouser(), 'S');
-//        assertEquals(usuariocomun.getCodigopucp(),"1234");
+//       VotoComentarioDAO votocomentarioDAO =new VotoComentarioDAOImpl();
+//       VotoComentario votocomentario;
+//       votocomentario= votocomentarioDAO.leer(4);
+//       votocomentario.setTipo('A');
+//       //boolean modifico=true;
+//       boolean modifico=votocomentarioDAO.actualizar(votocomentario);
+//       assertTrue(modifico);
     }
     
     @Test
     @Order(3)
     @Override
     public void noDebeActualizarSiIdNoExiste() {
-//        Usuario_comunDAO usuariocomunDAO=new Usuario_comunDAOimpl();
-//        Usuario_comun comun= new Usuario_comun();
+//        AdministradorDAO administradorDAO =new AdministradorDAOimpl();
+//       Administrador comun =new Administrador();
+//        
+//       comun.setClave_acceso("abc");
+//        
+//        
 //        comun.setIdUsuario(this.idIncorrecto);
-//        comun.setNombre("Usuario_comun3");
-//        comun.setCodigopucp("1234");
-//        comun.setDescripcion("Usuario_comunDes3");
+//        comun.setNombre("ADMIN3");
+//        comun.setDescripcion("ADMIN3");
 //        comun.setKarma(0);
-//        comun.setEstadouser('S');
+//        comun.setEstadouser('A');
 //        comun.setEmail("correo@gmail");
 //        comun.setFechaRegistro(new java.util.Date());
+//        comun.setContrasenha("1234");
 //        
-//        boolean modifico=usuariocomunDAO.actualizar(comun);
+//        boolean modifico=administradorDAO.actualizar(comun);
 //        assertTrue(modifico);
-//        Usuario_comun usuariocomun=usuariocomunDAO.leer(this.testId);
+//        Administrador usuariocomun=administradorDAO.leer(this.testId);
 //        assertEquals(usuariocomun.getNombre(),"Usuario_comun2");
 //        assertEquals(usuariocomun.getDescripcion(),"Usuario_comunDes1");
 //        assertEquals(usuariocomun.getEstadouser(), 'S');
-//        assertEquals(usuariocomun.getCodigopucp(),"1234");
+//        assertEquals(usuariocomun.getClave_acceso(),"abc");
 //        
 //        assertFalse(modifico);
     }
@@ -127,21 +138,17 @@ public class Usuario_comunDAOTest implements  PersistibleProbable{
     @Order(4)
     @Override
     public void noDebeEliminarSiIdNoExiste() {
-//        Usuario_comunDAO usuarioDAO=new Usuario_comunDAOimpl();
+//        AdministradorDAO usuarioDAO=new AdministradorDAOimpl(); 
 //        boolean elimino =usuarioDAO.eliminar(this.idIncorrecto);
-//        assertFalse(elimino);
-        
-        
-        
-        
+//        assertFalse(elimino);        
     }
     
     @Test
     @Order(5)
     @Override
-    public void debeLeerSiIdExiste() {
-//        Usuario_comunDAO usuarioDAO=new Usuario_comunDAOimpl();
-//        Usuario_comun comun= usuarioDAO.leer(this.testId);
+    public void debeLeerSiIdExiste() {        
+//        AdministradorDAO usuarioDAO=new AdministradorDAOimpl(); 
+//        Administrador comun= usuarioDAO.leer(this.testId);
 //        assertNotNull(comun);
     }
     
@@ -149,8 +156,8 @@ public class Usuario_comunDAOTest implements  PersistibleProbable{
     @Order(6)
     @Override
     public void noDebeLeerSiIdNoExiste() {
-//        Usuario_comunDAO usuarioDAO=new Usuario_comunDAOimpl();
-//        Usuario_comun comun= usuarioDAO.leer(this.idIncorrecto);
+//        AdministradorDAO usuarioDAO=new AdministradorDAOimpl(); 
+//        Administrador comun= usuarioDAO.leer(this.idIncorrecto);
 //        assertNull(comun);
     }
     
@@ -158,9 +165,9 @@ public class Usuario_comunDAOTest implements  PersistibleProbable{
     @Order(7)
     @Override
     public void debeLeerTodos() {
-//        Usuario_comunDAO usuarioDAO= new Usuario_comunDAOimpl();
-//        List<Usuario_comun> usuarios =usuarioDAO.leerTodos();
-//        //assertNotNull(usuarios);
+//        AdministradorDAO usuarioDAO= new AdministradorDAOimpl();
+//        List<Administrador> usuarios =usuarioDAO.leerTodos();
+//        assertNotNull(usuarios);
 //        assertFalse(usuarios.isEmpty());
     }
     
@@ -168,10 +175,9 @@ public class Usuario_comunDAOTest implements  PersistibleProbable{
     @Order(8)
     @Override
     public void debeEliminarSiIdExiste() {
-//        Usuario_comunDAO usuarioDAO= new Usuario_comunDAOimpl();
+//        AdministradorDAO usuarioDAO=new AdministradorDAOimpl(); 
 //        boolean elimino = usuarioDAO.eliminar(this.testId);
 //        assertTrue(elimino); 
     }
-
-
+    
 }

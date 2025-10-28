@@ -2,6 +2,7 @@ pe\edu\pucp\inf30\RedPUCP\test\dao\Publicacion\PublicacionXComunidadDAOTest.clas
 pe\edu\pucp\inf30\RedPUCP\test\dao\Publicacion\PublicacionDAOTest.class
 pe\edu\pucp\inf30\RedPUCP\test\dao\Publicacion\ComentarioDAOTest.class
 pe\edu\pucp\inf30\RedPUCP\test\dao\Usuario\Usuario_comunDAOTest.class
+pe\edu\pucp\inf30\RedPUCP\test\dao\Voto\VotoComentarioDAOTest.class
 pe\edu\pucp\inf30\RedPUCP\test\dao\Comunidad\ComunidadDAOTest.class
 pe\edu\pucp\inf30\RedPUCP\test\dao\Usuario\AdministradorDAOTest.class
 pe\edu\pucp\inf30\RedPUCP\test\dao\PersistibleProbable.class

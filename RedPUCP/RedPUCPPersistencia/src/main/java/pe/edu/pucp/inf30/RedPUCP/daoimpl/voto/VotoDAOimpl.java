@@ -37,7 +37,7 @@ public class VotoDAOimpl extends TransaccionalBaseDAO<Voto> implements VotoDAO{
     */
     @Override
     protected CallableStatement comandoCrear(Connection conn, Voto usu) throws SQLException {
-        String sql = "{CALL sp_crearVoto(?,?,?)}";
+        String sql = "{CALL sp_insertarVoto(?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idUsuario", usu.getUsuario().getIdUsuario());
         //cmd.setString("p_tipo", String.valueOf(usu.getTipo()));
@@ -96,8 +96,6 @@ public class VotoDAOimpl extends TransaccionalBaseDAO<Voto> implements VotoDAO{
         usu.setUsuario(new UsuarioDAOimpl().leer(rs.getInt("idUsuario")));
         usu.setFechaRegistro(rs.getTimestamp("fechaRegistro"));
         usu.setTipo(rs.getString("tipo").charAt(0));
-        
-        
         return usu;
     }
     
