@@ -1,0 +1,147 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="RedPucpWeb.estefano.masterPage.MasterPage" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RedPUCP</title>
+
+    <!-- bootstrap -->
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- fontawsome -->
+    <link href="../../Content/font-awesome.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: white !important;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .navbar-brand span {
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .navbar .nav-link {
+            font-weight: 500;
+            color: #333 !important;
+        }
+
+            .navbar .nav-link:hover {
+                color: #0d6efd !important;
+            }
+
+        .btn-primary {
+            background-color: #0d6efd;
+            border: none;
+        }
+
+            .btn-primary:hover {
+                background-color: #0b5ed7;
+            }
+
+        .btn-outline-primary:hover {
+            background-color: #0d6efd;
+            color: white !important;
+        }
+
+        .content-wrapper {
+            margin-top: 90px;
+            padding: 20px 40px;
+        }
+
+        footer {
+            background-color: #fff;
+            border-top: 1px solid #eaeaea;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+
+        <!-- barra de nevegación -->
+        <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top">
+            <div class="container-fluid">
+                <!-- logo de redpucp -->
+                <a class="navbar-brand d-flex align-items-center" href="Inicio.aspx">
+                    <i class="fa fa-hashtag me-2 text-primary"></i>
+                    <span>RedPUCP</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- LINKS -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="Inicio.aspx">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Publicaciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Comunidades</a>
+                        </li>
+                    </ul>
+
+                    <!-- derecha -->
+                    <div class="d-flex align-items-center">
+
+                        <!-- cuando todavía son invitados -->
+                        <asp:Panel ID="PanelInvitado" runat="server" Visible="true">
+                            <a href="Login.aspx" class="btn btn-outline-primary me-2">Login</a>
+                            <a href="Registro.aspx" class="btn btn-primary">Register</a>
+                        </asp:Panel>
+
+                        <!-- usuario logeado -->
+                        <asp:Panel ID="PanelUsuario" runat="server" Visible="false">
+                            <div class="d-flex align-items-center">
+                                <i class="fa fa-user-circle text-primary me-2"></i>
+                                <asp:Label ID="lblUsuario" runat="server" CssClass="me-3 fw-bold"></asp:Label>
+
+                                <asp:Button ID="btnPerfil" runat="server" CssClass="btn btn-outline-primary me-2"
+                                    Text="Mi Perfil" OnClick="btnPerfil_Click" />
+
+                                <asp:Button ID="btnLogout" runat="server" CssClass="btn btn-danger"
+                                    Text="Cerrar sesión" OnClick="btnLogout_Click" />
+                            </div>
+                        </asp:Panel>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content-wrapper">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </div>
+
+
+        <footer>
+            &copy; <%= DateTime.Now.Year %> RedPUCP — Proyecto académico PUCP
+        </footer>
+
+        <!-- SCRIPTS -->
+        <script src="~/Scripts/jquery.min.js"></script>
+        <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    </form>
+</body>
+</html>
+
