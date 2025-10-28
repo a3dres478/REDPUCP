@@ -77,16 +77,29 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\site.css" />
     <Content Include="CrearPublicacion.aspx" />
     <Content Include="DetallePublicacion.aspx" />
+    <Content Include="estefano\pantallas\Inicio.aspx" />
+    <Content Include="estefano\pantallas\Login.aspx" />
+    <Content Include="estefano\pantallas\Perfil.aspx" />
+    <Content Include="estefano\pantallas\Registro.aspx" />
     <Content Include="Feed.aspx" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="estefano\masterPage\MasterPage.master" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -109,6 +122,41 @@
     <Compile Include="DetallePublicacion.aspx.designer.cs">
       <DependentUpon>DetallePublicacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="estefano\masterPage\MasterPage.master.cs">
+      <DependentUpon>MasterPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="estefano\masterPage\MasterPage.master.designer.cs">
+      <DependentUpon>MasterPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="estefano\pantallas\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="estefano\pantallas\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="estefano\pantallas\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="estefano\pantallas\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="estefano\pantallas\Perfil.aspx.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="estefano\pantallas\Perfil.aspx.designer.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="estefano\pantallas\Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="estefano\pantallas\Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Feed.aspx.cs">
       <DependentUpon>Feed.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -119,6 +167,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedPucpMast.Master.cs">
       <DependentUpon>RedPucpMast.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RedPucpMast.Master.designer.cs">
       <DependentUpon>RedPucpMast.Master</DependentUpon>
