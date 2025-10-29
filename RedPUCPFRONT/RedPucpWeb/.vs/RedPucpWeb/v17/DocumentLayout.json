@@ -1,61 +1,77 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\",
+  "WorkspaceRootPath": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\inicio.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\inicio.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\inicio.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\inicio.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\masterpage\\masterpage.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\masterpage\\masterpage.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\detallepublicacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:detallepublicacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|c:\\users\\pc\\desktop\\progra3\\redpucp\\redpucpfront\\redpucpweb\\estefano\\masterpage\\masterpage.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\masterpage\\masterpage.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
       "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\masterpage\\masterpage.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\perfil.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|d:\\01. universidad\\semestres\\semestre 2025.2\\programaci\u00F3n 3\\ta huizionarios\\ta redpucp\\redpucp\\redpucpfront\\redpucpweb\\estefano\\pantallas\\reportecomunidades.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\reportecomunidades.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|d:\\01. universidad\\semestres\\semestre 2025.2\\programaci\u00F3n 3\\ta huizionarios\\ta redpucp\\redpucp\\redpucpfront\\redpucpweb\\estefano\\pantallas\\reportecomunidades.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\reportecomunidades.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|d:\\01. universidad\\semestres\\semestre 2025.2\\programaci\u00F3n 3\\ta huizionarios\\ta redpucp\\redpucp\\redpucpfront\\redpucpweb\\estefano\\pantallas\\comunidades.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\comunidades.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|d:\\01. universidad\\semestres\\semestre 2025.2\\programaci\u00F3n 3\\ta huizionarios\\ta redpucp\\redpucp\\redpucpfront\\redpucpweb\\estefano\\pantallas\\comunidades.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\comunidades.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|d:\\01. universidad\\semestres\\semestre 2025.2\\programaci\u00F3n 3\\ta huizionarios\\ta redpucp\\redpucp\\redpucpfront\\redpucpweb\\estefano\\pantallas\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\inicio.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\inicio.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\inicio.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\inicio.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\masterpage\\masterpage.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\masterpage\\masterpage.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\detallepublicacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:detallepublicacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\perfil.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\perfil.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\registro.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\registro.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\registro.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\perfil.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\perfil.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\perfil.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\registro.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\registro.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:estefano\\pantallas\\registro.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\crearpublicacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\crearpublicacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:crearpublicacion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\feed.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\feed.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:feed.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\redpucpmast.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "AbsoluteMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\redpucpmast.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
       "RelativeMoniker": "D:0:0:{65EFD8F3-9AF1-4CA2-A72F-208F8CB3A28D}|RedPucpWeb.csproj|solutionrelative:redpucpmast.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     }
   ],
@@ -66,55 +82,67 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 9,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Perfil.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Perfil.aspx.cs",
-              "RelativeDocumentMoniker": "estefano\\pantallas\\Perfil.aspx.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Perfil.aspx.cs",
-              "RelativeToolTip": "estefano\\pantallas\\Perfil.aspx.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ReporteComunidades.aspx.cs",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\ReporteComunidades.aspx.cs",
+              "RelativeDocumentMoniker": "estefano\\pantallas\\ReporteComunidades.aspx.cs",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\ReporteComunidades.aspx.cs",
+              "RelativeToolTip": "estefano\\pantallas\\ReporteComunidades.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T23:30:06.919Z"
+              "WhenOpened": "2025-10-29T04:07:23.303Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Perfil.aspx",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Perfil.aspx",
-              "RelativeDocumentMoniker": "estefano\\pantallas\\Perfil.aspx",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Perfil.aspx",
-              "RelativeToolTip": "estefano\\pantallas\\Perfil.aspx",
+              "DocumentIndex": 2,
+              "Title": "ReporteComunidades.aspx",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\ReporteComunidades.aspx",
+              "RelativeDocumentMoniker": "estefano\\pantallas\\ReporteComunidades.aspx",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\ReporteComunidades.aspx",
+              "RelativeToolTip": "estefano\\pantallas\\ReporteComunidades.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-10-27T23:29:40.373Z"
+              "WhenOpened": "2025-10-29T04:07:02.995Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Registro.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Registro.aspx.cs",
-              "RelativeDocumentMoniker": "estefano\\pantallas\\Registro.aspx.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Registro.aspx.cs",
-              "RelativeToolTip": "estefano\\pantallas\\Registro.aspx.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Comunidades.aspx.cs",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Comunidades.aspx.cs",
+              "RelativeDocumentMoniker": "estefano\\pantallas\\Comunidades.aspx.cs",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Comunidades.aspx.cs",
+              "RelativeToolTip": "estefano\\pantallas\\Comunidades.aspx.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T23:27:59.101Z"
+              "WhenOpened": "2025-10-29T04:05:58.741Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
+              "Title": "Comunidades.aspx",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Comunidades.aspx",
+              "RelativeDocumentMoniker": "estefano\\pantallas\\Comunidades.aspx",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Comunidades.aspx",
+              "RelativeToolTip": "estefano\\pantallas\\Comunidades.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-29T04:05:28.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Registro.aspx",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Registro.aspx",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Registro.aspx",
               "RelativeDocumentMoniker": "estefano\\pantallas\\Registro.aspx",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Registro.aspx",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Registro.aspx",
               "RelativeToolTip": "estefano\\pantallas\\Registro.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -122,11 +150,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Login.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Login.aspx.cs",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Login.aspx.cs",
               "RelativeDocumentMoniker": "estefano\\pantallas\\Login.aspx.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Login.aspx.cs",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Login.aspx.cs",
               "RelativeToolTip": "estefano\\pantallas\\Login.aspx.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -135,63 +163,47 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Login.aspx",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Login.aspx",
-              "RelativeDocumentMoniker": "estefano\\pantallas\\Login.aspx",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Login.aspx",
-              "RelativeToolTip": "estefano\\pantallas\\Login.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-10-27T23:23:07.743Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Inicio.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Inicio.aspx.cs",
-              "RelativeDocumentMoniker": "estefano\\pantallas\\Inicio.aspx.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Inicio.aspx.cs",
-              "RelativeToolTip": "estefano\\pantallas\\Inicio.aspx.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA6AAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "Perfil.aspx.cs",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Perfil.aspx.cs",
+              "RelativeDocumentMoniker": "estefano\\pantallas\\Perfil.aspx.cs",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Perfil.aspx.cs",
+              "RelativeToolTip": "estefano\\pantallas\\Perfil.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T23:21:16.882Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Inicio.aspx",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Inicio.aspx",
-              "RelativeDocumentMoniker": "estefano\\pantallas\\Inicio.aspx",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Inicio.aspx",
-              "RelativeToolTip": "estefano\\pantallas\\Inicio.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-10-27T23:20:33.966Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MasterPage.master.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\masterPage\\MasterPage.master.cs",
-              "RelativeDocumentMoniker": "estefano\\masterPage\\MasterPage.master.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\masterPage\\MasterPage.master.cs",
-              "RelativeToolTip": "estefano\\masterPage\\MasterPage.master.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T22:58:42.532Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-27T23:30:06.919Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "Login.aspx",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Login.aspx",
+              "RelativeDocumentMoniker": "estefano\\pantallas\\Login.aspx",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Login.aspx",
+              "RelativeToolTip": "estefano\\pantallas\\Login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-27T23:23:07.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Inicio.aspx.cs",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Inicio.aspx.cs",
+              "RelativeDocumentMoniker": "estefano\\pantallas\\Inicio.aspx.cs",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Inicio.aspx.cs",
+              "RelativeToolTip": "estefano\\pantallas\\Inicio.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T23:21:16.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "MasterPage.master",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\masterPage\\MasterPage.master",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\masterPage\\MasterPage.master",
               "RelativeDocumentMoniker": "estefano\\masterPage\\MasterPage.master",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\masterPage\\MasterPage.master",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\masterPage\\MasterPage.master",
               "RelativeToolTip": "estefano\\masterPage\\MasterPage.master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -200,24 +212,71 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DetallePublicacion.aspx",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\DetallePublicacion.aspx",
-              "RelativeDocumentMoniker": "DetallePublicacion.aspx",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\DetallePublicacion.aspx",
-              "RelativeToolTip": "DetallePublicacion.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-10-27T13:37:17.775Z",
-              "EditorCaption": ""
+              "DocumentIndex": 14,
+              "Title": "Registro.aspx.cs",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Registro.aspx.cs",
+              "RelativeDocumentMoniker": "estefano\\pantallas\\Registro.aspx.cs",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Registro.aspx.cs",
+              "RelativeToolTip": "estefano\\pantallas\\Registro.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T23:27:59.101Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "Perfil.aspx",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Perfil.aspx",
+              "RelativeDocumentMoniker": "estefano\\pantallas\\Perfil.aspx",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Perfil.aspx",
+              "RelativeToolTip": "estefano\\pantallas\\Perfil.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-27T23:29:40.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Inicio.aspx",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Inicio.aspx",
+              "RelativeDocumentMoniker": "estefano\\pantallas\\Inicio.aspx",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\pantallas\\Inicio.aspx",
+              "RelativeToolTip": "estefano\\pantallas\\Inicio.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-27T23:20:33.966Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MasterPage.master.cs",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\masterPage\\MasterPage.master.cs",
+              "RelativeDocumentMoniker": "estefano\\masterPage\\MasterPage.master.cs",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\estefano\\masterPage\\MasterPage.master.cs",
+              "RelativeToolTip": "estefano\\masterPage\\MasterPage.master.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T22:58:42.532Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DetallePublicacion.aspx",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\DetallePublicacion.aspx",
+              "RelativeDocumentMoniker": "DetallePublicacion.aspx",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\DetallePublicacion.aspx",
+              "RelativeToolTip": "DetallePublicacion.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-27T13:37:17.775Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "CrearPublicacion.aspx",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\CrearPublicacion.aspx",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\CrearPublicacion.aspx",
               "RelativeDocumentMoniker": "CrearPublicacion.aspx",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\CrearPublicacion.aspx",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\CrearPublicacion.aspx",
               "RelativeToolTip": "CrearPublicacion.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -225,11 +284,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "Feed.aspx",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\Feed.aspx",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\Feed.aspx",
               "RelativeDocumentMoniker": "Feed.aspx",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\Feed.aspx",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\Feed.aspx",
               "RelativeToolTip": "Feed.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -237,16 +296,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "RedPucpMast.Master",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\RedPucpMast.Master",
+              "DocumentMoniker": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\RedPucpMast.Master",
               "RelativeDocumentMoniker": "RedPucpMast.Master",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\progra3\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\RedPucpMast.Master",
+              "ToolTip": "D:\\01. Universidad\\Semestres\\Semestre 2025.2\\Programaci\u00F3n 3\\TA Huizionarios\\TA RedPUCP\\REDPUCP\\RedPUCPFRONT\\RedPucpWeb\\RedPucpMast.Master",
               "RelativeToolTip": "RedPucpMast.Master",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-10-27T13:28:51.198Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-27T13:28:51.198Z"
             }
           ]
         }

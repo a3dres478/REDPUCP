@@ -96,8 +96,13 @@
                             <a class="nav-link" href="#">Publicaciones</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Comunidades</a>
+                            <asp:HyperLink ID="lnkComunidades" runat="server"
+                                NavigateUrl="~/estefano/pantallas/Comunidades.aspx"
+                                CssClass="nav-link">Comunidades</asp:HyperLink>
                         </li>
+                        <!--  <li class="nav-item">
+                            <a class="nav-link" href="#">Comunidades</a>
+                        </li>  -->
                     </ul>
 
                     <!-- derecha -->

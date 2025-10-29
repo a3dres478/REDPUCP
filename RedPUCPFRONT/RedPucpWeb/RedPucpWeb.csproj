@@ -82,10 +82,12 @@
     <Content Include="Content\site.css" />
     <Content Include="CrearPublicacion.aspx" />
     <Content Include="DetallePublicacion.aspx" />
+    <Content Include="estefano\pantallas\Comunidades.aspx" />
     <Content Include="estefano\pantallas\Inicio.aspx" />
     <Content Include="estefano\pantallas\Login.aspx" />
     <Content Include="estefano\pantallas\Perfil.aspx" />
     <Content Include="estefano\pantallas\Registro.aspx" />
+    <Content Include="estefano\pantallas\ReporteComunidades.aspx" />
     <Content Include="Feed.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -129,6 +131,13 @@
     <Compile Include="estefano\masterPage\MasterPage.master.designer.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
     </Compile>
+    <Compile Include="estefano\pantallas\Comunidades.aspx.cs">
+      <DependentUpon>Comunidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="estefano\pantallas\Comunidades.aspx.designer.cs">
+      <DependentUpon>Comunidades.aspx</DependentUpon>
+    </Compile>
     <Compile Include="estefano\pantallas\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -156,6 +165,13 @@
     </Compile>
     <Compile Include="estefano\pantallas\Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="estefano\pantallas\ReporteComunidades.aspx.cs">
+      <DependentUpon>ReporteComunidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="estefano\pantallas\ReporteComunidades.aspx.designer.cs">
+      <DependentUpon>ReporteComunidades.aspx</DependentUpon>
     </Compile>
     <Compile Include="Feed.aspx.cs">
       <DependentUpon>Feed.aspx</DependentUpon>

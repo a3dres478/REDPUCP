@@ -12,3 +12,10 @@ C:\Users\PC\Desktop\progra3\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb
 C:\Users\PC\Desktop\progra3\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.CoreCompileInputs.cache
 C:\Users\PC\Desktop\progra3\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.dll
 C:\Users\PC\Desktop\progra3\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.pdb
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.dll.config
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.dll
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.pdb
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.AssemblyReference.cache
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.CoreCompileInputs.cache
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.dll
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.pdb
