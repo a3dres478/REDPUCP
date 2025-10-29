@@ -1,52 +1,45 @@
-﻿<%@ Page Title="Detalle de Publicación - REDPUCP" Language="C#" MasterPageFile="~/RedPucpMast.Master" AutoEventWireup="true" CodeBehind="DetallePublicacion.aspx.cs" Inherits="RedPucpWeb.DetallePublicacion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RedPucpMast.Master" AutoEventWireup="true" CodeBehind="detallePubliacion2.aspx.cs" Inherits="RedPucpWeb.detallePubliacion2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphTitulo" runat="server">
     Detalle de Publicación - REDPUCP
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="cphContenido" runat="server">
-
     <div class="row g-4">
         <!-- Centro -->
         <div class="col-12 col-lg-8">
             <article class="card shadow-sm">
                 <header class="card-body pb-0">
-                    <h3 class="mb-1">10 tips para remontar el ciclo</h3>
+                    <h3 class="mb-1">Fijas de Prog3 y Prog2</h3>
                     <div class="text-muted small mb-3">
-                        Por <a href="#" class="link-secondary">Sepepian404xd</a> · hace 2h
+                        Por <a href="#" class="link-secondary">c0d3rPUCP</a> · hace 2h
                     </div>
                 </header>
 
                 <!-- Imagen principal (opcional) -->
                 <figure class="ratio ratio-16x9">
-                    <img src="assets/primer-post.png" alt="Portada del post"
+                    <img src="assets/segundo-post.png" alt="Portada del post"
                         class="post-detail-img" />
                 </figure>
 
                 <div class="card-body">
-                    <!-- Contenido -->
+                    <!-- Contenido  -->
                     <div class="prose">
                         <p>
-                            Los parciales ya pasaron y probablemente te dejaron con más dudas que certezas 😅,
-              pero tranquilo, todavía estás a tiempo de remontar el ciclo. Aquí te dejo 10 tips
-              realistas y probados para recuperarte y cerrar el semestre con fuerza:
+                            Al parecer los cursos de progra son los que mas laboratorios tienen. Y como alumnos tenemos que cubir gran cantidad de temas
+              pero no te preocupes compañero. Pues, la idéa no es estudiar mucho sino eficiente mente . Para ello, aqui te tragigo las "fija" 
+              que aplican para cualquier curso de progra.
                         </p>
 
                         <ol>
-                            <li><strong>Haz una autopsia académica:</strong> revisa en qué temas fallaste y por qué. No basta con decir “no estudié”.</li>
-                            <li><strong>Prioriza tus cursos críticos:</strong> pon foco en los que más pesan o podrían jalarte.</li>
-                            <li><strong>Habla con tus profes/AYs:</strong> suelen dar pistas muy útiles para el final.</li>
-                            <li><strong>Mini metas semanales:</strong> divide el avance en partes pequeñas y alcanzables.</li>
-                            <li><strong>Estudia con quien sabe:</strong> el grupo correcto acelera muchísimo.</li>
-                            <li><strong>Hábitos básicos:</strong> dormir, comer bien y estudiar con foco &gt; trasnochar sin plan.</li>
-                            <li><strong>Revisa exámenes pasados:</strong> las “fijas” existen; entiende el estilo de tus profes.</li>
-                            <li><strong>Evita el TODO al final:</strong> empieza hoy, aunque sea 30 min diarios.</li>
-                            <li><strong>Plan realista:</strong> horarios que sí puedas cumplir, sin sobrecargarte.</li>
-                            <li><strong>Confía en ti:</strong> la mitad es mental. Muchos ya remontaron, tú también puedes.</li>
+                            <li>Haz los labs pasados del 2022-2, pues al volver de la pandemia los profes reformularon la forma de evaluar</li>
+                            <li>Practica con un cronómetro para que no te falte tiempo en el verdadero lab</li>
+                            <li>Estudia en grupo y ayuda a tus amigos</li>
+                            <li>Para prog2 y prog3 la fija es ir a todas las clases del profe Huiza</li>
+                            <li>Para el lab de java de prog2 la fija es ver el github del profe Huiza de ese tema</li>
                         </ol>
 
                         <p class="mb-0">
-                            <em>Bonus:</em> si sobreviviste a los parciales, puedes sobrevivir a lo que queda del ciclo.
+                            <em>Bonus:</em> Si pasaste TP puedes con prog2 y prog3
                         </p>
                     </div>
 
@@ -58,7 +51,7 @@
                             <button type="button" class="btn p-0 text-success d-flex align-items-center">
                                 <i class="fa-solid fa-arrow-up fa-lg"></i>
                             </button>
-                            <span class="text-success ms-1 fw-semibold">23</span>
+                            <span class="text-success ms-1 fw-semibold">13</span>
                         </div>
 
                         <!-- Downvote -->
@@ -66,7 +59,7 @@
                             <button type="button" class="btn p-0 text-danger d-flex align-items-center">
                                 <i class="fa-solid fa-arrow-down fa-lg"></i>
                             </button>
-                            <span class="text-danger ms-1 fw-semibold">3</span>
+                            <span class="text-danger ms-1 fw-semibold">6</span>
                         </div>
 
                         <!-- Reportar -->
@@ -74,14 +67,12 @@
                             <i class="fa-regular fa-flag me-1"></i>Reportar
                         </a>
                     </div>
-
-
                 </div>
             </article>
 
             <!-- Comentarios -->
             <section class="card mt-3">
-                <div class="card-header fw-semibold"><i class="fa-regular fa-comment me-1"></i>5 comentarios</div>
+                <div class="card-header fw-semibold"><i class="fa-regular fa-comment me-1"></i>4 comentarios</div>
                 <div class="card-body">
 
                     <div class="input-group mb-3">
@@ -94,7 +85,7 @@
                         <!-- si luego quieres avatar, aquí va un <img class="avatar"> -->
                         <div class="flex-fill">
                             <div class="fw-semibold">
-                                masterArturo <span class="text-muted small">· hace 30 min</span>
+                                marianito23 <span class="text-muted small">· hace 2 min</span>
                             </div>
                             <div>¡Muy buenos consejos, graciasss!</div>
                         </div>
@@ -104,9 +95,9 @@
                     <div class="d-flex gap-3 mb-3">
                         <div class="flex-fill">
                             <div class="fw-semibold">
-                                estefanoRePro <span class="text-muted small">· hace 50 min</span>
+                                agelRe_pro <span class="text-muted small">· hace 5 min</span>
                             </div>
-                            <div>Tome su upvote, buen hombre.</div>
+                            <div>interesante</div>
                         </div>
                     </div>
 
@@ -116,7 +107,7 @@
                             <div class="fw-semibold">
                                 estudianteAnonimojaja <span class="text-muted small">· hace 30 min</span>
                             </div>
-                            <div>Excelente.</div>
+                            <div>y yo en TP todavia</div>
                         </div>
                     </div>
 
@@ -124,21 +115,13 @@
                     <div class="d-flex gap-3 mb-3">
                         <div class="flex-fill">
                             <div class="fw-semibold">
-                                supercraest <span class="text-muted small">· hace 30 min</span>
+                                cuevaTupia <span class="text-muted small">· hace 40 min</span>
                             </div>
-                            <div>Ya me los sabía.</div>
+                            <div>ojo al último</div>
                         </div>
                     </div>
 
-                    <!-- Comentario 5 -->
-                    <div class="d-flex gap-3">
-                        <div class="flex-fill">
-                            <div class="fw-semibold">
-                                remontador <span class="text-muted small">· hace 30 min</span>
-                            </div>
-                            <div>El ciclo recién empieza, ¡con todo muchachos!</div>
-                        </div>
-                    </div>
+
 
                 </div>
             </section>
@@ -151,13 +134,12 @@
                 <div class="card-body d-flex gap-3 align-items-center">
 
                     <div>
-                        <div class="fw-semibold">sepepian404xd</div>
+                        <div class="fw-semibold">c0d3rPUCP</div>
                         <div class="text-muted small">Karma: 245</div>
-                        <div class="text-muted small">Publicaciones: 12</div>
+                        <div class="text-muted small">Publicaciones: 8</div>
                     </div>
                 </div>
             </div>
         </aside>
     </div>
-
 </asp:Content>

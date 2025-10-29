@@ -77,10 +77,30 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="Content\font-awesome.css" />
-    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Fonts\css\all.css" />
+    <Content Include="Content\Fonts\css\all.min.css" />
+    <Content Include="Content\Fonts\css\brands.css" />
+    <Content Include="Content\Fonts\css\brands.min.css" />
+    <Content Include="Content\Fonts\css\fontawesome.css" />
+    <Content Include="Content\Fonts\css\fontawesome.min.css" />
+    <Content Include="Content\Fonts\css\regular.css" />
+    <Content Include="Content\Fonts\css\regular.min.css" />
+    <Content Include="Content\Fonts\css\solid.css" />
+    <Content Include="Content\Fonts\css\solid.min.css" />
+    <Content Include="Content\Fonts\css\svg-with-js.css" />
+    <Content Include="Content\Fonts\css\svg-with-js.min.css" />
+    <Content Include="Content\Fonts\css\svg.css" />
+    <Content Include="Content\Fonts\css\svg.min.css" />
+    <Content Include="Content\Fonts\css\v4-font-face.css" />
+    <Content Include="Content\Fonts\css\v4-font-face.min.css" />
+    <Content Include="Content\Fonts\css\v4-shims.css" />
+    <Content Include="Content\Fonts\css\v4-shims.min.css" />
+    <Content Include="Content\Fonts\css\v5-font-face.css" />
+    <Content Include="Content\Fonts\css\v5-font-face.min.css" />
+    <Content Include="Content\Fonts\LICENSE.txt" />
     <Content Include="Content\site.css" />
     <Content Include="CrearPublicacion.aspx" />
+    <Content Include="detallePubliacion2.aspx" />
     <Content Include="DetallePublicacion.aspx" />
     <Content Include="estefano\pantallas\Comunidades.aspx" />
     <Content Include="estefano\pantallas\Inicio.aspx" />
@@ -89,19 +109,21 @@
     <Content Include="estefano\pantallas\Registro.aspx" />
     <Content Include="estefano\pantallas\ReporteComunidades.aspx" />
     <Content Include="Feed.aspx" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="masPopulares.aspx" />
+    <Content Include="popular1.aspx" />
+    <Content Include="popular2.aspx" />
+    <Content Include="ReportarPublicacion.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Fonts\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\Fonts\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\Fonts\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\Fonts\webfonts\fa-v4compatibility.woff2" />
     <Content Include="estefano\masterPage\MasterPage.master" />
-    <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -117,6 +139,13 @@
     <Compile Include="CrearPublicacion.aspx.designer.cs">
       <DependentUpon>CrearPublicacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="detallePubliacion2.aspx.cs">
+      <DependentUpon>detallePubliacion2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="detallePubliacion2.aspx.designer.cs">
+      <DependentUpon>detallePubliacion2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DetallePublicacion.aspx.cs">
       <DependentUpon>DetallePublicacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -126,49 +155,42 @@
     </Compile>
     <Compile Include="estefano\masterPage\MasterPage.master.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\masterPage\MasterPage.master.designer.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
     </Compile>
     <Compile Include="estefano\pantallas\Comunidades.aspx.cs">
       <DependentUpon>Comunidades.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\pantallas\Comunidades.aspx.designer.cs">
       <DependentUpon>Comunidades.aspx</DependentUpon>
     </Compile>
     <Compile Include="estefano\pantallas\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\pantallas\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="estefano\pantallas\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\pantallas\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="estefano\pantallas\Perfil.aspx.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\pantallas\Perfil.aspx.designer.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="estefano\pantallas\Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\pantallas\Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
     <Compile Include="estefano\pantallas\ReporteComunidades.aspx.cs">
       <DependentUpon>ReporteComunidades.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\pantallas\ReporteComunidades.aspx.designer.cs">
       <DependentUpon>ReporteComunidades.aspx</DependentUpon>
@@ -180,13 +202,40 @@
     <Compile Include="Feed.aspx.designer.cs">
       <DependentUpon>Feed.aspx</DependentUpon>
     </Compile>
+    <Compile Include="masPopulares.aspx.cs">
+      <DependentUpon>masPopulares.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masPopulares.aspx.designer.cs">
+      <DependentUpon>masPopulares.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="popular1.aspx.cs">
+      <DependentUpon>popular1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="popular1.aspx.designer.cs">
+      <DependentUpon>popular1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="popular2.aspx.cs">
+      <DependentUpon>popular2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="popular2.aspx.designer.cs">
+      <DependentUpon>popular2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedPucpMast.Master.cs">
       <DependentUpon>RedPucpMast.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RedPucpMast.Master.designer.cs">
       <DependentUpon>RedPucpMast.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ReportarPublicacion.aspx.cs">
+      <DependentUpon>ReportarPublicacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportarPublicacion.aspx.designer.cs">
+      <DependentUpon>ReportarPublicacion.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

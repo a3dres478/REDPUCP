@@ -1,56 +1,63 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="RedPucpMast.Master.cs" Inherits="RedPucpWeb.RedPucpMast" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="Content/bootstrap.min.css" rel="stylesheet" />
-  <link href="Content/Fonts/css/all.min.css" rel="stylesheet" />
-  <link href="Content/site.css" rel="stylesheet" />
-  <script src="Scripts/jquery-3.7.1.min.js"></script>
-  <script src="Scripts/bootstrap.bundle.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Fonts/css/all.min.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.7.1.min.js"></script>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
 
-  <title><asp:ContentPlaceHolder ID="cphTitulo" runat="server" /></title>
+    <title>
+        <asp:ContentPlaceHolder ID="cphTitulo" runat="server" />
+    </title>
 </head>
 <body>
-  <form id="form1" runat="server">
-    <div class="container-fluid">
-      <div class="d-flex">
-        <nav class="sidebar bg-dark text-white d-flex flex-column p-3">
-           <div class="sidebar-logo">
-              <img src="assets/logo-redpucp.png" alt="REDPUjytjCP" />
-            </div>
-          <ul class="nav flex-column gap-1">
-            <li class="nav-item"><a class="nav-link" href="Feed.aspx"><i class="fa-solid fa-house me-2"></i>Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="CrearPublicacion.aspx"><i class="fa-solid fa-pen-to-square me-2"></i>Crear publicación</a></li>
-            <li class="nav-item"><a class="nav-link" href="DetallePublicacion.aspx"><i class="fa-regular fa-message me-2"></i>Detalle</a></li>
-         </ul>
-          <div class="mt-auto small text-center opacity-75 pt-3 border-top border-secondary">
-            © REDPUCP 2025
-          </div>
-        </nav>
+    <form id="form1" runat="server">
+        <div class="container-fluid">
+            <div class="d-flex">
+                <nav class="sidebar bg-dark text-white d-flex flex-column p-3">
+                    <div class="sidebar-logo">
+                        <img src="assets/logo-redpucp.png"
+                            alt="REDPUCP"
+                            class="me-2"
+                            style="width: 240px; height: 240px; object-fit: contain;" />
 
-      
-        <div class="flex-fill bg-light min-vh-100">
-          <!-- barra de busqueda  -->
-          <header class="border-bottom bg-white px-4 py-3 d-flex align-items-center gap-3">
-            <div class="flex-fill">
-              <div class="input-group">
-                <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="text" class="form-control" placeholder="Search" />
-              </div>
-            </div>
-            <a class="text-dark" href="#"><i class="fa-regular fa-bell fa-lg"></i></a>
-            <a class="text-dark" href="#"><i class="fa-regular fa-circle-user fa-lg"></i></a>
-          </header>
+                    </div>
+                    <ul class="nav flex-column gap-1">
+                        <li class="nav-item"><a class="nav-link" href="Feed.aspx"><i class="fa-solid fa-house me-2"></i>Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="CrearPublicacion.aspx"><i class="fa-solid fa-pen-to-square me-2"></i>Crear publicación</a></li>
+                        
+                    </ul>
+                    <div class="mt-auto small text-center opacity-75 pt-3 border-top border-secondary">
+                        © REDPUCP 2025
+                    </div>
+                </nav>
 
-          <!-- contenido-->
-          <main class="p-4">
-            <asp:ContentPlaceHolder ID="cphContenido" runat="server" />
-          </main>
+
+                <div class="flex-fill bg-light min-vh-100">
+                    <!-- barra de busqueda  -->
+                    <header class="border-bottom bg-white px-4 py-3 d-flex align-items-center gap-3">
+                        <div class="flex-fill">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                <input type="text" class="form-control" placeholder="Search" />
+                            </div>
+                        </div>
+                        <a class="text-dark" href="#"><i class="fa-regular fa-bell fa-lg"></i></a>
+                        <a class="text-dark" href="estefano/pantallas/Perfil.aspx"><i class="fa-regular fa-circle-user fa-lg"></i></a>
+                    </header>
+
+                    <!-- contenido-->
+                    <main class="p-4">
+                        <asp:ContentPlaceHolder ID="cphContenido" runat="server" />
+                    </main>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </form>
+    </form>
 </body>
 </html>
