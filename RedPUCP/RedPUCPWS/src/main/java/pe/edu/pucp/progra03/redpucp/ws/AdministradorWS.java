@@ -17,7 +17,8 @@ import pe.edu.pucp.progra03.redpucp.boimpl.AdministradorBOImpl;
  *
  * @author andre
  */
-
+@WebService(serviceName = "AdministradorWS",
+        targetNamespace = "https://services.redpucp.ws/")
 public class AdministradorWS {
     private final IAdministradorBO administradorBO;
     
@@ -37,7 +38,7 @@ public class AdministradorWS {
     public Administrador obtenerAdministrador(@WebParam(name="id")int id){
         return this.administradorBO.obtener(id);
     }
-    @WebMethod (operationName = "eliminarAcademia")
+    @WebMethod (operationName = "eliminarAdministrador")
     public void eliminarAdministrador(@WebParam(name="id")int id){
         this.administradorBO.eliminar(id);
     }

@@ -16,6 +16,8 @@ import pe.edu.pucp.progra03.redpucp.boimpl.ComentarioBOImpl;
  *
  * @author andre
  */
+@WebService(serviceName = "ComentarioWS",
+        targetNamespace = "https://services.redpucp.ws/")
 public class ComentarioWS {
     private final IComentarioBO comentarioBO;
     public ComentarioWS(){
@@ -34,7 +36,7 @@ public class ComentarioWS {
     public Comentario obtenerComentario(@WebParam(name="id")int id){
         return this.comentarioBO.obtener(id);
     }
-    @WebMethod (operationName = "eliminarAcademia")
+    @WebMethod (operationName = "eliminarComentario")
     public void eliminarComentario(@WebParam(name="id")int id){
         this.comentarioBO.eliminar(id);
     }
