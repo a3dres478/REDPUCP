@@ -6,6 +6,7 @@ package pe.edu.pucp.progra03.redpucp.ws;
 
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+import jakarta.jws.WebService;
 import java.util.List;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
 import pe.edu.pucp.progra03.redpucp.bo.Estado;
@@ -16,6 +17,8 @@ import pe.edu.pucp.progra03.redpucp.boimpl.ComunidadBOImpl;
  *
  * @author invitado123
  */
+@WebService(serviceName = "ComunidadWS",
+        targetNamespace = "https://services.redpucp.ws/")
 public class ComunidadWS {
     private final IComunidadBO comunidadBO;
 

@@ -16,7 +16,8 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
  *
  * @author andre
  */
-@WebService(serviceName = "UsuarioWS", targetNamespace = "   v ")
+@WebService(serviceName = "Usuario_comunWS",
+        targetNamespace = "https://services.redpucp.ws/")
 public class Usuario_comunWS {
     private final IUsuario_comunBO usuariocomunBO;
     

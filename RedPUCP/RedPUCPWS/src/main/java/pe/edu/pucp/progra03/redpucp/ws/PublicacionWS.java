@@ -17,6 +17,8 @@ import pe.edu.pucp.progra03.redpucp.boimpl.PublicacionBOImpl;
  *
  * @author andre
  */
+@WebService(serviceName = "PublicacionWS",
+        targetNamespace = "https://services.redpucp.ws/")
 public class PublicacionWS {
 
     private final IPublicacionBO publicacionBO;

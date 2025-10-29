@@ -17,6 +17,8 @@ import pe.edu.pucp.progra03.redpucp.boimpl.VotoComentarioBOImpl;
  *
  * @author invitado123
  */
+@WebService(serviceName = "VotoComentarioWS",
+        targetNamespace = "https://services.redpucp.ws/")
 public class VotoComentarioWS {
     private final IVotoComentarioBO votoBO;
 
@@ -24,22 +26,22 @@ public class VotoComentarioWS {
         votoBO = new VotoComentarioBOImpl();
     }
 
-    @WebMethod(operationName = "listarComunidades")
+    @WebMethod(operationName = "listarVotosComentario")
     public List<VotoComentario> listarVotosComentarios() {
         return this.votoBO.listar();
     }
 
-    @WebMethod(operationName = "obtenerComunidad")
+    @WebMethod(operationName = "obtenerVotoComentario")
     public VotoComentario obtenerVotosComentarios(@WebParam(name = "id") int id) {
         return this.votoBO.obtener(id);
     }
 
-    @WebMethod(operationName = "eliminarComunidad")
+    @WebMethod(operationName = "eliminarVotoComentario")
     public void eliminarVotoComentario(@WebParam(name="id")int id){
         this.votoBO.eliminar(id);
     }
-    @WebMethod (operationName ="guardarComunidad")
-    public void guardarVotosComentarios(@WebParam(name="public")VotoComentario comunidad,@WebParam(name="estado")Estado estado ){
-        this.votoBO.guardar(comunidad, estado);
+    @WebMethod (operationName ="guardarVotoComentario")
+    public void guardarVotosComentarios(@WebParam(name="public")VotoComentario voto,@WebParam(name="estado")Estado estado ){
+        this.votoBO.guardar(voto, estado);
     }
 }
