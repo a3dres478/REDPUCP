@@ -3,10 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package pe.edu.pucp.progra03.redpucp.ws;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.List;
+import java.util.ResourceBundle;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Administrador;
 import pe.edu.pucp.progra03.redpucp.bo.Estado;
 import pe.edu.pucp.progra03.redpucp.bo.IAdministradorBO;
@@ -20,26 +28,108 @@ import pe.edu.pucp.progra03.redpucp.boimpl.AdministradorBOImpl;
 @WebService(serviceName = "AdministradorWS",
         targetNamespace = "https://services.redpucp.ws/")
 public class AdministradorWS {
-    private final IAdministradorBO administradorBO;
+    
+    private final ResourceBundle config;
+    private final String urlBase;
+    private HttpClient client = HttpClient.newHttpClient();
+     private String NOMBRE_RECURSO = "administradores";
+    
+    
+    
+    //private final IAdministradorBO administradorBO;
     
     public AdministradorWS(){
-     administradorBO=new AdministradorBOImpl();
+        this.config= ResourceBundle.getBundle("app");
+        this.urlBase = this.config.getString("app.services.rest.baseurl");
     }
     
     @WebMethod(operationName = "listarAdministradores")
-    public List<Administrador>listarAdministradores(){
-        return this.administradorBO.listar();
+    public List<Administrador>listarAdministradores()throws Exception{
+        String url =this.urlBase+"/"+this.NOMBRE_RECURSO;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+        ObjectMapper mapper= new ObjectMapper();
+        List<Administrador>academias=mapper.readValue(json,new TypeReference<List<Administrador>>() {});
+        return academias;
     }
-    @WebMethod (operationName ="guardarAdministrador")
-    public void guardarAdministrador(@WebParam(name="admin")Administrador admin,@WebParam(name="estado")Estado estado){
-        this.administradorBO.guardar(admin,estado);
+    
+    @WebMethod(operationName = "guardarAdministrador")
+    public void guardarAdministrador(@WebParam(name = "administrador") Administrador administrador, @WebParam(name = "estado") Estado estado) throws Exception{
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(administrador);
+        
+        String url;
+        HttpRequest request;
+        
+        if (estado == Estado.Nuevo){
+            url = this.urlBase +"/"+this.NOMBRE_RECURSO;
+            request = HttpRequest.newBuilder()
+                    .uri(URI.create(url))
+                    .header("Content-Type","application/json" )
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+        }
+        else{
+            url = this.urlBase+"/"+this.NOMBRE_RECURSO+"/"+administrador.getIdUsuario();
+            request = HttpRequest.newBuilder()
+                    .uri(URI.create(url))
+                    .header("Content-Type","application/json")
+                    .PUT(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+        }
+        
+        client.send(request, HttpResponse.BodyHandlers.ofString());
     }
+    
     @WebMethod (operationName = "obtenerAdmin")
-    public Administrador obtenerAdministrador(@WebParam(name="id")int id){
-        return this.administradorBO.obtener(id);
+    public Administrador obtenerAdministrador(@WebParam(name = "idUsuario") int id)throws Exception{
+        String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/" + id;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+        ObjectMapper mapper= new ObjectMapper();
+        Administrador administrador = mapper.readValue(json, Administrador.class);
+        
+        return administrador;
     }
+    
     @WebMethod (operationName = "eliminarAdministrador")
-    public void eliminarAdministrador(@WebParam(name="id")int id){
-        this.administradorBO.eliminar(id);
+    public void eliminarAdministrador (@WebParam(name = "idUsuario") int id) throws Exception {
+        String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/" + id;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .DELETE()
+                .build();
+        client.send(request, HttpResponse.BodyHandlers.ofString());
     }
+    
+//    public AdministradorWS(){
+//     administradorBO=new AdministradorBOImpl();
+//    }
+//    
+//    @WebMethod(operationName = "listarAdministradores")
+//    public List<Administrador>listarAdministradores(){
+//        return this.administradorBO.listar();
+//    }
+//    @WebMethod (operationName ="guardarAdministrador")
+//    public void guardarAdministrador(@WebParam(name="admin")Administrador admin,@WebParam(name="estado")Estado estado){
+//        this.administradorBO.guardar(admin,estado);
+//    }
+//    @WebMethod (operationName = "obtenerAdmin")
+//    public Administrador obtenerAdministrador(@WebParam(name="id")int id){
+//        return this.administradorBO.obtener(id);
+//    }
+//    @WebMethod (operationName = "eliminarAdministrador")
+//    public void eliminarAdministrador(@WebParam(name="id")int id){
+//        this.administradorBO.eliminar(id);
+//    }
 }
