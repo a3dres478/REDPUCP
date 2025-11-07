@@ -108,6 +108,22 @@ public class ComunidadWS {
         
         client.send(request, HttpResponse.BodyHandlers.ofString());
     }
+     
+    @WebMethod (operationName ="listarusandofiltros")
+    public List<Comunidad> listarusandofiltros(@WebParam(name="filtro1")String filtro1)throws Exception{
+        String url = this.urlBase + "/" + this.NOMBRE_RECURSO+"/filtro1/"+filtro1;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+        ObjectMapper mapper= new ObjectMapper();
+        List<Comunidad> comunidades = mapper.readValue(json, new TypeReference<List<Comunidad>>() {});
+        
+        return comunidades;
+    }
     
 //    private final IComunidadBO comunidadBO;
 //

@@ -45,4 +45,9 @@ public class ComunidadBOImpl implements IComunidadBO{
             this.comunidadDAO.actualizar(comunidad);
         }
     }
+    /*REVISAR LOS FILTROS*/
+    @Override
+    public List<Comunidad>filtrarcomunidades(String filtro1){
+        return this.comunidadDAO.listarcomunidadfiltros(filtro1);
+    }
 }

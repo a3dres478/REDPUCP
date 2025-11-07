@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package pe.edu.pucp.progra03.redpucp.bo;
+import java.util.List;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
 /**
  *
@@ -10,4 +11,5 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
  */
 public interface IComunidadBO extends IBaseBO<Comunidad>{
     //terminar
+    List<Comunidad>filtrarcomunidades(String filtro);
 }
