@@ -155,42 +155,49 @@
     </Compile>
     <Compile Include="estefano\masterPage\MasterPage.master.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\masterPage\MasterPage.master.designer.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
     </Compile>
     <Compile Include="estefano\pantallas\Comunidades.aspx.cs">
       <DependentUpon>Comunidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\pantallas\Comunidades.aspx.designer.cs">
       <DependentUpon>Comunidades.aspx</DependentUpon>
     </Compile>
     <Compile Include="estefano\pantallas\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\pantallas\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="estefano\pantallas\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\pantallas\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="estefano\pantallas\Perfil.aspx.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\pantallas\Perfil.aspx.designer.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="estefano\pantallas\Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\pantallas\Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
     <Compile Include="estefano\pantallas\ReporteComunidades.aspx.cs">
       <DependentUpon>ReporteComunidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="estefano\pantallas\ReporteComunidades.aspx.designer.cs">
       <DependentUpon>ReporteComunidades.aspx</DependentUpon>
@@ -226,6 +233,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedPucpMast.Master.cs">
       <DependentUpon>RedPucpMast.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RedPucpMast.Master.designer.cs">
       <DependentUpon>RedPucpMast.Master</DependentUpon>
