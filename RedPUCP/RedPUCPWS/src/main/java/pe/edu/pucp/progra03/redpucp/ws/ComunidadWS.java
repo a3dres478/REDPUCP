@@ -125,6 +125,22 @@ public class ComunidadWS {
         return comunidades;
     }
     
+    @WebMethod (operationName ="listarnombrepartes")
+    public List<Comunidad> listarnombrepartes(@WebParam(name="nombreparte")String nombreparte)throws Exception{
+        String url = this.urlBase + "/" + this.NOMBRE_RECURSO+"/nombreparte/"+nombreparte;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+        ObjectMapper mapper= new ObjectMapper();
+        List<Comunidad> comunidades = mapper.readValue(json, new TypeReference<List<Comunidad>>() {});
+        
+        return comunidades;
+    }
+    
 //    private final IComunidadBO comunidadBO;
 //
 //    public ComunidadWS() {

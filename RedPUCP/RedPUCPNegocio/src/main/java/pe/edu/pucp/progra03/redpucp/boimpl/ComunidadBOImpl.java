@@ -50,4 +50,10 @@ public class ComunidadBOImpl implements IComunidadBO{
     public List<Comunidad>filtrarcomunidades(String filtro1){
         return this.comunidadDAO.listarcomunidadfiltros(filtro1);
     }
+    /*Segunda funcion de busqueda por nombre*/
+    @Override
+    public List<Comunidad>buscarcomunidadpornombres(String nombre){
+        return this.comunidadDAO.buscarcomunidadpornombres(nombre);
+    }
+    
 }

@@ -120,6 +120,33 @@ public class ComunidadDAOimpl extends TransaccionalBaseDAO<Comunidad> implements
 
     }
 
+    protected CallableStatement comandobuscarporpartenombre(Connection conn, String nombreparte) throws SQLException{
+        String sql = "{CALL listarporpartenombre(?}}";
+        CallableStatement cmd = conn.prepareCall(sql);
+        cmd.setString(nombreparte, sql);
+        return cmd;
+    }
+    
+    @Override 
+    public List<Comunidad> buscarcomunidadpornombres (String nombrecom){
+        try (
+                Connection conn = DBManager.getInstance().getConnection(); PreparedStatement ps = this.comandolistarfiltros(conn, nombrecom);) {
+            ResultSet rs = ps.executeQuery();
+            List<Comunidad> modelos = new ArrayList<>();
+            while (rs.next()) {
+                modelos.add(this.mapearModelo(rs));
+            }
+            return modelos;
+
+        } catch (SQLException e) {
+            System.err.println("Error SQL durante el listado: " + e.getMessage());
+            throw new RuntimeException("No se pudo listar el registro.", e);
+        } catch (Exception e) {
+            System.err.println("Error inpesperado: " + e.getMessage());
+            throw new RuntimeException("Error inesperado al listar los registros.", e);
+        }
+    }
+    
 }
 
 

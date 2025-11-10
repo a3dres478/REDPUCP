@@ -46,6 +46,13 @@ public class ComunidadResource {
     }
     
     @GET
+    @Path ("nombre/{nombre}")
+    public List<Comunidad>listarpornombre(@PathParam("nombre") String nombre){
+        return this.comunidadBO.buscarcomunidadpornombres(nombre);
+    }
+    
+    
+    @GET
     @Path("{id}")
     public Response obtener (@PathParam("id")int id){
         Comunidad admin =this.comunidadBO.obtener(id);

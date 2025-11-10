@@ -12,4 +12,5 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
 public interface IComunidadBO extends IBaseBO<Comunidad>{
     //terminar
     List<Comunidad>filtrarcomunidades(String filtro);
+    List<Comunidad>buscarcomunidadpornombres(String nombreparte);
 }
