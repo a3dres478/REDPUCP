@@ -76,23 +76,5 @@ namespace RedPucpWeb.estefano.pantallas
             }
         }
 
-        // --- MOSTRAR REPORTE ---
-        protected void btnGenerarReporte_Click(object sender, EventArgs e)
-        {
-            pnlReporte.Visible = true;
-
-            var reporte = comunidades.Select(c => new
-            {
-                c.Numero,
-                Comunidad = c.ComunidadNombre,
-                c.Categoria,
-                c.Miembros,
-                c.FechaCreacion,
-                c.Estado
-            });
-
-            gvReporteComunidades.DataSource = reporte;
-            gvReporteComunidades.DataBind();
-        }
     }
 }

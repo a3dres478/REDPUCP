@@ -65,7 +65,42 @@
             font-size: 14px;
             color: #666;
         }
+
+
+            .btn-dark{
+          background-color:#0d6efd !important;
+          border-color:#0d6efd !important;
+          color:#fff !important;
+        }
+        .btn-dark:hover,
+        .btn-dark:focus{
+          background-color:#0b5ed7 !important;
+          border-color:#0b5ed7 !important;
+          color:#fff !important;
+        }
+
+        .btn-outline-dark{
+          color:#0d6efd !important;
+          border-color:#0d6efd !important;
+          background-color:transparent !important;
+        }
+        .btn-outline-dark:hover,
+        .btn-outline-dark:focus{
+          background-color:#0d6efd !important;
+          color:#fff !important;
+          border-color:#0d6efd !important;
+        }
+
+        .page-link{ color:#0d6efd; }
+        .page-item.active .page-link{
+          background-color:#0d6efd; border-color:#0d6efd; color:#fff;
+        }
+
+
+
     </style>
+
+
 
     <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
 </head>
@@ -103,6 +138,15 @@
                         <!--  <li class="nav-item">
                             <a class="nav-link" href="#">Comunidades</a>
                         </li>  -->
+                        <li class="nav-item">
+                            <asp:HyperLink ID="lnkReportes" runat="server"
+                                NavigateUrl="~/estefano/pantallas/ReporteComunidades.aspx"
+                                CssClass="nav-link">Reportes
+                            </asp:HyperLink>
+                        </li>
+
+
+
                     </ul>
 
                     <!-- derecha -->
@@ -141,6 +185,7 @@
 
         <footer>
             &copy; <%= DateTime.Now.Year %> RedPUCP — Proyecto académico PUCP
+       
         </footer>
 
         <!-- SCRIPTS -->

@@ -48,31 +48,5 @@ AutoEventWireup="true" CodeBehind="Comunidades.aspx.cs" Inherits="RedPucpWeb.est
         <!-- SECCIÓN DE REPORTE -->
         <hr class="my-5" />
 
-        <div class="text-center mb-4">
-            <asp:Button ID="btnGenerarReporte" runat="server" Text="Generar Reporte de Comunidades"
-                CssClass="btn btn-dark btn-lg" OnClick="btnGenerarReporte_Click" />
-        </div>
-
-        <!-- PANEL DE REPORTE -->
-        <asp:Panel ID="pnlReporte" runat="server" Visible="false" CssClass="container mt-4">
-            <h3 class="text-center fw-bold mb-3">
-                <i class="fa fa-table"></i> Reporte General de Comunidades
-            </h3>
-
-            <asp:GridView ID="gvReporteComunidades" runat="server" AutoGenerateColumns="False"
-                CssClass="table table-hover table-bordered align-middle text-center shadow-sm"
-                HeaderStyle-BackColor="#f8f9fa" HeaderStyle-Font-Bold="true"
-                HeaderStyle-ForeColor="#212529" BorderColor="#dee2e6" GridLines="None">
-                <Columns>
-                    <asp:BoundField DataField="Numero" HeaderText="N°" />
-                    <asp:BoundField DataField="Comunidad" HeaderText="Comunidad" />
-                    <asp:BoundField DataField="Categoria" HeaderText="Categoría" />
-                    <asp:BoundField DataField="Miembros" HeaderText="Miembros" />
-                    <asp:BoundField DataField="FechaCreacion" HeaderText="Fecha de creación" />
-                    <asp:BoundField DataField="Estado" HeaderText="Estado" />
-                </Columns>
-            </asp:GridView>
-        </asp:Panel>
-
     </div>
 </asp:Content>
