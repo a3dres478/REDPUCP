@@ -9,19 +9,19 @@ DROP PROCEDURE IF EXISTS sp_listarComunidadesxpublicacionprincipal;
 
 
 
-CREATE TABLE ComunidadXPublicacionPrincipal (
+CREATE TABLE COMUNIDADXPUBLICACIONPRINCIPAL_RP (
     id INT AUTO_INCREMENT PRIMARY KEY,
     idComunidad INT NOT NULL,
     idPublicacion INT NULL,
     
     CONSTRAINT fk_comunidad_cpp
         FOREIGN KEY (idComunidad)
-        REFERENCES Comunidad(idComunidad)
+        REFERENCES COMUNIDAD_RP(idComunidad)
         ON DELETE CASCADE,
     
     CONSTRAINT fk_publicacion_cpp
         FOREIGN KEY (idPublicacion)
-        REFERENCES Publicacion(idPublicacion)
+        REFERENCES PUBLICACION_RP(idPublicacion)
         ON DELETE SET NULL,
     
     -- Para garantizar que por comunidad exista SOLO UNA fila

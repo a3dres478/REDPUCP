@@ -9,7 +9,8 @@ DROP TABLE IF EXISTS PUBLICACION_RP;
 DROP TABLE IF EXISTS USUARIO_COMUNIDAD_RP;
 DROP TABLE IF EXISTS COMUNIDAD_RP;
 DROP TABLE IF EXISTS USUARIO_RP;
-
+DROP TABLE IF EXISTS NOTIFICACION_RP;
+DROP TABLE IF EXISTS REPORTE_RP;
 
 -- TABLA USUARIO
 CREATE TABLE USUARIO_RP (
@@ -118,15 +119,15 @@ CREATE TABLE IF NOT EXISTS REPORTE_RP (
   estado CHAR(1) NOT NULL DEFAULT 'A', -- 'A' = Activo/Pendiente, 'R' = Resuelto, 'E' = Eliminado
   
   -- Foreign Keys
-  fid_publicacion_reportada INT NULL,
-  fid_comentario_reportado INT NULL,
-  fid_publicador INT NOT NULL, -- El dueño del contenido reportado
-  fid_reportador INT NOT NULL, -- Quien hace el reporte
+  idPublicacion_report INT NULL,
+  idComentario_report INT NULL,
+  idPublicador INT NOT NULL, -- El dueño del contenido reportado
+  idReportador INT NOT NULL, -- Quien hace el reporte
   
-  FOREIGN KEY (fid_publicacion_reportada) REFERENCES PUBLICACION_RP(idPublicacion),
-  FOREIGN KEY (fid_comentario_reportado) REFERENCES COMENTARIO_RP(idComentario),
-  FOREIGN KEY (fid_publicador) REFERENCES USUARIO_RP(idUsuario),
-  FOREIGN KEY (fid_reportador) REFERENCES USUARIO_RP(idUsuario)
+  FOREIGN KEY (idPublicacion_report) REFERENCES PUBLICACION_RP(idPublicacion),
+  FOREIGN KEY (idComentario_report) REFERENCES COMENTARIO_RP(idComentario),
+  FOREIGN KEY (idPublicador) REFERENCES USUARIO_RP(idUsuario),
+  FOREIGN KEY (idReportador) REFERENCES USUARIO_RP(idUsuario)
 );
 
 --
@@ -140,11 +141,11 @@ CREATE TABLE IF NOT EXISTS NOTIFICACION_RP (
   estado CHAR(1) NOT NULL DEFAULT 'N', -- 'N' = No Leída, 'L' = Leída
   
   -- Foreign Keys
-  fid_publicacion INT NOT NULL, -- Publicación que origina la noti
-  fid_usuario_notificado INT NOT NULL, -- Usuario que recibe la noti
+  fid_Publicacion INT NOT NULL, -- Publicación que origina la noti
+  fid_UsuarioNotificado INT NOT NULL, -- Usuario que recibe la noti
   
-  FOREIGN KEY (fid_publicacion) REFERENCES PUBLICACION_RP(idPublicacion),
-  FOREIGN KEY (fid_usuario_notificado) REFERENCES USUARIO_RP(idUsuario)
+  FOREIGN KEY (fid_Publicacion) REFERENCES PUBLICACION_RP(idPublicacion),
+  FOREIGN KEY (fid_UsuarioNotificado) REFERENCES USUARIO_RP(idUsuario)
 );
 
 
