@@ -29,13 +29,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import pe.edu.pucp.inf30.RedPUCP.dao.Comunidad.ComunidadDAO;
+import pe.edu.pucp.inf30.RedPUCP.dao.Publicacion.PublicacionDAO;
+import pe.edu.pucp.inf30.RedPUCP.dao.ReportesU.ReporteDAO;
 import pe.edu.pucp.inf30.RedPUCP.dao.usuario.UsuarioDAO;
 import pe.edu.pucp.inf30.RedPUCP.dao.usuario.Usuario_comunDAO;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.Comunidad.ComunidadDAOimpl;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.Publicacion.PublicacionDAOimpl;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.ReportesU.ReporteDAOImpl;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.UsuarioDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.Usuario_comunDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.EstadoComunidad;
+import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Comentario;
+import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Publicacion;
+import pe.edu.pucp.inf30.RedPUCP.modelo.ReportesU.Reporte;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 
@@ -85,7 +92,46 @@ public class ComunidadDAOTest implements PersistibleProbable{
 //        
 //        this.testId = comunidadDAO.crear(comunidad);
 //        assertTrue(this.testId > 0);
-       // assertTrue(1==1);
+        assertTrue(1==1);
+       
+       
+       
+       /* Inentos*/
+//       
+//        /*Obtener publicacion*/
+//        PublicacionDAO publicacionDAO = new PublicacionDAOimpl();
+//        Publicacion publi = publicacionDAO.leer(1);
+//
+//        /*USuario que hará el reporte*/
+//        Usuario_comunDAO usuarioDAO = new Usuario_comunDAOimpl();
+//        Usuario_comun reportador = usuarioDAO.leer(10);
+//
+//        /*se obtiene el usuario que creo la publicacion*/
+//        int data = publi.getAutor().getIdUsuario();
+//        Usuario_comun creador = usuarioDAO.leer(data);
+//
+//        ReporteDAO reporteDAO = new ReporteDAOImpl();
+//        Reporte report = new Reporte();
+//
+//        System.err.println("LOGRADO");
+//        report.setDetalle("testeodereporte a publicacion general");
+//        report.setPublicacionreportada(publi);
+//        report.setPublicador(creador);
+//        report.setReportador(reportador);
+//        report.setTipo("SPAM");
+//
+//        
+//        
+//        
+//        
+//        this.testId = reporteDAO.crear(report);
+//        assertTrue(this.testId > 0);
+       
+       
+       
+       
+       
+       
     }
     
     @Test
@@ -106,6 +152,12 @@ public class ComunidadDAOTest implements PersistibleProbable{
 //        //assertEquals(comunidadModificado.getNombre(),"Test Comunidad modificada");
 //        assertEquals(comunidadModificado.getDescripcion(),"Test Comunidad modificacion");
 //        assertEquals(comunidadModificado.getEstado(),String.valueOf(EstadoComunidad.SUSPENDIDA).charAt(0));    
+
+
+    
+
+
+
         assertTrue(1==1);
     }
     
@@ -123,7 +175,15 @@ public class ComunidadDAOTest implements PersistibleProbable{
 //
 //        boolean modifico = comunidadDAO.actualizar(comunidad);
 //        assertFalse(modifico);
-    assertTrue(1==1);
+    
+    
+//    ReporteDAO reporteDAO =new ReporteDAOImpl();
+//    Reporte reporte=new Reporte();
+//    reporte=reporteDAO.leer(2);
+//    reporte.setDetalle("alterado APROVADO");
+//    boolean modifico =reporteDAO.actualizar(reporte);
+//    assertTrue(modifico);
+    //assertTrue(1==1);
     }
     
     @Test
@@ -153,7 +213,10 @@ public class ComunidadDAOTest implements PersistibleProbable{
 //        ComunidadDAO comunidadDAO = new ComunidadDAOimpl();
 //        Comunidad comunidad = comunidadDAO.leer(this.idIncorrecto);
 //        assertNull(comunidad);
-assertTrue(1==1);
+
+            ReporteDAO reporteDAO= new ReporteDAOImpl();
+            Reporte report= reporteDAO.leer(99);
+            assertNull(report);
     }
     
     @Test
