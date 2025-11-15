@@ -46,7 +46,7 @@ public class Comentario {
         this.idComentario = id;
     }
 
-    public Usuario getAutor() {
+    public Usuario_comun getAutor() {
         return autor;
     }
 

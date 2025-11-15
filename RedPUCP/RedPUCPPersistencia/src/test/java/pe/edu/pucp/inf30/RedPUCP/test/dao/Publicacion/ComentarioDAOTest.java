@@ -107,16 +107,16 @@ public class ComentarioDAOTest implements PersistibleProbable {
     @Override
     public void debeCrear(){
 //        Usuario_comunDAO usuariocomunDAO= new Usuario_comunDAOimpl();
-//        Usuario_comun usuariocomun=usuariocomunDAO.leer(1);
+//        Usuario_comun usuariocomun=usuariocomunDAO.leer(6);
 //        
 //        PublicacionDAO publicacionDAO= new PublicacionDAOimpl();
-//        Publicacion publi = publicacionDAO.leer(1);
+//        Publicacion publi = publicacionDAO.leer(2);
 //        
 //        
 //        
 //        ComentarioDAO comentarioDAO = new ComentarioDAOImpl();
 //        Comentario comentario = new Comentario();
-//        comentario.setContenido("Comentario test");
+//        comentario.setContenido("Comentario test reporte");
 //        comentario.setVotosNegativos(1);
 //        comentario.setVotosPositivos(1);
 //        comentario.setAutor(usuariocomun);

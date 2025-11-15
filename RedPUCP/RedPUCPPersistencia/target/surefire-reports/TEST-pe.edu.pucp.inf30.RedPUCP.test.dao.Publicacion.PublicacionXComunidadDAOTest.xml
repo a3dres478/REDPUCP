@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.013" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.016" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="PE"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\andre\AppData\Local\Temp\surefire5140902795450531021\surefirebooter-20251115023746850_3.jar C:\Users\andre\AppData\Local\Temp\surefire5140902795450531021 2025-11-15T02-37-46_650-jvmRun1 surefire-20251115023746850_1tmp surefire_0-20251115023746850_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\andre\AppData\Local\Temp\surefire18436779648340499873\surefirebooter-20251115113423843_3.jar C:\Users\andre\AppData\Local\Temp\surefire18436779648340499873 2025-11-15T11-34-23_682-jvmRun1 surefire-20251115113423843_1tmp surefire_0-20251115113423843_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\RedPUCP\RedPUCPPersistencia\target\test-classes;C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\RedPUCP\RedPUCPPersistencia\target\classes;C:\Users\andre\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\andre\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\andre\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\andre\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\andre\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0\junit-jupiter-params-5.11.0.jar;C:\Users\andre\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.0\junit-jupiter-engine-5.11.0.jar;C:\Users\andre\.m2\repository\org\junit\platform\junit-platform-engine\1.11.0\junit-platform-engine-1.11.0.jar;C:\Users\andre\.m2\repository\pe\edu\pucp\inf30\RedPUCPModelo\1.0-SNAPSHOT\RedPUCPModelo-1.0-SNAPSHOT.jar;C:\Users\andre\.m2\repository\pe\edu\pucp\inf30\RedPUCPDBManager\1.0-SNAPSHOT\RedPUCPDBManager-1.0-SNAPSHOT.jar;C:\Users\andre\.m2\repository\com\mysql\mysql-connector-j\9.3.0\mysql-connector-j-9.3.0.jar;C:\Users\andre\.m2\repository\com\google\protobuf\protobuf-java\4.29.0\protobuf-java-4.29.0.jar;C:\Users\andre\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\andre\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\andre\AppData\Local\Temp\surefire5140902795450531021\surefirebooter-20251115023746850_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\andre\AppData\Local\Temp\surefire18436779648340499873\surefirebooter-20251115113423843_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.6+8-LTS-188"/>
@@ -62,9 +62,9 @@
   <testcase name="noDebeActualizarSiIdNoExiste" classname="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.002"/>
   <testcase name="debeLeerSiIdExiste" classname="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.001"/>
   <testcase name="debeCrear" classname="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.001"/>
-  <testcase name="noDebeLeerSiIdNoExiste" classname="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.001"/>
-  <testcase name="noDebeEliminarSiIdNoExiste" classname="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.0"/>
+  <testcase name="noDebeLeerSiIdNoExiste" classname="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.002"/>
+  <testcase name="noDebeEliminarSiIdNoExiste" classname="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.001"/>
   <testcase name="debeActualizarSiIdExiste" classname="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.001"/>
-  <testcase name="debeLeerTodos" classname="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.002"/>
-  <testcase name="debeEliminarSiIdExiste" classname="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.0"/>
+  <testcase name="debeLeerTodos" classname="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.001"/>
+  <testcase name="debeEliminarSiIdExiste" classname="pe.edu.pucp.inf30.RedPUCP.test.dao.Publicacion.PublicacionXComunidadDAOTest" time="0.002"/>
 </testsuite>

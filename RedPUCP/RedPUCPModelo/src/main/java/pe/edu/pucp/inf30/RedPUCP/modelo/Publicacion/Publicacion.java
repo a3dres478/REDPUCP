@@ -46,7 +46,7 @@ public class Publicacion {
         this.idPublicacion = id;
     }
 
-    public Usuario getAutor() {
+    public Usuario_comun getAutor() {
         return autor;
     }
 

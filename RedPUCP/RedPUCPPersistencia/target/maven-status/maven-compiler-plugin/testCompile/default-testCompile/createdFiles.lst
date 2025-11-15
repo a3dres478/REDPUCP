@@ -1,6 +1,7 @@
 pe\edu\pucp\inf30\RedPUCP\test\dao\Publicacion\PublicacionXComunidadDAOTest.class
 pe\edu\pucp\inf30\RedPUCP\test\dao\Publicacion\PublicacionDAOTest.class
 pe\edu\pucp\inf30\RedPUCP\test\dao\Publicacion\ComentarioDAOTest.class
+pe\edu\pucp\inf30\RedPUCP\test\dao\NotiyReport\ComunidadDAOTest1.class
 pe\edu\pucp\inf30\RedPUCP\test\dao\Usuario\Usuario_comunDAOTest.class
 pe\edu\pucp\inf30\RedPUCP\test\dao\Voto\VotoComentarioDAOTest.class
 pe\edu\pucp\inf30\RedPUCP\test\dao\Comunidad\ComunidadDAOTest.class
