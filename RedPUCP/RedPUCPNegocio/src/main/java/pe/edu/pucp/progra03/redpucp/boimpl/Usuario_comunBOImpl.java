@@ -40,7 +40,8 @@ public class Usuario_comunBOImpl implements IUsuario_comunBO {
     @Override 
     public void guardar(Usuario_comun usuario_comun,Estado estado){
         if(estado==Estado.Nuevo){
-            this.usuario_comunDAO.crear(usuario_comun);
+            int id=this.usuario_comunDAO.crear(usuario_comun);
+            usuario_comun.setIdUsuario(id);
         }else{
             this.usuario_comunDAO.actualizar(usuario_comun);
         }

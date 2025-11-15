@@ -40,7 +40,8 @@ public class UsuarioXComunidadBOImpl implements IUsuarioXComunidadBO {
     @Override 
     public void guardar(UsuarioxComunidad usuXcom,Estado estado){
         if(estado==Estado.Nuevo){
-            this.usuXcomDAO.crear(usuXcom);
+            int id=this.usuXcomDAO.crear(usuXcom);
+            usuXcom.setId_usuarioXcomunidad(id);
         }else{
             this.usuXcomDAO.actualizar(usuXcom);
         }

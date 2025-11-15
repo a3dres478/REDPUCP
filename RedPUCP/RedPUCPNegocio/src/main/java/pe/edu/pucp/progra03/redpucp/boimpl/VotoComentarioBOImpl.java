@@ -40,7 +40,8 @@ public class VotoComentarioBOImpl implements IVotoComentarioBO {
     @Override 
     public void guardar(VotoComentario votoComentario,Estado estado){
         if(estado==Estado.Nuevo){
-            this.votoComentarioDAO.crear(votoComentario);
+            int id=this.votoComentarioDAO.crear(votoComentario);
+            votoComentario.setId(id);
         }else{
             this.votoComentarioDAO.actualizar(votoComentario);
         }

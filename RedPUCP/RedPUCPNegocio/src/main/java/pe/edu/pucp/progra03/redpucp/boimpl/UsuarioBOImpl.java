@@ -40,7 +40,8 @@ public class UsuarioBOImpl implements IUsuarioBO{
     @Override 
     public void guardar(Usuario usu,Estado estado){
         if(estado==Estado.Nuevo){
-            this.usuarioDAO.crear(usu);
+            int id=this.usuarioDAO.crear(usu);
+            usu.setIdUsuario(id);
         }else{
             this.usuarioDAO.actualizar(usu);
         }

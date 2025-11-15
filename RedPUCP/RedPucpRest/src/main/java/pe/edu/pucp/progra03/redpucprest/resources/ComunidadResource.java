@@ -44,12 +44,15 @@ public class ComunidadResource {
     public List<Comunidad>listar(){
         return this.comunidadBO.listar();
     }
-    
+    //programaciones
+    //prog
     @GET
     @Path ("nombre/{nombre}")
     public List<Comunidad>listarpornombre(@PathParam("nombre") String nombre){
         return this.comunidadBO.buscarcomunidadpornombres(nombre);
     }
+    
+    //querystring //QueryParam
     
     
     @GET

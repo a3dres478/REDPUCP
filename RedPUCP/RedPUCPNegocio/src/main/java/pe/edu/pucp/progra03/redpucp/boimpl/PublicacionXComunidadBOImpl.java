@@ -40,7 +40,8 @@ public class PublicacionXComunidadBOImpl implements IPublicacionXComunidadBO{
     @Override
     public void guardar(PublicacionxComunidad publiXcom,Estado estado){
         if(estado==Estado.Nuevo){
-            this.publiXcom_DAO.crear(publiXcom);
+            int id=this.publiXcom_DAO.crear(publiXcom);
+            publiXcom.setId_publicacionXcomunidad(id);
         }else{
             this.publiXcom_DAO.actualizar(publiXcom);
         }

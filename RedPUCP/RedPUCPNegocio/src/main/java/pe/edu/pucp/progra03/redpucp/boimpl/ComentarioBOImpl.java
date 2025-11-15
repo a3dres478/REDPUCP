@@ -40,7 +40,8 @@ public class ComentarioBOImpl implements IComentarioBO{
     @Override
     public void guardar(Comentario comentario,Estado estado){
         if(estado==Estado.Nuevo){
-            this.comentarioDAO.crear(comentario);
+            int id=this.comentarioDAO.crear(comentario);
+            comentario.setId(id);
         }else{
             this.comentarioDAO.actualizar(comentario);
         }

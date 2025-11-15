@@ -40,7 +40,8 @@ public class ComunidadBOImpl implements IComunidadBO{
     @Override 
     public void guardar(Comunidad comunidad,Estado estado){
         if(estado==Estado.Nuevo){
-            this.comunidadDAO.crear(comunidad);
+            int id=this.comunidadDAO.crear(comunidad);
+            comunidad.setId_comunidad(id);
         }else{
             this.comunidadDAO.actualizar(comunidad);
         }

@@ -39,7 +39,8 @@ public class AdministradorBOImpl implements IAdministradorBO {
     @Override
     public void guardar(Administrador admin,Estado estado){
         if(estado==Estado.Nuevo){
-            this.administradorDAO.crear(admin);
+            int id=this.administradorDAO.crear(admin);
+            admin.setIdUsuario(id);
         }else{
             this.administradorDAO.actualizar(admin);
         }

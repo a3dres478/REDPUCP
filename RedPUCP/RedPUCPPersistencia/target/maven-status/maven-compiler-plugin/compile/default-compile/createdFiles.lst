@@ -1,12 +1,14 @@
 pe\edu\pucp\inf30\RedPUCP\dao\Comunidad\ComunidadDAO.class
 pe\edu\pucp\inf30\RedPUCP\dao\Publicacion\ComentarioDAO.class
 pe\edu\pucp\inf30\RedPUCP\dao\Publicacion\PublicacionDAO.class
+pe\edu\pucp\inf30\RedPUCP\dao\NotificacionesU\NotificacionDAO.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\BaseDAO.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\voto\VotoComentarioDAOImpl.class
 pe\edu\pucp\progra03\redpucppersistencia\RedPUCPPersistencia.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\voto\VotoPublicacionDAOImpl.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\usuario\UsuarioDAOimpl.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\TransaccionalBaseDAO.class
+pe\edu\pucp\inf30\RedPUCP\daoimpl\ReportesU\ReporteDAOImpl.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\Comunidad\ComunidadDAOimpl.class
 pe\edu\pucp\inf30\RedPUCP\dao\PersistibleTransaccional.class
 pe\edu\pucp\inf30\RedPUCP\dao\voto\VotoComentarioDAO.class
@@ -16,8 +18,11 @@ pe\edu\pucp\inf30\RedPUCP\dao\Persistible.class
 pe\edu\pucp\inf30\RedPUCP\dao\voto\VotoDAO.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\usuario\AdministradorDAOimpl.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\voto\VotoDAOimpl.class
+pe\edu\pucp\inf30\RedPUCP\dao\Comunidad\ComunidadXPublicacionDAO.class
 pe\edu\pucp\inf30\RedPUCP\dao\Publicacion\PublicacionxComunidadDAO.class
+pe\edu\pucp\inf30\RedPUCP\daoimpl\NotificacionesU\NotificacionDAOImpl.class
 pe\edu\pucp\inf30\RedPUCP\dao\usuario\UsuarioXComunidadDAO.class
+pe\edu\pucp\inf30\RedPUCP\dao\ReportesU\ReporteDAO.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\Publicacion\PublicacionDAOimpl.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\Publicacion\PublicacionxComunidadDAOImpl.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\Publicacion\ComentarioDAOImpl.class
@@ -25,4 +30,5 @@ pe\edu\pucp\inf30\RedPUCP\dao\usuario\AdministradorDAO.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\usuario\Usuario_comunDAOimpl.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\usuario\UsuarioXComunidadDAOimpl.class
 pe\edu\pucp\inf30\RedPUCP\dao\voto\VotoPublicacionDAO.class
+pe\edu\pucp\inf30\RedPUCP\daoimpl\Comunidad\ComunidadXPublicacionPrincipalDAOImpl.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\ComandoDAO.class

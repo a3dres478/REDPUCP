@@ -40,7 +40,8 @@ public class PublicacionBOImpl implements IPublicacionBO{
     @Override 
     public void guardar(Publicacion publicacion,Estado estado){
         if(estado==Estado.Nuevo){
-            this.publicacionDAO.crear(publicacion);
+            int id=this.publicacionDAO.crear(publicacion);
+            publicacion.setId(id);
         }else{
             this.publicacionDAO.actualizar(publicacion);
         }
