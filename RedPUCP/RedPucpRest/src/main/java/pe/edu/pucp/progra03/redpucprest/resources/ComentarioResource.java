@@ -35,7 +35,7 @@ public class ComentarioResource {
     private IComentarioBO comentarioBO;
     
     public ComentarioResource(){
-    comentarioBO=new ComentarioBOImpl();
+        comentarioBO=new ComentarioBOImpl();
     }
     @GET
     public List<Comentario>listar(){
@@ -45,47 +45,47 @@ public class ComentarioResource {
     @GET
     @Path("{id}")
     public Response obtener (@PathParam("id")int id){
-        Comentario admin =this.comentarioBO.obtener(id);
-        if(admin==null){
+        Comentario modelo =this.comentarioBO.obtener(id);
+        if(modelo==null){
             return Response.status(Response.Status.NOT_FOUND)
                     .entity(Map.of("error","Comentario: "+id+", no encontrado"))
                     .build();
         }
-        return Response.ok(admin).build();
+        return Response.ok(modelo).build();
     }
     
     @POST
-    public Response crear (Comentario admin){
-        if(admin == null || admin.getAutor() == null ){
+    public Response crear (Comentario modelo){
+        if(modelo == null || modelo.getAutor() == null ){
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity("El comentario no es valido")
                     .build();
         }
         
-        this.comentarioBO.guardar(admin, Estado.Nuevo);
-        URI location = URI.create("/RedPUCPRest/api/comentarios/"+admin.getId());
+        this.comentarioBO.guardar(modelo, Estado.Nuevo);
+        URI location = URI.create("/RedPUCPRest/api/comentarios/"+modelo.getId());
         
         return Response.ok(location)
-                .entity(admin)
+                .entity(modelo)
                 .build();
     }
     
     @PUT
     @Path("{id}")
-    public Response actualizar(@PathParam("id")int id,Comentario admin){
-        if(admin == null || admin.getAutor()==null||admin.getContenido().isBlank()){
+    public Response actualizar(@PathParam("id")int id,Comentario modelo){
+        if(modelo == null || modelo.getAutor()==null||modelo.getContenido().isBlank()){
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(Map.of("error","La academia no es valida"))
+                    .entity(Map.of("error","El comentario no es valido"))
                     .build();
         }
         
         if (this.comentarioBO.obtener(id)==null){
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Administrador: "+ id + ", no encontrada")
+                    .entity("Comentario: "+ id + ", no encontrada")
                     .build();
         }
-        this.comentarioBO.guardar(admin, Estado.Modificar);
-        return Response.ok(admin).build();
+        this.comentarioBO.guardar(modelo, Estado.Modificar);
+        return Response.ok(modelo).build();
     }
     
     
@@ -103,7 +103,4 @@ public class ComentarioResource {
         
         return Response.noContent().build();
     }
-    
-    
-    
 }

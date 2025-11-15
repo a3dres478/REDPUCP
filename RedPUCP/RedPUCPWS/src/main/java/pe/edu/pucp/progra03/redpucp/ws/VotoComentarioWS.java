@@ -30,11 +30,10 @@ import pe.edu.pucp.progra03.redpucp.boimpl.VotoComentarioBOImpl;
 @WebService(serviceName = "VotoComentarioWS",
         targetNamespace = "https://services.redpucp.ws/")
 public class VotoComentarioWS {
-
     private final ResourceBundle config;
     private final String urlBase;
     private HttpClient client = HttpClient.newHttpClient();
-    private String NOMBRE_RECURSO = "votoscomentarios";
+    private String NOMBRE_RECURSO = "votoscomentario";
 
     public VotoComentarioWS() {
         this.config = ResourceBundle.getBundle("app");
@@ -51,13 +50,13 @@ public class VotoComentarioWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
         List<VotoComentario>votoscom=mapper.readValue(json,new TypeReference<List<VotoComentario>>() {});
         return votoscom;
     }
     
     @WebMethod(operationName = "obtenerVotoComentario")
-    public VotoComentario obtenerVotoComentario(@WebParam(name = "idvotoComen") int id)throws Exception{
+    public VotoComentario obtenerVotoComentario(@WebParam(name = "idVoto") int id)throws Exception{
         String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/" + id;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -66,7 +65,7 @@ public class VotoComentarioWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
         VotoComentario votocom = mapper.readValue(json, VotoComentario.class);
         
         return votocom;
@@ -74,7 +73,7 @@ public class VotoComentarioWS {
     
     
     @WebMethod(operationName = "eliminarVotoComentario")
-    public void eliminarVotoComentario (@WebParam(name = "idVotoComen") int id) throws Exception {
+    public void eliminarVotoComentario (@WebParam(name = "idVoto") int id) throws Exception {
         String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/" + id;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -110,30 +109,4 @@ public class VotoComentarioWS {
         
         client.send(request, HttpResponse.BodyHandlers.ofString());
     }
-    
-    
-//    private final IVotoComentarioBO votoBO;
-//
-//    public VotoComentarioWS() {
-//        votoBO = new VotoComentarioBOImpl();
-//    }
-//
-//    @WebMethod(operationName = "listarVotosComentario")
-//    public List<VotoComentario> listarVotosComentarios() {
-//        return this.votoBO.listar();
-//    }
-//
-//    @WebMethod(operationName = "obtenerVotoComentario")
-//    public VotoComentario obtenerVotosComentarios(@WebParam(name = "id") int id) {
-//        return this.votoBO.obtener(id);
-//    }
-//
-//    @WebMethod(operationName = "eliminarVotoComentario")
-//    public void eliminarVotoComentario(@WebParam(name="id")int id){
-//        this.votoBO.eliminar(id);
-//    }
-//    @WebMethod (operationName ="guardarVotoComentario")
-//    public void guardarVotosComentarios(@WebParam(name="public")VotoComentario voto,@WebParam(name="estado")Estado estado ){
-//        this.votoBO.guardar(voto, estado);
-//    }
 }

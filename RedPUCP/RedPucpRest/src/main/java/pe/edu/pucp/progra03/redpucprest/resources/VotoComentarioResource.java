@@ -33,14 +33,13 @@ import pe.edu.pucp.progra03.redpucp.boimpl.VotoComentarioBOImpl;
  *
  * @author andre
  */
-@Path("votoscomentarios")
+@Path("votoscomentario")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class VotoComentarioResource {
-    
     private IVotoComentarioBO votoscomBO;
     
-    private VotoComentarioResource(){
+    public VotoComentarioResource(){
         votoscomBO=new VotoComentarioBOImpl();
     }
     
@@ -53,13 +52,13 @@ public class VotoComentarioResource {
     @GET
     @Path("{id}")
     public Response obtener (@PathParam("id")int id){
-        VotoComentario admin =this.votoscomBO.obtener(id);
-        if(admin==null){
+        VotoComentario modelo =this.votoscomBO.obtener(id);
+        if(modelo==null){
             return Response.status(Response.Status.NOT_FOUND)
                     .entity(Map.of("error","Voto Comentario: "+id+", no encontrado"))
                     .build();
         }
-        return Response.ok(admin).build();
+        return Response.ok(modelo).build();
     }
     
     @POST
@@ -71,7 +70,7 @@ public class VotoComentarioResource {
         }
         
         this.votoscomBO.guardar(voto, Estado.Nuevo);
-        URI location = URI.create("/RedPUCPRest/api/votoscomentarios/"+voto.getId());
+        URI location = URI.create("/RedPUCPRest/api/votoscomentario/"+voto.getId());
         
         return Response.ok(location)
                 .entity(voto)
@@ -83,13 +82,13 @@ public class VotoComentarioResource {
     public Response actualizar(@PathParam("id")int id,VotoComentario voto){
         if(voto == null || voto.getUsuario()==null){
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(Map.of("error","El usuario no es valido"))
+                    .entity(Map.of("error","El voto no es valido"))
                     .build();
         }
         
         if (this.votoscomBO.obtener(id)==null){
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Usuario común: "+ id + ", no encontrada")
+                    .entity("VotoComentario: "+ id + ", no encontrada")
                     .build();
         }
         this.votoscomBO.guardar(voto, Estado.Modificar);
@@ -111,5 +110,4 @@ public class VotoComentarioResource {
         
         return Response.noContent().build();
     }
-    
 }

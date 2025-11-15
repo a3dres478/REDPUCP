@@ -28,15 +28,10 @@ import pe.edu.pucp.progra03.redpucp.boimpl.AdministradorBOImpl;
 @WebService(serviceName = "AdministradorWS",
         targetNamespace = "https://services.redpucp.ws/")
 public class AdministradorWS {
-    
     private final ResourceBundle config;
     private final String urlBase;
     private HttpClient client = HttpClient.newHttpClient();
-     private String NOMBRE_RECURSO = "administradores";
-    
-    
-    
-    //private final IAdministradorBO administradorBO;
+    private String NOMBRE_RECURSO = "administradores";
     
     public AdministradorWS(){
         this.config= ResourceBundle.getBundle("app");
@@ -53,9 +48,11 @@ public class AdministradorWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
-        List<Administrador>academias=mapper.readValue(json,new TypeReference<List<Administrador>>() {});
-        return academias;
+        
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
+
+        List<Administrador>administradores=mapper.readValue(json,new TypeReference<List<Administrador>>() {});
+        return administradores;
     }
     
     @WebMethod(operationName = "guardarAdministrador")
@@ -96,7 +93,7 @@ public class AdministradorWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
         Administrador administrador = mapper.readValue(json, Administrador.class);
         
         return administrador;
@@ -112,24 +109,4 @@ public class AdministradorWS {
         client.send(request, HttpResponse.BodyHandlers.ofString());
     }
     
-//    public AdministradorWS(){
-//     administradorBO=new AdministradorBOImpl();
-//    }
-//    
-//    @WebMethod(operationName = "listarAdministradores")
-//    public List<Administrador>listarAdministradores(){
-//        return this.administradorBO.listar();
-//    }
-//    @WebMethod (operationName ="guardarAdministrador")
-//    public void guardarAdministrador(@WebParam(name="admin")Administrador admin,@WebParam(name="estado")Estado estado){
-//        this.administradorBO.guardar(admin,estado);
-//    }
-//    @WebMethod (operationName = "obtenerAdmin")
-//    public Administrador obtenerAdministrador(@WebParam(name="id")int id){
-//        return this.administradorBO.obtener(id);
-//    }
-//    @WebMethod (operationName = "eliminarAdministrador")
-//    public void eliminarAdministrador(@WebParam(name="id")int id){
-//        this.administradorBO.eliminar(id);
-//    }
 }

@@ -79,7 +79,7 @@ public class AdministradorResource {
     public Response actualizar(@PathParam("id")int id,Administrador admin){
         if(admin == null || admin.getNombre() == null || admin.getNombre().isBlank()){
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(Map.of("error","La academia no es valida"))
+                    .entity(Map.of("error","Los datos de administrador no son validos"))
                     .build();
         }
         
@@ -107,5 +107,4 @@ public class AdministradorResource {
         
         return Response.noContent().build();
     }
-    
 }

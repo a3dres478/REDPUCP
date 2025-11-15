@@ -38,40 +38,37 @@ public class ComunidadResource {
     private IComunidadBO comunidadBO;
     
     public ComunidadResource(){
-    comunidadBO=new ComunidadBOImpl();
+        comunidadBO=new ComunidadBOImpl();
     }
     @GET
     public List<Comunidad>listar(){
         return this.comunidadBO.listar();
     }
-    //programaciones
-    //prog
+    
     @GET
     @Path ("nombre/{nombre}")
     public List<Comunidad>listarpornombre(@PathParam("nombre") String nombre){
         return this.comunidadBO.buscarcomunidadpornombres(nombre);
     }
     
-    //querystring //QueryParam
-    
     
     @GET
     @Path("{id}")
     public Response obtener (@PathParam("id")int id){
-        Comunidad admin =this.comunidadBO.obtener(id);
-        if(admin==null){
+        Comunidad modelo =this.comunidadBO.obtener(id);
+        if(modelo==null){
             return Response.status(Response.Status.NOT_FOUND)
                     .entity(Map.of("error","Comunidad: "+id+", no encontrado"))
                     .build();
         }
-        return Response.ok(admin).build();
+        return Response.ok(modelo).build();
     }
     
     @POST
     public Response crear (Comunidad comuni){
         if(comuni == null || comuni.getNombre() == null || comuni.getNombre().isBlank()){
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity("El comentario no es valido")
+                    .entity("La comunidad no es valida")
                     .build();
         }
         
@@ -94,7 +91,7 @@ public class ComunidadResource {
         
         if (this.comunidadBO.obtener(id)==null){
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Administrador: "+ id + ", no encontrada")
+                    .entity("Comunidad: "+ id + ", no encontrada")
                     .build();
         }
         this.comunidadBO.guardar(comuni, Estado.Modificar);
@@ -115,7 +112,5 @@ public class ComunidadResource {
         
         
         return Response.noContent().build();
-    }
-            
-            
+    }     
 }

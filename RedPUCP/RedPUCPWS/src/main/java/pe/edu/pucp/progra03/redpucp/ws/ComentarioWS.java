@@ -10,14 +10,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.annotation.XmlElement;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.ResourceBundle;
+import javax.xml.namespace.QName;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Comentario;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Administrador;
+import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 import pe.edu.pucp.progra03.redpucp.bo.Estado;
 import pe.edu.pucp.progra03.redpucp.bo.IComentarioBO;
 import pe.edu.pucp.progra03.redpucp.boimpl.ComentarioBOImpl;
@@ -29,7 +33,6 @@ import pe.edu.pucp.progra03.redpucp.boimpl.ComentarioBOImpl;
 @WebService(serviceName = "ComentarioWS",
         targetNamespace = "https://services.redpucp.ws/")
 public class ComentarioWS {
-    
     private final ResourceBundle config;
     private final String urlBase;
     private HttpClient client = HttpClient.newHttpClient();
@@ -41,8 +44,8 @@ public class ComentarioWS {
         this.urlBase = this.config.getString("app.services.rest.baseurl");
     }
      
-     @WebMethod(operationName = "listarComentario")
-     public List<Comentario>listarComentario()throws Exception{
+     @WebMethod(operationName = "listarComentarios")
+     public List<Comentario>listarComentarios()throws Exception{
         String url =this.urlBase+"/"+this.NOMBRE_RECURSO;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -51,7 +54,7 @@ public class ComentarioWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
         List<Comentario>comentarios=mapper.readValue(json,new TypeReference<List<Comentario>>() {});
         return comentarios;
     }
@@ -85,6 +88,7 @@ public class ComentarioWS {
     }
      
      @WebMethod (operationName = "obtenerComentario")
+     @XmlElement
      public Comentario obtenerComentario(@WebParam(name = "idComentario") int id)throws Exception{
         String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/" + id;
         HttpRequest request = HttpRequest.newBuilder()
@@ -94,8 +98,14 @@ public class ComentarioWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
         Comentario comentario = mapper.readValue(json, Comentario.class);
+        
+        // Envolver el campo "autor" en un JAXBElement
+        if (comentario.getAutor() != null) {
+            JAXBElement<Usuario_comun> autorElement = new JAXBElement<Usuario_comun>(new QName("autor"), Usuario_comun.class, (Usuario_comun)comentario.getAutor());
+            comentario.setAutor(autorElement.getValue());
+        }
         
         return comentario;
     }
@@ -109,28 +119,4 @@ public class ComentarioWS {
                 .build();
         client.send(request, HttpResponse.BodyHandlers.ofString());
     }
-     
-    //private final IComentarioBO comentarioBO;
-//    public ComentarioWS(){
-//        comentarioBO=new ComentarioBOImpl();
-//    }
-//    @WebMethod(operationName = "listarComentario")
-//    public List<Comentario>listarComentarios(){
-//        return this.comentarioBO.listar();
-//    }
-//    @WebMethod (operationName ="guardarComentario")
-//    public void guardarComentario(@WebParam(name="comentario")Comentario comentario,@WebParam(name="estado")Estado estado){
-//        this.comentarioBO.guardar(comentario,estado);
-//    }
-//    
-//    @WebMethod (operationName = "obtenerComentario")
-//    public Comentario obtenerComentario(@WebParam(name="id")int id){
-//        return this.comentarioBO.obtener(id);
-//    }
-//    @WebMethod (operationName = "eliminarComentario")
-//    public void eliminarComentario(@WebParam(name="id")int id){
-//        this.comentarioBO.eliminar(id);
-//    }
-    
-    
 }

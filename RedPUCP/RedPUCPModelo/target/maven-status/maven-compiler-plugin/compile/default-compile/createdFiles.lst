@@ -6,6 +6,7 @@ pe\edu\pucp\inf30\RedPUCP\modelo\ReportesU\Reporte.class
 pe\edu\pucp\progra03\lab04\redpucpmodelo\RedPUCPModelo.class
 pe\edu\pucp\inf30\RedPUCP\modelo\Comunidad\Comunidad.class
 pe\edu\pucp\inf30\RedPUCP\modelo\usuario\Usuario.class
+pe\edu\pucp\inf30\RedPUCP\modelo\NotificacionesU\TipoNotificacion.class
 pe\edu\pucp\inf30\RedPUCP\modelo\Publicacion\PublicacionxComunidad.class
 pe\edu\pucp\inf30\RedPUCP\modelo\Publicacion\Comentario.class
 pe\edu\pucp\inf30\RedPUCP\modelo\NotificacionesU\Notificacion.class
@@ -17,5 +18,6 @@ pe\edu\pucp\inf30\RedPUCP\modelo\Publicacion\EstadoPublicacion.class
 pe\edu\pucp\inf30\RedPUCP\modelo\voto\Voto.class
 pe\edu\pucp\inf30\RedPUCP\modelo\usuario\estado_usuario.class
 pe\edu\pucp\inf30\RedPUCP\modelo\voto\TipoVoto.class
+pe\edu\pucp\inf30\RedPUCP\modelo\NotificacionesU\EstadoNotificacion.class
 pe\edu\pucp\inf30\RedPUCP\modelo\Publicacion\Publicacion.class
 pe\edu\pucp\inf30\RedPUCP\modelo\usuario\UsuarioxComunidad.class

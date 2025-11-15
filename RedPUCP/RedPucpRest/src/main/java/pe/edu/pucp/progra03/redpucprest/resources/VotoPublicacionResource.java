@@ -27,14 +27,13 @@ import pe.edu.pucp.progra03.redpucp.boimpl.VotoPublicacionBOImpl;
  *
  * @author andre
  */
-@Path("votospublicaciones")
+@Path("votospublicacion")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class VotoPublicacionResource {
-    
     private IVotoPublicacionBO votopubli;
     
-    private VotoPublicacionResource(){
+    public VotoPublicacionResource(){
         votopubli=new VotoPublicacionBOImpl();
     }
     
@@ -65,7 +64,7 @@ public class VotoPublicacionResource {
         }
         
         this.votopubli.guardar(voto, Estado.Nuevo);
-        URI location = URI.create("/RedPUCPRest/api/votospublicaciones/"+voto.getId());
+        URI location = URI.create("/RedPUCPRest/api/votospublicacion/"+voto.getId());
         
         return Response.ok(location)
                 .entity(voto)
@@ -77,7 +76,7 @@ public class VotoPublicacionResource {
     public Response actualizar(@PathParam("id")int id,VotoPublicacion voto){
         if(voto == null || voto.getUsuario()==null){
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(Map.of("error","El usuario no es valido"))
+                    .entity(Map.of("error","El voto no es valido"))
                     .build();
         }
         
@@ -105,6 +104,4 @@ public class VotoPublicacionResource {
         
         return Response.noContent().build();
     }
-    
-    
 }

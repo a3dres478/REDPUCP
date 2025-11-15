@@ -35,7 +35,7 @@ import pe.edu.pucp.progra03.redpucp.boimpl.Usuario_comunBOImpl;
 public class UsuarioComunResource {
     private IUsuario_comunBO comunBO;
     
-    private UsuarioComunResource(){
+    public UsuarioComunResource(){
         comunBO=new Usuario_comunBOImpl();
     }
     
@@ -47,35 +47,35 @@ public class UsuarioComunResource {
     @GET
     @Path("{id}")
     public Response obtener (@PathParam("id")int id){
-        Usuario_comun admin =this.comunBO.obtener(id);
-        if(admin==null){
+        Usuario_comun modelo =this.comunBO.obtener(id);
+        if(modelo==null){
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity(Map.of("error","Publicacion: "+id+", no encontrado"))
+                    .entity(Map.of("error","Usuario comun: "+id+", no encontrado"))
                     .build();
         }
-        return Response.ok(admin).build();
+        return Response.ok(modelo).build();
     }
     
     @POST
-    public Response crear (Usuario_comun comuni){
-        if(comuni == null || comuni.getNombre()==null || comuni.getNombre().isBlank()){
+    public Response crear (Usuario_comun modelo){
+        if(modelo == null || modelo.getNombre()==null || modelo.getNombre().isBlank()){
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity("La publiacion no es valido")
+                    .entity("El usuario no es valido")
                     .build();
         }
         
-        this.comunBO.guardar(comuni, Estado.Nuevo);
-        URI location = URI.create("/RedPUCPRest/api/usuarioscomunes/"+comuni.getIdUsuario());
+        this.comunBO.guardar(modelo, Estado.Nuevo);
+        URI location = URI.create("/RedPUCPRest/api/usuarioscomunes/"+modelo.getIdUsuario());
         
         return Response.ok(location)
-                .entity(comuni)
+                .entity(modelo)
                 .build();
     }
     
     @PUT
     @Path("{id}")
-    public Response actualizar(@PathParam("id")int id,Usuario_comun comuni){
-        if(comuni == null || comuni.getNombre()==null || comuni.getNombre().isBlank()){
+    public Response actualizar(@PathParam("id")int id,Usuario_comun modelo){
+        if(modelo == null || modelo.getNombre()==null || modelo.getNombre().isBlank()){
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(Map.of("error","El usuario no es valido"))
                     .build();
@@ -83,11 +83,11 @@ public class UsuarioComunResource {
         
         if (this.comunBO.obtener(id)==null){
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Usuario común: "+ id + ", no encontrada")
+                    .entity("Usuario común: "+ id + ", no encontrado")
                     .build();
         }
-        this.comunBO.guardar(comuni, Estado.Modificar);
-        return Response.ok(comuni).build();
+        this.comunBO.guardar(modelo, Estado.Modificar);
+        return Response.ok(modelo).build();
     }
     
     
@@ -96,7 +96,7 @@ public class UsuarioComunResource {
     public Response eliminar (@PathParam("id") int id){
         if (this.comunBO.obtener(id)==null){
             return Response.status(Response.Status.NOT_FOUND)
-                    .entity("Usuario: "+ id + ", no encontrada")
+                    .entity("Usuario: "+ id + ", no encontrado")
                     .build();
         }
         
@@ -105,5 +105,4 @@ public class UsuarioComunResource {
         
         return Response.noContent().build();
     }
-    
 }
