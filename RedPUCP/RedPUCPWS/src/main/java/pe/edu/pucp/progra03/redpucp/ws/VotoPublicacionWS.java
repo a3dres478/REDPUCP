@@ -72,7 +72,7 @@ public class VotoPublicacionWS {
     
     
     @WebMethod(operationName = "eliminarVotoPublicacion")
-    public void eliminarVotoComentario (@WebParam(name = "idVotoPubli") int id) throws Exception {
+    public void eliminarVotoPublicacion (@WebParam(name = "idVotoPubli") int id) throws Exception {
         String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/" + id;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -82,7 +82,7 @@ public class VotoPublicacionWS {
     }
     
     @WebMethod (operationName ="guardarVotoPublicacion")
-    public void guardarUsuarioComun(@WebParam(name = "votopublicacion") VotoPublicacion votoPublicacion, @WebParam(name = "estado") Estado estado) throws Exception{
+    public void guardarVotoPublicacion(@WebParam(name = "votopublicacion") VotoPublicacion votoPublicacion, @WebParam(name = "estado") Estado estado) throws Exception{
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(votoPublicacion);
         

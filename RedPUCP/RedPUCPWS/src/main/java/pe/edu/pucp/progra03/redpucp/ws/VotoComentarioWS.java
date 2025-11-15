@@ -84,7 +84,7 @@ public class VotoComentarioWS {
     }
     
     @WebMethod (operationName ="guardarVotoComentario")
-    public void guardarUsuarioComun(@WebParam(name = "votocomentario") VotoComentario votocomentario, @WebParam(name = "estado") Estado estado) throws Exception{
+    public void guardarVotoComentario(@WebParam(name = "votocomentario") VotoComentario votocomentario, @WebParam(name = "estado") Estado estado) throws Exception{
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(votocomentario);
         

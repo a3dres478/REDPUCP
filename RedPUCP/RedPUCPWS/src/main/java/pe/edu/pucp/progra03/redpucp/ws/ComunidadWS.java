@@ -82,7 +82,7 @@ public class ComunidadWS {
     }
     
     @WebMethod (operationName ="guardarComunidad")
-     public void guardarComentario(@WebParam(name = "comunidad") Comunidad comunidad, @WebParam(name = "estado") Estado estado) throws Exception{
+     public void guardarComunidad(@WebParam(name = "comunidad") Comunidad comunidad, @WebParam(name = "estado") Estado estado) throws Exception{
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(comunidad);
         
