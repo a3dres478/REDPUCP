@@ -130,6 +130,7 @@ CREATE TABLE IF NOT EXISTS REPORTE_RP (
   FOREIGN KEY (idReportador) REFERENCES USUARIO_RP(idUsuario)
 );
 
+
 --
 -- -----------------------------------------------------
 -- Tabla NOTIFICACION_RP
@@ -141,13 +142,12 @@ CREATE TABLE IF NOT EXISTS NOTIFICACION_RP (
   estado CHAR(1) NOT NULL DEFAULT 'N', -- 'N' = No Leída, 'L' = Leída
   
   -- Foreign Keys
-  fid_Publicacion INT NOT NULL, -- Publicación que origina la noti
-  fid_UsuarioNotificado INT NOT NULL, -- Usuario que recibe la noti
+  idPublicacion INT NOT NULL, -- Publicación que origina la noti
+  idUsuario INT NOT NULL, -- Usuario que recibe la noti
   
-  FOREIGN KEY (fid_Publicacion) REFERENCES PUBLICACION_RP(idPublicacion),
-  FOREIGN KEY (fid_UsuarioNotificado) REFERENCES USUARIO_RP(idUsuario)
+  FOREIGN KEY (idPublicacion) REFERENCES PUBLICACION_RP(idPublicacion),
+  FOREIGN KEY (idUsuario) REFERENCES USUARIO_RP(idUsuario)
 );
-
 
 
 

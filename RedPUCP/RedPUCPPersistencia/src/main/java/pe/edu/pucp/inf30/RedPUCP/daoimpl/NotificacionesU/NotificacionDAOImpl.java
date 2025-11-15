@@ -88,10 +88,10 @@ public class NotificacionDAOImpl extends TransaccionalBaseDAO<Notificacion> impl
         // "Hidratar" objetos (Cargar los objetos completos)
         
         // Hidratar Publicacion
-        noti.setPublicacionnotificada(new PublicacionDAOimpl().leer(rs.getInt("fid_Publicacion")));
+        noti.setPublicacionnotificada(new PublicacionDAOimpl().leer(rs.getInt("idPublicacion")));
         
         // Hidratar Usuario a notificar
-        noti.setNotificar(new Usuario_comunDAOimpl().leer(rs.getInt("fid_UsuarioNotificado")));
+        noti.setNotificar(new Usuario_comunDAOimpl().leer(rs.getInt("idUsuario")));
         
         return noti;
     }

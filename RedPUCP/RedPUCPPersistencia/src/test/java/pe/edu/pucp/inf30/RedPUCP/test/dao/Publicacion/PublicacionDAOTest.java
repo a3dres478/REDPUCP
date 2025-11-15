@@ -26,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import pe.edu.pucp.inf30.RedPUCP.dao.Comunidad.ComunidadDAO;
+import pe.edu.pucp.inf30.RedPUCP.dao.NotificacionesU.NotificacionDAO;
 import pe.edu.pucp.inf30.RedPUCP.dao.Publicacion.PublicacionDAO;
 import pe.edu.pucp.inf30.RedPUCP.dao.usuario.UsuarioDAO;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.Comunidad.ComunidadDAOimpl;
@@ -40,6 +41,8 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.tipouser;
 import pe.edu.pucp.inf30.RedPUCP.dao.usuario.UsuarioDAO;
 import pe.edu.pucp.inf30.RedPUCP.dao.usuario.Usuario_comunDAO;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.NotificacionesU.NotificacionDAOImpl;
+import pe.edu.pucp.inf30.RedPUCP.modelo.NotificacionesU.Notificacion;
 
 
 /**
@@ -108,7 +111,24 @@ public class PublicacionDAOTest implements PersistibleProbable{
 //        
 //        this.testId = publicacionDAO.crear(publicacion);
 //        assertTrue(this.testId > 0);
-        //assertTrue(1==1);
+        assertTrue(1==1);
+        /*NOTIFICACIONES*/
+        
+//        NotificacionDAO notiDAO =new NotificacionDAOImpl();
+//        Notificacion noti=new Notificacion();
+//        
+//        PublicacionDAO publidao= new PublicacionDAOimpl();
+//        Publicacion publi =publidao.leer(4);
+//        
+//        Usuario_comun userprueba= publidao.leer(4).getAutor();
+//        
+//        noti.setPublicacionnotificada(publi);
+//        noti.setTipo("PARATESTEAR1");
+//        noti.setNotificar(userprueba);
+//        
+//        this.testId=notiDAO.crear(noti);
+//        assertTrue(this.testId>0);
+//        
     }
     
     @Test
@@ -138,8 +158,32 @@ public class PublicacionDAOTest implements PersistibleProbable{
 //        Publicacion publicacionModificado = publicacionDAO.leer(this.testId);
 //        assertEquals(publicacionModificado.getTitulo(),"Publicacion Modificacion test");
 //        assertEquals(publicacionModificado.getDescripcion(),"Test modificacion descripcion");
-//        assertEquals(publicacionModificado.getEstado(),String.valueOf(EstadoPublicacion.BLOQUEADA).charAt(0));    
-        assertTrue(1==1);
+//        assertEquals(publicacionModificado.getEstado(),String.valueOf(EstadoPublicacion.BLOQUEADA).charAt(0));   
+
+/*NOTIFICACIONES*/
+        
+        NotificacionDAO notiDAO =new NotificacionDAOImpl();
+        Notificacion noti=notiDAO.leer(2);
+        //noti.setTipo("SE ACTUALIZO");
+        boolean modifico=notiDAO.actualizar(noti);
+        assertTrue(modifico);
+        //assertEquals(publicacionModificado.getTitulo(),"Publicacion Modificacion test");
+        
+//        
+//        PublicacionDAO publidao= new PublicacionDAOimpl();
+//        Publicacion publi =publidao.leer(4);
+//        
+//        Usuario_comun userprueba= publidao.leer(4).getAutor();
+//        
+//        noti.setPublicacionnotificada(publi);
+//        noti.setTipo("PARATESTEAR");
+//        noti.setNotificar(userprueba);
+//        
+//        this.testId=notiDAO.crear(noti);
+//        assertTrue(this.testId>0);
+
+
+        //assertTrue(1==1);
     }
     
     @Test
