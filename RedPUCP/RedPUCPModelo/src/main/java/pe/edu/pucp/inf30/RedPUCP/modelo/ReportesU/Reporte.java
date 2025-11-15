@@ -17,6 +17,7 @@ public class Reporte {
     private String detalle;
     private Usuario_comun publicador; // El dueño del contenido reportado
     private Usuario_comun reportador; // Quien hace el reporte
+    private char estado;
 
     // Constructor vacío
     public Reporte() {
@@ -77,5 +78,13 @@ public class Reporte {
 
     public void setReportador(Usuario_comun reportador) {
         this.reportador = reportador;
+    }
+
+    public char getEstado() {
+        return estado;
+    }
+
+    public void setEstado(char estado) {
+        this.estado = estado;
     }
 }

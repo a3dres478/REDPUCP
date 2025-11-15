@@ -29,7 +29,7 @@ public class ComunidadXPublicacionPrincipalDAOImpl extends TransaccionalBaseDAO<
 
     @Override
     protected CallableStatement comandoActualizar(Connection conn, ComunidadxPublicacionPrincipal com) throws SQLException {
-        String sql = "{CALL sp_actualizarComunidadxPubliprincipal(?,?,?)}";
+        String sql = "{CALL sp_actualizarComunidadxPubliprincipal(?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
 
         cmd.setInt("p_idComunidadxPublic", com.getIdComunidadxPublicacionPrincipal());

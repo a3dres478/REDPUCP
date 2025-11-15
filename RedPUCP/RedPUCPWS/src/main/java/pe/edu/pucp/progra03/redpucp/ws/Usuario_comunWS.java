@@ -27,7 +27,6 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 @WebService(serviceName = "Usuario_comunWS",
         targetNamespace = "https://services.redpucp.ws/")
 public class Usuario_comunWS {
-    
     private final ResourceBundle config;
     private final String urlBase;
     private HttpClient client = HttpClient.newHttpClient();
@@ -38,8 +37,8 @@ public class Usuario_comunWS {
         this.urlBase=this.config.getString("app.services.rest.baseurl");       
     }
     
-    @WebMethod(operationName = "ListarUsuarioComun")
-    public List<Usuario_comun>ListarUsuarioComun()throws Exception{
+    @WebMethod(operationName = "ListarUsuariosComunes")
+    public List<Usuario_comun>ListarUsuariosComunes()throws Exception{
         String url =this.urlBase+"/"+this.NOMBRE_RECURSO;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -48,7 +47,7 @@ public class Usuario_comunWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
         List<Usuario_comun>usuarios=mapper.readValue(json,new TypeReference<List<Usuario_comun>>() {});
         return usuarios;
     }
@@ -63,7 +62,7 @@ public class Usuario_comunWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
         Usuario_comun usuario_comun = mapper.readValue(json, Usuario_comun.class);
         
         return usuario_comun;
@@ -106,30 +105,4 @@ public class Usuario_comunWS {
         
         client.send(request, HttpResponse.BodyHandlers.ofString());
     }
-    
-//    private final IUsuario_comunBO usuariocomunBO;
-//    
-//    public Usuario_comunWS(){
-//        usuariocomunBO=new Usuario_comunBOImpl();
-//    }
-//    
-//    @WebMethod(operationName = "guardarUsuarioComun")
-//    public void guardarUsuarioComun(@WebParam(name = "usuario") Usuario_comun usuario1, @WebParam(name = "estado") Estado estado) {
-//        this.usuariocomunBO.guardar(usuario1, estado);
-//    }
-//    @WebMethod(operationName = "ListarUsuarioComun")
-//        public List<Usuario_comun>listarUsuarioComun(){
-//            return this.usuariocomunBO.listar();
-//        }
-//    @WebMethod(operationName = "obtenerUsuario")
-//    public Usuario_comun obtenerUsuarioComun(@WebParam(name="id")int id){
-//        return this.usuariocomunBO.obtener(id);
-//    }
-//    
-//    @WebMethod (operationName = "eliminarUsuarioComun")
-//    public void eliminarUsuarioComun(@WebParam(name="id")int id){
-//        this.usuariocomunBO.eliminar(id);
-//    }
-    
-    
 }   

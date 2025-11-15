@@ -66,7 +66,7 @@ public class ReporteDAOImpl extends TransaccionalBaseDAO<Reporte> implements Rep
         cmd.setInt("p_idReporte", reporte.getId_report());
         cmd.setString("p_tipo", reporte.getTipo());
         cmd.setString("p_detalle", reporte.getDetalle());
-        // cmd.setString("p_estado", String.valueOf(reporte.getEstado())); // Si tienes estado
+        // cmd.setString("p_estado", String.valueOf(reporte.getEstado())); 
         
         cmd.registerOutParameter("p_exito", Types.BOOLEAN);
         return cmd;
@@ -105,11 +105,8 @@ public class ReporteDAOImpl extends TransaccionalBaseDAO<Reporte> implements Rep
         rep.setId_report(rs.getInt("idReporte"));
         rep.setTipo(rs.getString("tipo"));
         rep.setDetalle(rs.getString("detalle"));
-        // rep.setEstado(rs.getString("estado").charAt(0)); // Si tienes estado
+        rep.setEstado(rs.getString("estado").charAt(0)); // Si tienes estado
 
-        // "Hidratar" objetos (Cargar los objetos completos)
-        // Sigo el patrón de tus otros DAOImpl (N+1 queries)
-        
         // Hidratar Publicacion
         int idPub = rs.getInt("idPublicacion");
         if (!rs.wasNull()) {
@@ -143,7 +140,6 @@ public class ReporteDAOImpl extends TransaccionalBaseDAO<Reporte> implements Rep
 
     @Override
     public List<Reporte> listarReportesPorReportador(int idReportador) {
-        // Sigo el patrón de tu "ComunidadDAOImpl.listarcomunidadfiltros"
         try (
             Connection conn = DBManager.getInstance().getConnection();  
             PreparedStatement ps = this.comandoListarPorReportador(conn, idReportador);

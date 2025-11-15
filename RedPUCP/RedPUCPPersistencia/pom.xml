@@ -59,7 +59,7 @@
         </dependency>
     </dependencies>
     <properties>
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>21</maven.compiler.release>
         <exec.mainClass>pe.edu.pucp.progra03.redpucppersistencia.RedPUCPPersistencia</exec.mainClass>
     </properties>
 </project>

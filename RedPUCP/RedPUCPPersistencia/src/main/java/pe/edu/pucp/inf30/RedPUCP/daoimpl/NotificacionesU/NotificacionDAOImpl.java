@@ -12,12 +12,13 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
-import pe.edu.pucp.inf30.RedPUCP.config.DBManager; // Tu DBManager
+import pe.edu.pucp.inf30.RedPUCP.config.DBManager; 
 import pe.edu.pucp.inf30.RedPUCP.dao.NotificacionesU.NotificacionDAO;
-import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO; // Tu Base
-import pe.edu.pucp.inf30.RedPUCP.daoimpl.Publicacion.PublicacionDAOimpl; // Para hidratar
-import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.Usuario_comunDAOimpl; // Para hidratar
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO; 
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.Publicacion.PublicacionDAOimpl;
+import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.Usuario_comunDAOimpl; 
 import pe.edu.pucp.inf30.RedPUCP.modelo.NotificacionesU.Notificacion;
+import pe.edu.pucp.inf30.RedPUCP.modelo.NotificacionesU.TipoNotificacion;
 
 /**
  *
@@ -33,7 +34,7 @@ public class NotificacionDAOImpl extends TransaccionalBaseDAO<Notificacion> impl
         
         cmd.setString("p_tipo", noti.getTipo());
         cmd.setInt("p_idPublicacion", noti.getPublicacionnotificada().getId());
-        cmd.setInt("p_idUsuarioNotificado", noti.getNotificar().getIdUsuario());
+        cmd.setInt("p_idUsuarioNotificado", noti.getUsuarioNotificado().getIdUsuario());
         
         cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
         return cmd;
@@ -83,7 +84,7 @@ public class NotificacionDAOImpl extends TransaccionalBaseDAO<Notificacion> impl
         
         noti.setId_notip(rs.getInt("idNotificacion"));
         noti.setTipo(rs.getString("tipo"));
-        // noti.setEstado(rs.getString("estado").charAt(0)); // Si tienes estado
+        noti.setEstado(rs.getString("estado").charAt(0)); 
 
         // "Hidratar" objetos (Cargar los objetos completos)
         
@@ -91,7 +92,7 @@ public class NotificacionDAOImpl extends TransaccionalBaseDAO<Notificacion> impl
         noti.setPublicacionnotificada(new PublicacionDAOimpl().leer(rs.getInt("idPublicacion")));
         
         // Hidratar Usuario a notificar
-        noti.setNotificar(new Usuario_comunDAOimpl().leer(rs.getInt("idUsuarioNotificado")));
+        noti.setUsuarioNotificado(new Usuario_comunDAOimpl().leer(rs.getInt("idUsuarioNotificado")));
         
         return noti;
     }
@@ -109,7 +110,6 @@ public class NotificacionDAOImpl extends TransaccionalBaseDAO<Notificacion> impl
 
     @Override
     public List<Notificacion> listarPorUsuario(int idUsuarioNotificado) {
-        // Sigo el patrón de tu "ComunidadDAOImpl.listarcomunidadfiltros"
         try (
             Connection conn = DBManager.getInstance().getConnection();  
             PreparedStatement ps = this.comandoListarPorUsuario(conn, idUsuarioNotificado);

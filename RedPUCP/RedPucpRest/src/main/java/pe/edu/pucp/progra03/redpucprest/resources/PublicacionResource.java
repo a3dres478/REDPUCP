@@ -47,35 +47,35 @@ public class PublicacionResource {
     @GET
     @Path("{id}")
     public Response obtener (@PathParam("id")int id){
-        Publicacion admin =this.publicacionBO.obtener(id);
-        if(admin==null){
+        Publicacion modelo =this.publicacionBO.obtener(id);
+        if(modelo==null){
             return Response.status(Response.Status.NOT_FOUND)
                     .entity(Map.of("error","Publicacion: "+id+", no encontrado"))
                     .build();
         }
-        return Response.ok(admin).build();
+        return Response.ok(modelo).build();
     }
     
     @POST
-    public Response crear (Publicacion comuni){
-        if(comuni == null || comuni.getAutor() == null || comuni.getTitulo().isBlank()){
+    public Response crear (Publicacion modelo){
+        if(modelo == null || modelo.getAutor() == null || modelo.getTitulo().isBlank()){
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity("La publiacion no es valido")
+                    .entity("La publicacion no es valida")
                     .build();
         }
         
-        this.publicacionBO.guardar(comuni, Estado.Nuevo);
-        URI location = URI.create("/RedPUCPRest/api/publicaciones/"+comuni.getId());
+        this.publicacionBO.guardar(modelo, Estado.Nuevo);
+        URI location = URI.create("/RedPUCPRest/api/publicaciones/"+modelo.getId());
         
         return Response.ok(location)
-                .entity(comuni)
+                .entity(modelo)
                 .build();
     }
     
     @PUT
     @Path("{id}")
-    public Response actualizar(@PathParam("id")int id,Publicacion comuni){
-        if(comuni == null || comuni.getAutor() == null || comuni.getTitulo().isBlank()){
+    public Response actualizar(@PathParam("id")int id,Publicacion modelo){
+        if(modelo == null || modelo.getAutor() == null || modelo.getTitulo().isBlank()){
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(Map.of("error","La publicacion no es valida"))
                     .build();
@@ -86,8 +86,8 @@ public class PublicacionResource {
                     .entity("Publicacion: "+ id + ", no encontrada")
                     .build();
         }
-        this.publicacionBO.guardar(comuni, Estado.Modificar);
-        return Response.ok(comuni).build();
+        this.publicacionBO.guardar(modelo, Estado.Modificar);
+        return Response.ok(modelo).build();
     }
     
     
@@ -105,6 +105,4 @@ public class PublicacionResource {
         
         return Response.noContent().build();
     }
-    
-    
 }

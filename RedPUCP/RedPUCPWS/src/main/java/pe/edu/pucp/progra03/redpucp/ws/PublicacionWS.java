@@ -28,7 +28,6 @@ import pe.edu.pucp.progra03.redpucp.boimpl.PublicacionBOImpl;
 @WebService(serviceName = "PublicacionWS",
         targetNamespace = "https://services.redpucp.ws/")
 public class PublicacionWS {
-
     private final ResourceBundle config;
     private final String urlBase;
     private HttpClient client = HttpClient.newHttpClient();
@@ -50,7 +49,7 @@ public class PublicacionWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
         List<Publicacion>publicaciones=mapper.readValue(json,new TypeReference<List<Publicacion>>() {});
         return publicaciones;
     }
@@ -65,7 +64,7 @@ public class PublicacionWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
         Publicacion publicacion = mapper.readValue(json, Publicacion.class);
         
         return publicacion;
@@ -108,30 +107,4 @@ public class PublicacionWS {
         
         client.send(request, HttpResponse.BodyHandlers.ofString());
     }
-    
-    
-//    private final IPublicacionBO publicacionBO;
-//
-//    public PublicacionWS() {
-//        publicacionBO = new PublicacionBOImpl();
-//    }
-//
-//    @WebMethod(operationName = "listarPublicaciones")
-//    public List<Publicacion> listarPublicaciones() {
-//        return this.publicacionBO.listar();
-//    }
-//
-//    @WebMethod(operationName = "obtenerPublicacion")
-//    public Publicacion obtenerPublicacion(@WebParam(name = "id") int id) {
-//        return this.publicacionBO.obtener(id);
-//    }
-//
-//    @WebMethod(operationName = "eliminarPublicacion")
-//    public void eliminarPublicacion(@WebParam(name="id")int id){
-//        this.publicacionBO.eliminar(id);
-//    }
-//    @WebMethod (operationName ="guardarPublicacion")
-//    public void guardarPublicacion(@WebParam(name="public")Publicacion publi,@WebParam(name="estado")Estado estado ){
-//        this.publicacionBO.guardar(publi, estado);
-//    }
 }

@@ -29,7 +29,6 @@ import pe.edu.pucp.progra03.redpucp.boimpl.ComunidadBOImpl;
 @WebService(serviceName = "ComunidadWS",
         targetNamespace = "https://services.redpucp.ws/")
 public class ComunidadWS {
-
     private final ResourceBundle config;
     private final String urlBase;
     private HttpClient client = HttpClient.newHttpClient();
@@ -50,7 +49,8 @@ public class ComunidadWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        
         List<Comunidad>comunidades=mapper.readValue(json,new TypeReference<List<Comunidad>>() {});
         return comunidades;
     }
@@ -65,7 +65,7 @@ public class ComunidadWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
         Comunidad comunidad = mapper.readValue(json, Comunidad.class);
         
         return comunidad;
@@ -82,7 +82,7 @@ public class ComunidadWS {
     }
     
     @WebMethod (operationName ="guardarComunidad")
-     public void guardarComentario(@WebParam(name = "comunidad") Comunidad comunidad, @WebParam(name = "estado") Estado estado) throws Exception{
+     public void guardarComunidad(@WebParam(name = "comunidad") Comunidad comunidad, @WebParam(name = "estado") Estado estado) throws Exception{
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(comunidad);
         
@@ -119,7 +119,8 @@ public class ComunidadWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+//        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         List<Comunidad> comunidades = mapper.readValue(json, new TypeReference<List<Comunidad>>() {});
         
         return comunidades;
@@ -135,34 +136,10 @@ public class ComunidadWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+//        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
         List<Comunidad> comunidades = mapper.readValue(json, new TypeReference<List<Comunidad>>() {});
         
         return comunidades;
     }
-    
-//    private final IComunidadBO comunidadBO;
-//
-//    public ComunidadWS() {
-//        comunidadBO = new ComunidadBOImpl();
-//    }
-//
-//    @WebMethod(operationName = "listarComunidades")
-//    public List<Comunidad> listarComunidades() {
-//        return this.comunidadBO.listar();
-//    }
-//
-//    @WebMethod(operationName = "obtenerComunidad")
-//    public Comunidad obtenerComunidad(@WebParam(name = "id") int id) {
-//        return this.comunidadBO.obtener(id);
-//    }
-//
-//    @WebMethod(operationName = "eliminarComunidad")
-//    public void eliminarComunidad(@WebParam(name="id")int id){
-//        this.comunidadBO.eliminar(id);
-//    }
-//    @WebMethod (operationName ="guardarComunidad")
-//    public void guardarComunidad(@WebParam(name="public")Comunidad comunidad,@WebParam(name="estado")Estado estado ){
-//        this.comunidadBO.guardar(comunidad, estado);
-//    }
 }

@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -10,9 +10,10 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 public class Notificacion {
 
     private int id_notip;
-    private Publicacion publicacionnotificada; // Publicación que origina la noti
-    private Usuario_comun notificar; // El usuario que recibe la noti
+    private Publicacion publicacion_origen_notificacion; // Publicación que origina la noti
+    private Usuario_comun usuarioNotificado; // El usuario que recibe la noti
     private String tipo; // Ej: "COMENTARIO", "VOTO", "REPORTE"
+    private char estado;
 
     // Constructor vacío
     public Notificacion() {
@@ -28,19 +29,19 @@ public class Notificacion {
     }
 
     public Publicacion getPublicacionnotificada() {
-        return publicacionnotificada;
+        return publicacion_origen_notificacion;
     }
 
     public void setPublicacionnotificada(Publicacion publicacionnotificada) {
-        this.publicacionnotificada = publicacionnotificada;
+        this.publicacion_origen_notificacion = publicacionnotificada;
     }
 
-    public Usuario_comun getNotificar() {
-        return notificar;
+    public Usuario_comun getUsuarioNotificado() {
+        return usuarioNotificado;
     }
 
-    public void setNotificar(Usuario_comun notificar) {
-        this.notificar = notificar;
+    public void setUsuarioNotificado(Usuario_comun usuario_notificado) {
+        this.usuarioNotificado = usuario_notificado;
     }
 
     public String getTipo() {
@@ -49,5 +50,13 @@ public class Notificacion {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public char getEstado() {
+        return estado;
+    }
+
+    public void setEstado(char estado) {
+        this.estado = estado;
     }
 }
