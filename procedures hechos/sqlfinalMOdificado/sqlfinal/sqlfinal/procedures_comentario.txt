@@ -1,0 +1,93 @@
+USE RedPUCP;
+DROP PROCEDURE IF EXISTS sp_insertarComentario;
+DROP PROCEDURE IF EXISTS sp_obtenerComentarioPorId;
+DROP PROCEDURE IF EXISTS sp_listarComentariosPorPublicacion;
+DROP PROCEDURE IF EXISTS sp_actualizarComentario;
+DROP PROCEDURE IF EXISTS sp_eliminarComentario;
+
+-- Procedire para crear un comentario
+DELIMITER //
+
+CREATE PROCEDURE sp_insertarComentario(
+    IN p_idAutor INT,
+    IN p_idPublicacion INT,
+    IN p_contenido VARCHAR(300),
+    OUT p_idGenerado INT
+)
+BEGIN
+    INSERT INTO COMENTARIO_RP (idAutor, idPublicacion, contenido, fechaCreacion)
+    VALUES (p_idAutor, p_idPublicacion, p_contenido, NOW());
+    
+    SET p_idGenerado = LAST_INSERT_ID();
+END //
+
+DELIMITER ;
+
+-- Procedure para obetner comentario por id
+DELIMITER //
+CREATE PROCEDURE sp_obtenerComentarioPorId(
+    IN p_idComentario INT
+)
+BEGIN
+	DECLARE v_estado VARCHAR(50);
+    
+    SELECT estado INTO v_estado
+    FROM COMENTARIO_RP
+    WHERE idComentario = p_idComentario;
+    IF v_estado = 'E' THEN
+		SELECT 'La publicacion fue eliminada' AS mensaje;
+	ELSE
+		SELECT * FROM COMENTARIO_RP WHERE idComentario = p_idComentario;
+	END IF;
+END //
+DELIMITER ;
+
+-- Procedure para listar todos comentarios por publicacion
+DELIMITER //
+CREATE PROCEDURE sp_listarComentariosPorPublicacion(
+    IN p_idPublicacion INT
+)
+BEGIN
+    SELECT * FROM COMENTARIO_RP WHERE idPublicacion = p_idPublicacion AND estado != 'E';
+END //
+DELIMITER ;
+
+-- Procedure para actualizar un comentario
+DELIMITER //
+CREATE PROCEDURE sp_actualizarComentario(
+    IN p_idComentario INT,
+    IN p_contenido VARCHAR(300),
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    UPDATE COMENTARIO_RP
+    SET contenido = p_contenido,
+        ultimaEdicion = NOW()
+    WHERE idComentario = p_idComentario;
+    
+    IF ROW_COUNT() > 0 THEN
+		SET p_exito = TRUE;
+	ELSE
+		SET p_exito = FALSE;
+	END IF;
+END //
+DELIMITER ;
+
+-- Procedure para eliminar logicamente comentario
+DELIMITER //
+CREATE PROCEDURE sp_eliminarComentario(
+    IN p_idComentario INT,
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    UPDATE COMENTARIO_RP
+    SET estado = 'E'
+    WHERE idComentario = p_idComentario;
+    
+    IF ROW_COUNT() > 0 THEN
+		SET p_exito = TRUE;
+	ELSE
+		SET p_exito = FALSE;
+	END IF;
+END //
+DELIMITER ;

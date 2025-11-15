@@ -1,0 +1,108 @@
+USE RedPUCP;
+
+DROP PROCEDURE IF EXISTS sp_insertarComunidad;
+DROP PROCEDURE IF EXISTS sp_obtenerComunidadPorId;
+DROP PROCEDURE IF EXISTS sp_listarComunidades;
+DROP PROCEDURE IF EXISTS sp_actualizarComunidad;
+DROP PROCEDURE IF EXISTS sp_eliminarComunidad;
+
+------------------------------------------------------------
+-- Procedure para crear nueva comunidad + crear registro en
+-- ComunidadXPublicacionPrincipal automáticamente
+------------------------------------------------------------
+DELIMITER //
+CREATE PROCEDURE sp_insertarComunidad(
+    IN p_nombre VARCHAR(100),
+    IN p_descripcion VARCHAR(255),
+    IN p_idCreador INT,
+    OUT p_idGenerado INT
+)
+BEGIN
+    -- Crear comunidad
+    INSERT INTO COMUNIDAD_RP (nombre, descripcion, fechaCreacion, idAdministrador)
+    VALUES (p_nombre, p_descripcion, NOW(), p_idCreador);
+
+    SET p_idGenerado = LAST_INSERT_ID();
+
+    -- Crear su fila en ComunidadXPublicacionPrincipal con publicación NULL
+    INSERT INTO ComunidadXPublicacionPrincipal (idComunidad, idPublicacion)
+    VALUES (p_idGenerado, NULL);
+END //
+DELIMITER ;
+
+------------------------------------------------------------
+-- Obtener comunidad por ID
+------------------------------------------------------------
+DELIMITER //
+CREATE PROCEDURE sp_obtenerComunidadPorId(
+    IN p_idComunidad INT
+)
+BEGIN
+    DECLARE v_estado CHAR(1);
+
+    SELECT estado INTO v_estado 
+    FROM COMUNIDAD_RP 
+    WHERE idComunidad = p_idComunidad;
+
+    IF v_estado = 'E' THEN
+        SELECT 'La comunidad fue eliminada' AS mensaje;
+    ELSE
+        SELECT * FROM COMUNIDAD_RP 
+        WHERE idComunidad = p_idComunidad;
+    END IF;
+END //
+DELIMITER ;
+
+------------------------------------------------------------
+-- Listar comunidades activas
+------------------------------------------------------------
+DELIMITER //
+CREATE PROCEDURE sp_listarComunidades()
+BEGIN
+    SELECT * FROM COMUNIDAD_RP 
+    WHERE estado = 'A';
+END //
+DELIMITER ;
+
+------------------------------------------------------------
+-- Actualizar información de una comunidad
+------------------------------------------------------------
+DELIMITER //
+CREATE PROCEDURE sp_actualizarComunidad(
+    IN p_idComunidad INT,
+    IN p_nombre VARCHAR(100),
+    IN p_descripcion TEXT,
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    UPDATE COMUNIDAD_RP
+    SET nombre = p_nombre,
+        descripcion = p_descripcion
+    WHERE idComunidad = p_idComunidad;
+    
+    SET p_exito = (ROW_COUNT() > 0);
+END //
+DELIMITER ;
+
+------------------------------------------------------------
+-- Eliminar lógicamente una comunidad
+-- + eliminar su registro en ComunidadXPublicacionPrincipal
+------------------------------------------------------------
+DELIMITER //
+CREATE PROCEDURE sp_eliminarComunidad(
+    IN p_idComunidad INT,
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    -- Eliminación lógica
+    UPDATE COMUNIDAD_RP
+    SET estado = 'E'
+    WHERE idComunidad = p_idComunidad;
+    
+    SET p_exito = (ROW_COUNT() > 0);
+
+    -- Eliminar registro asociado en ComunidadXPublicacionPrincipal
+    DELETE FROM ComunidadXPublicacionPrincipal
+    WHERE idComunidad = p_idComunidad;
+END //
+DELIMITER ;

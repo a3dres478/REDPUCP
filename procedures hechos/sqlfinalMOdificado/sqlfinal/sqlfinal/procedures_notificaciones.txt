@@ -1,0 +1,98 @@
+USE RedPUCP;
+
+DROP PROCEDURE IF EXISTS sp_insertarNotificacion;
+DROP PROCEDURE IF EXISTS sp_marcarNotificacionLeida;
+DROP PROCEDURE IF EXISTS sp_eliminarNotificacion;
+DROP PROCEDURE IF EXISTS sp_obtenerNotificacionPorId;
+DROP PROCEDURE IF EXISTS sp_listarNotificaciones;
+DROP PROCEDURE IF EXISTS sp_listarNotificacionesPorUsuario;
+
+-- Procedure para insertar una nueva notificación
+DELIMITER //
+CREATE PROCEDURE sp_insertarNotificacion(
+    IN p_tipo VARCHAR(100),
+    IN p_idPublicacion INT,
+    IN p_idUsuarioNotificado INT,
+    OUT p_idGenerado INT
+)
+BEGIN
+    INSERT INTO NOTIFICACION_RP(tipo, fechaCreacion, estado, 
+                                fid_publicacion, fid_usuario_notificado)
+    VALUES(p_tipo, NOW(), 'N', -- 'N' = No Leída
+           p_idPublicacion, p_idUsuarioNotificado);
+    SET p_idGenerado = LAST_INSERT_ID();
+END //
+DELIMITER ;
+
+-- Procedure para marcar una notificación como leída
+DELIMITER //
+CREATE PROCEDURE sp_marcarNotificacionLeida(
+    IN p_idNotificacion INT,
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    -- Esto es lo que llamará "comandoActualizar"
+    UPDATE NOTIFICACION_RP
+    SET estado = 'L' -- 'L' de Leída
+    WHERE idNotificacion = p_idNotificacion;
+    SET p_exito = (ROW_COUNT() > 0);
+END //
+DELIMITER ;
+
+-- Procedure para eliminar una notificación (borrado físico)
+DELIMITER //
+CREATE PROCEDURE sp_eliminarNotificacion(
+    IN p_idNotificacion INT,
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    -- Borrado físico
+    DELETE FROM NOTIFICACION_RP
+    WHERE idNotificacion = p_idNotificacion;
+    SET p_exito = (ROW_COUNT() > 0);
+END //
+DELIMITER ;
+
+-- Procedure para obtener una notificación por su ID
+DELIMITER //
+CREATE PROCEDURE sp_obtenerNotificacionPorId(
+    IN p_idNotificacion INT
+)
+BEGIN
+    SELECT 
+        idNotificacion, tipo, estado,
+        fid_publicacion AS idPublicacion,
+        fid_usuario_notificado AS idUsuarioNotificado
+    FROM NOTIFICACION_RP
+    WHERE idNotificacion = p_idNotificacion;
+END //
+DELIMITER ;
+
+-- Procedure para listar TODAS las notificaciones (para "comandoLeerTodos")
+DELIMITER //
+CREATE PROCEDURE sp_listarNotificaciones()
+BEGIN
+    SELECT 
+        idNotificacion, tipo, estado,
+        fid_publicacion AS idPublicacion,
+        fid_usuario_notificado AS idUsuarioNotificado
+    FROM NOTIFICACION_RP;
+END //
+DELIMITER ;
+
+-- Procedure para listar las notificaciones pendientes de un usuario
+DELIMITER //
+CREATE PROCEDURE sp_listarNotificacionesPorUsuario(
+    IN p_idUsuario INT
+)
+BEGIN
+    -- Trae solo las No Leídas ('N')
+    SELECT 
+        idNotificacion, tipo, estado,
+        fid_publicacion AS idPublicacion,
+        fid_usuario_notificado AS idUsuarioNotificado
+    FROM NOTIFICACION_RP
+    WHERE fid_usuario_notificado = p_idUsuario AND estado = 'N'
+    ORDER BY fechaCreacion DESC;
+END //
+DELIMITER ;

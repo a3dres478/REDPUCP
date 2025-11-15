@@ -1,0 +1,75 @@
+USE RedPUCP;
+
+DROP PROCEDURE IF EXISTS sp_crearUsuarioComun;
+DROP PROCEDURE IF EXISTS sp_obtenerUsuarioComunPorId;
+DROP PROCEDURE IF EXISTS sp_actualizarUsuarioComun;
+DROP PROCEDURE IF EXISTS sp_eliminarUsuarioComun;
+DROP PROCEDURE IF EXISTS sp_listarTodosUsuarioComun;
+
+-- Procedure para crear usuario común (Debe existir ya un usuario en la tabla USUARIO_TTD)
+DELIMITER //
+CREATE PROCEDURE sp_crearUsuarioComun(
+    IN p_idUsuario INT,
+    IN p_codigoPUCP INT
+)
+BEGIN
+    INSERT INTO USUARIO_COMUN_TTD(idUsuario, codigoPUCP)
+    VALUES (p_idUsuario, p_codigoPUCP);
+END //
+DELIMITER ;
+
+-- Procedure para obtener usuario común por id
+DELIMITER //
+CREATE PROCEDURE sp_obtenerUsuarioComunPorId(
+    IN p_idUsuario INT
+)
+BEGIN
+    SELECT u.idUsuario, u.nombre, uc.codigoPUCP, u.email, u.estado
+    FROM USUARIO_COMUN_TTD uc
+    INNER JOIN USUARIO_TTD u ON uc.idUsuario = u.idUsuario
+    WHERE uc.idUsuario = p_idUsuario;
+END //
+DELIMITER ;
+
+-- Procedure para listar todos usuarios
+DELIMITER //
+CREATE PROCEDURE sp_listarTodosUsuarioComun()
+BEGIN
+    SELECT u.idUsuario, u.nombre, uc.codigoPUCP, u.email, u.estado
+    FROM USUARIO_COMUN_TTD uc
+    INNER JOIN USUARIO_TTD u ON uc.idUsuario = u.idUsuario
+    WHERE u.estado != 'ELIMINADO';
+END //
+DELIMITER ;
+
+-- Procedure para actualizar un usuario comun
+DELIMITER //
+CREATE PROCEDURE sp_actualizarUsuarioComun(
+    IN p_idUsuario INT,
+    IN p_codigoPUCP INT
+)
+BEGIN
+    UPDATE USUARIO_COMUN_TTD
+    SET codigoPUCP = p_codigoPUCP
+    WHERE idUsuario = p_idUsuario;
+END //
+DELIMITER ;
+
+-- Procedure para eliminar un usuario comun
+DELIMITER //
+CREATE PROCEDURE sp_eliminarUsuarioComun(
+    IN p_idUsuario INT,
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    DELETE FROM USUARIO_COMUN_TTD 
+    WHERE idUsuario = p_idUsuario;
+
+    IF ROW_COUNT() > 0 THEN
+        -- Ahora eliminar del usuario general
+        CALL sp_eliminarUsuario(p_idUsuario, p_exito);
+    ELSE
+        SET p_exito = FALSE;
+    END IF;
+END //
+DELIMITER ;

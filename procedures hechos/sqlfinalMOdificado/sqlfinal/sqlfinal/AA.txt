@@ -1,0 +1,142 @@
+USE RedPUCP;
+
+DROP PROCEDURE IF EXISTS sp_insertarUsuario;
+DROP PROCEDURE IF EXISTS sp_obtenerUsuarioPorId;
+DROP PROCEDURE IF EXISTS sp_listarUsuarios;
+DROP PROCEDURE IF EXISTS sp_actualizarUsuario;
+DROP PROCEDURE IF EXISTS sp_eliminarUsuario;
+DROP PROCEDURE IF EXISTS sp_listarUsuariosComunes;
+DROP PROCEDURE IF EXISTS sp_listarUsuariosAdministradores;
+
+-- Procedure para crear usuario (devuelve el id creado)
+DELIMITER //
+CREATE PROCEDURE sp_insertarUsuario(
+    IN p_nombre VARCHAR(100),
+    IN p_descripcion VARCHAR(300),
+    IN p_email VARCHAR(150),
+    IN p_contrasena VARCHAR(255),
+    IN p_rol CHAR,               -- 'A' para administrador, 'C' para usuario común
+    IN p_codigo VARCHAR(200),             -- se usará solo si es usuario común
+    IN p_claveDeAcceso VARCHAR(100),  -- se usará solo si es administrador
+    OUT p_idGenerado INT
+)
+BEGIN
+    IF p_rol = 'A' THEN
+        INSERT INTO USUARIO_RP (
+            nombre, descripcion, email, contrasena, fechaRegistro, estado, rol, claveDeAcceso
+        )
+        VALUES (
+            p_nombre, p_descripcion, p_email, p_contrasena, NOW(), 'A', p_rol, p_claveDeAcceso
+        );
+    ELSEIF p_rol = 'C' THEN
+        INSERT INTO USUARIO_RP (
+            nombre, descripcion, email, contrasena, fechaRegistro, estado, rol, codigo
+        )
+        VALUES (
+            p_nombre, p_descripcion, p_email, p_contrasena, NOW(), 'A', p_rol, p_codigo
+        );
+    ELSE
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'El rol especificado no es válido. Use "A" para administrador o "U" para usuario común.';
+    END IF;
+
+    SET p_idGenerado = LAST_INSERT_ID();
+END //
+DELIMITER ;
+
+-- Procedure para obtener usuario por id
+DELIMITER //
+CREATE PROCEDURE sp_obtenerUsuarioPorId(
+    IN p_idUsuario INT
+)
+BEGIN
+    DECLARE v_estado CHAR(1);
+
+    SELECT estado INTO v_estado FROM USUARIO_RP WHERE idUsuario = p_idUsuario;
+
+    IF v_estado = 'E' THEN
+        SELECT 'El usuario fue eliminado' AS mensaje;
+    ELSE
+        SELECT * FROM USUARIO_RP WHERE idUsuario = p_idUsuario;
+    END IF;
+END //
+DELIMITER ;
+
+-- Procedure para listar todos los usuarios
+DELIMITER //
+CREATE PROCEDURE sp_listarUsuarios()
+BEGIN
+    SELECT * FROM USUARIO_RP WHERE estado != 'E';
+END //
+DELIMITER ;
+
+-- lista todos los usuario comunes
+DELIMITER //
+CREATE PROCEDURE sp_listarUsuariosComunes()
+BEGIN
+    SELECT * FROM USUARIO_RP WHERE rol = 'C';
+END //
+DELIMITER ;
+
+-- listar trodos los administradores
+DELIMITER //
+CREATE PROCEDURE sp_listarUsuariosAdministradores()
+BEGIN
+    SELECT * FROM USUARIO_RP WHERE rol = 'A';
+END //
+DELIMITER ;
+
+-- Procedure para actualizar la información de un usuario
+DELIMITER //
+CREATE PROCEDURE sp_actualizarUsuario(
+    IN p_idUsuario INT,
+    IN p_nombre VARCHAR(100),
+    IN p_descripcion VARCHAR(300),
+    IN p_email VARCHAR(150),
+    IN p_contrasena VARCHAR(255),
+    IN p_rol CHAR,
+    IN p_codigo VARCHAR(200),
+    IN p_claveDeAcceso VARCHAR(100),
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    DECLARE v_filas INT;
+
+    IF p_rol = 'A' THEN
+        UPDATE USUARIO_RP
+        SET nombre = p_nombre,
+            descripcion = p_descripcion,
+            email = p_email,
+            contrasena = p_contrasena,
+            claveDeAcceso = p_claveDeAcceso,
+            codigo = NULL,
+            rol = p_rol
+        WHERE idUsuario = p_idUsuario;
+    ELSEIF p_rol = 'C' THEN
+        UPDATE USUARIO_RP
+        SET nombre = p_nombre,
+            descripcion = p_descripcion,
+            email = p_email,
+            contrasena = p_contrasena,
+            codigo = p_codigo,
+            claveDeAcceso = NULL,
+            rol = p_rol
+        WHERE idUsuario = p_idUsuario;
+    END IF;
+
+    SET v_filas = ROW_COUNT();
+    SET p_exito = (v_filas > 0);
+END //
+DELIMITER ;
+
+-- Procedure para eliminar lógicamente a un usuario
+DELIMITER //
+CREATE PROCEDURE sp_eliminarUsuario(
+    IN p_idUsuario INT,
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    UPDATE USUARIO_RP SET estado = 'E' WHERE idUsuario = p_idUsuario;
+    SET p_exito = (ROW_COUNT() > 0);
+END //
+DELIMITER ;
