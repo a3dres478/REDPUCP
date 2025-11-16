@@ -27,6 +27,7 @@ pe\edu\pucp\inf30\RedPUCP\daoimpl\Publicacion\PublicacionDAOimpl.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\Publicacion\PublicacionxComunidadDAOImpl.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\Publicacion\ComentarioDAOImpl.class
 pe\edu\pucp\inf30\RedPUCP\dao\usuario\AdministradorDAO.class
+s.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\usuario\Usuario_comunDAOimpl.class
 pe\edu\pucp\inf30\RedPUCP\daoimpl\usuario\UsuarioXComunidadDAOimpl.class
 pe\edu\pucp\inf30\RedPUCP\dao\voto\VotoPublicacionDAO.class
