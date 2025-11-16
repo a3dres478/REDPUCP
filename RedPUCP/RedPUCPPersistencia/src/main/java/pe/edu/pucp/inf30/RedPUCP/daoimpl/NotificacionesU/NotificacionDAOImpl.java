@@ -33,7 +33,7 @@ public class NotificacionDAOImpl extends TransaccionalBaseDAO<Notificacion> impl
         
         cmd.setString("p_tipo", noti.getTipo());
         cmd.setInt("p_idPublicacion", noti.getPublicacionnotificada().getId());
-        cmd.setInt("p_idUsuarioNotificado", noti.getNotificar().getIdUsuario());
+        cmd.setInt("p_idUsuarioNotificado", noti.getUsuarioNotificado().getIdUsuario());
         
         cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
         return cmd;
@@ -91,7 +91,7 @@ public class NotificacionDAOImpl extends TransaccionalBaseDAO<Notificacion> impl
         noti.setPublicacionnotificada(new PublicacionDAOimpl().leer(rs.getInt("idPublicacion")));
         
         // Hidratar Usuario a notificar
-        noti.setNotificar(new Usuario_comunDAOimpl().leer(rs.getInt("idUsuario")));
+        noti.setUsuarioNotificado(new Usuario_comunDAOimpl().leer(rs.getInt("idUsuario")));
         
         return noti;
     }
