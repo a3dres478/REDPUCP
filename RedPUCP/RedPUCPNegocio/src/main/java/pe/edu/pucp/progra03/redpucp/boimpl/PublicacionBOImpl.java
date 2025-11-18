@@ -7,6 +7,8 @@ package pe.edu.pucp.progra03.redpucp.boimpl;
 import java.util.List;
 import pe.edu.pucp.inf30.RedPUCP.dao.Publicacion.PublicacionDAO;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.Publicacion.PublicacionDAOimpl;
+import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.CategoriaPublicacion;
+import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.OrdenamientoPublicacion;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Publicacion;
 import pe.edu.pucp.progra03.redpucp.bo.Estado;
 import pe.edu.pucp.progra03.redpucp.bo.IPublicacionBO;
@@ -39,6 +41,10 @@ public class PublicacionBOImpl implements IPublicacionBO{
     
     @Override 
     public void guardar(Publicacion publicacion,Estado estado){
+        if(publicacion.getCategoria()==null){
+            publicacion.setCategoria(String.valueOf(CategoriaPublicacion.Sin_categoria));
+        }
+        
         if(estado==Estado.Nuevo){
             int id=this.publicacionDAO.crear(publicacion);
             publicacion.setId(id);
@@ -46,4 +52,16 @@ public class PublicacionBOImpl implements IPublicacionBO{
             this.publicacionDAO.actualizar(publicacion);
         }
     }
+    
+    @Override
+    public List<Publicacion> listarPublicacionesXFiltros(String categoria,String ordenamiento){
+        if(categoria == null || categoria.trim().isEmpty()) {
+            categoria = String.valueOf(CategoriaPublicacion.Sin_categoria);
+        }
+
+        if(ordenamiento == null || ordenamiento.trim().isEmpty()) {
+            ordenamiento = String.valueOf(OrdenamientoPublicacion.Fecha_reciente);
+        }
+        return this.publicacionDAO.listarPublicacionesXFiltros(categoria, ordenamiento);
+    }    
 }

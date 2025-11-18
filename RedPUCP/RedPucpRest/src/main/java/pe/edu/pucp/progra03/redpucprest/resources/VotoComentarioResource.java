@@ -50,6 +50,12 @@ public class VotoComentarioResource {
     }
     
     @GET
+    @Path("comentario/{idComentario}")
+    public List<VotoComentario>listarVotosXComentario(@PathParam("idComentario") int idComentario){
+        return this.votoscomBO.listarVotosXComentario(idComentario);
+    }
+    
+    @GET
     @Path("{id}")
     public Response obtener (@PathParam("id")int id){
         VotoComentario modelo =this.votoscomBO.obtener(id);

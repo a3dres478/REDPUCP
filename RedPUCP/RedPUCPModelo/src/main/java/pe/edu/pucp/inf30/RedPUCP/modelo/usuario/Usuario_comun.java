@@ -6,13 +6,13 @@ package pe.edu.pucp.inf30.RedPUCP.modelo.usuario;
 
 /**
  *
- * @author andre
+ * @author andre main
  */
 public class Usuario_comun extends Usuario{
     private String codigopucp;
     //private tipouser tipousuario;
     public Usuario_comun(){
-         this.setTipousuario('C');
+         this.setTipousuario("C");
         this.setEstadouser('A');
     }
     

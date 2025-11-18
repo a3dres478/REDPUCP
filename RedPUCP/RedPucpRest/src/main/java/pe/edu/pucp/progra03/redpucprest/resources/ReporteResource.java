@@ -24,7 +24,7 @@ import pe.edu.pucp.progra03.redpucp.boimpl.ReporteBOImpl;
 
 /**
  *
- * @author HECTOR
+ * @author HECTOR main
  */
 @Path("reportes")
 @Consumes(MediaType.APPLICATION_JSON)

@@ -96,7 +96,7 @@ public class AdministradorDAOimpl extends TransaccionalBaseDAO<Administrador> im
         usu.setContrasenha(rs.getString("contrasena"));
         usu.setKarma(rs.getInt("karma"));
         usu.setEstadouser(rs.getString("estado").charAt(0));
-        usu.setTipousuario(rs.getString("rol").charAt(0));
+        usu.setTipousuario(rs.getString("rol"));
         usu.setFechaRegistro(rs.getTimestamp("fechaRegistro"));
         usu.setClave_acceso(rs.getString("claveDeAcceso"));
         return usu;

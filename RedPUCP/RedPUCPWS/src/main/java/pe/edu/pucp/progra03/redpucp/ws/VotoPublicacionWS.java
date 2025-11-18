@@ -14,7 +14,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.ResourceBundle;
-import pe.edu.pucp.inf30.RedPUCP.modelo.voto.VotoComentario;
+//import pe.edu.pucp.inf30.RedPUCP.modelo.voto.VotoComentario;
 
 import pe.edu.pucp.progra03.redpucp.bo.IVotoPublicacionBO;
 import pe.edu.pucp.progra03.redpucp.boimpl.ComunidadBOImpl;
@@ -28,11 +28,10 @@ import pe.edu.pucp.progra03.redpucp.boimpl.VotoPublicacionBOImpl;
 @WebService(serviceName = "VotoPublicacionWS",
         targetNamespace = "https://services.redpucp.ws/")
 public class VotoPublicacionWS {
-    
     private final ResourceBundle config;
     private final String urlBase;
     private HttpClient client = HttpClient.newHttpClient();
-    private String NOMBRE_RECURSO = "votospublicaciones";
+    private String NOMBRE_RECURSO = "votospublicacion";
     
     public VotoPublicacionWS(){
         this.config = ResourceBundle.getBundle("app");
@@ -49,13 +48,30 @@ public class VotoPublicacionWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         List<VotoPublicacion>votospubli=mapper.readValue(json,new TypeReference<List<VotoPublicacion>>() {});
         return votospubli;
     }
     
+    @WebMethod (operationName ="listarVotosXPublicacion")
+    public List<VotoPublicacion> listarVotosXPublicacion(@WebParam(name="idPublicacion")int idPublicacion)throws Exception{
+        String url = this.urlBase + "/" + this.NOMBRE_RECURSO+"/publicacion/"+idPublicacion;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+//        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        List<VotoPublicacion> votos = mapper.readValue(json, new TypeReference<List<VotoPublicacion>>() {});
+        
+        return votos;
+    }
+    
     @WebMethod(operationName = "obtenerVotoPublicacion")
-    public VotoPublicacion obtenerVotoPublicacion(@WebParam(name = "idvotoPubli") int id)throws Exception{
+    public VotoPublicacion obtenerVotoPublicacion(@WebParam(name = "idVoto") int id)throws Exception{
         String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/" + id;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -64,7 +80,7 @@ public class VotoPublicacionWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         VotoPublicacion votopubli = mapper.readValue(json, VotoPublicacion.class);
         
         return votopubli;
@@ -72,7 +88,7 @@ public class VotoPublicacionWS {
     
     
     @WebMethod(operationName = "eliminarVotoPublicacion")
-    public void eliminarVotoPublicacion (@WebParam(name = "idVotoPubli") int id) throws Exception {
+    public void eliminarVotoPublicacion (@WebParam(name = "idVoto") int id) throws Exception {
         String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/" + id;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -83,7 +99,7 @@ public class VotoPublicacionWS {
     
     @WebMethod (operationName ="guardarVotoPublicacion")
     public void guardarVotoPublicacion(@WebParam(name = "votopublicacion") VotoPublicacion votoPublicacion, @WebParam(name = "estado") Estado estado) throws Exception{
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         String json = mapper.writeValueAsString(votoPublicacion);
         
         String url;
@@ -108,32 +124,4 @@ public class VotoPublicacionWS {
         
         client.send(request, HttpResponse.BodyHandlers.ofString());
     }
-    
-//    
-//    private final IVotoPublicacionBO votoPublicaBO;
-//
-//    public VotoPublicacionWS() {
-//        votoPublicaBO = new VotoPublicacionBOImpl();
-//    }
-//
-//    @WebMethod(operationName = "listarVotosPublicacion")
-//    public List<VotoPublicacion> listarVotosComentarios() {
-//        return this.votoPublicaBO.listar();
-//    }
-//
-//    @WebMethod(operationName = "obtenerVotoPublicacion")
-//    public VotoPublicacion obtenerVotosComentarios(@WebParam(name = "id") int id) {
-//        return this.votoPublicaBO.obtener(id);
-//    }
-//
-//    @WebMethod(operationName = "eliminarVotoPublicacion")
-//    public void eliminarVotoComentario(@WebParam(name="id")int id){
-//        this.votoPublicaBO.eliminar(id);
-//    }
-//    @WebMethod (operationName ="guardarVotoPublicacion")
-//    public void guardarVotosComentarios(
-//        @WebParam(name="public")VotoPublicacion voto,
-//        @WebParam(name="estado")Estado estado ){
-//        this.votoPublicaBO.guardar(voto, estado);
-//    }
 }

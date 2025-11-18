@@ -6,9 +6,13 @@ package pe.edu.pucp.inf30.RedPUCP.daoimpl.Publicacion;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
+import pe.edu.pucp.inf30.RedPUCP.config.DBManager;
 import pe.edu.pucp.inf30.RedPUCP.dao.Publicacion.ComentarioDAO;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Comentario;
 //import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
@@ -21,7 +25,7 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 
 /**
  *
- * @author andre
+ * @author andre main
  */
 public class ComentarioDAOImpl extends TransaccionalBaseDAO<Comentario> implements ComentarioDAO{
     
@@ -107,6 +111,36 @@ public class ComentarioDAOImpl extends TransaccionalBaseDAO<Comentario> implemen
         sed.setEstado(rs.getString("estado").charAt(0));
         
         return sed;
+    }
+     
+    @Override
+    public List<Comentario> listarComentariosXPublicacion(int idPublicacion) {
+        try (
+            Connection conn = DBManager.getInstance().getConnection(); 
+            PreparedStatement ps = this.comandoListarComentariosXPublicacion(conn, idPublicacion);
+        ) {
+            ResultSet rs = ps.executeQuery();
+            List<Comentario> modelos = new ArrayList<>();
+            while (rs.next()) {
+                modelos.add(this.mapearModelo(rs));
+            }
+            return modelos;
+
+        } catch (SQLException e) {
+            System.err.println("Error SQL durante el listado: " + e.getMessage());
+            throw new RuntimeException("No se pudo listar el registro.", e);
+        } catch (Exception e) {
+            System.err.println("Error inpesperado: " + e.getMessage());
+            throw new RuntimeException("Error inesperado al listar los registros.", e);
+        }
+    }
+
+    protected CallableStatement comandoListarComentariosXPublicacion(Connection conn, int idPublicacion) throws SQLException {
+        String sql = "{CALL sp_listarComentariosPorPublicacion(?)}";
+        CallableStatement cmd = conn.prepareCall(sql);
+        cmd.setInt("p_idPublicacion", idPublicacion);
+        return cmd;
+
     }
     
 }

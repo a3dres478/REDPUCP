@@ -3,6 +3,7 @@ USE RedPUCP;
 DROP PROCEDURE IF EXISTS sp_crearVotoComentario;
 DROP PROCEDURE IF EXISTS sp_obtenerPorIdVotoComentario;
 DROP PROCEDURE IF EXISTS sp_leerTodosVotosComentario;
+DROP PROCEDURE IF EXISTS sp_leerVotosXComentario;
 
 -- insertar voto comentario
 DELIMITER //
@@ -63,4 +64,23 @@ BEGIN
     INNER JOIN VOTO_COMENTARIO_RP vp ON v.idVoto = vp.idVoto;
 END //
 
+DELIMITER ;
+
+
+-- Nuevo procedure
+DELIMITER //
+CREATE PROCEDURE sp_leerVotosXComentario(
+	IN p_idComentario INT
+)
+BEGIN
+	SELECT 
+		v.idVoto,
+        v.idUsuario,
+        v.fechaRegistro,
+        v.tipo,
+        vc.idComentario
+	FROM VOTO_RP v
+    INNER JOIN VOTO_COMENTARIO_RP vc ON v.idVoto = vc.idVoto
+    WHERE p_idComentario = vc.idComentario;
+END //
 DELIMITER ;

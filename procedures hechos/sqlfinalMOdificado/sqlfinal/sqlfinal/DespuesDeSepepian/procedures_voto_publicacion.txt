@@ -1,0 +1,86 @@
+USE RedPUCP;
+
+DROP PROCEDURE IF EXISTS sp_insertarVotoPublicacion;
+DROP PROCEDURE IF EXISTS sp_obtenerPorIdVotoPublicacion;
+DROP PROCEDURE IF EXISTS sp_leerTodosVotosPublicacion;
+DROP PROCEDURE IF EXISTS sp_leerVotosXPublicacion;
+
+-- insertsr voto publicacion
+DELIMITER //
+CREATE PROCEDURE sp_insertarVotoPublicacion(
+    IN p_idUsuario INT,
+    IN p_tipo CHAR,
+    IN p_idPublicacion INT,
+    OUT p_idGenerado INT
+)
+BEGIN
+    
+    -- Primero crear el voto general en VOTO_RP
+    INSERT INTO VOTO_RP (idUsuario, fechaRegistro, tipo)
+    VALUES (p_idUsuario, NOW(), p_tipo);
+    
+    SET p_idGenerado = LAST_INSERT_ID();
+    
+    -- Luego crear la relación específica en VOTO_PUBLICACION_RP
+    INSERT INTO VOTO_PUBLICACION_RP (idVoto, idPublicacion)
+    VALUES (p_idGenerado, p_idPublicacion);
+END //
+
+DELIMITER ;
+
+
+-- leer voto publicacion por id
+DELIMITER //
+
+CREATE PROCEDURE sp_obtenerPorIdVotoPublicacion(
+    IN p_idVoto INT
+)
+BEGIN
+    SELECT 
+        v.idVoto,
+        v.idUsuario,
+        v.fechaRegistro,
+        v.tipo,
+        vp.idPublicacion
+    FROM VOTO_RP v
+    INNER JOIN VOTO_PUBLICACION_RP vp ON v.idVoto = vp.idVoto
+    WHERE v.idVoto = p_idVoto;
+END //
+
+DELIMITER ;
+
+-- leer todos votos publicacion
+DELIMITER //
+
+CREATE PROCEDURE sp_leerTodosVotosPublicacion()
+BEGIN
+    SELECT 
+        v.idVoto,
+        v.idUsuario,
+        v.fechaRegistro,
+        v.tipo,
+        vp.idPublicacion
+    FROM VOTO_RP v
+    INNER JOIN VOTO_PUBLICACION_RP vp ON v.idVoto = vp.idVoto;
+END //
+
+DELIMITER ;
+
+-- Nuevo procedure
+DELIMITER //
+CREATE PROCEDURE sp_leerVotosXPublicacion(
+	IN p_idPublicacion INT
+)
+BEGIN
+	SELECT 
+		v.idVoto,
+        v.idUsuario,
+        v.fechaRegistro,
+        v.tipo,
+        vp.idPublicacion
+	FROM VOTO_RP v
+    INNER JOIN VOTO_PUBLICACION_RP vp ON v.idVoto = vp.idVoto
+    WHERE p_idPublicacion = vp.idPublicacion;
+END //
+DELIMITER ;
+ 

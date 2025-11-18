@@ -46,4 +46,10 @@ public class VotoComentarioBOImpl implements IVotoComentarioBO {
             this.votoComentarioDAO.actualizar(votoComentario);
         }
     }
+    
+    @Override
+    public List<VotoComentario> listarVotosXComentario(int idComentario){
+        return this.votoComentarioDAO.listarVotosXComentario(idComentario);
+    }    
+    
 }

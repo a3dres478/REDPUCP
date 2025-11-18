@@ -23,7 +23,7 @@ import pe.edu.pucp.progra03.redpucp.boimpl.AdministradorBOImpl;
 
 /**
  *
- * @author andre
+ * @author andre main
  */
 @WebService(serviceName = "AdministradorWS",
         targetNamespace = "https://services.redpucp.ws/")
@@ -57,7 +57,8 @@ public class AdministradorWS {
     
     @WebMethod(operationName = "guardarAdministrador")
     public void guardarAdministrador(@WebParam(name = "administrador") Administrador administrador, @WebParam(name = "estado") Estado estado) throws Exception{
-        ObjectMapper mapper = new ObjectMapper();
+//        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         String json = mapper.writeValueAsString(administrador);
         
         String url;

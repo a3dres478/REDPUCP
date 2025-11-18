@@ -17,7 +17,7 @@ import jakarta.ws.rs.core.Response;
 import java.net.URI;
 import java.util.List;
 import java.util.Map;
-import pe.edu.pucp.inf30.RedPUCP.modelo.voto.VotoComentario;
+
 import pe.edu.pucp.inf30.RedPUCP.modelo.voto.VotoPublicacion;
 import pe.edu.pucp.progra03.redpucp.bo.Estado;
 import pe.edu.pucp.progra03.redpucp.bo.IVotoPublicacionBO;
@@ -41,6 +41,12 @@ public class VotoPublicacionResource {
     @GET
     public List<VotoPublicacion>listar(){
         return this.votopubli.listar();
+    }
+    
+    @GET
+    @Path("publicacion/{idPublicacion}")
+    public List<VotoPublicacion>listarVotosXPublicacion(@PathParam("idPublicacion") int idPublicacion){
+        return this.votopubli.listarVotosXPublicacion(idPublicacion);
     }
     
     @GET

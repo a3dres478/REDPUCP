@@ -5,6 +5,7 @@
 package pe.edu.pucp.inf30.RedPUCP.dao.voto;
 
 //import pe.edu.pucp.inf30.RedPUCP.dao.ICrud;
+import java.util.List;
 import pe.edu.pucp.inf30.RedPUCP.dao.PersistibleTransaccional;
 import pe.edu.pucp.inf30.RedPUCP.modelo.voto.VotoComentario;
 /**
@@ -12,5 +13,5 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.voto.VotoComentario;
  * @author andre
  */
 public interface VotoComentarioDAO extends PersistibleTransaccional<VotoComentario,Integer>{
-    
+    List<VotoComentario> listarVotosXComentario(int idComentario);
 }

@@ -8,7 +8,7 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
 
 /**
  *
- * @author andre
+ * @author andre main
  */
 public class UsuarioxComunidad {
 

@@ -43,6 +43,12 @@ public class ComentarioResource {
     }
     
     @GET
+    @Path ("publicacion/{idPublicacion}")
+    public List<Comentario>listarpornombre(@PathParam("idPublicacion") int idPublicacion){
+        return this.comentarioBO.listarComentariosXPublicacion(idPublicacion);
+    }
+    
+    @GET
     @Path("{id}")
     public Response obtener (@PathParam("id")int id){
         Comentario modelo =this.comentarioBO.obtener(id);

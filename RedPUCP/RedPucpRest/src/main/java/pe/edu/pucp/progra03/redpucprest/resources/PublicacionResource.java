@@ -45,6 +45,14 @@ public class PublicacionResource {
     }
     
     @GET
+    @Path ("filtros")
+    public List<Publicacion>listarXFiltros(
+        @PathParam("categoria") String categoria,
+        @PathParam("ordenamiento") String ordenamiento){
+        return this.publicacionBO.listarPublicacionesXFiltros(categoria, ordenamiento);
+    }
+    
+    @GET
     @Path("{id}")
     public Response obtener (@PathParam("id")int id){
         Publicacion modelo =this.publicacionBO.obtener(id);

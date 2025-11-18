@@ -1,0 +1,92 @@
+
+USE RedPUCP;
+
+-- Eliminamos procedures previos si existen
+DROP PROCEDURE IF EXISTS version;
+DROP PROCEDURE IF EXISTS sp_actualizarComunidadxPubliprincipal;
+DROP PROCEDURE IF EXISTS sp_obtenerComunidadxpublicacionprincipal;
+DROP PROCEDURE IF EXISTS sp_listarComunidadesxpublicacionprincipal;
+
+
+
+CREATE TABLE ComunidadXPublicacionPrincipal (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    idComunidad INT NOT NULL,
+    idPublicacion INT NULL,
+    
+    CONSTRAINT fk_comunidad_cpp
+        FOREIGN KEY (idComunidad)
+        REFERENCES Comunidad(idComunidad)
+        ON DELETE CASCADE,
+    
+    CONSTRAINT fk_publicacion_cpp
+        FOREIGN KEY (idPublicacion)
+        REFERENCES Publicacion(idPublicacion)
+        ON DELETE SET NULL,
+    
+    -- Para garantizar que por comunidad exista SOLO UNA fila
+    CONSTRAINT unq_comunidad UNIQUE (idComunidad)
+);
+
+
+---------------------------------------------------------
+-- Procedure NO-OP (para evitar errores en crear/eliminar)
+---------------------------------------------------------
+DELIMITER //
+CREATE PROCEDURE version()
+BEGIN
+    -- No hace nada
+END //
+DELIMITER ;
+
+---------------------------------------------------------
+-- Actualizar comunidad x publicación principal
+---------------------------------------------------------
+DELIMITER //
+CREATE PROCEDURE sp_actualizarComunidadxPubliprincipal(
+    IN p_idComunidadxPublic INT,
+    IN p_idComunidad INT,
+    IN p_idPublicacion INT,
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    UPDATE ComunidadXPublicacionPrincipal
+    SET 
+        idComunidad = p_idComunidad,
+        idPublicacion = p_idPublicacion
+    WHERE id = p_idComunidadxPublic;
+
+    SET p_exito = (ROW_COUNT() > 0);
+END //
+DELIMITER ;
+
+---------------------------------------------------------
+-- Obtener publicación principal por ID de comunidad
+---------------------------------------------------------
+DELIMITER //
+CREATE PROCEDURE sp_obtenerComunidadxpublicacionprincipal(
+    IN p_idComunidad INT
+)
+BEGIN
+    SELECT 
+        id AS idComunidadPublicacion,
+        idComunidad,
+        idPublicacion
+    FROM ComunidadXPublicacionPrincipal
+    WHERE idComunidad = p_idComunidad;
+END //
+DELIMITER ;
+
+---------------------------------------------------------
+-- Listar todas las comunidades con su publicación principal
+---------------------------------------------------------
+DELIMITER //
+CREATE PROCEDURE sp_listarComunidadesxpublicacionprincipal()
+BEGIN
+    SELECT 
+        id AS idComunidadPublicacion,
+        idComunidad,
+        idPublicacion
+    FROM ComunidadXPublicacionPrincipal;
+END //
+DELIMITER ;

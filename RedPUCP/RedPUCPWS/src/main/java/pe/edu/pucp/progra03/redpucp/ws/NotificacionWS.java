@@ -52,7 +52,7 @@ public class NotificacionWS {
     
     @WebMethod(operationName = "listarNotificacionesParaUsuario")
     public List<Notificacion>listarNotificacionesParaUsuario(@WebParam(name = "idUsuario") int idUsuario)throws Exception{
-        String url =this.urlBase+"/"+this.NOMBRE_RECURSO+"/"+idUsuario;
+        String url =this.urlBase+"/"+this.NOMBRE_RECURSO+"/usuario/"+idUsuario;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .GET()

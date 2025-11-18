@@ -27,7 +27,7 @@ import pe.edu.pucp.progra03.redpucp.boimpl.AdministradorBOImpl;
 
 /**
  *
- * @author andre
+ * @author andre main
  */
 @Path("administradores")
 @Consumes(MediaType.APPLICATION_JSON)

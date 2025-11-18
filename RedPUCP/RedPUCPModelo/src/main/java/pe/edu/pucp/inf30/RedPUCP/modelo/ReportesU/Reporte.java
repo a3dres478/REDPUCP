@@ -7,7 +7,7 @@ package pe.edu.pucp.inf30.RedPUCP.modelo.ReportesU;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Comentario;
 import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Publicacion;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
-
+//main
 public class Reporte {
 
     private int id_report;

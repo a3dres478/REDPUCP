@@ -24,7 +24,7 @@ import pe.edu.pucp.progra03.redpucp.boimpl.ComunidadBOImpl;
 
 /**
  *
- * @author invitado123
+ * @author invitado123 main
  */
 @WebService(serviceName = "ComunidadWS",
         targetNamespace = "https://services.redpucp.ws/")
@@ -83,7 +83,7 @@ public class ComunidadWS {
     
     @WebMethod (operationName ="guardarComunidad")
      public void guardarComunidad(@WebParam(name = "comunidad") Comunidad comunidad, @WebParam(name = "estado") Estado estado) throws Exception{
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         String json = mapper.writeValueAsString(comunidad);
         
         String url;
@@ -125,9 +125,9 @@ public class ComunidadWS {
         
         return comunidades;
     }
-    
-    @WebMethod (operationName ="listarnombrepartes")
-    public List<Comunidad> listarnombrepartes(@WebParam(name="nombreparte")String nombreparte)throws Exception{
+   
+    @WebMethod (operationName ="listarXParteNombre")
+    public List<Comunidad> listarXParteNombre(@WebParam(name="nombreparte")String nombreparte)throws Exception{
         String url = this.urlBase + "/" + this.NOMBRE_RECURSO+"/nombreparte/"+nombreparte;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))

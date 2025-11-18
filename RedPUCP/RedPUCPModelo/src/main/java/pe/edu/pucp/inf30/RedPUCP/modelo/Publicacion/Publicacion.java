@@ -11,7 +11,7 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 
 /**
  *
- * @author andre
+ * @author andre main
  */
 public class Publicacion {
 
@@ -32,6 +32,7 @@ public class Publicacion {
     private int votosPositivos;
     private int votosNegativos;
     private char estado;
+    private String categoria;
     
     public Publicacion(){
         
@@ -110,6 +111,12 @@ public class Publicacion {
         this.votosNegativos = votosNegativos;
     }
 
-    
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
     
 }

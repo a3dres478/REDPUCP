@@ -10,7 +10,7 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 
 /**
  *
- * @author invitado123
+ * @author invitado123 main
  */
 public class Comentario {
 

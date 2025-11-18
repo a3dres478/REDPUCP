@@ -5,6 +5,7 @@ DROP PROCEDURE IF EXISTS sp_obtenerPublicacionPorId;
 DROP PROCEDURE IF EXISTS sp_actualizarPublicacion;
 DROP PROCEDURE IF EXISTS sp_eliminarPublicacion;
 DROP PROCEDURE IF EXISTS sp_listarPublicaciones;
+DROP PROCEDURE IF EXISTS sp_listarPublicacionesXFiltros;
 
 -- Porcedure para crear una publicacion
 DELIMITER //
@@ -13,11 +14,12 @@ CREATE PROCEDURE sp_insertarPublicacion(
     IN p_idComunidad INT,
     IN p_titulo VARCHAR(200),
     IN p_descripcion VARCHAR(500),
+    IN p_categoria VARCHAR(50),
     OUT p_idGenerado INT
 )
 BEGIN
-    INSERT INTO PUBLICACION_RP (idAutor, idComunidad, titulo, descripcion, fechaCreacion)
-    VALUES (p_idAutor, p_idComunidad, p_titulo, p_descripcion, NOW());
+    INSERT INTO PUBLICACION_RP (idAutor, idComunidad, titulo, descripcion,categoria, fechaCreacion, ultimaEdicion, estado)
+    VALUES (p_idAutor, p_idComunidad, p_titulo, p_descripcion, p_categoria, NOW(), NOW(), 'A');
     
     SET p_idGenerado = LAST_INSERT_ID();
 END //
@@ -57,12 +59,14 @@ CREATE PROCEDURE sp_actualizarPublicacion(
     IN p_idPublicacion INT,
     IN p_titulo VARCHAR(200),
     IN p_descripcion VARCHAR(300),
+    IN p_categoria VARCHAR(50),
     OUT p_exito BOOLEAN
 )
 BEGIN
     UPDATE PUBLICACION_RP
     SET titulo = p_titulo,
         descripcion = p_descripcion,
+        categoria = p_categoria,
         ultimaEdicion = NOW()
     WHERE idPublicacion = p_idPublicacion;
     
@@ -90,5 +94,43 @@ BEGIN
 	ELSE
 		SET p_exito = FALSE;
 	END IF;
+END //
+DELIMITER ;
+
+-- Listar publicaciones por filtros (categoria y orden)
+DELIMITER //
+CREATE PROCEDURE sp_listarPublicacionesXFiltros(
+    IN p_categoria VARCHAR(50),
+    IN p_ordenamiento VARCHAR(50)
+)
+BEGIN
+    -- Consulta directa sin prepared statements dinámicos
+    SELECT p.* 
+    FROM PUBLICACION_RP p 
+    WHERE p.estado = 'A'
+      AND (p_categoria IS NULL OR p_categoria = '' OR p_categoria = 'Sin_categoria' OR p.categoria = p_categoria)
+    ORDER BY 
+        CASE 
+            WHEN p_ordenamiento = 'Relevancia' THEN 
+                (SELECT COUNT(*) FROM VOTO_PUBLICACION_RP vp 
+                 JOIN VOTO_RP v ON vp.idVoto = v.idVoto 
+                 WHERE vp.idPublicacion = p.idPublicacion 
+                 AND v.fechaRegistro >= DATE_SUB(NOW(), INTERVAL 72 HOUR))
+                +
+                (SELECT COUNT(*) FROM COMENTARIO_RP c 
+                 WHERE c.idPublicacion = p.idPublicacion 
+                 AND c.estado = 'A'
+                 AND c.fechaCreacion >= DATE_SUB(NOW(), INTERVAL 72 HOUR))
+            ELSE 0
+        END DESC,
+        CASE WHEN p_ordenamiento = 'Popularidad' THEN (p.votosPositivos - p.votosNegativos) END DESC,
+        CASE 
+            WHEN p_ordenamiento = 'Fecha_antigua' THEN p.fechaCreacion
+            ELSE NULL
+        END ASC,
+        CASE 
+            WHEN p_ordenamiento IN ('Fecha_reciente', 'Popularidad', 'Relevancia') OR p_ordenamiento IS NULL THEN p.fechaCreacion
+            ELSE NULL
+        END DESC;
 END //
 DELIMITER ;

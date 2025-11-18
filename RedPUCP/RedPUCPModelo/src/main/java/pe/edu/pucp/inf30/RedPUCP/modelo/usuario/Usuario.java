@@ -7,7 +7,7 @@ package pe.edu.pucp.inf30.RedPUCP.modelo.usuario;
 import java.util.Date;
 /**
  *
- * @author andre
+ * @author andre main
  */
 public class Usuario {
 
@@ -19,24 +19,24 @@ public class Usuario {
         this.estadouser = estadouser;
     }
 
-    public char getTipousuario() {
+    public String getTipousuario() {
         return tipousuario;
     }
 
-    public void setTipousuario(char tipousuario) {
+    public void setTipousuario(String tipousuario) {
         this.tipousuario = tipousuario;
     }
 
     
     private int idUsuario;
-    private String Nombre;
-    private String Descripcion;
+    private String nombre;
+    private String descripcion;
     private String email;
     private String contrasenha;
     private int karma;
     private Date fechaRegistro;
     private char estadouser;
-    private char tipousuario;
+    private String tipousuario;
     
     public Usuario(){
         
@@ -51,19 +51,19 @@ public class Usuario {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+        this.nombre = Nombre;
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
     public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+        this.descripcion = Descripcion;
     }
 
     public String getEmail() {

@@ -46,4 +46,9 @@ public class ComentarioBOImpl implements IComentarioBO{
             this.comentarioDAO.actualizar(comentario);
         }
     }
+    
+    @Override
+    public List<Comentario>listarComentariosXPublicacion(int idPublicacion){
+        return this.comentarioDAO.listarComentariosXPublicacion(idPublicacion);
+    }
 }

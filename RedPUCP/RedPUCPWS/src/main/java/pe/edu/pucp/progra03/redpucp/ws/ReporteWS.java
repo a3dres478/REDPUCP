@@ -20,7 +20,7 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.ReportesU.Reporte;
 import pe.edu.pucp.progra03.redpucp.bo.Estado;
 /**
  *
- * @author HECTOR
+ * @author HECTOR main
  */
 @WebService(serviceName = "ReporteWS",
         targetNamespace = "https://services.redpucp.ws/")
@@ -52,7 +52,7 @@ public class ReporteWS {
     
     @WebMethod(operationName = "listarReportesXReportador")
     public List<Reporte>listarReportesXReportador(@WebParam(name = "idReportador") int idReportador)throws Exception{
-        String url =this.urlBase+"/"+this.NOMBRE_RECURSO+"/"+idReportador;
+        String url =this.urlBase+"/"+this.NOMBRE_RECURSO+"/reportador/"+idReportador;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .GET()

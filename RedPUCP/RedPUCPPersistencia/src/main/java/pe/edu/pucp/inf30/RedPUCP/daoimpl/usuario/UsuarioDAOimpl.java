@@ -15,7 +15,7 @@ import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario;
 /**
  *
- * @author andre
+ * @author andre main
  */
 public class UsuarioDAOimpl extends TransaccionalBaseDAO<Usuario> implements UsuarioDAO {
     

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
-
+//main
 /**
  *
  * @author andre
@@ -23,8 +23,8 @@ public class Comunidad {
         this.estado = estado;
     }
     private int id_comunidad;
-    private String Nombre;
-    private String Descripcion;
+    private String nombre;
+    private String descripcion;
     private Date fecha_creacion;
     private int cantidadmiembros;
     private Usuario_comun administrador;
@@ -43,19 +43,19 @@ public class Comunidad {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+        this.nombre = Nombre;
     }
 
     public String getDescripcion() {
-        return Descripcion;
+        return descripcion;
     }
 
     public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+        this.descripcion = Descripcion;
     }
 
     public Date getFecha_creacion() {

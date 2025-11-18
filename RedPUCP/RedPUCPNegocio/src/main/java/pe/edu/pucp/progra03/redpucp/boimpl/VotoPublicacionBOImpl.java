@@ -46,4 +46,9 @@ public class VotoPublicacionBOImpl implements IVotoPublicacionBO {
             this.votoPublicacionDAO.actualizar(votoPublicacion);
         }
     }
+    
+    @Override
+    public List<VotoPublicacion> listarVotosXPublicacion(int idPublicacion){
+        return this.votoPublicacionDAO.listarVotosXPublicacion(idPublicacion);
+    }    
 }

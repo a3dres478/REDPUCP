@@ -23,7 +23,7 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 
 /**
  *
- * @author HECTOR
+ * @author HECTOR main
  */
 public class ComunidadDAOimpl extends TransaccionalBaseDAO<Comunidad> implements ComunidadDAO {
 
@@ -120,17 +120,18 @@ public class ComunidadDAOimpl extends TransaccionalBaseDAO<Comunidad> implements
 
     }
 
-    protected CallableStatement comandobuscarporpartenombre(Connection conn, String nombreparte) throws SQLException{
-        String sql = "{CALL listarporpartenombre(?}}";
+    protected CallableStatement comandoBuscarXParteNombre(Connection conn, String nombreparte) throws SQLException{
+        String sql = "{CALL sp_listarComunidadPorParteNombre(?)}";
         CallableStatement cmd = conn.prepareCall(sql);
-        cmd.setString(nombreparte, sql);
+        cmd.setString("ParteNombre", nombreparte);
         return cmd;
     }
     
     @Override 
-    public List<Comunidad> buscarcomunidadpornombres (String nombrecom){
+    public List<Comunidad> buscarComunidadXNombres (String parteNombre){
         try (
-                Connection conn = DBManager.getInstance().getConnection(); PreparedStatement ps = this.comandolistarfiltros(conn, nombrecom);) {
+            Connection conn = DBManager.getInstance().getConnection(); 
+            PreparedStatement ps = this.comandoBuscarXParteNombre(conn, parteNombre);) {
             ResultSet rs = ps.executeQuery();
             List<Comunidad> modelos = new ArrayList<>();
             while (rs.next()) {

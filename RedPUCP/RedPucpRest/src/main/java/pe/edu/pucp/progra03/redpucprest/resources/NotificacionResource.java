@@ -25,7 +25,7 @@ import pe.edu.pucp.progra03.redpucp.boimpl.NotificacionBOImpl;
 
 /**
  *
- * @author HECTOR
+ * @author HECTOR main
  */
 @Path("notificaciones")
 @Consumes(MediaType.APPLICATION_JSON)

@@ -5,9 +5,13 @@
 package pe.edu.pucp.inf30.RedPUCP.daoimpl.voto;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
+import pe.edu.pucp.inf30.RedPUCP.config.DBManager;
 import pe.edu.pucp.inf30.RedPUCP.dao.voto.VotoComentarioDAO;
 //import pe.edu.pucp.inf30.RedPUCP.daoimpl.BaseDAOImplement;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.Comunidad.ComunidadDAOimpl;
@@ -85,5 +89,33 @@ public class VotoComentarioDAOImpl extends TransaccionalBaseDAO<VotoComentario> 
         return usu;
     }
     
+    @Override
+    public List<VotoComentario> listarVotosXComentario(int idComentario) {
+        try (
+            Connection conn = DBManager.getInstance().getConnection(); 
+            PreparedStatement ps = this.comandoListarVotosXComentario(conn, idComentario);) {
+            ResultSet rs = ps.executeQuery();
+            List<VotoComentario> modelos = new ArrayList<>();
+            while (rs.next()) {
+                modelos.add(this.mapearModelo(rs));
+            }
+            return modelos;
+
+        } catch (SQLException e) {
+            System.err.println("Error SQL durante el listado: " + e.getMessage());
+            throw new RuntimeException("No se pudo listar el registro.", e);
+        } catch (Exception e) {
+            System.err.println("Error inpesperado: " + e.getMessage());
+            throw new RuntimeException("Error inesperado al listar los registros.", e);
+        }
+    }
+
+    protected CallableStatement comandoListarVotosXComentario(Connection conn, int idComentario) throws SQLException {
+        String sql = "{CALL sp_leerVotosXComentario(?)}";
+        CallableStatement cmd = conn.prepareCall(sql);
+        cmd.setInt("p_idComentario", idComentario);
+        return cmd;
+
+    }
     
 }

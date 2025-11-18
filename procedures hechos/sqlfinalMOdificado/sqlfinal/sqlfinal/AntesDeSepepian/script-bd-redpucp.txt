@@ -1,0 +1,272 @@
+CREATE DATABASE IF NOT EXISTS RedPUCP;
+USE RedPUCP;
+
+DROP TABLE IF EXISTS VOTO_COMENTARIO_RP;
+DROP TABLE IF EXISTS VOTO_PUBLICACION_RP;
+DROP TABLE IF EXISTS VOTO_RP;
+DROP TABLE IF EXISTS COMENTARIO_RP;
+DROP TABLE IF EXISTS PUBLICACION_RP;
+DROP TABLE IF EXISTS USUARIO_COMUNIDAD_RP;
+DROP TABLE IF EXISTS COMUNIDAD_RP;
+DROP TABLE IF EXISTS USUARIO_RP;
+DROP TABLE IF EXISTS NOTIFICACION_RP;
+DROP TABLE IF EXISTS REPORTE_RP;
+
+-- TABLA USUARIO
+CREATE TABLE USUARIO_RP (
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    codigo INT,
+    descripcion VARCHAR(300),
+    email VARCHAR(150) UNIQUE NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    karma INT DEFAULT 0,
+    fechaRegistro DATE NOT NULL,
+    estado CHAR NOT NULL DEFAULT 'A',
+    claveDeAcceso VARCHAR(100),
+    rol CHAR NOT NULL
+);
+
+-- Tabla comunidad
+CREATE TABLE COMUNIDAD_RP (
+    idComunidad INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) UNIQUE NOT NULL,
+    descripcion VARCHAR(300),
+    fechaCreacion DATE NOT NULL,
+    cantidadMiembros INT DEFAULT 0,
+    idAdministrador INT NOT NULL,
+    estado CHAR NOT NULL DEFAULT 'A',
+    FOREIGN KEY (idAdministrador) REFERENCES USUARIO_RP(idUsuario)
+);
+
+-- TABLA usuario_comunidad
+CREATE TABLE USUARIO_COMUNIDAD_RP (
+    idUsuario INT,
+    idComunidad INT,
+    rol CHAR NOT NULL DEFAULT 'M',
+    estado CHAR NOT NULL DEFAULT 'A',
+    PRIMARY KEY (idUsuario, idComunidad),
+    FOREIGN KEY (idUsuario) REFERENCES USUARIO_RP(idUsuario),
+    FOREIGN KEY (idComunidad) REFERENCES COMUNIDAD_RP(idComunidad)
+);
+
+-- TABLA publicacion
+CREATE TABLE PUBLICACION_RP (
+    idPublicacion INT AUTO_INCREMENT PRIMARY KEY,
+    idAutor INT NOT NULL,
+    idComunidad INT NOT NULL,
+    titulo VARCHAR(200) NOT NULL,
+    descripcion VARCHAR(500),
+    categoria VARCHAR(50),  -- Agregado
+    fechaCreacion DATETIME NOT NULL,
+    ultimaEdicion DATETIME,
+    votosPositivos INT DEFAULT 0,
+    votosNegativos INT DEFAULT 0,
+    estado CHAR NOT NULL DEFAULT 'A',
+    FOREIGN KEY (idAutor) REFERENCES USUARIO_RP(idUsuario),
+    FOREIGN KEY (idComunidad) REFERENCES COMUNIDAD_RP(idComunidad)
+);
+
+-- Tabla comentario
+CREATE TABLE COMENTARIO_RP (
+    idComentario INT AUTO_INCREMENT PRIMARY KEY,
+    idAutor INT NOT NULL,
+    idPublicacion INT NOT NULL,
+    contenido VARCHAR(300) NOT NULL,
+    fechaCreacion DATETIME NOT NULL,
+    ultimaEdicion DATETIME,
+    votosPositivos INT DEFAULT 0,
+    votosNegativos INT DEFAULT 0,
+    estado CHAR NOT NULL DEFAULT 'V',
+    FOREIGN KEY (idAutor) REFERENCES USUARIO_RP(idUsuario),
+    FOREIGN KEY (idPublicacion) REFERENCES PUBLICACION_RP(idPublicacion)
+);
+
+-- TABLA VOTO
+CREATE TABLE VOTO_RP (
+    idVoto INT AUTO_INCREMENT PRIMARY KEY,
+    idUsuario INT NOT NULL,
+    fechaRegistro DATETIME NOT NULL,
+    tipo CHAR NOT NULL,
+    estado CHAR NOT NULL,
+    FOREIGN KEY (idUsuario) REFERENCES USUARIO_RP(idUsuario)
+);
+
+-- Tabla voto_publicacion
+CREATE TABLE VOTO_PUBLICACION_RP (
+    idVoto INT PRIMARY KEY,
+    idPublicacion INT NOT NULL,
+    FOREIGN KEY (idVoto) REFERENCES VOTO_RP(idVoto),
+    FOREIGN KEY (idPublicacion) REFERENCES PUBLICACION_RP(idPublicacion)
+);
+
+-- Tabla voto_comentario
+CREATE TABLE VOTO_COMENTARIO_RP (
+    idVoto INT PRIMARY KEY,
+    idComentario INT NOT NULL,
+    FOREIGN KEY (idVoto) REFERENCES VOTO_RP(idVoto),
+    FOREIGN KEY (idComentario) REFERENCES COMENTARIO_RP(idComentario)
+);
+
+--
+-- -----------------------------------------------------
+-- Tabla REPORTE_RP
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS REPORTE_RP (
+  idReporte INT AUTO_INCREMENT PRIMARY KEY,
+  tipo VARCHAR(100) NOT NULL,
+  detalle VARCHAR(500) NOT NULL,
+  fechaCreacion DATETIME NOT NULL,
+  estado CHAR(1) NOT NULL DEFAULT 'A', -- 'A' = Activo/Pendiente, 'R' = Resuelto, 'E' = Eliminado
+  
+  -- Foreign Keys
+  idPublicacion_report INT NULL,
+  idComentario_report INT NULL,
+  idPublicador INT NOT NULL, -- El dueño del contenido reportado
+  idReportador INT NOT NULL, -- Quien hace el reporte
+  
+  FOREIGN KEY (idPublicacion_report) REFERENCES PUBLICACION_RP(idPublicacion),
+  FOREIGN KEY (idComentario_report) REFERENCES COMENTARIO_RP(idComentario),
+  FOREIGN KEY (idPublicador) REFERENCES USUARIO_RP(idUsuario),
+  FOREIGN KEY (idReportador) REFERENCES USUARIO_RP(idUsuario)
+);
+
+
+--
+-- -----------------------------------------------------
+-- Tabla NOTIFICACION_RP
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS NOTIFICACION_RP (
+  idNotificacion INT AUTO_INCREMENT PRIMARY KEY,
+  tipo VARCHAR(100) NOT NULL, -- Ej: "NUEVO_COMENTARIO", "NUEVO_VOTO", "REPORTE_RESUELTO"
+  fechaCreacion DATETIME NOT NULL,
+  estado CHAR(1) NOT NULL DEFAULT 'N', -- 'N' = No Leída, 'L' = Leída
+  
+  -- Foreign Keys
+  idPublicacion INT NOT NULL, -- Publicación que origina la noti
+  idUsuario INT NOT NULL, -- Usuario que recibe la noti
+  
+  FOREIGN KEY (idPublicacion) REFERENCES PUBLICACION_RP(idPublicacion),
+  FOREIGN KEY (idUsuario) REFERENCES USUARIO_RP(idUsuario)
+);
+
+
+
+CALL sp_insertarUsuario(
+    'Carlos Pérez',
+    'Estudiante de Ingeniería',
+    'carlos@pucp.edu.pe',
+    '12345segura',
+    'C',        -- Usuario común
+    20231234,   -- Código PUCP
+    NULL,       -- Clave no aplica
+    @id
+);
+SELECT @id;
+
+CALL sp_insertarUsuario(
+    'Lucía Torres',
+    'Administrador del sistema',
+    'lucia.admin@pucp.edu.pe',
+    'claveadmin123',
+    'A',         -- Administrador
+    NULL,        -- Código no aplica
+    'ADM-KEY-987',  -- Clave de acceso especial
+    @id
+);
+SELECT @id;
+
+CALL sp_insertarComunidad('comunidadprueba', 'descrip', 2, @id);
+CALL sp_obtenerComunidadPorId(1);
+CALL sp_listarComunidades();
+CALL sp_actualizarComunidad(1, 'nombre cambiado', 'descripcion nueva', @exito);
+CALL sp_eliminarComunidad(1, @exito);
+
+CALL sp_insertarPublicacion(1, 1, 'Mi primera publicación', 'Esta es una descripción de ejemplo', @idGenerado);
+CALL sp_obtenerPublicacionPorId(1);
+CALL sp_listarPublicaciones();
+CALL sp_actualizarPublicacion(1, 'Título actualizado', 'Descripción actualizada', @exito);
+CALL sp_eliminarPublicacion(1, @exito);
+
+CALL sp_insertarComentario(1, 1, 'Este es un comentario muy interesante', @idComentario);
+CALL sp_obtenerComentarioPorId(1);
+CALL sp_listarComentariosPorPublicacion(1);
+CALL sp_actualizarComentario(1, 'Comentario editado', @exito);
+CALL sp_eliminarComentario(1, @exito);
+
+CALL sp_insertarVoto(1, 'U', @idVoto);
+SELECT @idVoto;
+CALL sp_obtenerVotoPorId(1);
+CALL sp_actualizarVoto(1, 'D', @exito);
+
+CALL sp_insertarVotoPublicacion(1, 'U', 1, @id);
+CALL sp_obtenerPorIdVotoPublicacion(2);
+CALL sp_leerTodosVotosPublicacion();
+
+CALL sp_insertarVotoComentario(1, 'D', 1, @id);
+CALL sp_obtenerPorIdVotoComentario(4);
+CALL sp_leerTodosVotosComentario();
+
+CALL sp_insertarUsuarioComunidad(1, 1, 'M', @id);
+CALL sp_obtenerUsuComuPorId(1, 1);
+CALL sp_listarTodosUsuarioComunidad();
+CALL sp_eliminarUsuarioComunidad(1, 1, @exito);
+
+
+-- -----------------------------------------------------
+-- PRUEBAS (CALLs) PARA REPORTES Y NOTIFICACIONES
+-- -----------------------------------------------------
+
+-- Prueba para insertar un reporte
+-- (Asumimos que Usuario 2 [Lucía] reporta la Publicación 1 de Usuario 1 [Carlos])
+CALL sp_insertarReporte(
+    'SPAM',                                    -- p_tipo
+    'Esta publicación es publicidad no deseada.', -- p_detalle
+    1,                                         -- p_idPublicacion (ID de la publicación reportada)
+    NULL,                                      -- p_idComentario (No es un reporte de comentario)
+    1,                                         -- p_idPublicador (ID del autor de la publicación)
+    2,                                         -- p_idReportador (ID del usuario que reporta)
+    @idReporte
+);
+SELECT @idReporte AS 'ID Reporte Generado';
+
+-- Prueba para leer el reporte recién creado
+CALL sp_obtenerReportePorId(1);
+
+-- Prueba para listar reportes pendientes (debería salir el que acabamos de crear)
+CALL sp_listarReportesPendientes();
+
+-- -----------------------------------------------------
+
+-- Prueba para insertar una notificación
+-- (Asumimos que notificamos a Usuario 1 [Carlos] sobre un nuevo voto en su Publicación 1)
+CALL sp_insertarNotificacion(
+    'NUEVO_VOTO',          -- p_tipo
+    1,                     -- p_idPublicacion (Publicación que origina la noti)
+    1,                     -- p_idUsuarioNotificado (Usuario 1, el autor del post)
+    @idNoti
+);
+SELECT @idNoti AS 'ID Notificación Generada';
+
+-- Prueba para listar notificaciones de Usuario 1 (debería salir la de "NUEVO_VOTO")
+CALL sp_listarNotificacionesPorUsuario(1);
+
+-- Prueba para marcar la notificación como leída
+CALL sp_marcarNotificacionLeida(1, @exitoLeida);
+SELECT @exitoLeida AS 'Notificación marcada como leída';
+
+-- Prueba para listar notificaciones de Usuario 1 de nuevo (ya no debería salir)
+CALL sp_listarNotificacionesPorUsuario(1);
+
+
+SELECT * FROM USUARIO_RP;
+SELECT * FROM COMUNIDAD_RP;
+SELECT * FROM PUBLICACION_RP;
+SELECT * FROM COMENTARIO_RP;
+SELECT * FROM VOTO_RP;
+SELECT * FROM VOTO_PUBLICACION_RP;
+SELECT * FROM VOTO_COMENTARIO_RP;
+SELECT * FROM USUARIO_COMUNIDAD_RP;
+
+SELECT * FROM REPORTE_RP;
+SELECT * FROM NOTIFICACION_RP;

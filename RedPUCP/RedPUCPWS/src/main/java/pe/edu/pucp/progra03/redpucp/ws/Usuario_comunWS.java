@@ -47,7 +47,7 @@ public class Usuario_comunWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         List<Usuario_comun>usuarios=mapper.readValue(json,new TypeReference<List<Usuario_comun>>() {});
         return usuarios;
     }
@@ -62,7 +62,7 @@ public class Usuario_comunWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         Usuario_comun usuario_comun = mapper.readValue(json, Usuario_comun.class);
         
         return usuario_comun;
@@ -80,7 +80,8 @@ public class Usuario_comunWS {
     
     @WebMethod (operationName ="guardarUsuarioComun")
     public void guardarUsuarioComun(@WebParam(name = "usuarioComun") Usuario_comun usuariocomun, @WebParam(name = "estado") Estado estado) throws Exception{
-        ObjectMapper mapper = new ObjectMapper();
+//        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         String json = mapper.writeValueAsString(usuariocomun);
         
         String url;

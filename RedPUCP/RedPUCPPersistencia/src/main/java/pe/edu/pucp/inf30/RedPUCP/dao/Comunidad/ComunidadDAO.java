@@ -13,9 +13,9 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
 import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 /**
  *
- * @author andre
+ * @author andre main
  */
 public interface ComunidadDAO extends PersistibleTransaccional<Comunidad, Integer>{
     List<Comunidad> listarcomunidadfiltros(String descripcion);/*faltan agregar los filtros*/
-    List<Comunidad> buscarcomunidadpornombres (String nombrecom);
+    List<Comunidad> buscarComunidadXNombres (String parteNombre);
 }

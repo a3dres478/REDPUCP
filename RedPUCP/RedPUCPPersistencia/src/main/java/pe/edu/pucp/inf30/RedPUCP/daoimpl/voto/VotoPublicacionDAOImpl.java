@@ -6,9 +6,13 @@ package pe.edu.pucp.inf30.RedPUCP.daoimpl.voto;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
+import pe.edu.pucp.inf30.RedPUCP.config.DBManager;
 import pe.edu.pucp.inf30.RedPUCP.dao.voto.VotoPublicacionDAO;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.Publicacion.PublicacionDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.daoimpl.TransaccionalBaseDAO;
@@ -18,17 +22,17 @@ import pe.edu.pucp.inf30.RedPUCP.daoimpl.usuario.UsuarioDAOimpl;
 import pe.edu.pucp.inf30.RedPUCP.modelo.voto.VotoPublicacion;
 /**
  *
- * @author andre
+ * @author andre main
  */
 public class VotoPublicacionDAOImpl extends TransaccionalBaseDAO<VotoPublicacion> implements VotoPublicacionDAO{
     
-    @Override
+@Override
     protected CallableStatement comandoCrear(Connection conn, VotoPublicacion usu) throws SQLException {
         String sql = "{CALL sp_insertarVotoPublicacion(?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
         cmd.setInt("p_idUsuario", usu.getUsuario().getIdUsuario());
         //cmd.setString("p_tipo", String.valueOf(usu.getTipo()));
-        cmd.setString("p_tipo", "UP");
+        cmd.setString("p_tipo", String.valueOf(usu.getTipo()));
         cmd.setInt("p_idPublicacion", usu.getPublicacionVotada().getId());
         //cmd.setDate("p_fechaRegistro", new java.sql.Date(usu.getFechaRegistro().getTime()));
         cmd.registerOutParameter("p_idGenerado", Types.INTEGER);
@@ -89,4 +93,32 @@ public class VotoPublicacionDAOImpl extends TransaccionalBaseDAO<VotoPublicacion
         return usu;
     }
     
+    @Override
+    public List<VotoPublicacion> listarVotosXPublicacion(int idPublicacion) {
+        try (
+            Connection conn = DBManager.getInstance().getConnection(); 
+            PreparedStatement ps = this.comandoListarVotosXPublicacion(conn, idPublicacion);) {
+            ResultSet rs = ps.executeQuery();
+            List<VotoPublicacion> modelos = new ArrayList<>();
+            while (rs.next()) {
+                modelos.add(this.mapearModelo(rs));
+            }
+            return modelos;
+
+        } catch (SQLException e) {
+            System.err.println("Error SQL durante el listado: " + e.getMessage());
+            throw new RuntimeException("No se pudo listar el registro.", e);
+        } catch (Exception e) {
+            System.err.println("Error inpesperado: " + e.getMessage());
+            throw new RuntimeException("Error inesperado al listar los registros.", e);
+        }
+    }
+
+    protected CallableStatement comandoListarVotosXPublicacion(Connection conn, int idPublicacion) throws SQLException {
+        String sql = "{CALL sp_leerVotosXPublicacion(?)}";
+        CallableStatement cmd = conn.prepareCall(sql);
+        cmd.setInt("p_idPublicacion", idPublicacion);
+        return cmd;
+
+    }    
 }

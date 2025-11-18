@@ -20,7 +20,7 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.ComunidadxPublicacionPrincipal
 import pe.edu.pucp.progra03.redpucp.bo.Estado;
 /**
  *
- * @author HECTOR
+ * @author HECTOR main
  */
 @WebService(serviceName = "ComunidadXPublicacion_PrincipalWS",
         targetNamespace = "https://services.redpucp.ws/")

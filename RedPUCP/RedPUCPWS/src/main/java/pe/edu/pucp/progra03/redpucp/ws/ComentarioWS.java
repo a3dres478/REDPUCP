@@ -59,9 +59,27 @@ public class ComentarioWS {
         return comentarios;
     }
      
+    @WebMethod (operationName ="listarComentariosXPublicacion")
+    public List<Comentario> listarComentariosXPublicacion(@WebParam(name="idPublicacion")int idPublicacion)throws Exception{
+        String url = this.urlBase + "/" + this.NOMBRE_RECURSO+"/publicacion/"+idPublicacion;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+//        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        List<Comentario> comentarios = mapper.readValue(json, new TypeReference<List<Comentario>>() {});
+        
+        return comentarios;
+    }
+     
      @WebMethod (operationName ="guardarComentario")
      public void guardarComentario(@WebParam(name = "comentario") Comentario comentario, @WebParam(name = "estado") Estado estado) throws Exception{
-        ObjectMapper mapper = new ObjectMapper();
+//        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         String json = mapper.writeValueAsString(comentario);
         
         String url;
@@ -87,9 +105,8 @@ public class ComentarioWS {
         client.send(request, HttpResponse.BodyHandlers.ofString());
     }
      
-     @WebMethod (operationName = "obtenerComentario")
-     @XmlElement
-     public Comentario obtenerComentario(@WebParam(name = "idComentario") int id)throws Exception{
+    @WebMethod (operationName = "obtenerComentario")
+    public Comentario obtenerComentario(@WebParam(name = "idComentario") int id)throws Exception{
         String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/" + id;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -100,13 +117,7 @@ public class ComentarioWS {
         String json = response.body();
         ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
         Comentario comentario = mapper.readValue(json, Comentario.class);
-        
-        // Envolver el campo "autor" en un JAXBElement
-        if (comentario.getAutor() != null) {
-            JAXBElement<Usuario_comun> autorElement = new JAXBElement<Usuario_comun>(new QName("autor"), Usuario_comun.class, (Usuario_comun)comentario.getAutor());
-            comentario.setAutor(autorElement.getValue());
-        }
-        
+     
         return comentario;
     }
      

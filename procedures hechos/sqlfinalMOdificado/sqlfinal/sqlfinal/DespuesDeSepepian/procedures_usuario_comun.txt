@@ -1,0 +1,35 @@
+USE RedPUCP;
+
+-- Actualizado:
+
+DROP PROCEDURE IF EXISTS sp_actualizarUsuarioComun;
+
+-- Nuevo:
+-- Procedure específico para actualizar usuario común (con karma)
+DELIMITER //
+CREATE PROCEDURE sp_actualizarUsuarioComun(
+    IN p_idUsuario INT,
+    IN p_nombre VARCHAR(100),
+    IN p_descripcion VARCHAR(300),
+    IN p_email VARCHAR(150),
+    IN p_contrasena VARCHAR(255),
+    IN p_codigo VARCHAR(200),
+    IN p_karma INT,
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    DECLARE v_filas INT;
+    
+    UPDATE USUARIO_RP
+    SET nombre = p_nombre,
+        descripcion = p_descripcion,
+        email = p_email,
+        contrasena = p_contrasena,
+        codigo = p_codigo,
+        karma = p_karma
+    WHERE idUsuario = p_idUsuario AND rol = 'C';
+
+    SET v_filas = ROW_COUNT();
+    SET p_exito = (v_filas > 0);
+END //
+DELIMITER ;

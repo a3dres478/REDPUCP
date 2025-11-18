@@ -20,8 +20,8 @@ CREATE PROCEDURE sp_insertarReporte(
 )
 BEGIN
     INSERT INTO REPORTE_RP(tipo, detalle, fechaCreacion, estado, 
-                           idPublicacion_report, idComentario_report, 
-                           idPublicador, idReportador)
+                           fid_publicacion_reportada, fid_comentario_reportado, 
+                           fid_publicador, fid_reportador)
     VALUES(p_tipo, p_detalle, NOW(), 'A', -- 'A' = Activo/Pendiente
            p_idPublicacion, p_idComentario, 
            p_idPublicador, p_idReportador);
@@ -71,10 +71,10 @@ CREATE PROCEDURE sp_obtenerReportePorId(
 BEGIN
     SELECT 
         idReporte, tipo, detalle, estado,
-        idPublicacion_report AS idPublicacion,
-        idComentario_report AS idComentario,
-        idPublicador AS idPublicador,
-        idReportador AS idReportador
+        fid_publicacion_reportada AS idPublicacion,
+        fid_comentario_reportado AS idComentario,
+        fid_publicador AS idPublicador,
+        fid_reportador AS idReportador
     FROM REPORTE_RP
     WHERE idReporte = p_idReporte AND estado != 'E';
 END //
@@ -87,10 +87,10 @@ BEGIN
     -- Esto es lo que llamará "comandoLeerTodos"
     SELECT 
         idReporte, tipo, detalle, estado,
-        idPublicacion_report AS idPublicacion,
-        idComentario_report AS idComentario,
-        idPublicador AS idPublicador,
-        idReportador AS idReportador
+        fid_publicacion_reportada AS idPublicacion,
+        fid_comentario_reportado AS idComentario,
+        fid_publicador AS idPublicador,
+        fid_reportador AS idReportador
     FROM REPORTE_RP
     WHERE estado = 'A'; -- Solo los Activos/Pendientes
 END //
@@ -104,11 +104,11 @@ CREATE PROCEDURE sp_listarReportesPorReportador(
 BEGIN
     SELECT 
         idReporte, tipo, detalle, estado,
-        idPublicacion_report AS idPublicacion,
-        idComentario_report AS idComentario,
-        idPublicador AS idPublicador,
-        idReportador AS idReportador
+        fid_publicacion_reportada AS idPublicacion,
+        fid_comentario_reportado AS idComentario,
+        fid_publicador AS idPublicador,
+        fid_reportador AS idReportador
     FROM REPORTE_RP
-    WHERE idReportador = p_idReportador AND estado != 'E';
+    WHERE fid_reportador = p_idReportador AND estado != 'E';
 END //
 DELIMITER ;

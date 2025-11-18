@@ -49,8 +49,32 @@ public class PublicacionWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         List<Publicacion>publicaciones=mapper.readValue(json,new TypeReference<List<Publicacion>>() {});
+        return publicaciones;
+    }
+    
+    @WebMethod (operationName ="listarPublicacionXFiltros")
+    public List<Publicacion> listarPublicacionesXFiltros(
+            @WebParam(name="categoria")String categoria,
+            @WebParam(name="ordenamiento")String ordenamiento
+        )throws Exception{
+//        String url = this.urlBase + "/" + this.NOMBRE_RECURSO+"/publicacion/"+categoria+","+ordenamiento;
+
+        String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/filtros" +
+                 "?categoria=" + java.net.URLEncoder.encode(categoria, "UTF-8") +
+                 "&ordenamiento=" + java.net.URLEncoder.encode(ordenamiento, "UTF-8");
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        List<Publicacion> publicaciones = mapper.readValue(json, new TypeReference<List<Publicacion>>() {});
+        
         return publicaciones;
     }
     
@@ -64,7 +88,7 @@ public class PublicacionWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         Publicacion publicacion = mapper.readValue(json, Publicacion.class);
         
         return publicacion;
@@ -82,7 +106,7 @@ public class PublicacionWS {
     
     @WebMethod (operationName ="guardarPublicacion")
     public void guardarPublicacion(@WebParam(name = "publicacion") Publicacion publicacion, @WebParam(name = "estado") Estado estado) throws Exception{
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         String json = mapper.writeValueAsString(publicacion);
         
         String url;

@@ -1,0 +1,77 @@
+USE RedPUCP;
+
+DROP PROCEDURE IF EXISTS sp_insertarUsuarioComunidad;
+DROP PROCEDURE IF EXISTS sp_obtenerUsuComuPorId;
+DROP PROCEDURE IF EXISTS sp_listarTodosUsuarioComunidad;
+DROP PROCEDURE IF EXISTS sp_eliminarUsuarioComunidad;
+
+-- insertar usuario comunidad
+DELIMITER //
+
+CREATE PROCEDURE sp_insertarUsuarioComunidad(
+    IN p_idUsuario INT,
+    IN p_idComunidad INT,
+    IN p_rol CHAR,
+    OUT p_id INT
+)
+BEGIN
+    
+    INSERT INTO USUARIO_COMUNIDAD_RP (idUsuario, idComunidad, rol)
+    VALUES (p_idUsuario, p_idComunidad, p_rol);
+    
+    UPDATE COMUNIDAD_RP
+    SET cantidadMiembros = cantidadMiembros + 1
+    WHERE idComunidad = p_idComunidad;
+    
+    SET p_id = LAST_INSERT_ID();
+END //
+
+DELIMITER ;
+
+
+-- obtener por id
+DELIMITER //
+
+CREATE PROCEDURE sp_obtenerUsuComuPorId(
+    IN p_idUsuario INT,
+    IN p_idComunidad INT
+)
+BEGIN
+    SELECT 
+        idUsuario,
+        idComunidad,
+        rol
+    FROM USUARIO_COMUNIDAD_RP 
+    WHERE idUsuario = p_idUsuario 
+    AND idComunidad = p_idComunidad;
+END //
+
+DELIMITER ;
+
+-- listar todos
+DELIMITER //
+
+CREATE PROCEDURE sp_listarTodosUsuarioComunidad()
+BEGIN
+    SELECT 
+        *
+    FROM USUARIO_COMUNIDAD_RP;
+END //
+
+DELIMITER ;
+
+-- eliminar usuario comunidad
+DELIMITER //
+
+CREATE PROCEDURE sp_eliminarUsuarioComunidad(
+	IN p_idUsuario INT,
+    IN P_idComunidad INT,
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    UPDATE USUARIO_COMUNIDAD_RP
+	SET estado = 'E'
+    WHERE idUsuario = p_idUsuario AND idComunidad = p_idComunidad;
+END //
+
+DELIMITER ;

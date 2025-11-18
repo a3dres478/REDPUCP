@@ -50,9 +50,26 @@ public class VotoComentarioWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         List<VotoComentario>votoscom=mapper.readValue(json,new TypeReference<List<VotoComentario>>() {});
         return votoscom;
+    }
+    
+    @WebMethod (operationName ="listarVotosXComentario")
+    public List<VotoComentario> listarVotosXComentario(@WebParam(name="idComentario")int idComentario)throws Exception{
+        String url = this.urlBase + "/" + this.NOMBRE_RECURSO+"/comentario/"+idComentario;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+//        ObjectMapper mapper= new ObjectMapper();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        List<VotoComentario> votos = mapper.readValue(json, new TypeReference<List<VotoComentario>>() {});
+        
+        return votos;
     }
     
     @WebMethod(operationName = "obtenerVotoComentario")
@@ -65,7 +82,7 @@ public class VotoComentarioWS {
         
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String json = response.body();
-        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         VotoComentario votocom = mapper.readValue(json, VotoComentario.class);
         
         return votocom;
@@ -84,7 +101,7 @@ public class VotoComentarioWS {
     
     @WebMethod (operationName ="guardarVotoComentario")
     public void guardarVotoComentario(@WebParam(name = "votocomentario") VotoComentario votocomentario, @WebParam(name = "estado") Estado estado) throws Exception{
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
         String json = mapper.writeValueAsString(votocomentario);
         
         String url;

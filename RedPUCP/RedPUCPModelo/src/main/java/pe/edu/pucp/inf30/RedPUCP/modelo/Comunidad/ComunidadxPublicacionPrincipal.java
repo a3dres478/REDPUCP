@@ -9,6 +9,7 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Publicacion;
 /**
  *
  * @author andre
+ * main
  */
 public class ComunidadxPublicacionPrincipal {
 

@@ -1,0 +1,85 @@
+USE RedPUCP;
+
+DROP PROCEDURE IF EXISTS sp_insertarVoto;
+DROP PROCEDURE IF EXISTS sp_obtenerVotoPorId;
+DROP PROCEDURE IF EXISTS sp_listarVotos;
+DROP PROCEDURE IF EXISTS sp_actualizarVoto;
+DROP PROCEDURE IF EXISTS sp_eliminarVoto;
+
+-- insertar nuevo voto
+DELIMITER //
+
+CREATE PROCEDURE sp_insertarVoto(
+    IN p_idUsuario INT,
+    IN p_tipo CHAR,
+    OUT p_idGenerado INT
+)
+BEGIN
+    INSERT INTO VOTO_RP (idUsuario, fechaRegistro, tipo)
+    VALUES (p_idUsuario, NOW(), p_tipo);
+    
+    SET p_idGenerado = LAST_INSERT_ID();
+END //
+
+DELIMITER ;
+
+-- obtener por id
+DELIMITER //
+
+CREATE PROCEDURE sp_obtenerVotoPorId(
+    IN p_idVoto INT
+)
+BEGIN
+    SELECT *
+    FROM VOTO_RP 
+    WHERE idVoto = p_idVoto;
+END //
+
+DELIMITER ;
+
+-- actualizar los votos
+DELIMITER //
+
+CREATE PROCEDURE sp_actualizarVoto(
+    IN p_idVoto INT,
+    IN p_tipo CHAR,
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    UPDATE VOTO_RP 
+    SET 
+        tipo = p_tipo,
+        fechaRegistro = NOW()
+    WHERE idVoto = p_idVoto;
+
+    SET p_exito = (ROW_COUNT() > 0);
+END //
+
+DELIMITER ;
+
+-- listar todos votos
+DELIMITER //
+CREATE PROCEDURE sp_listarVotos()
+BEGIN
+    SELECT * FROM VOTO_RP WHERE estado != 'E';
+END //
+
+DELIMITER ;
+
+-- eliminar voto
+DELIMITER //
+CREATE PROCEDURE sp_eliminarVoto(
+    IN p_idVoto INT,
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    UPDATE VOTO_RP 
+    SET 
+        fechaRegistro = NOW(),
+        estado = 'E'
+    WHERE idVoto = p_idVoto;
+
+    SET p_exito = (ROW_COUNT() > 0);
+END //
+
+DELIMITER ;

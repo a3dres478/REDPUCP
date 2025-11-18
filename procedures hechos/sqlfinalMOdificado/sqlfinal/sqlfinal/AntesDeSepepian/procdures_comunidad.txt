@@ -5,6 +5,7 @@ DROP PROCEDURE IF EXISTS sp_obtenerComunidadPorId;
 DROP PROCEDURE IF EXISTS sp_listarComunidades;
 DROP PROCEDURE IF EXISTS sp_actualizarComunidad;
 DROP PROCEDURE IF EXISTS sp_eliminarComunidad;
+DROP PROCEDURE IF EXISTS sp_listarComunidadPorParteNombre;
 
 ------------------------------------------------------------
 -- Procedure para crear nueva comunidad + crear registro en
@@ -61,6 +62,15 @@ CREATE PROCEDURE sp_listarComunidades()
 BEGIN
     SELECT * FROM COMUNIDAD_RP 
     WHERE estado = 'A';
+END //
+DELIMITER ;
+
+-- Listar Comunidad por nombre:
+DELIMITER //
+CREATE PROCEDURE sp_listarComunidadPorParteNombre(IN ParteNombre VARCHAR(100))
+BEGIN
+    SELECT * FROM COMUNIDAD_RP 
+    WHERE estado = 'A' AND nombre LIKE CONCAT('%', ParteNombre, '%');
 END //
 DELIMITER ;
 

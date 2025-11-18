@@ -6,7 +6,7 @@ package pe.edu.pucp.inf30.RedPUCP.modelo.usuario;
 
 /**
  *
- * @author andre
+ * @author andre main
  */
 public class Administrador extends Usuario{
     private String clave_acceso;
@@ -14,7 +14,7 @@ public class Administrador extends Usuario{
     //para Sepepian
     public Administrador(){
         this.setEstadouser('A');
-        this.setTipousuario('A');
+        this.setTipousuario("A");
     }
     public String getClave_acceso() {
         return clave_acceso;

@@ -3,6 +3,7 @@ USE RedPUCP;
 DROP PROCEDURE IF EXISTS sp_insertarVotoPublicacion;
 DROP PROCEDURE IF EXISTS sp_obtenerPorIdVotoPublicacion;
 DROP PROCEDURE IF EXISTS sp_leerTodosVotosPublicacion;
+DROP PROCEDURE IF EXISTS sp_leerVotosXPublicacion;
 
 -- insertsr voto publicacion
 DELIMITER //
@@ -50,6 +51,38 @@ DELIMITER ;
 
 -- leer todos votos publicacion
 DELIMITER //
+
+CREATE PROCEDURE sp_leerTodosVotosPublicacion()
+BEGIN
+    SELECT 
+        v.idVoto,
+        v.idUsuario,
+        v.fechaRegistro,
+        v.tipo,
+        vp.idPublicacion
+    FROM VOTO_RP v
+    INNER JOIN VOTO_PUBLICACION_RP vp ON v.idVoto = vp.idVoto;
+END //
+
+DELIMITER ;
+
+-- Nuevo procedure
+DELIMITER //
+CREATE PROCEDURE sp_leerVotosXPublicacion(
+	IN p_idPublicacion INT
+)
+BEGIN
+	SELECT 
+		v.idVoto,
+        v.idUsuario,
+        v.fechaRegistro,
+        v.tipo,
+        vp.idPublicacion
+	FROM VOTO_RP v
+    INNER JOIN VOTO_PUBLICACION_RP vp ON v.idVoto = vp.idVoto
+    WHERE p_idPublicacion = vp.idPublicacion;
+END //
+DELIMITER ;
 
 CREATE PROCEDURE sp_leerTodosVotosPublicacion()
 BEGIN

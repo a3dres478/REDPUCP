@@ -4,6 +4,7 @@
  */
 package pe.edu.pucp.progra03.redpucp.bo;
 
+import java.util.List;
 import pe.edu.pucp.inf30.RedPUCP.modelo.voto.VotoPublicacion;
 
 /**
@@ -11,5 +12,5 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.voto.VotoPublicacion;
  * @author invitado123
  */
 public interface IVotoPublicacionBO extends IBaseBO<VotoPublicacion>{
-    
+    List<VotoPublicacion> listarVotosXPublicacion(int idPublicacion);
 }

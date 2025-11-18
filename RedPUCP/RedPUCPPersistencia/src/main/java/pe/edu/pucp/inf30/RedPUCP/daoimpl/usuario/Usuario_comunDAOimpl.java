@@ -19,11 +19,11 @@ import pe.edu.pucp.inf30.RedPUCP.modelo.usuario.Usuario_comun;
 
 /**
  *
- * @author andre
+ * @author andre main
  */
 public class Usuario_comunDAOimpl extends TransaccionalBaseDAO<Usuario_comun> implements Usuario_comunDAO {
 
-    @Override
+   @Override
     protected CallableStatement comandoCrear(Connection conn, Usuario_comun usu) throws SQLException {
         String sql = "{CALL sp_insertarUsuario(?,?,?,?,?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
@@ -42,7 +42,7 @@ public class Usuario_comunDAOimpl extends TransaccionalBaseDAO<Usuario_comun> im
 
     @Override
     protected CallableStatement comandoActualizar(Connection conn, Usuario_comun usu) throws SQLException {
-        String sql = "{CALL sp_actualizarUsuario(?,?,?,?,?,?,?,?,?)}";
+        String sql = "{CALL sp_actualizarUsuarioComun(?,?,?,?,?,?,?,?)}";
         CallableStatement cmd = conn.prepareCall(sql);
 
         cmd.setInt("p_idUsuario", usu.getIdUsuario());
@@ -50,9 +50,8 @@ public class Usuario_comunDAOimpl extends TransaccionalBaseDAO<Usuario_comun> im
         cmd.setString("p_descripcion", usu.getDescripcion());
         cmd.setString("p_email", usu.getEmail());
         cmd.setString("p_contrasena", usu.getContrasenha());
-        cmd.setString("p_rol", String.valueOf(usu.getTipousuario()));
         cmd.setString("p_codigo", usu.getCodigopucp());
-        cmd.setString("p_claveDeAcceso", null);
+        cmd.setInt("p_karma", usu.getKarma()); 
 
         cmd.registerOutParameter("p_exito", Types.BOOLEAN);
 
@@ -79,7 +78,7 @@ public class Usuario_comunDAOimpl extends TransaccionalBaseDAO<Usuario_comun> im
 
     @Override
     protected CallableStatement comandoLeerTodos(Connection conn) throws SQLException {
-        String sql = "{CALL sp_listarUsuariosComunes()}"; // FALTA PROCEDURE
+        String sql = "{CALL sp_listarUsuariosComunes()}"; 
         CallableStatement cmd = conn.prepareCall(sql);
         return cmd;
     }
@@ -94,11 +93,11 @@ public class Usuario_comunDAOimpl extends TransaccionalBaseDAO<Usuario_comun> im
         usu.setContrasenha(rs.getString("contrasena"));
         usu.setKarma(rs.getInt("karma"));
         usu.setEstadouser(rs.getString("estado").charAt(0));
-        usu.setTipousuario(rs.getString("rol").charAt(0));
+        usu.setTipousuario(rs.getString("rol"));
         usu.setFechaRegistro(rs.getTimestamp("fechaRegistro"));
         usu.setCodigopucp(rs.getString("codigo"));
 
         return usu;
     }
-
+    
 }

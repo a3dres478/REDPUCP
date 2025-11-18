@@ -27,7 +27,7 @@ import pe.edu.pucp.progra03.redpucp.boimpl.Usuario_comunBOImpl;
 /*--------------*/
 /**
  *
- * @author andre
+ * @author andre main
  */
 @Path("usuarioscomunes")
 @Consumes(MediaType.APPLICATION_JSON)
