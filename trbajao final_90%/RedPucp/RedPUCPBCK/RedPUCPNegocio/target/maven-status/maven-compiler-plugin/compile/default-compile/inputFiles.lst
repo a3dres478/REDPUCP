@@ -1,31 +1,31 @@
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\Estado.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IAdministradorBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IBaseBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IComentarioBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IComunidadBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IComunidadXPublicacionPrincipalBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\INotificacionBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IPublicacionBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IPublicacionXComunidadBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IReporteBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IUsuario_comunBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IUsuarioBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IUsuarioXComunidadBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IVotoBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IVotoComentarioBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IVotoPublicacionBO.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\AdministradorBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\ComentarioBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\ComunidadBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\ComunidadXPublicacionPrincipalBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\NotificacionBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\PublicacionBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\PublicacionXComunidadBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\ReporteBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\Usuario_comunBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\UsuarioBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\UsuarioXComunidadBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\VotoBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\VotoComentarioBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\VotoPublicacionBOImpl.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucpnegocio\RedPUCPNegocio.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\Estado.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IAdministradorBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IBaseBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IComentarioBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IComunidadBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IComunidadXPublicacionPrincipalBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\INotificacionBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IPublicacionBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IPublicacionXComunidadBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IReporteBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IUsuario_comunBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IUsuarioBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IUsuarioXComunidadBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IVotoBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IVotoComentarioBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\bo\IVotoPublicacionBO.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\AdministradorBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\ComentarioBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\ComunidadBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\ComunidadXPublicacionPrincipalBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\NotificacionBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\PublicacionBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\PublicacionXComunidadBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\ReporteBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\Usuario_comunBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\UsuarioBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\UsuarioXComunidadBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\VotoBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\VotoComentarioBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucp\boimpl\VotoPublicacionBOImpl.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPNegocio\src\main\java\pe\edu\pucp\progra03\redpucpnegocio\RedPUCPNegocio.java

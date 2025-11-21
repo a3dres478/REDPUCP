@@ -1,13 +1,13 @@
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\ComunidadXPublicacion_PrincipalWS.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\AdministradorWS.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucpws\JakartaRestConfiguration.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\Usuario_comunWS.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucpws\resources\JakartaEE10Resource.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\ComunidadWS.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\NotificacionWS.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\DateDeserializerUtil.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\PublicacionWS.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\ReporteWS.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\ComentarioWS.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\VotoPublicacionWS.java
-C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPUCP_Login_y_Karma\RedPUCP\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\VotoComentarioWS.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\Usuario_comunWS.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\PublicacionWS.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucpws\resources\JakartaEE10Resource.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\ReporteWS.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\AdministradorWS.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\ComentarioWS.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\DateDeserializerUtil.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\ComunidadWS.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucpws\JakartaRestConfiguration.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\NotificacionWS.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\VotoPublicacionWS.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\VotoComentarioWS.java
+C:\Users\andre\OneDrive\Documentos\GitHub\trbajo\REDPUCP\trbajao final_90%\RedPucp\RedPUCPBCK\RedPUCPWS\src\main\java\pe\edu\pucp\progra03\redpucp\ws\ComunidadXPublicacion_PrincipalWS.java
