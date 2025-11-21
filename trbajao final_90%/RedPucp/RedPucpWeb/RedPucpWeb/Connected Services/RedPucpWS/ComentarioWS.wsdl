@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://services.redpucp.ws/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="ComentarioWS" targetNamespace="https://services.redpucp.ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/RedPUCPWS/ComentarioWS?xsd=1" namespace="https://services.redpucp.ws/" />
+    </xsd:schema>
+  </types>
+  <message name="listarComentariosXPublicacion">
+    <part name="parameters" element="tns:listarComentariosXPublicacion" />
+  </message>
+  <message name="listarComentariosXPublicacionResponse">
+    <part name="parameters" element="tns:listarComentariosXPublicacionResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="actualizarImagenComentario">
+    <part name="parameters" element="tns:actualizarImagenComentario" />
+  </message>
+  <message name="actualizarImagenComentarioResponse">
+    <part name="parameters" element="tns:actualizarImagenComentarioResponse" />
+  </message>
+  <message name="guardarComentario">
+    <part name="parameters" element="tns:guardarComentario" />
+  </message>
+  <message name="guardarComentarioResponse">
+    <part name="parameters" element="tns:guardarComentarioResponse" />
+  </message>
+  <message name="eliminarComentario">
+    <part name="parameters" element="tns:eliminarComentario" />
+  </message>
+  <message name="eliminarComentarioResponse">
+    <part name="parameters" element="tns:eliminarComentarioResponse" />
+  </message>
+  <message name="obtenerComentario">
+    <part name="parameters" element="tns:obtenerComentario" />
+  </message>
+  <message name="obtenerComentarioResponse">
+    <part name="parameters" element="tns:obtenerComentarioResponse" />
+  </message>
+  <message name="listarComentarios">
+    <part name="parameters" element="tns:listarComentarios" />
+  </message>
+  <message name="listarComentariosResponse">
+    <part name="parameters" element="tns:listarComentariosResponse" />
+  </message>
+  <portType name="ComentarioWS">
+    <operation name="listarComentariosXPublicacion">
+      <input wsam:Action="https://services.redpucp.ws/ComentarioWS/listarComentariosXPublicacionRequest" message="tns:listarComentariosXPublicacion" />
+      <output wsam:Action="https://services.redpucp.ws/ComentarioWS/listarComentariosXPublicacionResponse" message="tns:listarComentariosXPublicacionResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComentarioWS/listarComentariosXPublicacion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="actualizarImagenComentario">
+      <input wsam:Action="https://services.redpucp.ws/ComentarioWS/actualizarImagenComentarioRequest" message="tns:actualizarImagenComentario" />
+      <output wsam:Action="https://services.redpucp.ws/ComentarioWS/actualizarImagenComentarioResponse" message="tns:actualizarImagenComentarioResponse" />
+    </operation>
+    <operation name="guardarComentario">
+      <input wsam:Action="https://services.redpucp.ws/ComentarioWS/guardarComentarioRequest" message="tns:guardarComentario" />
+      <output wsam:Action="https://services.redpucp.ws/ComentarioWS/guardarComentarioResponse" message="tns:guardarComentarioResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComentarioWS/guardarComentario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="eliminarComentario">
+      <input wsam:Action="https://services.redpucp.ws/ComentarioWS/eliminarComentarioRequest" message="tns:eliminarComentario" />
+      <output wsam:Action="https://services.redpucp.ws/ComentarioWS/eliminarComentarioResponse" message="tns:eliminarComentarioResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComentarioWS/eliminarComentario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerComentario">
+      <input wsam:Action="https://services.redpucp.ws/ComentarioWS/obtenerComentarioRequest" message="tns:obtenerComentario" />
+      <output wsam:Action="https://services.redpucp.ws/ComentarioWS/obtenerComentarioResponse" message="tns:obtenerComentarioResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComentarioWS/obtenerComentario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarComentarios">
+      <input wsam:Action="https://services.redpucp.ws/ComentarioWS/listarComentariosRequest" message="tns:listarComentarios" />
+      <output wsam:Action="https://services.redpucp.ws/ComentarioWS/listarComentariosResponse" message="tns:listarComentariosResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComentarioWS/listarComentarios/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="ComentarioWSPortBinding" type="tns:ComentarioWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listarComentariosXPublicacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="actualizarImagenComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="guardarComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="eliminarComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarComentarios">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="ComentarioWS">
+    <port name="ComentarioWSPort" binding="tns:ComentarioWSPortBinding">
+      <soap:address location="http://localhost:8080/RedPUCPWS/ComentarioWS" />
+    </port>
+  </service>
+</definitions>

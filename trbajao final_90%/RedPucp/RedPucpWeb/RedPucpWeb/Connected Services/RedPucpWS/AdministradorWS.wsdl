@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://services.redpucp.ws/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="AdministradorWS" targetNamespace="https://services.redpucp.ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/RedPUCPWS/AdministradorWS?xsd=1" namespace="https://services.redpucp.ws/" />
+    </xsd:schema>
+  </types>
+  <message name="listarAdministradores">
+    <part name="parameters" element="tns:listarAdministradores" />
+  </message>
+  <message name="listarAdministradoresResponse">
+    <part name="parameters" element="tns:listarAdministradoresResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="obtenerAdminPorCorreo">
+    <part name="parameters" element="tns:obtenerAdminPorCorreo" />
+  </message>
+  <message name="obtenerAdminPorCorreoResponse">
+    <part name="parameters" element="tns:obtenerAdminPorCorreoResponse" />
+  </message>
+  <message name="verificarLoginAdmin">
+    <part name="parameters" element="tns:verificarLoginAdmin" />
+  </message>
+  <message name="verificarLoginAdminResponse">
+    <part name="parameters" element="tns:verificarLoginAdminResponse" />
+  </message>
+  <message name="obtenerAdmin">
+    <part name="parameters" element="tns:obtenerAdmin" />
+  </message>
+  <message name="obtenerAdminResponse">
+    <part name="parameters" element="tns:obtenerAdminResponse" />
+  </message>
+  <message name="guardarAdministrador">
+    <part name="parameters" element="tns:guardarAdministrador" />
+  </message>
+  <message name="guardarAdministradorResponse">
+    <part name="parameters" element="tns:guardarAdministradorResponse" />
+  </message>
+  <message name="eliminarAdministrador">
+    <part name="parameters" element="tns:eliminarAdministrador" />
+  </message>
+  <message name="eliminarAdministradorResponse">
+    <part name="parameters" element="tns:eliminarAdministradorResponse" />
+  </message>
+  <portType name="AdministradorWS">
+    <operation name="listarAdministradores">
+      <input wsam:Action="https://services.redpucp.ws/AdministradorWS/listarAdministradoresRequest" message="tns:listarAdministradores" />
+      <output wsam:Action="https://services.redpucp.ws/AdministradorWS/listarAdministradoresResponse" message="tns:listarAdministradoresResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/AdministradorWS/listarAdministradores/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerAdminPorCorreo">
+      <input wsam:Action="https://services.redpucp.ws/AdministradorWS/obtenerAdminPorCorreoRequest" message="tns:obtenerAdminPorCorreo" />
+      <output wsam:Action="https://services.redpucp.ws/AdministradorWS/obtenerAdminPorCorreoResponse" message="tns:obtenerAdminPorCorreoResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/AdministradorWS/obtenerAdminPorCorreo/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="verificarLoginAdmin">
+      <input wsam:Action="https://services.redpucp.ws/AdministradorWS/verificarLoginAdminRequest" message="tns:verificarLoginAdmin" />
+      <output wsam:Action="https://services.redpucp.ws/AdministradorWS/verificarLoginAdminResponse" message="tns:verificarLoginAdminResponse" />
+    </operation>
+    <operation name="obtenerAdmin">
+      <input wsam:Action="https://services.redpucp.ws/AdministradorWS/obtenerAdminRequest" message="tns:obtenerAdmin" />
+      <output wsam:Action="https://services.redpucp.ws/AdministradorWS/obtenerAdminResponse" message="tns:obtenerAdminResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/AdministradorWS/obtenerAdmin/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="guardarAdministrador">
+      <input wsam:Action="https://services.redpucp.ws/AdministradorWS/guardarAdministradorRequest" message="tns:guardarAdministrador" />
+      <output wsam:Action="https://services.redpucp.ws/AdministradorWS/guardarAdministradorResponse" message="tns:guardarAdministradorResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/AdministradorWS/guardarAdministrador/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="eliminarAdministrador">
+      <input wsam:Action="https://services.redpucp.ws/AdministradorWS/eliminarAdministradorRequest" message="tns:eliminarAdministrador" />
+      <output wsam:Action="https://services.redpucp.ws/AdministradorWS/eliminarAdministradorResponse" message="tns:eliminarAdministradorResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/AdministradorWS/eliminarAdministrador/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="AdministradorWSPortBinding" type="tns:AdministradorWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listarAdministradores">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerAdminPorCorreo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="verificarLoginAdmin">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerAdmin">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="guardarAdministrador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="eliminarAdministrador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="AdministradorWS">
+    <port name="AdministradorWSPort" binding="tns:AdministradorWSPortBinding">
+      <soap:address location="http://localhost:8080/RedPUCPWS/AdministradorWS" />
+    </port>
+  </service>
+</definitions>

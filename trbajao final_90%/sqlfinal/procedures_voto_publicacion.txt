@@ -1,0 +1,196 @@
+USE RedPUCP;
+
+DROP PROCEDURE IF EXISTS sp_insertarVotoPublicacion;
+DROP PROCEDURE IF EXISTS sp_obtenerPorIdVotoPublicacion;
+DROP PROCEDURE IF EXISTS sp_leerTodosVotosPublicacion;
+DROP PROCEDURE IF EXISTS sp_leerVotosXPublicacion;
+DROP PROCEDURE IF EXISTS sp_eliminarVotoPublicacion;
+
+-- insertsr voto publicacion
+'DELIMITER //
+CREATE PROCEDURE sp_insertarVotoPublicacion(
+    IN p_idUsuario INT,
+    IN p_tipo CHAR,
+    IN p_idPublicacion INT,
+    OUT p_idGenerado INT
+)
+BEGIN
+    
+    -- Primero crear el voto general en VOTO_RP
+    INSERT INTO VOTO_RP (idUsuario, fechaRegistro, tipo)
+    VALUES (p_idUsuario, NOW(), p_tipo);
+    
+    SET p_idGenerado = LAST_INSERT_ID();
+    
+    -- Luego crear la relación específica en VOTO_PUBLICACION_RP
+    INSERT INTO VOTO_PUBLICACION_RP (idVoto, idPublicacion)
+    VALUES (p_idGenerado, p_idPublicacion);
+END //
+DELIMITER ;'
+
+-- Insertar modificado:
+DELIMITER //
+CREATE PROCEDURE sp_insertarVotoPublicacion(
+    IN p_idUsuario INT,
+    IN p_tipo CHAR(1),
+    IN p_idPublicacion INT,
+    OUT p_idGenerado INT
+)
+BEGIN
+    DECLARE v_id_voto_existente INT DEFAULT NULL;
+    DECLARE v_tipo_anterior CHAR(1) DEFAULT NULL;
+    DECLARE v_estado_anterior CHAR(1) DEFAULT NULL;
+
+    -- BUSCAR CUALQUIER VOTO (activo o eliminado)
+    SELECT v.idVoto, v.tipo, v.estado INTO v_id_voto_existente, v_tipo_anterior, v_estado_anterior
+    FROM VOTO_RP v
+    INNER JOIN VOTO_PUBLICACION_RP vp ON v.idVoto = vp.idVoto
+    WHERE v.idUsuario = p_idUsuario 
+      AND vp.idPublicacion = p_idPublicacion;
+
+    IF v_id_voto_existente IS NOT NULL THEN
+        -- Ya existe un voto (activo o eliminado): REACTIVAR/ACTUALIZAR
+        UPDATE VOTO_RP 
+        SET tipo = p_tipo, fechaRegistro = NOW(), estado = 'A'  -- Siempre se reactiva
+        WHERE idVoto = v_id_voto_existente;
+        
+        SET p_idGenerado = v_id_voto_existente;
+        
+        -- Lógica de actualización de contadores
+        IF v_estado_anterior = 'A' THEN
+            -- Voto estaba activo: ajustar contadores por cambio de tipo
+            IF v_tipo_anterior = 'U' AND p_tipo = 'D' THEN
+                UPDATE PUBLICACION_RP 
+                SET votosPositivos = votosPositivos - 1,
+                    votosNegativos = votosNegativos + 1
+                WHERE idPublicacion = p_idPublicacion;
+            ELSEIF v_tipo_anterior = 'D' AND p_tipo = 'U' THEN
+                UPDATE PUBLICACION_RP 
+                SET votosPositivos = votosPositivos + 1,
+                    votosNegativos = votosNegativos - 1
+                WHERE idPublicacion = p_idPublicacion;
+            END IF;
+        ELSE
+            -- Voto estaba eliminado: sumar al nuevo tipo
+            IF p_tipo = 'U' THEN
+                UPDATE PUBLICACION_RP 
+                SET votosPositivos = votosPositivos + 1
+                WHERE idPublicacion = p_idPublicacion;
+            ELSEIF p_tipo = 'D' THEN
+                UPDATE PUBLICACION_RP 
+                SET votosNegativos = votosNegativos + 1
+                WHERE idPublicacion = p_idPublicacion;
+            END IF;
+        END IF;
+    ELSE
+        -- NUEVO VOTO: INSERTAR
+        INSERT INTO VOTO_RP (idUsuario, fechaRegistro, tipo, estado)
+        VALUES (p_idUsuario, NOW(), p_tipo, 'A');
+        
+        SET p_idGenerado = LAST_INSERT_ID();
+        
+        INSERT INTO VOTO_PUBLICACION_RP (idVoto, idPublicacion)
+        VALUES (p_idGenerado, p_idPublicacion);
+        
+        -- Sumar al contador correspondiente
+        IF p_tipo = 'U' THEN
+            UPDATE PUBLICACION_RP 
+            SET votosPositivos = votosPositivos + 1
+            WHERE idPublicacion = p_idPublicacion;
+        ELSEIF p_tipo = 'D' THEN
+            UPDATE PUBLICACION_RP 
+            SET votosNegativos = votosNegativos + 1
+            WHERE idPublicacion = p_idPublicacion;
+        END IF;
+    END IF;
+END //
+DELIMITER ;
+
+
+-- leer voto publicacion por id
+DELIMITER //
+CREATE PROCEDURE sp_obtenerPorIdVotoPublicacion(
+    IN p_idVoto INT
+)
+BEGIN
+    SELECT 
+        v.idVoto,
+        v.idUsuario,
+        v.fechaRegistro,
+        v.tipo,
+        vp.idPublicacion
+    FROM VOTO_RP v
+    INNER JOIN VOTO_PUBLICACION_RP vp ON v.idVoto = vp.idVoto
+    WHERE v.idVoto = p_idVoto;
+END //
+DELIMITER ;
+
+-- leer todos votos publicacion
+DELIMITER //
+CREATE PROCEDURE sp_leerTodosVotosPublicacion()
+BEGIN
+    SELECT 
+        v.idVoto,
+        v.idUsuario,
+        v.fechaRegistro,
+        v.tipo,
+        vp.idPublicacion
+    FROM VOTO_RP v
+    INNER JOIN VOTO_PUBLICACION_RP vp ON v.idVoto = vp.idVoto;
+END //
+DELIMITER ;
+
+-- Nuevo procedure
+DELIMITER //
+CREATE PROCEDURE sp_leerVotosXPublicacion(
+	IN p_idPublicacion INT
+)
+BEGIN
+	SELECT 
+		v.idVoto,
+        v.idUsuario,
+        v.fechaRegistro,
+        v.tipo,
+        vp.idPublicacion
+	FROM VOTO_RP v
+    INNER JOIN VOTO_PUBLICACION_RP vp ON v.idVoto = vp.idVoto
+    WHERE p_idPublicacion = vp.idPublicacion;
+END //
+DELIMITER ;
+ 
+-- Eliminar voto de publicación (utiliza COUNT para eliminar)
+DELIMITER //
+CREATE PROCEDURE sp_eliminarVotoPublicacion(
+    IN p_idUsuario INT,
+    IN p_idPublicacion INT
+)
+BEGIN
+    -- Marcar voto como eliminado
+    UPDATE VOTO_RP v
+    INNER JOIN VOTO_PUBLICACION_RP vp ON v.idVoto = vp.idVoto
+    SET v.estado = 'E'
+    WHERE v.idUsuario = p_idUsuario 
+      AND vp.idPublicacion = p_idPublicacion
+      AND v.estado = 'A';
+    
+    -- Solo para eliminación: utiliza COUNT (menos frecuente)
+    UPDATE PUBLICACION_RP 
+    SET votosPositivos = (
+        SELECT COUNT(*) 
+        FROM VOTO_RP v
+        INNER JOIN VOTO_PUBLICACION_RP vp ON v.idVoto = vp.idVoto
+        WHERE vp.idPublicacion = p_idPublicacion 
+          AND v.tipo = 'U' 
+          AND v.estado = 'A'
+    ),
+    votosNegativos = (
+        SELECT COUNT(*) 
+        FROM VOTO_RP v
+        INNER JOIN VOTO_PUBLICACION_RP vp ON v.idVoto = vp.idVoto
+        WHERE vp.idPublicacion = p_idPublicacion 
+          AND v.tipo = 'D' 
+          AND v.estado = 'A'
+    )
+    WHERE idPublicacion = p_idPublicacion;
+END //
+DELIMITER ;

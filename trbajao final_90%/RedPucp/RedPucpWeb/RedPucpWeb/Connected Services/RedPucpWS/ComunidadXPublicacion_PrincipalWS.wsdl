@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://services.redpucp.ws/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="ComunidadXPublicacion_PrincipalWS" targetNamespace="https://services.redpucp.ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/RedPUCPWS/ComunidadXPublicacion_PrincipalWS?xsd=1" namespace="https://services.redpucp.ws/" />
+    </xsd:schema>
+  </types>
+  <message name="eliminar_ComunidadXPublicacion_Principal">
+    <part name="parameters" element="tns:eliminar_ComunidadXPublicacion_Principal" />
+  </message>
+  <message name="eliminar_ComunidadXPublicacion_PrincipalResponse">
+    <part name="parameters" element="tns:eliminar_ComunidadXPublicacion_PrincipalResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="listar_comunidadXpublicacion_principal">
+    <part name="parameters" element="tns:listar_comunidadXpublicacion_principal" />
+  </message>
+  <message name="listar_comunidadXpublicacion_principalResponse">
+    <part name="parameters" element="tns:listar_comunidadXpublicacion_principalResponse" />
+  </message>
+  <message name="obtener_ComunidadXPublicacion_Principal">
+    <part name="parameters" element="tns:obtener_ComunidadXPublicacion_Principal" />
+  </message>
+  <message name="obtener_ComunidadXPublicacion_PrincipalResponse">
+    <part name="parameters" element="tns:obtener_ComunidadXPublicacion_PrincipalResponse" />
+  </message>
+  <message name="guardar_ComunidadXPublicacion_principal">
+    <part name="parameters" element="tns:guardar_ComunidadXPublicacion_principal" />
+  </message>
+  <message name="guardar_ComunidadXPublicacion_principalResponse">
+    <part name="parameters" element="tns:guardar_ComunidadXPublicacion_principalResponse" />
+  </message>
+  <portType name="ComunidadXPublicacion_PrincipalWS">
+    <operation name="eliminar_ComunidadXPublicacion_Principal">
+      <input wsam:Action="https://services.redpucp.ws/ComunidadXPublicacion_PrincipalWS/eliminar_ComunidadXPublicacion_PrincipalRequest" message="tns:eliminar_ComunidadXPublicacion_Principal" />
+      <output wsam:Action="https://services.redpucp.ws/ComunidadXPublicacion_PrincipalWS/eliminar_ComunidadXPublicacion_PrincipalResponse" message="tns:eliminar_ComunidadXPublicacion_PrincipalResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComunidadXPublicacion_PrincipalWS/eliminar_ComunidadXPublicacion_Principal/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listar_comunidadXpublicacion_principal">
+      <input wsam:Action="https://services.redpucp.ws/ComunidadXPublicacion_PrincipalWS/listar_comunidadXpublicacion_principalRequest" message="tns:listar_comunidadXpublicacion_principal" />
+      <output wsam:Action="https://services.redpucp.ws/ComunidadXPublicacion_PrincipalWS/listar_comunidadXpublicacion_principalResponse" message="tns:listar_comunidadXpublicacion_principalResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComunidadXPublicacion_PrincipalWS/listar_comunidadXpublicacion_principal/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtener_ComunidadXPublicacion_Principal">
+      <input wsam:Action="https://services.redpucp.ws/ComunidadXPublicacion_PrincipalWS/obtener_ComunidadXPublicacion_PrincipalRequest" message="tns:obtener_ComunidadXPublicacion_Principal" />
+      <output wsam:Action="https://services.redpucp.ws/ComunidadXPublicacion_PrincipalWS/obtener_ComunidadXPublicacion_PrincipalResponse" message="tns:obtener_ComunidadXPublicacion_PrincipalResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComunidadXPublicacion_PrincipalWS/obtener_ComunidadXPublicacion_Principal/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="guardar_ComunidadXPublicacion_principal">
+      <input wsam:Action="https://services.redpucp.ws/ComunidadXPublicacion_PrincipalWS/guardar_ComunidadXPublicacion_principalRequest" message="tns:guardar_ComunidadXPublicacion_principal" />
+      <output wsam:Action="https://services.redpucp.ws/ComunidadXPublicacion_PrincipalWS/guardar_ComunidadXPublicacion_principalResponse" message="tns:guardar_ComunidadXPublicacion_principalResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComunidadXPublicacion_PrincipalWS/guardar_ComunidadXPublicacion_principal/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="ComunidadXPublicacion_PrincipalWSPortBinding" type="tns:ComunidadXPublicacion_PrincipalWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="eliminar_ComunidadXPublicacion_Principal">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listar_comunidadXpublicacion_principal">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtener_ComunidadXPublicacion_Principal">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="guardar_ComunidadXPublicacion_principal">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="ComunidadXPublicacion_PrincipalWS">
+    <port name="ComunidadXPublicacion_PrincipalWSPort" binding="tns:ComunidadXPublicacion_PrincipalWSPortBinding">
+      <soap:address location="http://localhost:8080/RedPUCPWS/ComunidadXPublicacion_PrincipalWS" />
+    </port>
+  </service>
+</definitions>

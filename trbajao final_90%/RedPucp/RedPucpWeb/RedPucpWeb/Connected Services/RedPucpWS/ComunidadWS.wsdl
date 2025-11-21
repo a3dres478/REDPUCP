@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://services.redpucp.ws/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="ComunidadWS" targetNamespace="https://services.redpucp.ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/RedPUCPWS/ComunidadWS?xsd=1" namespace="https://services.redpucp.ws/" />
+    </xsd:schema>
+  </types>
+  <message name="listarComunidadesXParteNombre">
+    <part name="parameters" element="tns:listarComunidadesXParteNombre" />
+  </message>
+  <message name="listarComunidadesXParteNombreResponse">
+    <part name="parameters" element="tns:listarComunidadesXParteNombreResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="listarusandofiltros">
+    <part name="parameters" element="tns:listarusandofiltros" />
+  </message>
+  <message name="listarusandofiltrosResponse">
+    <part name="parameters" element="tns:listarusandofiltrosResponse" />
+  </message>
+  <message name="guardarComunidad">
+    <part name="parameters" element="tns:guardarComunidad" />
+  </message>
+  <message name="guardarComunidadResponse">
+    <part name="parameters" element="tns:guardarComunidadResponse" />
+  </message>
+  <message name="obtenerComunidad">
+    <part name="parameters" element="tns:obtenerComunidad" />
+  </message>
+  <message name="obtenerComunidadResponse">
+    <part name="parameters" element="tns:obtenerComunidadResponse" />
+  </message>
+  <message name="listarComunidades">
+    <part name="parameters" element="tns:listarComunidades" />
+  </message>
+  <message name="listarComunidadesResponse">
+    <part name="parameters" element="tns:listarComunidadesResponse" />
+  </message>
+  <message name="eliminarComunidad">
+    <part name="parameters" element="tns:eliminarComunidad" />
+  </message>
+  <message name="eliminarComunidadResponse">
+    <part name="parameters" element="tns:eliminarComunidadResponse" />
+  </message>
+  <portType name="ComunidadWS">
+    <operation name="listarComunidadesXParteNombre">
+      <input wsam:Action="https://services.redpucp.ws/ComunidadWS/listarComunidadesXParteNombreRequest" message="tns:listarComunidadesXParteNombre" />
+      <output wsam:Action="https://services.redpucp.ws/ComunidadWS/listarComunidadesXParteNombreResponse" message="tns:listarComunidadesXParteNombreResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComunidadWS/listarComunidadesXParteNombre/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarusandofiltros">
+      <input wsam:Action="https://services.redpucp.ws/ComunidadWS/listarusandofiltrosRequest" message="tns:listarusandofiltros" />
+      <output wsam:Action="https://services.redpucp.ws/ComunidadWS/listarusandofiltrosResponse" message="tns:listarusandofiltrosResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComunidadWS/listarusandofiltros/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="guardarComunidad">
+      <input wsam:Action="https://services.redpucp.ws/ComunidadWS/guardarComunidadRequest" message="tns:guardarComunidad" />
+      <output wsam:Action="https://services.redpucp.ws/ComunidadWS/guardarComunidadResponse" message="tns:guardarComunidadResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComunidadWS/guardarComunidad/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerComunidad">
+      <input wsam:Action="https://services.redpucp.ws/ComunidadWS/obtenerComunidadRequest" message="tns:obtenerComunidad" />
+      <output wsam:Action="https://services.redpucp.ws/ComunidadWS/obtenerComunidadResponse" message="tns:obtenerComunidadResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComunidadWS/obtenerComunidad/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarComunidades">
+      <input wsam:Action="https://services.redpucp.ws/ComunidadWS/listarComunidadesRequest" message="tns:listarComunidades" />
+      <output wsam:Action="https://services.redpucp.ws/ComunidadWS/listarComunidadesResponse" message="tns:listarComunidadesResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComunidadWS/listarComunidades/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="eliminarComunidad">
+      <input wsam:Action="https://services.redpucp.ws/ComunidadWS/eliminarComunidadRequest" message="tns:eliminarComunidad" />
+      <output wsam:Action="https://services.redpucp.ws/ComunidadWS/eliminarComunidadResponse" message="tns:eliminarComunidadResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ComunidadWS/eliminarComunidad/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="ComunidadWSPortBinding" type="tns:ComunidadWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listarComunidadesXParteNombre">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarusandofiltros">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="guardarComunidad">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerComunidad">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarComunidades">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="eliminarComunidad">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="ComunidadWS">
+    <port name="ComunidadWSPort" binding="tns:ComunidadWSPortBinding">
+      <soap:address location="http://localhost:8080/RedPUCPWS/ComunidadWS" />
+    </port>
+  </service>
+</definitions>

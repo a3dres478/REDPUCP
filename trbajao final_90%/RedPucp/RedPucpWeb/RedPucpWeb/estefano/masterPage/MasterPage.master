@@ -1,0 +1,150 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="RedPucpWeb.estefano.masterPage.MasterPage" %>
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>REDPUCP</title>
+
+  <!-- Bootstrap + FA (mantenemos sus rutas relativas) -->
+  <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../Content/font-awesome.min.css" rel="stylesheet" />
+
+  <style>
+    /* ====== tokens de color similares a tu front ====== */
+    :root{
+      --bg-900:#0f172a;   /* barra topo oscura */
+      --bg-800:#111827;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --primary:#0d6efd;  /* azul bootstrap */
+      --ring:rgba(13,110,253,.35);
+      --radius:.7rem;
+    }
+
+    html,body{background:#f5f7fb;}
+    body{font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif}
+
+    /* ====== NAVBAR (oscura como tu topbar) ====== */
+    .navbar{
+      background:var(--bg-900)!important;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      box-shadow:0 4px 16px rgba(2,6,23,.18);
+    }
+    .navbar-brand img{height:28px; width:auto; margin-right:.5rem; object-fit:contain;}
+    .navbar-brand span{font-weight:800; letter-spacing:.2px; color:#fff}
+    .navbar .nav-link{color:rgba(255,255,255,.85)!important; font-weight:600}
+    .navbar .nav-link:hover,.navbar .nav-link:focus{color:#fff!important}
+    .navbar .nav-link.active{color:#fff!important; text-decoration:underline}
+
+    /* search en la barra */
+    .top-search .form-control{
+      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
+      color:#fff
+    }
+    .top-search .form-control::placeholder{color:rgba(255,255,255,.65)}
+    .top-search .input-group-text{background:transparent; color:#fff; border:1px solid rgba(255,255,255,.2)}
+
+    /* botones */
+    .btn-primary{background:var(--primary); border:none; border-radius:var(--radius)}
+    .btn-primary:hover{filter:brightness(.95)}
+    .btn-outline-primary{border-radius:var(--radius)}
+    .btn-outline-primary:hover{background:var(--primary); color:#fff!important}
+    .btn-danger{border-radius:var(--radius)}
+
+    /* layout general */
+    .content-wrapper{margin-top:84px; padding:24px}
+    .card{border-radius:var(--radius); border:1px solid #e6e8ef}
+    .shadow-soft{box-shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.1)}
+
+    footer{
+      background:#fff; border-top:1px solid #e6e8ef; color:var(--muted);
+      padding:16px; text-align:center; font-size:.95rem
+    }
+
+    /* mini utilidades */
+    .link-muted{color:var(--muted)!important}
+  </style>
+
+  <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+<form id="form1" runat="server">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+
+      <!-- marca -->
+      <a class="navbar-brand d-flex align-items-center" href="<%: ResolveUrl("~/estefano/pantallas/Inicio.aspx") %>">
+        
+        <img src="<%: ResolveUrl("~/assets/logo-redpucp.png") %>" alt="REDPUCP" />
+        
+      </a>
+
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- links izquierda -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="<%: ResolveUrl("~/estefano/pantallas/Inicio.aspx") %>">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%: ResolveUrl("~/Feed.aspx") %>">Publicaciones</a>
+          </li>
+          <li class="nav-item">
+            <asp:HyperLink ID="lnkComunidades" runat="server" CssClass="nav-link"
+              NavigateUrl="~/estefano/pantallas/Comunidades.aspx">Comunidades</asp:HyperLink>
+          </li>
+        </ul>
+
+        <!-- buscador central (como tu topbar) -->
+        <div class="top-search me-lg-3 d-none d-lg-block" style="min-width:340px">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text"><i class="fa fa-search"></i></span>
+            <input type="text" class="form-control" placeholder="Buscar en REDPUCP..." />
+          </div>
+        </div>
+
+        <!-- derecha: estado de sesión -->
+        <div class="d-flex align-items-center gap-2">
+          <!-- Invitado -->
+          <asp:Panel ID="PanelInvitado" runat="server" Visible="true">
+            <a href="<%: ResolveUrl("~/estefano/pantallas/Login.aspx") %>" class="btn btn-outline-primary btn-sm me-1">Login</a>
+            <a href="<%: ResolveUrl("~/estefano/pantallas/Registro.aspx") %>" class="btn btn-primary btn-sm">Registrarse</a>
+          </asp:Panel>
+
+          <!-- Usuario -->
+          <asp:Panel ID="PanelUsuario" runat="server" Visible="false">
+            <div class="d-flex align-items-center">
+              <i class="fa fa-user-circle text-primary me-2"></i>
+              <asp:Label ID="lblUsuario" runat="server" CssClass="me-3 fw-bold text-white"></asp:Label>
+              <asp:Button ID="btnPerfil" runat="server" CssClass="btn btn-outline-primary btn-sm me-1"
+                          Text="Mi Perfil" OnClick="btnPerfil_Click" />
+              <asp:Button ID="btnLogout" runat="server" CssClass="btn btn-danger btn-sm"
+                          Text="Cerrar sesión" OnClick="btnLogout_Click" />
+            </div>
+          </asp:Panel>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <div class="content-wrapper">
+    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+  </div>
+
+  <footer>
+    &copy; <%= DateTime.Now.Year %> REDPUCP — Proyecto académico PUCP
+  </footer>
+
+  <!-- Scripts con ruta desde raíz -->
+  <script src="<%= ResolveUrl("~/Scripts/jquery-3.7.1.min.js") %>"></script>
+  <script src="<%= ResolveUrl("~/Scripts/bootstrap.bundle.min.js") %>"></script>
+</form>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="https://services.redpucp.ws/" targetNamespace="https://services.redpucp.ws/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="eliminarAdministrador" type="tns:eliminarAdministrador" />
+  <xs:element name="eliminarAdministradorResponse" type="tns:eliminarAdministradorResponse" />
+  <xs:element name="guardarAdministrador" type="tns:guardarAdministrador" />
+  <xs:element name="guardarAdministradorResponse" type="tns:guardarAdministradorResponse" />
+  <xs:element name="listarAdministradores" type="tns:listarAdministradores" />
+  <xs:element name="listarAdministradoresResponse" type="tns:listarAdministradoresResponse" />
+  <xs:element name="obtenerAdmin" type="tns:obtenerAdmin" />
+  <xs:element name="obtenerAdminPorCorreo" type="tns:obtenerAdminPorCorreo" />
+  <xs:element name="obtenerAdminPorCorreoResponse" type="tns:obtenerAdminPorCorreoResponse" />
+  <xs:element name="obtenerAdminResponse" type="tns:obtenerAdminResponse" />
+  <xs:element name="verificarLoginAdmin" type="tns:verificarLoginAdmin" />
+  <xs:element name="verificarLoginAdminResponse" type="tns:verificarLoginAdminResponse" />
+  <xs:complexType name="obtenerAdmin">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerAdminResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:administrador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="administrador">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:usuario">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="clave_acceso" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contrasenha" type="xs:string" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element name="estadouser" type="xs:unsignedShort" />
+      <xs:element minOccurs="0" name="fechaRegistro" type="xs:dateTime" />
+      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element name="karma" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="tipousuario" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="guardarAdministrador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="administrador" type="tns:administrador" />
+      <xs:element minOccurs="0" name="estado" type="tns:estado" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="guardarAdministradorResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="verificarLoginAdmin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verificarLoginAdminResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarAdministrador">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarAdministradorResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarAdministradores">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarAdministradoresResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:administrador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerAdminPorCorreo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerAdminPorCorreoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:administrador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="estado">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nuevo" />
+      <xs:enumeration value="Modificar" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

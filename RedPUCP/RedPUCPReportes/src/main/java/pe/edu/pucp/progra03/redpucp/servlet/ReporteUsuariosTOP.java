@@ -35,9 +35,7 @@ import net.sf.jasperreports.engine.JasperPrint;
         urlPatterns = {"/reportes/usuarios"})
 public class ReporteUsuariosTOP extends HttpServlet {
     private final String NOMBRE_REPORTE = 
-            " .jasper";
-    private final String NOMBRE_LOGO = 
-            ".png";
+            "reportes/R0F13.jasper";
     //ups wir haben keinen
     
     @Override
@@ -62,16 +60,10 @@ public class ReporteUsuariosTOP extends HttpServlet {
                     new HashMap<>();
 //            int id = Integer.parseInt(request.getParameter("id"));
 //            parametros.put("idAlumno", id);
-            parametros.put("estado", request.getParameter("est"));
+            int numtip = Integer.parseInt(request.getParameter("tipodeusuario"));
+            parametros.put("numerodetipo",numtip);
             //parametros.put("fecha_inicio", java.sql.Date.valueOf(request.getParameter("fi")));
             //parametros.put("fecha_fin", java.sql.Date.valueOf(request.getParameter("ff")));
-            
-            InputStream logoStream = getClass().getClassLoader().
-                    getResourceAsStream(this.NOMBRE_LOGO);
-            if (logoStream != null) {
-                Image logo = ImageIO.read(logoStream);
-                parametros.put("Logo", logo);
-            }
             
             try (Connection conexion = DBManager.getInstance().getConnection()) {
                 JasperPrint jp = 

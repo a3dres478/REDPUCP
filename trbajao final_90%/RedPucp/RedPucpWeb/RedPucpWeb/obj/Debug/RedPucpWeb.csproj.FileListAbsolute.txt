@@ -1,0 +1,93 @@
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\bin\RedPucpWeb.dll.config
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\bin\RedPucpWeb.dll
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\bin\RedPucpWeb.pdb
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.AssemblyReference.cache
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.CoreCompileInputs.cache
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\obj\Debug\RedPucpWeb.dll
+C:\Users\Estudio\OneDrive - pucp.edu.pe\Documents\MEGA\Prog 3\proyectos\RedPucpWeb\obj\Debug\RedPucpWeb.pdb
+C:\Users\PC\Desktop\progra3\REDPUCP\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.dll.config
+C:\Users\PC\Desktop\progra3\REDPUCP\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.dll
+C:\Users\PC\Desktop\progra3\REDPUCP\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.pdb
+C:\Users\PC\Desktop\progra3\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.AssemblyReference.cache
+C:\Users\PC\Desktop\progra3\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\progra3\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.dll
+C:\Users\PC\Desktop\progra3\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.pdb
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.dll.config
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.dll
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.pdb
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.AssemblyReference.cache
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.CoreCompileInputs.cache
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.dll
+D:\01. Universidad\Semestres\Semestre 2025.2\Programación 3\TA Huizionarios\TA RedPUCP\REDPUCP\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.pdb
+C:\Users\Estudio\Downloads\red pucp nuevo\front modificado\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.dll.config
+C:\Users\Estudio\Downloads\red pucp nuevo\front modificado\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.dll
+C:\Users\Estudio\Downloads\red pucp nuevo\front modificado\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.pdb
+C:\Users\Estudio\Downloads\red pucp nuevo\front modificado\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.AssemblyReference.cache
+C:\Users\Estudio\Downloads\red pucp nuevo\front modificado\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.CoreCompileInputs.cache
+C:\Users\Estudio\Downloads\red pucp nuevo\front modificado\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.dll
+C:\Users\Estudio\Downloads\red pucp nuevo\front modificado\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.pdb
+C:\Users\Estudio\Downloads\red pucp nuevo\front modificado\RedPUCPFRONT\RedPucpWeb\bin\CloudinaryDotNet.dll
+C:\Users\Estudio\Downloads\red pucp nuevo\front modificado\RedPUCPFRONT\RedPucpWeb\bin\Newtonsoft.Json.dll
+C:\Users\Estudio\Downloads\red pucp nuevo\front modificado\RedPUCPFRONT\RedPucpWeb\bin\CloudinaryDotNet.xml
+C:\Users\Estudio\Downloads\red pucp nuevo\front modificado\RedPUCPFRONT\RedPucpWeb\bin\Newtonsoft.Json.xml
+C:\Users\Estudio\Downloads\red pucp nuevo\front modificado\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.Up2Date
+C:\Users\Estudio\Downloads\miercoeles\front modificado\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.dll.config
+C:\Users\Estudio\Downloads\miercoeles\front modificado\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.dll
+C:\Users\Estudio\Downloads\miercoeles\front modificado\RedPUCPFRONT\RedPucpWeb\bin\RedPucpWeb.pdb
+C:\Users\Estudio\Downloads\miercoeles\front modificado\RedPUCPFRONT\RedPucpWeb\bin\CloudinaryDotNet.dll
+C:\Users\Estudio\Downloads\miercoeles\front modificado\RedPUCPFRONT\RedPucpWeb\bin\Newtonsoft.Json.dll
+C:\Users\Estudio\Downloads\miercoeles\front modificado\RedPUCPFRONT\RedPucpWeb\bin\CloudinaryDotNet.xml
+C:\Users\Estudio\Downloads\miercoeles\front modificado\RedPUCPFRONT\RedPucpWeb\bin\Newtonsoft.Json.xml
+C:\Users\Estudio\Downloads\miercoeles\front modificado\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.AssemblyReference.cache
+C:\Users\Estudio\Downloads\miercoeles\front modificado\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.CoreCompileInputs.cache
+C:\Users\Estudio\Downloads\miercoeles\front modificado\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.Up2Date
+C:\Users\Estudio\Downloads\miercoeles\front modificado\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.dll
+C:\Users\Estudio\Downloads\miercoeles\front modificado\RedPUCPFRONT\RedPucpWeb\obj\Debug\RedPucpWeb.pdb
+C:\Users\Estudio\Downloads\miercoeles\implementando login\RedPucpWeb\bin\RedPucpWeb.dll.config
+C:\Users\Estudio\Downloads\miercoeles\implementando login\RedPucpWeb\bin\RedPucpWeb.dll
+C:\Users\Estudio\Downloads\miercoeles\implementando login\RedPucpWeb\bin\RedPucpWeb.pdb
+C:\Users\Estudio\Downloads\miercoeles\implementando login\RedPucpWeb\bin\CloudinaryDotNet.dll
+C:\Users\Estudio\Downloads\miercoeles\implementando login\RedPucpWeb\bin\Newtonsoft.Json.dll
+C:\Users\Estudio\Downloads\miercoeles\implementando login\RedPucpWeb\bin\CloudinaryDotNet.xml
+C:\Users\Estudio\Downloads\miercoeles\implementando login\RedPucpWeb\bin\Newtonsoft.Json.xml
+C:\Users\Estudio\Downloads\miercoeles\implementando login\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.AssemblyReference.cache
+C:\Users\Estudio\Downloads\miercoeles\implementando login\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.CoreCompileInputs.cache
+C:\Users\Estudio\Downloads\miercoeles\implementando login\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.Up2Date
+C:\Users\Estudio\Downloads\miercoeles\implementando login\RedPucpWeb\obj\Debug\RedPucpWeb.dll
+C:\Users\Estudio\Downloads\miercoeles\implementando login\RedPucpWeb\obj\Debug\RedPucpWeb.pdb
+C:\Users\PC\Downloads\RedPucpWeb\RedPucpWeb\bin\RedPucpWeb.dll.config
+C:\Users\PC\Downloads\RedPucpWeb\RedPucpWeb\bin\RedPucpWeb.dll
+C:\Users\PC\Downloads\RedPucpWeb\RedPucpWeb\bin\RedPucpWeb.pdb
+C:\Users\PC\Downloads\RedPucpWeb\RedPucpWeb\bin\CloudinaryDotNet.dll
+C:\Users\PC\Downloads\RedPucpWeb\RedPucpWeb\bin\Newtonsoft.Json.dll
+C:\Users\PC\Downloads\RedPucpWeb\RedPucpWeb\bin\CloudinaryDotNet.xml
+C:\Users\PC\Downloads\RedPucpWeb\RedPucpWeb\bin\Newtonsoft.Json.xml
+C:\Users\PC\Downloads\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.AssemblyReference.cache
+C:\Users\PC\Downloads\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.CoreCompileInputs.cache
+C:\Users\PC\Downloads\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.Up2Date
+C:\Users\PC\Downloads\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.dll
+C:\Users\PC\Downloads\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.pdb
+C:\Users\Estudio\Downloads\final\RedPucpWeb\RedPucpWeb\bin\RedPucpWeb.dll.config
+C:\Users\Estudio\Downloads\final\RedPucpWeb\RedPucpWeb\bin\RedPucpWeb.dll
+C:\Users\Estudio\Downloads\final\RedPucpWeb\RedPucpWeb\bin\RedPucpWeb.pdb
+C:\Users\Estudio\Downloads\final\RedPucpWeb\RedPucpWeb\bin\CloudinaryDotNet.dll
+C:\Users\Estudio\Downloads\final\RedPucpWeb\RedPucpWeb\bin\Newtonsoft.Json.dll
+C:\Users\Estudio\Downloads\final\RedPucpWeb\RedPucpWeb\bin\CloudinaryDotNet.xml
+C:\Users\Estudio\Downloads\final\RedPucpWeb\RedPucpWeb\bin\Newtonsoft.Json.xml
+C:\Users\Estudio\Downloads\final\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.AssemblyReference.cache
+C:\Users\Estudio\Downloads\final\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.CoreCompileInputs.cache
+C:\Users\Estudio\Downloads\final\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.Up2Date
+C:\Users\Estudio\Downloads\final\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.dll
+C:\Users\Estudio\Downloads\final\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.pdb
+C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPucpWeb\RedPucpWeb\bin\RedPucpWeb.dll.config
+C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPucpWeb\RedPucpWeb\bin\RedPucpWeb.dll
+C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPucpWeb\RedPucpWeb\bin\RedPucpWeb.pdb
+C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPucpWeb\RedPucpWeb\bin\CloudinaryDotNet.dll
+C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPucpWeb\RedPucpWeb\bin\Newtonsoft.Json.dll
+C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPucpWeb\RedPucpWeb\bin\CloudinaryDotNet.xml
+C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPucpWeb\RedPucpWeb\bin\Newtonsoft.Json.xml
+C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.AssemblyReference.cache
+C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.CoreCompileInputs.cache
+C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.csproj.Up2Date
+C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.dll
+C:\Users\HECTOR\Desktop\universidad\Prog3\Consolidado_Final\Pruebas_propias\RedPucp\RedPucpWeb\RedPucpWeb\obj\Debug\RedPucpWeb.pdb

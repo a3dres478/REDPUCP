@@ -34,9 +34,7 @@ import pe.edu.pucp.inf30.RedPUCP.config.DBManager;
 public class ReporteListarComunidades extends HttpServlet {
 
     private final String NOMBRE_REPORTE = 
-            " .jasper";
-    private final String NOMBRE_LOGO = 
-            ".png";
+            "ComunidadesRF015.jasper";
     //ups wir haben keinen
     
     
@@ -59,16 +57,10 @@ public class ReporteListarComunidades extends HttpServlet {
             }
             
             Map<String, Object> parametros = 
-                    new HashMap<>();
-            parametros.put("estado", request.getParameter("est"));
-            
-            
-            InputStream logoStream = getClass().getClassLoader().
-                    getResourceAsStream(this.NOMBRE_LOGO);
-            if (logoStream != null) {
-                Image logo = ImageIO.read(logoStream);
-                parametros.put("Logo", logo);
-            }
+                    new HashMap<>();  
+            int numtip = Integer.parseInt(request.getParameter("parametro"));
+            parametros.put("estadocomu",numtip);
+                 
             
             try (Connection conexion = DBManager.getInstance().getConnection()) {
                 JasperPrint jp = 

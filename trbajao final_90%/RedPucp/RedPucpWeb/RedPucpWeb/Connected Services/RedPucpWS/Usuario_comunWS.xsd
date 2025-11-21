@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="https://services.redpucp.ws/" targetNamespace="https://services.redpucp.ws/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="ListarUsuariosComunes" type="tns:ListarUsuariosComunes" />
+  <xs:element name="ListarUsuariosComunesResponse" type="tns:ListarUsuariosComunesResponse" />
+  <xs:element name="actualizarKarma" type="tns:actualizarKarma" />
+  <xs:element name="actualizarKarmaResponse" type="tns:actualizarKarmaResponse" />
+  <xs:element name="eliminarUsuarioComun" type="tns:eliminarUsuarioComun" />
+  <xs:element name="eliminarUsuarioComunResponse" type="tns:eliminarUsuarioComunResponse" />
+  <xs:element name="guardarUsuarioComun" type="tns:guardarUsuarioComun" />
+  <xs:element name="guardarUsuarioComunResponse" type="tns:guardarUsuarioComunResponse" />
+  <xs:element name="obtenerUsuario" type="tns:obtenerUsuario" />
+  <xs:element name="obtenerUsuarioPorCorreo" type="tns:obtenerUsuarioPorCorreo" />
+  <xs:element name="obtenerUsuarioPorCorreoResponse" type="tns:obtenerUsuarioPorCorreoResponse" />
+  <xs:element name="obtenerUsuarioResponse" type="tns:obtenerUsuarioResponse" />
+  <xs:element name="verificarLoginUsuarioComun" type="tns:verificarLoginUsuarioComun" />
+  <xs:element name="verificarLoginUsuarioComunResponse" type="tns:verificarLoginUsuarioComunResponse" />
+  <xs:complexType name="ListarUsuariosComunes">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="ListarUsuariosComunesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:usuarioComun" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="usuarioComun">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:usuario">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigopucp" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contrasenha" type="xs:string" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element name="estadouser" type="xs:unsignedShort" />
+      <xs:element minOccurs="0" name="fechaRegistro" type="xs:dateTime" />
+      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element name="karma" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="tipousuario" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="guardarUsuarioComun">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioComun" type="tns:usuarioComun" />
+      <xs:element minOccurs="0" name="estado" type="tns:estado" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="guardarUsuarioComunResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="actualizarKarma">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element name="aumento" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarKarmaResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="verificarLoginUsuarioComun">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verificarLoginUsuarioComunResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerUsuario">
+    <xs:sequence>
+      <xs:element name="idUsuaricomun" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usuarioComun" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerUsuarioPorCorreo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerUsuarioPorCorreoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:usuarioComun" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarUsuarioComun">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarUsuarioComunResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:simpleType name="estado">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nuevo" />
+      <xs:enumeration value="Modificar" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

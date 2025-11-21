@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://services.redpucp.ws/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="VotoPublicacionWS" targetNamespace="https://services.redpucp.ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/RedPUCPWS/VotoPublicacionWS?xsd=1" namespace="https://services.redpucp.ws/" />
+    </xsd:schema>
+  </types>
+  <message name="listarVotosPublicacion">
+    <part name="parameters" element="tns:listarVotosPublicacion" />
+  </message>
+  <message name="listarVotosPublicacionResponse">
+    <part name="parameters" element="tns:listarVotosPublicacionResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="eliminarVotoPublicacion">
+    <part name="parameters" element="tns:eliminarVotoPublicacion" />
+  </message>
+  <message name="eliminarVotoPublicacionResponse">
+    <part name="parameters" element="tns:eliminarVotoPublicacionResponse" />
+  </message>
+  <message name="obtenerVotoPublicacion">
+    <part name="parameters" element="tns:obtenerVotoPublicacion" />
+  </message>
+  <message name="obtenerVotoPublicacionResponse">
+    <part name="parameters" element="tns:obtenerVotoPublicacionResponse" />
+  </message>
+  <message name="listarVotosXPublicacion">
+    <part name="parameters" element="tns:listarVotosXPublicacion" />
+  </message>
+  <message name="listarVotosXPublicacionResponse">
+    <part name="parameters" element="tns:listarVotosXPublicacionResponse" />
+  </message>
+  <message name="guardarVotoPublicacion">
+    <part name="parameters" element="tns:guardarVotoPublicacion" />
+  </message>
+  <message name="guardarVotoPublicacionResponse">
+    <part name="parameters" element="tns:guardarVotoPublicacionResponse" />
+  </message>
+  <message name="suprimirVotoPublicacion">
+    <part name="parameters" element="tns:suprimirVotoPublicacion" />
+  </message>
+  <message name="suprimirVotoPublicacionResponse">
+    <part name="parameters" element="tns:suprimirVotoPublicacionResponse" />
+  </message>
+  <portType name="VotoPublicacionWS">
+    <operation name="listarVotosPublicacion">
+      <input wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/listarVotosPublicacionRequest" message="tns:listarVotosPublicacion" />
+      <output wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/listarVotosPublicacionResponse" message="tns:listarVotosPublicacionResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/listarVotosPublicacion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="eliminarVotoPublicacion">
+      <input wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/eliminarVotoPublicacionRequest" message="tns:eliminarVotoPublicacion" />
+      <output wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/eliminarVotoPublicacionResponse" message="tns:eliminarVotoPublicacionResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/eliminarVotoPublicacion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerVotoPublicacion">
+      <input wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/obtenerVotoPublicacionRequest" message="tns:obtenerVotoPublicacion" />
+      <output wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/obtenerVotoPublicacionResponse" message="tns:obtenerVotoPublicacionResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/obtenerVotoPublicacion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarVotosXPublicacion">
+      <input wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/listarVotosXPublicacionRequest" message="tns:listarVotosXPublicacion" />
+      <output wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/listarVotosXPublicacionResponse" message="tns:listarVotosXPublicacionResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/listarVotosXPublicacion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="guardarVotoPublicacion">
+      <input wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/guardarVotoPublicacionRequest" message="tns:guardarVotoPublicacion" />
+      <output wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/guardarVotoPublicacionResponse" message="tns:guardarVotoPublicacionResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/guardarVotoPublicacion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="suprimirVotoPublicacion">
+      <input wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/suprimirVotoPublicacionRequest" message="tns:suprimirVotoPublicacion" />
+      <output wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/suprimirVotoPublicacionResponse" message="tns:suprimirVotoPublicacionResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/VotoPublicacionWS/suprimirVotoPublicacion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="VotoPublicacionWSPortBinding" type="tns:VotoPublicacionWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listarVotosPublicacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="eliminarVotoPublicacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerVotoPublicacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarVotosXPublicacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="guardarVotoPublicacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="suprimirVotoPublicacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="VotoPublicacionWS">
+    <port name="VotoPublicacionWSPort" binding="tns:VotoPublicacionWSPortBinding">
+      <soap:address location="http://localhost:8080/RedPUCPWS/VotoPublicacionWS" />
+    </port>
+  </service>
+</definitions>

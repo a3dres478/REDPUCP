@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://localhost:8080/RedPUCPWS/AdministradorWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/RedPUCPWS/Usuario_comunWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/RedPUCPWS/ComunidadWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/RedPUCPWS/PublicacionWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/RedPUCPWS/ComentarioWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/RedPUCPWS/VotoComentarioWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/RedPUCPWS/VotoPublicacionWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/RedPUCPWS/ComunidadXPublicacion_PrincipalWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/RedPUCPWS/NotificacionWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/RedPUCPWS/ReporteWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+</discovery>

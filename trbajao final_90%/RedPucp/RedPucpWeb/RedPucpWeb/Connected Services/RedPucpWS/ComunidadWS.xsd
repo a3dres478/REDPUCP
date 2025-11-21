@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="https://services.redpucp.ws/" targetNamespace="https://services.redpucp.ws/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="eliminarComunidad" type="tns:eliminarComunidad" />
+  <xs:element name="eliminarComunidadResponse" type="tns:eliminarComunidadResponse" />
+  <xs:element name="guardarComunidad" type="tns:guardarComunidad" />
+  <xs:element name="guardarComunidadResponse" type="tns:guardarComunidadResponse" />
+  <xs:element name="listarComunidades" type="tns:listarComunidades" />
+  <xs:element name="listarComunidadesResponse" type="tns:listarComunidadesResponse" />
+  <xs:element name="listarComunidadesXParteNombre" type="tns:listarComunidadesXParteNombre" />
+  <xs:element name="listarComunidadesXParteNombreResponse" type="tns:listarComunidadesXParteNombreResponse" />
+  <xs:element name="listarusandofiltros" type="tns:listarusandofiltros" />
+  <xs:element name="listarusandofiltrosResponse" type="tns:listarusandofiltrosResponse" />
+  <xs:element name="obtenerComunidad" type="tns:obtenerComunidad" />
+  <xs:element name="obtenerComunidadResponse" type="tns:obtenerComunidadResponse" />
+  <xs:complexType name="obtenerComunidad">
+    <xs:sequence>
+      <xs:element name="idComunidad" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerComunidadResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:comunidad" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="comunidad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="administrador" type="tns:usuarioComun" />
+      <xs:element name="cantidadmiembros" type="xs:int" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+      <xs:element name="estado" type="xs:unsignedShort" />
+      <xs:element minOccurs="0" name="fecha_creacion" type="xs:dateTime" />
+      <xs:element name="id_comunidad" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="usuarioComun">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:usuario">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigopucp" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contrasenha" type="xs:string" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element name="estadouser" type="xs:unsignedShort" />
+      <xs:element minOccurs="0" name="fechaRegistro" type="xs:dateTime" />
+      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element name="karma" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="tipousuario" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarusandofiltros">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="filtro1" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarusandofiltrosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:comunidad" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="guardarComunidad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="comunidad" type="tns:comunidad" />
+      <xs:element minOccurs="0" name="estado" type="tns:estado" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="guardarComunidadResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarComunidades">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarComunidadesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:comunidad" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarComunidadesXParteNombre">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nombreparte" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarComunidadesXParteNombreResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:comunidad" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarComunidad">
+    <xs:sequence>
+      <xs:element name="idComunidad" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarComunidadResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:simpleType name="estado">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nuevo" />
+      <xs:enumeration value="Modificar" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://services.redpucp.ws/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="NotificacionWS" targetNamespace="https://services.redpucp.ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/RedPUCPWS/NotificacionWS?xsd=1" namespace="https://services.redpucp.ws/" />
+    </xsd:schema>
+  </types>
+  <message name="listarNotificacionesParaUsuario">
+    <part name="parameters" element="tns:listarNotificacionesParaUsuario" />
+  </message>
+  <message name="listarNotificacionesParaUsuarioResponse">
+    <part name="parameters" element="tns:listarNotificacionesParaUsuarioResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="eliminarNotificacion">
+    <part name="parameters" element="tns:eliminarNotificacion" />
+  </message>
+  <message name="eliminarNotificacionResponse">
+    <part name="parameters" element="tns:eliminarNotificacionResponse" />
+  </message>
+  <message name="listarNotificaciones">
+    <part name="parameters" element="tns:listarNotificaciones" />
+  </message>
+  <message name="listarNotificacionesResponse">
+    <part name="parameters" element="tns:listarNotificacionesResponse" />
+  </message>
+  <message name="guardarNotificacion">
+    <part name="parameters" element="tns:guardarNotificacion" />
+  </message>
+  <message name="guardarNotificacionResponse">
+    <part name="parameters" element="tns:guardarNotificacionResponse" />
+  </message>
+  <message name="obtenerNotificacion">
+    <part name="parameters" element="tns:obtenerNotificacion" />
+  </message>
+  <message name="obtenerNotificacionResponse">
+    <part name="parameters" element="tns:obtenerNotificacionResponse" />
+  </message>
+  <portType name="NotificacionWS">
+    <operation name="listarNotificacionesParaUsuario">
+      <input wsam:Action="https://services.redpucp.ws/NotificacionWS/listarNotificacionesParaUsuarioRequest" message="tns:listarNotificacionesParaUsuario" />
+      <output wsam:Action="https://services.redpucp.ws/NotificacionWS/listarNotificacionesParaUsuarioResponse" message="tns:listarNotificacionesParaUsuarioResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/NotificacionWS/listarNotificacionesParaUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="eliminarNotificacion">
+      <input wsam:Action="https://services.redpucp.ws/NotificacionWS/eliminarNotificacionRequest" message="tns:eliminarNotificacion" />
+      <output wsam:Action="https://services.redpucp.ws/NotificacionWS/eliminarNotificacionResponse" message="tns:eliminarNotificacionResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/NotificacionWS/eliminarNotificacion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarNotificaciones">
+      <input wsam:Action="https://services.redpucp.ws/NotificacionWS/listarNotificacionesRequest" message="tns:listarNotificaciones" />
+      <output wsam:Action="https://services.redpucp.ws/NotificacionWS/listarNotificacionesResponse" message="tns:listarNotificacionesResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/NotificacionWS/listarNotificaciones/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="guardarNotificacion">
+      <input wsam:Action="https://services.redpucp.ws/NotificacionWS/guardarNotificacionRequest" message="tns:guardarNotificacion" />
+      <output wsam:Action="https://services.redpucp.ws/NotificacionWS/guardarNotificacionResponse" message="tns:guardarNotificacionResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/NotificacionWS/guardarNotificacion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerNotificacion">
+      <input wsam:Action="https://services.redpucp.ws/NotificacionWS/obtenerNotificacionRequest" message="tns:obtenerNotificacion" />
+      <output wsam:Action="https://services.redpucp.ws/NotificacionWS/obtenerNotificacionResponse" message="tns:obtenerNotificacionResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/NotificacionWS/obtenerNotificacion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="NotificacionWSPortBinding" type="tns:NotificacionWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listarNotificacionesParaUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="eliminarNotificacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarNotificaciones">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="guardarNotificacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerNotificacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="NotificacionWS">
+    <port name="NotificacionWSPort" binding="tns:NotificacionWSPortBinding">
+      <soap:address location="http://localhost:8080/RedPUCPWS/NotificacionWS" />
+    </port>
+  </service>
+</definitions>

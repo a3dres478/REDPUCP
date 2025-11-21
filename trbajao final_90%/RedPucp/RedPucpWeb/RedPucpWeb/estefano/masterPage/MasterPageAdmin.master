@@ -1,0 +1,167 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPageAdmin.master.cs" Inherits="RedPucpWeb.estefano.masterPage.MasterPageAdmin" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Panel de Administración - RedPUCP</title>
+
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- FontAwesome -->
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background-color: #f5f6fa;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: #1e1e2f;
+            position: fixed;
+            padding-top: 30px;
+            color: white;
+        }
+
+            .sidebar a {
+                display: block;
+                padding: 12px 25px;
+                font-size: 15px;
+                color: #cfcfcf;
+                text-decoration: none;
+            }
+
+                .sidebar a:hover {
+                    background: #34344d;
+                    color: white;
+                }
+
+            .sidebar .title {
+                font-size: 19px;
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 25px;
+            }
+
+        .main-content {
+            margin-left: 240px;
+            padding: 30px;
+        }
+
+        .topbar {
+            padding: 12px 30px;
+            background: white;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .admin-name {
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .titulo-seccion {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .contenedor-acciones {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .input-buscar {
+            padding: 8px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-primario, .btn-secundario {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-primario {
+            background: #007bff;
+            color: white;
+        }
+
+        .btn-secundario {
+            background: #28a745;
+            color: white;
+        }
+
+        .tabla {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+            .tabla th, .tabla td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .tabla th {
+                background: #f3f3f3;
+                text-align: left;
+            }
+
+        .btn-accion {
+            color: #007bff;
+            margin-right: 10px;
+        }
+
+        .btn-accion-eliminar {
+            color: #dc3545;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form runat="server">
+
+        <div class="sidebar">
+            <div class="title">Admin RedPUCP</div>
+
+            <a href="Dashboard.aspx"><i class="fa fa-home me-2"></i>Dashboard</a>
+            <a href="UsuariosAdmin.aspx"><i class="fa fa-users me-2"></i>Usuarios</a>
+            <a href="ComunidadAdmin.aspx"><i class="fa fa-layer-group me-2"></i>Comunidades</a>
+            <a href="ReportesAdmin.aspx"><i class="fa fa-flag me-2"></i>Reportes</a>
+        </div>
+
+        <div class="topbar">
+            <span class="admin-name">
+                <asp:Label ID="lblAdmin" runat="server"></asp:Label>
+            </span>
+
+            <asp:Button ID="btnLogout" runat="server" CssClass="btn btn-outline-danger btn-sm"
+                Text="Cerrar sesión" OnClick="btnLogout_Click" />
+        </div>
+
+        <div class="main-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </div>
+
+    </form>
+
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+</body>
+</html>

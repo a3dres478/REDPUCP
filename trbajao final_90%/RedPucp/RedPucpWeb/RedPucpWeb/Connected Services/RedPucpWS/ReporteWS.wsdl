@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://services.redpucp.ws/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="ReporteWS" targetNamespace="https://services.redpucp.ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/RedPUCPWS/ReporteWS?xsd=1" namespace="https://services.redpucp.ws/" />
+    </xsd:schema>
+  </types>
+  <message name="listarReportesXReportador">
+    <part name="parameters" element="tns:listarReportesXReportador" />
+  </message>
+  <message name="listarReportesXReportadorResponse">
+    <part name="parameters" element="tns:listarReportesXReportadorResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="eliminarReporte">
+    <part name="parameters" element="tns:eliminarReporte" />
+  </message>
+  <message name="eliminarReporteResponse">
+    <part name="parameters" element="tns:eliminarReporteResponse" />
+  </message>
+  <message name="listarReportesPendientes">
+    <part name="parameters" element="tns:listarReportesPendientes" />
+  </message>
+  <message name="listarReportesPendientesResponse">
+    <part name="parameters" element="tns:listarReportesPendientesResponse" />
+  </message>
+  <message name="obtenerReporte">
+    <part name="parameters" element="tns:obtenerReporte" />
+  </message>
+  <message name="obtenerReporteResponse">
+    <part name="parameters" element="tns:obtenerReporteResponse" />
+  </message>
+  <message name="guardarReporte">
+    <part name="parameters" element="tns:guardarReporte" />
+  </message>
+  <message name="guardarReporteResponse">
+    <part name="parameters" element="tns:guardarReporteResponse" />
+  </message>
+  <portType name="ReporteWS">
+    <operation name="listarReportesXReportador">
+      <input wsam:Action="https://services.redpucp.ws/ReporteWS/listarReportesXReportadorRequest" message="tns:listarReportesXReportador" />
+      <output wsam:Action="https://services.redpucp.ws/ReporteWS/listarReportesXReportadorResponse" message="tns:listarReportesXReportadorResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ReporteWS/listarReportesXReportador/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="eliminarReporte">
+      <input wsam:Action="https://services.redpucp.ws/ReporteWS/eliminarReporteRequest" message="tns:eliminarReporte" />
+      <output wsam:Action="https://services.redpucp.ws/ReporteWS/eliminarReporteResponse" message="tns:eliminarReporteResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ReporteWS/eliminarReporte/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarReportesPendientes">
+      <input wsam:Action="https://services.redpucp.ws/ReporteWS/listarReportesPendientesRequest" message="tns:listarReportesPendientes" />
+      <output wsam:Action="https://services.redpucp.ws/ReporteWS/listarReportesPendientesResponse" message="tns:listarReportesPendientesResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ReporteWS/listarReportesPendientes/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerReporte">
+      <input wsam:Action="https://services.redpucp.ws/ReporteWS/obtenerReporteRequest" message="tns:obtenerReporte" />
+      <output wsam:Action="https://services.redpucp.ws/ReporteWS/obtenerReporteResponse" message="tns:obtenerReporteResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ReporteWS/obtenerReporte/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="guardarReporte">
+      <input wsam:Action="https://services.redpucp.ws/ReporteWS/guardarReporteRequest" message="tns:guardarReporte" />
+      <output wsam:Action="https://services.redpucp.ws/ReporteWS/guardarReporteResponse" message="tns:guardarReporteResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/ReporteWS/guardarReporte/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="ReporteWSPortBinding" type="tns:ReporteWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listarReportesXReportador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="eliminarReporte">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarReportesPendientes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerReporte">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="guardarReporte">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="ReporteWS">
+    <port name="ReporteWSPort" binding="tns:ReporteWSPortBinding">
+      <soap:address location="http://localhost:8080/RedPUCPWS/ReporteWS" />
+    </port>
+  </service>
+</definitions>

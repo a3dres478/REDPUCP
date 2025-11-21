@@ -1,0 +1,198 @@
+USE RedPUCP;
+
+DROP PROCEDURE IF EXISTS sp_crearVotoComentario;
+DROP PROCEDURE IF EXISTS sp_obtenerPorIdVotoComentario;
+DROP PROCEDURE IF EXISTS sp_leerTodosVotosComentario;
+DROP PROCEDURE IF EXISTS sp_leerVotosXComentario;
+DROP PROCEDURE IF EXISTS sp_eliminarVotoComentario;
+
+-- insertar voto comentario
+'DELIMITER //
+CREATE PROCEDURE sp_crearVotoComentario(
+    IN p_idUsuario INT,
+    IN p_tipo CHAR,
+    IN p_idComentario INT,
+    OUT p_idGenerado INT
+)
+BEGIN
+    
+    -- Primero crear el voto general en VOTO_RP
+    INSERT INTO VOTO_RP (idUsuario, fechaRegistro, tipo)
+    VALUES (p_idUsuario, NOW(), p_tipo);
+    
+    SET p_idGenerado = LAST_INSERT_ID();
+    
+    -- Luego crear la relación específica en VOTO_PUBLICACION_RP
+    INSERT INTO VOTO_COMENTARIO_RP (idVoto, idComentario)
+    VALUES (p_idGenerado, p_idComentario);
+END //
+DELIMITER ;'
+
+-- Insertar modificado:
+DELIMITER //
+CREATE PROCEDURE sp_crearVotoComentario(
+    IN p_idUsuario INT,
+    IN p_tipo CHAR(1),
+    IN p_idComentario INT,
+    OUT p_idGenerado INT
+)
+BEGIN
+    DECLARE v_id_voto_existente INT DEFAULT NULL;
+    DECLARE v_tipo_anterior CHAR(1) DEFAULT NULL;
+    DECLARE v_estado_anterior CHAR(1) DEFAULT NULL;
+
+    -- BUSCAR CUALQUIER VOTO (activo o eliminado)
+    SELECT v.idVoto, v.tipo, v.estado INTO v_id_voto_existente, v_tipo_anterior, v_estado_anterior
+    FROM VOTO_RP v
+    INNER JOIN VOTO_COMENTARIO_RP vc ON v.idVoto = vc.idVoto
+    WHERE v.idUsuario = p_idUsuario 
+      AND vc.idComentario = p_idComentario;
+
+    IF v_id_voto_existente IS NOT NULL THEN
+        -- Ya existe un voto (activo o eliminado): REACTIVAR/ACTUALIZAR
+        UPDATE VOTO_RP 
+        SET tipo = p_tipo, fechaRegistro = NOW(), estado = 'A'  -- Siempre se reactiva
+        WHERE idVoto = v_id_voto_existente;
+        
+        SET p_idGenerado = v_id_voto_existente;
+        
+        -- Lógica de actualización de contadores
+        IF v_estado_anterior = 'A' THEN
+            -- Voto estaba activo: ajustar contadores por cambio de tipo
+            IF v_tipo_anterior = 'U' AND p_tipo = 'D' THEN
+                UPDATE COMENTARIO_RP 
+                SET votosPositivos = votosPositivos - 1,
+                    votosNegativos = votosNegativos + 1
+                WHERE idComentario = p_idComentario;
+            ELSEIF v_tipo_anterior = 'D' AND p_tipo = 'U' THEN
+                UPDATE COMENTARIO_RP 
+                SET votosPositivos = votosPositivos + 1,
+                    votosNegativos = votosNegativos - 1
+                WHERE idComentario = p_idComentario;
+            END IF;
+        ELSE
+            -- Voto estaba eliminado: sumar al nuevo tipo
+            IF p_tipo = 'U' THEN
+                UPDATE COMENTARIO_RP 
+                SET votosPositivos = votosPositivos + 1
+                WHERE idComentario = p_idComentario;
+            ELSEIF p_tipo = 'D' THEN
+                UPDATE COMENTARIO_RP 
+                SET votosNegativos = votosNegativos + 1
+                WHERE idComentario = p_idComentario;
+            END IF;
+        END IF;
+    ELSE
+        -- NUEVO VOTO: INSERTAR
+        INSERT INTO VOTO_RP (idUsuario, fechaRegistro, tipo, estado)
+        VALUES (p_idUsuario, NOW(), p_tipo, 'A');
+        
+        SET p_idGenerado = LAST_INSERT_ID();
+        
+        INSERT INTO VOTO_COMENTARIO_RP (idVoto, idComentario)
+        VALUES (p_idGenerado, p_idComentario);
+        
+        -- Sumar al contador correspondiente
+        IF p_tipo = 'U' THEN
+            UPDATE COMENTARIO_RP 
+            SET votosPositivos = votosPositivos + 1
+            WHERE idComentario = p_idComentario;
+        ELSEIF p_tipo = 'D' THEN
+            UPDATE COMENTARIO_RP 
+            SET votosNegativos = votosNegativos + 1
+            WHERE idComentario = p_idComentario;
+        END IF;
+    END IF;
+END //
+DELIMITER ;
+
+-- obtener por id
+DELIMITER //
+CREATE PROCEDURE sp_obtenerPorIdVotoComentario(
+    IN p_idVoto INT
+)
+BEGIN
+    SELECT 
+        v.idVoto,
+        v.idUsuario,
+        v.fechaRegistro,
+        v.tipo,
+        v.estado,
+        vp.idComentario
+    FROM VOTO_RP v
+    INNER JOIN VOTO_COMENTARIO_RP vp ON v.idVoto = vp.idVoto
+    WHERE v.idVoto = p_idVoto;
+END //
+DELIMITER ;
+
+-- listar todos
+DELIMITER //
+CREATE PROCEDURE sp_leerTodosVotosComentario()
+BEGIN
+    SELECT 
+        v.idVoto,
+        v.idUsuario,
+        v.fechaRegistro,
+        v.tipo,
+        vp.idComentario
+    FROM VOTO_RP v
+    INNER JOIN VOTO_COMENTARIO_RP vp ON v.idVoto = vp.idVoto;
+END //
+DELIMITER ;
+
+
+-- Nuevo procedure
+DELIMITER //
+CREATE PROCEDURE sp_leerVotosXComentario(
+	IN p_idComentario INT
+)
+BEGIN
+	SELECT 
+		v.idVoto,
+        v.idUsuario,
+        v.fechaRegistro,
+        v.tipo,
+        vc.idComentario
+	FROM VOTO_RP v
+    INNER JOIN VOTO_COMENTARIO_RP vc ON v.idVoto = vc.idVoto
+    WHERE p_idComentario = vc.idComentario;
+END //
+DELIMITER ;
+
+-- Eliminar voto de comentario (utiliza COUNT para eliminar)
+DELIMITER //
+CREATE PROCEDURE sp_eliminarVotoComentario(
+    IN p_idUsuario INT,
+    IN p_idComentario INT
+)
+BEGIN
+    -- Marcar voto como eliminado
+    UPDATE VOTO_RP v
+    INNER JOIN VOTO_COMENTARIO_RP vc ON v.idVoto = vc.idVoto
+    SET v.estado = 'E'
+    WHERE v.idUsuario = p_idUsuario 
+      AND vc.idComentario = p_idComentario
+      AND v.estado = 'A';
+    
+    -- Solo para eliminación: utiliza COUNT (menos frecuente)
+    UPDATE COMENTARIO_RP 
+    SET votosPositivos = (
+        SELECT COUNT(*) 
+        FROM VOTO_RP v
+        INNER JOIN VOTO_COMENTARIO_RP vc ON v.idVoto = vc.idVoto
+        WHERE vc.idComentario = p_idComentario 
+          AND v.tipo = 'U' 
+          AND v.estado = 'A'
+    ),
+    votosNegativos = (
+        SELECT COUNT(*) 
+        FROM VOTO_RP v
+        INNER JOIN VOTO_COMENTARIO_RP vc ON v.idVoto = vc.idVoto
+        WHERE vc.idComentario = p_idComentario 
+          AND v.tipo = 'D' 
+          AND v.estado = 'A'
+    )
+    WHERE idComentario = p_idComentario;
+END //
+DELIMITER ;
+ 

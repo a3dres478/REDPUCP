@@ -1,0 +1,84 @@
+DROP PROCEDURE IF EXISTS sp_top5;
+DROP PROCEDURE IF EXISTS sp_listar_comunidades_jasper;
+
+DELIMITER //
+
+CREATE PROCEDURE sp_top5(IN p_estado INT)
+BEGIN
+    DECLARE v_estado CHAR(1);
+
+    -- Traducción del parámetro numérico al estado real
+    IF p_estado = 1 THEN
+        SET v_estado = 'A';   -- Activo
+    ELSEIF p_estado = 2 THEN
+        SET v_estado = 'B';   -- Bloqueado
+    ELSE
+        SET v_estado = 'A';   -- Por defecto
+    END IF;
+
+    -- Consulta principal
+    SELECT 
+        U.idUsuario,
+        U.nombre,
+        U.codigo,
+        U.karma,
+
+        -- Cantidad de votos hechos
+        (SELECT COUNT(*) 
+         FROM VOTO_RP V 
+         WHERE V.idUsuario = U.idUsuario) AS cantidadVotos,
+
+        -- Cantidad de publicaciones hechas
+        (SELECT COUNT(*) 
+         FROM PUBLICACION_RP P 
+         WHERE P.idAutor = U.idUsuario) AS cantidadPublicaciones,
+
+        -- Cantidad de comentarios hechos
+        (SELECT COUNT(*) 
+         FROM COMENTARIO_RP C 
+         WHERE C.idAutor = U.idUsuario) AS cantidadComentarios
+
+    FROM USUARIO_RP U
+    WHERE U.rol = 'C'          -- solo usuarios comunes
+      AND U.estado = v_estado  -- filtrado por estado
+    ORDER BY U.karma DESC
+    LIMIT 5;
+END //
+-- 1 ACT 2 BLOQ
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_listar_comunidades_jasper(IN p_estado INT)
+BEGIN
+    DECLARE v_estado CHAR(1);
+
+    -- Convertimos el parámetro numérico al estado real
+    IF p_estado = 1 THEN
+        SET v_estado = 'A';   -- Activa
+    ELSEIF p_estado = 2 THEN
+        SET v_estado = 'B';   -- Bloqueada
+    ELSE
+        SET v_estado = 'A';   -- Por defecto activa
+    END IF;
+
+    SELECT
+        C.idComunidad,
+        C.nombre,
+
+        -- Categoría según prefijo del nombre
+        CASE
+            WHEN C.nombre LIKE 'AYU%' THEN 'Ayuda'
+            WHEN C.nombre LIKE 'DIS%' THEN 'Discusión'
+            WHEN C.nombre LIKE 'EVE%' THEN 'Eventos'
+            WHEN C.nombre LIKE 'CON%' THEN 'Conversaciones'
+            ELSE 'Desconocido'
+        END AS categoria,
+
+        C.cantidadMiembros,
+        C.fechaCreacion
+
+    FROM COMUNIDAD_RP C
+    WHERE C.estado = v_estado
+    ORDER BY C.idComunidad;
+END //
+DELIMITER ;

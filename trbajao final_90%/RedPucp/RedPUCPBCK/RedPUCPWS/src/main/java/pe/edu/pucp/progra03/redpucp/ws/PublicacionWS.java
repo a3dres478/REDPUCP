@@ -1,0 +1,201 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package pe.edu.pucp.progra03.redpucp.ws;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import jakarta.jws.WebService;
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebParam;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.Base64;
+import java.util.List;
+import java.util.ResourceBundle;
+import pe.edu.pucp.inf30.RedPUCP.modelo.Comunidad.Comunidad;
+import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.Publicacion;
+import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.CategoriaPublicacion;
+import pe.edu.pucp.inf30.RedPUCP.modelo.Publicacion.OrdenamientoPublicacion;
+import pe.edu.pucp.progra03.redpucp.bo.Estado;
+import pe.edu.pucp.progra03.redpucp.bo.IPublicacionBO;
+import pe.edu.pucp.progra03.redpucp.boimpl.PublicacionBOImpl;
+
+/**
+ *
+ * @author andre
+ */
+@WebService(serviceName = "PublicacionWS",
+        targetNamespace = "https://services.redpucp.ws/")
+public class PublicacionWS {
+    private final ResourceBundle config;
+    private final String urlBase;
+    private HttpClient client = HttpClient.newHttpClient();
+    private String NOMBRE_RECURSO = "publicaciones";
+    
+    
+    public PublicacionWS(){
+        this.config = ResourceBundle.getBundle("app");
+        this.urlBase = this.config.getString("app.services.rest.baseurl");
+    }
+    
+    @WebMethod(operationName = "listarPublicaciones")
+    public List<Publicacion>listarPublicaciones()throws Exception{
+        String url =this.urlBase+"/"+this.NOMBRE_RECURSO;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
+        List<Publicacion>publicaciones=mapper.readValue(json,new TypeReference<List<Publicacion>>() {});
+        return publicaciones;
+    }
+    
+    @WebMethod (operationName ="listarPublicacionesXFiltros")
+    public List<Publicacion> listarPublicacionesXFiltros(
+            @WebParam(name="idComunidad")int idComunidad,
+            @WebParam(name="categoria")String categoria,
+            @WebParam(name="ordenamiento")String ordenamiento
+        )throws Exception{
+//        String url = this.urlBase + "/" + this.NOMBRE_RECURSO+"/publicacion/"+categoria+","+ordenamiento;
+
+        String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/filtros" +
+                 "?idComunidad=" + idComunidad +
+                 "&categoria=" + java.net.URLEncoder.encode(categoria, "UTF-8") +
+                 "&ordenamiento=" + java.net.URLEncoder.encode(ordenamiento, "UTF-8");
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        List<Publicacion> publicaciones = mapper.readValue(json, new TypeReference<List<Publicacion>>() {});
+        
+        return publicaciones;
+    }
+    @WebMethod (operationName ="listarPublicacionesXUsuario")
+    public List<Publicacion> listarPublicacionesXUsuario(
+            @WebParam(name="idUsuario")int idUsuario
+        )throws Exception{
+//        String url = this.urlBase + "/" + this.NOMBRE_RECURSO+"/publicacion/"+categoria+","+ordenamiento;
+
+        String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/usuario" +
+                 "?idUsuario=" + idUsuario;
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        List<Publicacion> publicaciones = mapper.readValue(json, new TypeReference<List<Publicacion>>() {});
+        
+        return publicaciones;
+    }
+    @WebMethod (operationName ="listarPublicacionesVirales")
+    public List<Publicacion> listarPublicacionesVirales() throws Exception
+    {
+        String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/virales";
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+        ObjectMapper mapper= DateDeserializerUtil.getObjectMapperWithDateHandling();
+        List<Publicacion> publicaciones = mapper.readValue(json, new TypeReference<List<Publicacion>>() {});
+        
+        return publicaciones;
+    }
+    
+    @WebMethod(operationName = "obtenerPublicacion")
+    public Publicacion obtenerPublicacion(@WebParam(name = "idPublicacion") int id)throws Exception{
+        String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/" + id;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+        
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
+        Publicacion publicacion = mapper.readValue(json, Publicacion.class);
+        
+        return publicacion;
+    }
+    
+    @WebMethod(operationName = "eliminarPublicacion")
+    public void eliminarPublicacion (@WebParam(name = "idPublicacion") int id) throws Exception {
+        String url = this.urlBase + "/" + this.NOMBRE_RECURSO + "/" + id;
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .DELETE()
+                .build();
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+    
+    @WebMethod (operationName ="guardarPublicacion")
+    public void guardarPublicacion(@WebParam(name = "publicacion") Publicacion publicacion, @WebParam(name = "estado") Estado estado) throws Exception{
+        ObjectMapper mapper = DateDeserializerUtil.getObjectMapperWithDateHandling();
+        String json = mapper.writeValueAsString(publicacion);
+        
+        String url;
+        HttpRequest request;
+        
+        if (estado == Estado.Nuevo){
+            url = this.urlBase +"/"+this.NOMBRE_RECURSO;
+            request = HttpRequest.newBuilder()
+                    .uri(URI.create(url))
+                    .header("Content-Type","application/json" )
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+        }
+        else{
+            url = this.urlBase+"/"+this.NOMBRE_RECURSO+"/"+publicacion.getId();
+            request = HttpRequest.newBuilder()
+                    .uri(URI.create(url))
+                    .header("Content-Type","application/json")
+                    .PUT(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+        }
+        
+        client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+    
+    @WebMethod(operationName = "actualizarImagenPublicacion")
+    public String actualizarImagenPublicacion(
+        @WebParam(name = "idPublicacion") int idPublicacion,
+        @WebParam(name = "imagenUrl") String imagenUrl) {
+        
+        try {
+            String restUrl = this.urlBase + "/" + this.NOMBRE_RECURSO + "/" + idPublicacion + "/imagen";
+            
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(restUrl))
+                .header("Content-Type", "text/plain")
+                .PUT(HttpRequest.BodyPublishers.ofString(imagenUrl))
+                .build();
+            
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            
+            return response.body();
+            
+        } catch (Exception e) {
+            return "ERROR: " + e.getMessage();
+        }
+    }
+}

@@ -1,0 +1,114 @@
+USE RedPUCP;
+
+DROP PROCEDURE IF EXISTS sp_insertarReporte;
+DROP PROCEDURE IF EXISTS sp_actualizarReporte;
+DROP PROCEDURE IF EXISTS sp_eliminarReporte;
+DROP PROCEDURE IF EXISTS sp_obtenerReportePorId;
+DROP PROCEDURE IF EXISTS sp_listarReportesPendientes;
+DROP PROCEDURE IF EXISTS sp_listarReportesPorReportador;
+
+-- Procedure para insertar un nuevo reporte
+DELIMITER //
+CREATE PROCEDURE sp_insertarReporte(
+    IN p_tipo VARCHAR(100),
+    IN p_detalle VARCHAR(500),
+    IN p_idPublicacion INT,
+    IN p_idComentario INT,
+    IN p_idPublicador INT,
+    IN p_idReportador INT,
+    OUT p_idGenerado INT
+)
+BEGIN
+    INSERT INTO REPORTE_RP(tipo, detalle, fechaCreacion, estado, 
+                           fid_publicacion_reportada, fid_comentario_reportado, 
+                           fid_publicador, fid_reportador)
+    VALUES(p_tipo, p_detalle, NOW(), 'A', -- 'A' = Activo/Pendiente
+           p_idPublicacion, p_idComentario, 
+           p_idPublicador, p_idReportador);
+    SET p_idGenerado = LAST_INSERT_ID();
+END //
+DELIMITER ;
+
+-- Procedure para actualizar un reporte (ej: marcar como resuelto)
+DELIMITER //
+CREATE PROCEDURE sp_actualizarReporte(
+    IN p_idReporte INT,
+    IN p_tipo VARCHAR(100),
+    IN p_detalle VARCHAR(500),
+    -- IN p_estado CHAR(1), -- Si quisieras cambiar el estado
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    UPDATE REPORTE_RP
+    SET tipo = p_tipo,
+        detalle = p_detalle
+        -- estado = p_estado
+    WHERE idReporte = p_idReporte;
+    SET p_exito = (ROW_COUNT() > 0);
+END //
+DELIMITER ;
+
+-- Procedure para eliminar (lógicamente) un reporte
+DELIMITER //
+CREATE PROCEDURE sp_eliminarReporte(
+    IN p_idReporte INT,
+    OUT p_exito BOOLEAN
+)
+BEGIN
+    -- Borrado lógico
+    UPDATE REPORTE_RP
+    SET estado = 'E' -- 'E' de Eliminado
+    WHERE idReporte = p_idReporte;
+    SET p_exito = (ROW_COUNT() > 0);
+END //
+DELIMITER ;
+
+-- Procedure para obtener un reporte por su ID
+DELIMITER //
+CREATE PROCEDURE sp_obtenerReportePorId(
+    IN p_idReporte INT
+)
+BEGIN
+    SELECT 
+        idReporte, tipo, detalle, estado,
+        fid_publicacion_reportada AS idPublicacion,
+        fid_comentario_reportado AS idComentario,
+        fid_publicador AS idPublicador,
+        fid_reportador AS idReportador
+    FROM REPORTE_RP
+    WHERE idReporte = p_idReporte AND estado != 'E';
+END //
+DELIMITER ;
+
+-- Procedure para listar reportes pendientes (para los Admins)
+DELIMITER //
+CREATE PROCEDURE sp_listarReportesPendientes()
+BEGIN
+    -- Esto es lo que llamará "comandoLeerTodos"
+    SELECT 
+        idReporte, tipo, detalle, estado,
+        fid_publicacion_reportada AS idPublicacion,
+        fid_comentario_reportado AS idComentario,
+        fid_publicador AS idPublicador,
+        fid_reportador AS idReportador
+    FROM REPORTE_RP
+    WHERE estado = 'A'; -- Solo los Activos/Pendientes
+END //
+DELIMITER ;
+
+-- Procedure para listar reportes hechos por un usuario
+DELIMITER //
+CREATE PROCEDURE sp_listarReportesPorReportador(
+    IN p_idReportador INT
+)
+BEGIN
+    SELECT 
+        idReporte, tipo, detalle, estado,
+        fid_publicacion_reportada AS idPublicacion,
+        fid_comentario_reportado AS idComentario,
+        fid_publicador AS idPublicador,
+        fid_reportador AS idReportador
+    FROM REPORTE_RP
+    WHERE fid_reportador = p_idReportador AND estado != 'E';
+END //
+DELIMITER ;

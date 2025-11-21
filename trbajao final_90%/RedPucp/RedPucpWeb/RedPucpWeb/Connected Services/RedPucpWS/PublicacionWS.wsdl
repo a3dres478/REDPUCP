@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://services.redpucp.ws/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="PublicacionWS" targetNamespace="https://services.redpucp.ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/RedPUCPWS/PublicacionWS?xsd=1" namespace="https://services.redpucp.ws/" />
+    </xsd:schema>
+  </types>
+  <message name="listarPublicacionesXFiltros">
+    <part name="parameters" element="tns:listarPublicacionesXFiltros" />
+  </message>
+  <message name="listarPublicacionesXFiltrosResponse">
+    <part name="parameters" element="tns:listarPublicacionesXFiltrosResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="actualizarImagenPublicacion">
+    <part name="parameters" element="tns:actualizarImagenPublicacion" />
+  </message>
+  <message name="actualizarImagenPublicacionResponse">
+    <part name="parameters" element="tns:actualizarImagenPublicacionResponse" />
+  </message>
+  <message name="listarPublicacionesXUsuario">
+    <part name="parameters" element="tns:listarPublicacionesXUsuario" />
+  </message>
+  <message name="listarPublicacionesXUsuarioResponse">
+    <part name="parameters" element="tns:listarPublicacionesXUsuarioResponse" />
+  </message>
+  <message name="listarPublicaciones">
+    <part name="parameters" element="tns:listarPublicaciones" />
+  </message>
+  <message name="listarPublicacionesResponse">
+    <part name="parameters" element="tns:listarPublicacionesResponse" />
+  </message>
+  <message name="listarPublicacionesVirales">
+    <part name="parameters" element="tns:listarPublicacionesVirales" />
+  </message>
+  <message name="listarPublicacionesViralesResponse">
+    <part name="parameters" element="tns:listarPublicacionesViralesResponse" />
+  </message>
+  <message name="eliminarPublicacion">
+    <part name="parameters" element="tns:eliminarPublicacion" />
+  </message>
+  <message name="eliminarPublicacionResponse">
+    <part name="parameters" element="tns:eliminarPublicacionResponse" />
+  </message>
+  <message name="obtenerPublicacion">
+    <part name="parameters" element="tns:obtenerPublicacion" />
+  </message>
+  <message name="obtenerPublicacionResponse">
+    <part name="parameters" element="tns:obtenerPublicacionResponse" />
+  </message>
+  <message name="guardarPublicacion">
+    <part name="parameters" element="tns:guardarPublicacion" />
+  </message>
+  <message name="guardarPublicacionResponse">
+    <part name="parameters" element="tns:guardarPublicacionResponse" />
+  </message>
+  <portType name="PublicacionWS">
+    <operation name="listarPublicacionesXFiltros">
+      <input wsam:Action="https://services.redpucp.ws/PublicacionWS/listarPublicacionesXFiltrosRequest" message="tns:listarPublicacionesXFiltros" />
+      <output wsam:Action="https://services.redpucp.ws/PublicacionWS/listarPublicacionesXFiltrosResponse" message="tns:listarPublicacionesXFiltrosResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/PublicacionWS/listarPublicacionesXFiltros/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="actualizarImagenPublicacion">
+      <input wsam:Action="https://services.redpucp.ws/PublicacionWS/actualizarImagenPublicacionRequest" message="tns:actualizarImagenPublicacion" />
+      <output wsam:Action="https://services.redpucp.ws/PublicacionWS/actualizarImagenPublicacionResponse" message="tns:actualizarImagenPublicacionResponse" />
+    </operation>
+    <operation name="listarPublicacionesXUsuario">
+      <input wsam:Action="https://services.redpucp.ws/PublicacionWS/listarPublicacionesXUsuarioRequest" message="tns:listarPublicacionesXUsuario" />
+      <output wsam:Action="https://services.redpucp.ws/PublicacionWS/listarPublicacionesXUsuarioResponse" message="tns:listarPublicacionesXUsuarioResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/PublicacionWS/listarPublicacionesXUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarPublicaciones">
+      <input wsam:Action="https://services.redpucp.ws/PublicacionWS/listarPublicacionesRequest" message="tns:listarPublicaciones" />
+      <output wsam:Action="https://services.redpucp.ws/PublicacionWS/listarPublicacionesResponse" message="tns:listarPublicacionesResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/PublicacionWS/listarPublicaciones/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarPublicacionesVirales">
+      <input wsam:Action="https://services.redpucp.ws/PublicacionWS/listarPublicacionesViralesRequest" message="tns:listarPublicacionesVirales" />
+      <output wsam:Action="https://services.redpucp.ws/PublicacionWS/listarPublicacionesViralesResponse" message="tns:listarPublicacionesViralesResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/PublicacionWS/listarPublicacionesVirales/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="eliminarPublicacion">
+      <input wsam:Action="https://services.redpucp.ws/PublicacionWS/eliminarPublicacionRequest" message="tns:eliminarPublicacion" />
+      <output wsam:Action="https://services.redpucp.ws/PublicacionWS/eliminarPublicacionResponse" message="tns:eliminarPublicacionResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/PublicacionWS/eliminarPublicacion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerPublicacion">
+      <input wsam:Action="https://services.redpucp.ws/PublicacionWS/obtenerPublicacionRequest" message="tns:obtenerPublicacion" />
+      <output wsam:Action="https://services.redpucp.ws/PublicacionWS/obtenerPublicacionResponse" message="tns:obtenerPublicacionResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/PublicacionWS/obtenerPublicacion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="guardarPublicacion">
+      <input wsam:Action="https://services.redpucp.ws/PublicacionWS/guardarPublicacionRequest" message="tns:guardarPublicacion" />
+      <output wsam:Action="https://services.redpucp.ws/PublicacionWS/guardarPublicacionResponse" message="tns:guardarPublicacionResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/PublicacionWS/guardarPublicacion/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="PublicacionWSPortBinding" type="tns:PublicacionWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listarPublicacionesXFiltros">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="actualizarImagenPublicacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarPublicacionesXUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarPublicaciones">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarPublicacionesVirales">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="eliminarPublicacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerPublicacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="guardarPublicacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="PublicacionWS">
+    <port name="PublicacionWSPort" binding="tns:PublicacionWSPortBinding">
+      <soap:address location="http://localhost:8080/RedPUCPWS/PublicacionWS" />
+    </port>
+  </service>
+</definitions>

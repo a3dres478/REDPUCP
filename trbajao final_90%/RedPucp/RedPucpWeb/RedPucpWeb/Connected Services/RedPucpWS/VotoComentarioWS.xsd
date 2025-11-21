@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="https://services.redpucp.ws/" targetNamespace="https://services.redpucp.ws/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Exception" type="tns:Exception" />
+  <xs:element name="eliminarVotoComentario" type="tns:eliminarVotoComentario" />
+  <xs:element name="eliminarVotoComentarioResponse" type="tns:eliminarVotoComentarioResponse" />
+  <xs:element name="guardarVotoComentario" type="tns:guardarVotoComentario" />
+  <xs:element name="guardarVotoComentarioResponse" type="tns:guardarVotoComentarioResponse" />
+  <xs:element name="listarVotosComentario" type="tns:listarVotosComentario" />
+  <xs:element name="listarVotosComentarioResponse" type="tns:listarVotosComentarioResponse" />
+  <xs:element name="listarVotosXComentario" type="tns:listarVotosXComentario" />
+  <xs:element name="listarVotosXComentarioResponse" type="tns:listarVotosXComentarioResponse" />
+  <xs:element name="obtenerVotoComentario" type="tns:obtenerVotoComentario" />
+  <xs:element name="obtenerVotoComentarioResponse" type="tns:obtenerVotoComentarioResponse" />
+  <xs:element name="suprimirVotoComentario" type="tns:suprimirVotoComentario" />
+  <xs:element name="suprimirVotoComentarioResponse" type="tns:suprimirVotoComentarioResponse" />
+  <xs:complexType name="suprimirVotoComentario">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element name="idComentario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="suprimirVotoComentarioResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarVotosComentario">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarVotosComentarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:votoComentario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="votoComentario">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:voto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="comentarioVotado" type="tns:comentario" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="voto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaRegistro" type="xs:dateTime" />
+      <xs:element name="id" type="xs:int" />
+      <xs:element name="tipo" type="xs:unsignedShort" />
+      <xs:element minOccurs="0" name="usuario" type="tns:usuario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="comentario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="autor" type="tns:usuarioComun" />
+      <xs:element minOccurs="0" name="contenido" type="xs:string" />
+      <xs:element name="estado" type="xs:unsignedShort" />
+      <xs:element minOccurs="0" name="fechaCreacion" type="xs:dateTime" />
+      <xs:element name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="imagenUrl" type="xs:string" />
+      <xs:element minOccurs="0" name="publicacion" type="tns:publicacion" />
+      <xs:element minOccurs="0" name="ultimaEdicion" type="xs:dateTime" />
+      <xs:element name="votosNegativos" type="xs:int" />
+      <xs:element name="votosPositivos" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="usuarioComun">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:usuario">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigopucp" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contrasenha" type="xs:string" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element name="estadouser" type="xs:unsignedShort" />
+      <xs:element minOccurs="0" name="fechaRegistro" type="xs:dateTime" />
+      <xs:element name="idUsuario" type="xs:int" />
+      <xs:element name="karma" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="tipousuario" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="publicacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="autor" type="tns:usuarioComun" />
+      <xs:element minOccurs="0" name="categoria" type="xs:string" />
+      <xs:element minOccurs="0" name="comunidad" type="tns:comunidad" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+      <xs:element name="estado" type="xs:unsignedShort" />
+      <xs:element minOccurs="0" name="fechaCreacion" type="xs:dateTime" />
+      <xs:element name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="imagenUrl" type="xs:string" />
+      <xs:element minOccurs="0" name="titulo" type="xs:string" />
+      <xs:element minOccurs="0" name="ultimaEdicion" type="xs:dateTime" />
+      <xs:element name="votosNegativos" type="xs:int" />
+      <xs:element name="votosPositivos" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="comunidad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="administrador" type="tns:usuarioComun" />
+      <xs:element name="cantidadmiembros" type="xs:int" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+      <xs:element name="estado" type="xs:unsignedShort" />
+      <xs:element minOccurs="0" name="fecha_creacion" type="xs:dateTime" />
+      <xs:element name="id_comunidad" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarVotoComentario">
+    <xs:sequence>
+      <xs:element name="idVoto" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarVotoComentarioResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="obtenerVotoComentario">
+    <xs:sequence>
+      <xs:element name="idVoto" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerVotoComentarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:votoComentario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarVotosXComentario">
+    <xs:sequence>
+      <xs:element name="idComentario" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarVotosXComentarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:votoComentario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="guardarVotoComentario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="votocomentario" type="tns:votoComentario" />
+      <xs:element minOccurs="0" name="estado" type="tns:estado" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="guardarVotoComentarioResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:simpleType name="estado">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Nuevo" />
+      <xs:enumeration value="Modificar" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,14 @@
+pe\edu\pucp\progra03\redpucprest\resources\ComunidadXPublicacionPrincipal_Resource.class
+pe\edu\pucp\progra03\redpucprest\resources\CloudinaryService.class
+pe\edu\pucp\progra03\redpucprest\resources\ComentarioResource.class
+pe\edu\pucp\progra03\redpucprest\resources\VotoPublicacionResource.class
+pe\edu\pucp\progra03\redpucprest\resources\JakartaEE10Resource.class
+pe\edu\pucp\progra03\redpucprest\resources\NotificacionResource.class
+pe\edu\pucp\progra03\redpucprest\resources\PublicacionResource.class
+pe\edu\pucp\progra03\redpucprest\resources\AdministradorResource.class
+pe\edu\pucp\progra03\redpucprest\resources\UsuarioComunResource.class
+pe\edu\pucp\progra03\redpucprest\resources\RestApplication.class
+pe\edu\pucp\progra03\redpucprest\resources\ComunidadResource.class
+pe\edu\pucp\progra03\redpucprest\resources\ReporteResource.class
+pe\edu\pucp\progra03\redpucprest\resources\VotoComentarioResource.class
+pe\edu\pucp\progra03\redpucprest\JakartaRestConfiguration.class

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://services.redpucp.ws/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="VotoComentarioWS" targetNamespace="https://services.redpucp.ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/RedPUCPWS/VotoComentarioWS?xsd=1" namespace="https://services.redpucp.ws/" />
+    </xsd:schema>
+  </types>
+  <message name="eliminarVotoComentario">
+    <part name="parameters" element="tns:eliminarVotoComentario" />
+  </message>
+  <message name="eliminarVotoComentarioResponse">
+    <part name="parameters" element="tns:eliminarVotoComentarioResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="suprimirVotoComentario">
+    <part name="parameters" element="tns:suprimirVotoComentario" />
+  </message>
+  <message name="suprimirVotoComentarioResponse">
+    <part name="parameters" element="tns:suprimirVotoComentarioResponse" />
+  </message>
+  <message name="listarVotosComentario">
+    <part name="parameters" element="tns:listarVotosComentario" />
+  </message>
+  <message name="listarVotosComentarioResponse">
+    <part name="parameters" element="tns:listarVotosComentarioResponse" />
+  </message>
+  <message name="obtenerVotoComentario">
+    <part name="parameters" element="tns:obtenerVotoComentario" />
+  </message>
+  <message name="obtenerVotoComentarioResponse">
+    <part name="parameters" element="tns:obtenerVotoComentarioResponse" />
+  </message>
+  <message name="listarVotosXComentario">
+    <part name="parameters" element="tns:listarVotosXComentario" />
+  </message>
+  <message name="listarVotosXComentarioResponse">
+    <part name="parameters" element="tns:listarVotosXComentarioResponse" />
+  </message>
+  <message name="guardarVotoComentario">
+    <part name="parameters" element="tns:guardarVotoComentario" />
+  </message>
+  <message name="guardarVotoComentarioResponse">
+    <part name="parameters" element="tns:guardarVotoComentarioResponse" />
+  </message>
+  <portType name="VotoComentarioWS">
+    <operation name="eliminarVotoComentario">
+      <input wsam:Action="https://services.redpucp.ws/VotoComentarioWS/eliminarVotoComentarioRequest" message="tns:eliminarVotoComentario" />
+      <output wsam:Action="https://services.redpucp.ws/VotoComentarioWS/eliminarVotoComentarioResponse" message="tns:eliminarVotoComentarioResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/VotoComentarioWS/eliminarVotoComentario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="suprimirVotoComentario">
+      <input wsam:Action="https://services.redpucp.ws/VotoComentarioWS/suprimirVotoComentarioRequest" message="tns:suprimirVotoComentario" />
+      <output wsam:Action="https://services.redpucp.ws/VotoComentarioWS/suprimirVotoComentarioResponse" message="tns:suprimirVotoComentarioResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/VotoComentarioWS/suprimirVotoComentario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarVotosComentario">
+      <input wsam:Action="https://services.redpucp.ws/VotoComentarioWS/listarVotosComentarioRequest" message="tns:listarVotosComentario" />
+      <output wsam:Action="https://services.redpucp.ws/VotoComentarioWS/listarVotosComentarioResponse" message="tns:listarVotosComentarioResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/VotoComentarioWS/listarVotosComentario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerVotoComentario">
+      <input wsam:Action="https://services.redpucp.ws/VotoComentarioWS/obtenerVotoComentarioRequest" message="tns:obtenerVotoComentario" />
+      <output wsam:Action="https://services.redpucp.ws/VotoComentarioWS/obtenerVotoComentarioResponse" message="tns:obtenerVotoComentarioResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/VotoComentarioWS/obtenerVotoComentario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="listarVotosXComentario">
+      <input wsam:Action="https://services.redpucp.ws/VotoComentarioWS/listarVotosXComentarioRequest" message="tns:listarVotosXComentario" />
+      <output wsam:Action="https://services.redpucp.ws/VotoComentarioWS/listarVotosXComentarioResponse" message="tns:listarVotosXComentarioResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/VotoComentarioWS/listarVotosXComentario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="guardarVotoComentario">
+      <input wsam:Action="https://services.redpucp.ws/VotoComentarioWS/guardarVotoComentarioRequest" message="tns:guardarVotoComentario" />
+      <output wsam:Action="https://services.redpucp.ws/VotoComentarioWS/guardarVotoComentarioResponse" message="tns:guardarVotoComentarioResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/VotoComentarioWS/guardarVotoComentario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+  </portType>
+  <binding name="VotoComentarioWSPortBinding" type="tns:VotoComentarioWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="eliminarVotoComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="suprimirVotoComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarVotosComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerVotoComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="listarVotosXComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="guardarVotoComentario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="VotoComentarioWS">
+    <port name="VotoComentarioWSPort" binding="tns:VotoComentarioWSPortBinding">
+      <soap:address location="http://localhost:8080/RedPUCPWS/VotoComentarioWS" />
+    </port>
+  </service>
+</definitions>

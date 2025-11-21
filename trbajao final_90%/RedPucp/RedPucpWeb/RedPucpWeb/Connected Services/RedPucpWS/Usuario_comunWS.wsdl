@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="https://services.redpucp.ws/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Usuario_comunWS" targetNamespace="https://services.redpucp.ws/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/RedPUCPWS/Usuario_comunWS?xsd=1" namespace="https://services.redpucp.ws/" />
+    </xsd:schema>
+  </types>
+  <message name="ListarUsuariosComunes">
+    <part name="parameters" element="tns:ListarUsuariosComunes" />
+  </message>
+  <message name="ListarUsuariosComunesResponse">
+    <part name="parameters" element="tns:ListarUsuariosComunesResponse" />
+  </message>
+  <message name="Exception">
+    <part name="fault" element="tns:Exception" />
+  </message>
+  <message name="obtenerUsuarioPorCorreo">
+    <part name="parameters" element="tns:obtenerUsuarioPorCorreo" />
+  </message>
+  <message name="obtenerUsuarioPorCorreoResponse">
+    <part name="parameters" element="tns:obtenerUsuarioPorCorreoResponse" />
+  </message>
+  <message name="eliminarUsuarioComun">
+    <part name="parameters" element="tns:eliminarUsuarioComun" />
+  </message>
+  <message name="eliminarUsuarioComunResponse">
+    <part name="parameters" element="tns:eliminarUsuarioComunResponse" />
+  </message>
+  <message name="guardarUsuarioComun">
+    <part name="parameters" element="tns:guardarUsuarioComun" />
+  </message>
+  <message name="guardarUsuarioComunResponse">
+    <part name="parameters" element="tns:guardarUsuarioComunResponse" />
+  </message>
+  <message name="obtenerUsuario">
+    <part name="parameters" element="tns:obtenerUsuario" />
+  </message>
+  <message name="obtenerUsuarioResponse">
+    <part name="parameters" element="tns:obtenerUsuarioResponse" />
+  </message>
+  <message name="verificarLoginUsuarioComun">
+    <part name="parameters" element="tns:verificarLoginUsuarioComun" />
+  </message>
+  <message name="verificarLoginUsuarioComunResponse">
+    <part name="parameters" element="tns:verificarLoginUsuarioComunResponse" />
+  </message>
+  <message name="actualizarKarma">
+    <part name="parameters" element="tns:actualizarKarma" />
+  </message>
+  <message name="actualizarKarmaResponse">
+    <part name="parameters" element="tns:actualizarKarmaResponse" />
+  </message>
+  <portType name="Usuario_comunWS">
+    <operation name="ListarUsuariosComunes">
+      <input wsam:Action="https://services.redpucp.ws/Usuario_comunWS/ListarUsuariosComunesRequest" message="tns:ListarUsuariosComunes" />
+      <output wsam:Action="https://services.redpucp.ws/Usuario_comunWS/ListarUsuariosComunesResponse" message="tns:ListarUsuariosComunesResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/Usuario_comunWS/ListarUsuariosComunes/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerUsuarioPorCorreo">
+      <input wsam:Action="https://services.redpucp.ws/Usuario_comunWS/obtenerUsuarioPorCorreoRequest" message="tns:obtenerUsuarioPorCorreo" />
+      <output wsam:Action="https://services.redpucp.ws/Usuario_comunWS/obtenerUsuarioPorCorreoResponse" message="tns:obtenerUsuarioPorCorreoResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/Usuario_comunWS/obtenerUsuarioPorCorreo/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="eliminarUsuarioComun">
+      <input wsam:Action="https://services.redpucp.ws/Usuario_comunWS/eliminarUsuarioComunRequest" message="tns:eliminarUsuarioComun" />
+      <output wsam:Action="https://services.redpucp.ws/Usuario_comunWS/eliminarUsuarioComunResponse" message="tns:eliminarUsuarioComunResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/Usuario_comunWS/eliminarUsuarioComun/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="guardarUsuarioComun">
+      <input wsam:Action="https://services.redpucp.ws/Usuario_comunWS/guardarUsuarioComunRequest" message="tns:guardarUsuarioComun" />
+      <output wsam:Action="https://services.redpucp.ws/Usuario_comunWS/guardarUsuarioComunResponse" message="tns:guardarUsuarioComunResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/Usuario_comunWS/guardarUsuarioComun/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="obtenerUsuario">
+      <input wsam:Action="https://services.redpucp.ws/Usuario_comunWS/obtenerUsuarioRequest" message="tns:obtenerUsuario" />
+      <output wsam:Action="https://services.redpucp.ws/Usuario_comunWS/obtenerUsuarioResponse" message="tns:obtenerUsuarioResponse" />
+      <fault wsam:Action="https://services.redpucp.ws/Usuario_comunWS/obtenerUsuario/Fault/Exception" name="Exception" message="tns:Exception" />
+    </operation>
+    <operation name="verificarLoginUsuarioComun">
+      <input wsam:Action="https://services.redpucp.ws/Usuario_comunWS/verificarLoginUsuarioComunRequest" message="tns:verificarLoginUsuarioComun" />
+      <output wsam:Action="https://services.redpucp.ws/Usuario_comunWS/verificarLoginUsuarioComunResponse" message="tns:verificarLoginUsuarioComunResponse" />
+    </operation>
+    <operation name="actualizarKarma">
+      <input wsam:Action="https://services.redpucp.ws/Usuario_comunWS/actualizarKarmaRequest" message="tns:actualizarKarma" />
+      <output wsam:Action="https://services.redpucp.ws/Usuario_comunWS/actualizarKarmaResponse" message="tns:actualizarKarmaResponse" />
+    </operation>
+  </portType>
+  <binding name="Usuario_comunWSPortBinding" type="tns:Usuario_comunWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="ListarUsuariosComunes">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerUsuarioPorCorreo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="eliminarUsuarioComun">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="guardarUsuarioComun">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="Exception">
+        <soap:fault use="literal" name="Exception" namespace="" />
+      </fault>
+    </operation>
+    <operation name="verificarLoginUsuarioComun">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="actualizarKarma">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Usuario_comunWS">
+    <port name="Usuario_comunWSPort" binding="tns:Usuario_comunWSPortBinding">
+      <soap:address location="http://localhost:8080/RedPUCPWS/Usuario_comunWS" />
+    </port>
+  </service>
+</definitions>
