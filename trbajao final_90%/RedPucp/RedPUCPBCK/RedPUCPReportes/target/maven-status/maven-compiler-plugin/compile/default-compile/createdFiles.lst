@@ -1,4 +1,5 @@
 pe\edu\pucp\progra03\redpucpreportes\resources\JakartaEE10Resource.class
+pe\edu\pucp\progra03\redpucp\servlet\ReporteComunidadPubli.class
 pe\edu\pucp\progra03\redpucp\servlet\ReporteUsuariosTOP.class
 pe\edu\pucp\progra03\redpucpreportes\JakartaRestConfiguration.class
 pe\edu\pucp\progra03\redpucp\servlet\ReporteListarComunidades.class
