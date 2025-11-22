@@ -37,7 +37,7 @@ private final String NOMBRE_REPORTE =
     private final String NOMBRE_LOGO = 
             "imagenes/logo.png";
     private final String SUB_REPORTE=
-            "reportes/DetallePublicacionesR014.jasper";
+            "reportes/DetalleFinalRF014.jasper";
     
     
     @Override
@@ -65,9 +65,9 @@ private final String NOMBRE_REPORTE =
             
             InputStream subreporteStream = getClass().getClassLoader().getResourceAsStream(this.SUB_REPORTE);
             if (subreporteStream == null) {
-                throw new FileNotFoundException("No se encontró el subreporte 'DetallePublicacionesR014.jasper'");
+                throw new FileNotFoundException("No se encontró el subreporte 'DetalleFinalRF014.jasper'");
             }
-            parametros.put("subreporte", subreporteStream);
+            parametros.put("subreporte", SUB_REPORTE);
             
             InputStream logoStream = getClass().getClassLoader().
                     getResourceAsStream(this.NOMBRE_LOGO);

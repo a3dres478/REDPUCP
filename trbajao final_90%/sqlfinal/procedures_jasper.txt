@@ -1,5 +1,8 @@
 DROP PROCEDURE IF EXISTS sp_top5;
 DROP PROCEDURE IF EXISTS sp_listar_comunidades_jasper;
+DROP PROCEDURE IF EXISTS sp_listar_usuarios_por_comunidad_jasper;
+DROP PROCEDURE IF EXISTS sp_listar_publicaciones_usuario_comunidad_jasper;
+
 
 DELIMITER //
 
@@ -9,45 +12,73 @@ BEGIN
 
     -- Traducción del parámetro numérico al estado real
     IF p_estado = 1 THEN
-        SET v_estado = 'A';   -- Activo
+        SET v_estado = 'A';
     ELSEIF p_estado = 2 THEN
-        SET v_estado = 'B';   -- Bloqueado
+        SET v_estado = 'B';
     ELSE
-        SET v_estado = 'A';   -- Por defecto
+        SET v_estado = 'A';
     END IF;
 
-    -- Consulta principal
+    -- Siempre devolver 5 filas
     SELECT 
-        U.idUsuario,
-        U.nombre,
-        U.codigo,
-        U.karma,
+        t.idUsuario,
+        t.nombre,
+        t.codigo,
+        t.karma,
+        t.cantidadVotos,
+        t.cantidadPublicaciones,
+        t.cantidadComentarios
+    FROM (
+        -- Encierro en un SELECT para permitir ORDER BY + LIMIT
+        SELECT *
+        FROM (
+            SELECT 
+                U.idUsuario,
+                U.nombre,
+                U.codigo,
+                U.karma,
 
-        -- Cantidad de votos hechos
-        (SELECT COUNT(*) 
-         FROM VOTO_RP V 
-         WHERE V.idUsuario = U.idUsuario) AS cantidadVotos,
+                (SELECT COUNT(*) 
+                 FROM VOTO_RP V 
+                 WHERE V.idUsuario = U.idUsuario) AS cantidadVotos,
 
-        -- Cantidad de publicaciones hechas
-        (SELECT COUNT(*) 
-         FROM PUBLICACION_RP P 
-         WHERE P.idAutor = U.idUsuario) AS cantidadPublicaciones,
+                (SELECT COUNT(*) 
+                 FROM PUBLICACION_RP P 
+                 WHERE P.idAutor = U.idUsuario) AS cantidadPublicaciones,
 
-        -- Cantidad de comentarios hechos
-        (SELECT COUNT(*) 
-         FROM COMENTARIO_RP C 
-         WHERE C.idAutor = U.idUsuario) AS cantidadComentarios
+                (SELECT COUNT(*) 
+                 FROM COMENTARIO_RP C 
+                 WHERE C.idAutor = U.idUsuario) AS cantidadComentarios
+            FROM USUARIO_RP U
+            WHERE U.rol = 'C'
+              AND U.estado = v_estado
+            ORDER BY U.karma DESC
+            LIMIT 5
+        ) AS real_users
 
-    FROM USUARIO_RP U
-    WHERE U.rol = 'C'          -- solo usuarios comunes
-      AND U.estado = v_estado  -- filtrado por estado
-    ORDER BY U.karma DESC
-    LIMIT 5;
+        UNION ALL
+
+        -- Filas vacías para completar hasta 5
+        SELECT 
+            0 AS idUsuario,
+            'NINGUNO' AS nombre,
+            0 AS codigo,
+            0 AS karma,
+            0 AS cantidadVotos,
+            0 AS cantidadPublicaciones,
+            0 AS cantidadComentarios
+        FROM (
+            SELECT 1 AS n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5
+        ) AS filler
+    ) AS t
+    LIMIT 5;   -- asegurar solo 5 filas finales
 END //
--- 1 ACT 2 BLOQ
+
 DELIMITER ;
 
+
 DELIMITER //
+
 CREATE PROCEDURE sp_listar_comunidades_jasper(IN p_estado INT)
 BEGIN
     DECLARE v_estado CHAR(1);
@@ -61,24 +92,115 @@ BEGIN
         SET v_estado = 'A';   -- Por defecto activa
     END IF;
 
-    SELECT
-        C.idComunidad,
-        C.nombre,
+    -- Retornar datos reales + fila vacía si no existen comunidades
+    SELECT 
+        t.idComunidad,
+        t.nombre,
+        t.categoria,
+        t.cantidadMiembros,
+        t.fechaCreacion
+    FROM (
+        -- Datos reales
+        SELECT
+            C.idComunidad,
+            C.nombre,
+            CASE
+                WHEN C.nombre LIKE 'AYU%' THEN 'Ayuda'
+                WHEN C.nombre LIKE 'DIS%' THEN 'Discusión'
+                WHEN C.nombre LIKE 'EVE%' THEN 'Eventos'
+                WHEN C.nombre LIKE 'CON%' THEN 'Conversaciones'
+                ELSE 'Desconocido'
+            END AS categoria,
+            C.cantidadMiembros,
+            C.fechaCreacion
+        FROM COMUNIDAD_RP C
+        WHERE C.estado = v_estado
 
-        -- Categoría según prefijo del nombre
-        CASE
-            WHEN C.nombre LIKE 'AYU%' THEN 'Ayuda'
-            WHEN C.nombre LIKE 'DIS%' THEN 'Discusión'
-            WHEN C.nombre LIKE 'EVE%' THEN 'Eventos'
-            WHEN C.nombre LIKE 'CON%' THEN 'Conversaciones'
-            ELSE 'Desconocido'
-        END AS categoria,
+        UNION ALL
 
-        C.cantidadMiembros,
-        C.fechaCreacion
-
-    FROM COMUNIDAD_RP C
-    WHERE C.estado = v_estado
-    ORDER BY C.idComunidad;
+        -- Fila vacía "por defecto"
+        SELECT
+            0 AS idComunidad,
+            'NINGUNA' AS nombre,
+            'N/A' AS categoria,
+            0 AS cantidadMiembros,
+            NULL AS fechaCreacion
+    ) AS t
+    LIMIT 1; -- Solo mostrar 1 fila si no había datos reales
 END //
+
 DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE sp_listar_usuarios_por_comunidad_jasper (
+    IN p_idComunidad INT
+)
+BEGIN
+    -- Obtenemos los usuarios que pertenecen a la comunidad
+    -- y les hacemos JOIN con la tabla de usuarios
+    -- para extraer su nombre.
+    SELECT 
+        uc.idUsuario,
+        u.nombre
+    FROM USUARIO_COMUNIDAD_RP uc
+    INNER JOIN USUARIO_RP u ON u.idUsuario = uc.idUsuario
+    WHERE uc.idComunidad = p_idComunidad;
+END //
+
+DELIMITER ;
+
+
+
+
+
+DELIMITER //
+
+CREATE PROCEDURE sp_listar_publicaciones_usuario_comunidad_jasper (
+    IN p_idUsuario INT,      
+    IN p_idComunidad INT     
+)
+BEGIN
+
+    -- Consulta principal
+    SELECT 
+        p.idPublicacion,
+        p.titulo,
+        p.votosPositivos,
+        COUNT(r.idReporte) AS reportes
+    FROM PUBLICACION_RP p
+    LEFT JOIN REPORTE_RP r
+        ON r.idPublicacion_report = p.idPublicacion
+        AND r.idPublicador = p_idUsuario
+    WHERE 
+        p.idAutor = p_idUsuario
+        AND p.idComunidad = p_idComunidad
+    GROUP BY
+        p.idPublicacion,
+        p.titulo,
+        p.votosPositivos
+
+    UNION ALL
+
+    -- Fila por defecto si NO HAY NADA
+    SELECT 
+        0 AS idPublicacion,
+        'NINGUNO' AS titulo,
+        0 AS votosPositivos,
+        0 AS reportes
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM PUBLICACION_RP p
+        WHERE p.idAutor = p_idUsuario
+        AND p.idComunidad = p_idComunidad
+    );
+
+END //
+
+DELIMITER ;
+
+
+
+
+
+
